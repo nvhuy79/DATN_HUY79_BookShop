@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
-
-<!-- Mirrored from htmldemo.net/lezada/lezada/index-book-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 14:13:34 GMT -->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -2358,7 +2356,6 @@
 	<script src="assets/revolution/js/jquery.themepunch.tools.min.js"></script>
 	<script src="assets/revolution/revolution-active.js"></script>
 
-	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
 	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
 	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
@@ -2368,7 +2365,4 @@
 	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
 
 </body>
-
-
-<!-- Mirrored from htmldemo.net/lezada/lezada/index-book-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 14:14:19 GMT -->
 </html>

@@ -2,38 +2,28 @@
 <html class="no-js" lang="zxx">
 
 
-<!-- Mirrored from htmldemo.net/lezada/lezada/shop-customer-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 14:15:58 GMT -->
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Lezada - Multipurpose eCommerce Bootstrap 5 Template</title>
+	<title>BookFun Shop</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Favicon -->
 	<link rel="icon" href="assets/images/favicon.ico">
-
-	<!-- CSS
-	============================================ -->
-	<!-- Bootstrap CSS -->
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
-	<!-- FontAwesome CSS -->
 	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-
-	<!-- Ionicons CSS -->
 	<link href="assets/css/ionicons.min.css" rel="stylesheet">
-
-	<!-- Themify CSS -->
 	<link href="assets/css/themify-icons.css" rel="stylesheet">
-
-	<!-- Plugins CSS -->
 	<link href="assets/css/plugins.css" rel="stylesheet">
-
-	<!-- Helper CSS -->
 	<link href="assets/css/helper.css" rel="stylesheet">
-
-	<!-- Main CSS -->
 	<link href="assets/css/main.css" rel="stylesheet">
+
+
+	<!-- Revolution Slider CSS -->
+	<link href="assets/revolution/css/settings.css" rel="stylesheet">
+	<link href="assets/revolution/css/navigation.css" rel="stylesheet">
+	<link href="assets/revolution/custom-setting.css" rel="stylesheet">
+
 
 	<!-- Modernizer JS -->
 	<script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -43,112 +33,36 @@
 <body>
 
 
-	<!--=============================================
-	=            Header offcanvas about         =
-	=============================================-->
-
-	<header class="header header-offcanvas-about header-sticky">
-
+	<!--===== Header wide topbar =============-->
+	<header class="header header-wide-topbar header-sticky border-bottom-0">
 		<!--=======  header bottom  =======-->
-
 		<div class="header-bottom pt-md-40 pb-md-40 pt-sm-40 pb-sm-40">
 			<div class="container wide">
 
 				<!--=======  header bottom container  =======-->
-
 				<div class="header-bottom-container">
 
 					<!--=======  logo with off canvas  =======-->
-
 					<div class="logo-with-offcanvas d-flex">
 
-						<!--=======  offcanvas about icon  =======-->
-
-						<div class="offcanvas-about-icon mr-20 d-none d-lg-block">
-							<a href="javascript:void(0)" id="offcanvas-about-icon">
-								<i class="ion-navicon"></i>
-							</a>
-						</div>
-
-						<!--=======  End of offcanvas about icon  =======-->
-
 						<!--=======  logo   =======-->
-
 						<div class="logo">
 							<a href="index.html">
 								<img src="assets/images/logo.png" class="img-fluid" alt="">
 							</a>
 						</div>
-
 						<!--=======  End of logo   =======-->
 					</div>
-
 					<!--=======  End of logo with off canvas  =======-->
 
-					<!--=======  header bottom navigation  =======-->
 
+					<!--=======  header bottom navigation  =======-->
 					<div class="header-bottom-navigation">
 						<div class="site-main-nav d-none d-lg-block">
 							<nav class="site-nav center-menu">
 								<ul>
-									<li class="menu-item-has-children"><a href="index.html">Home</a>
-										<ul class="sub-menu mega-menu mega-menu-column-5">
-											<li><a href="javascript:void(0)" class="mega-column-title">Home Group</a>
-												<ul class="mega-sub-menu">
-													<li><a href="index-trending.html">Trending</a><img src="assets/images/home-preview/01.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-collection.html">My collection</a><img
-															src="assets/images/home-preview/02.jpg" class="img-fluid" alt=""></li>
-													<li><a href="index-special.html">Special</a><img src="assets/images/home-preview/03.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-concept.html">concept</a><img src="assets/images/home-preview/04.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-smart.html">smart design</a><img src="assets/images/home-preview/05.jpg"
-															class="img-fluid" alt=""></li>
-												</ul>
-											</li>
-											<li><a href="javascript:void(0)" class="mega-column-title">Home Group</a>
-												<ul class="mega-sub-menu">
-													<li><a href="index-furniture.html">Furniture </a><img src="assets/images/home-preview/06.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-essentials.html">Essentials</a><img src="assets/images/home-preview/07.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-lookbook.html">Lookbook</a><img src="assets/images/home-preview/08.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-wearables.html">Wearables</a><img src="assets/images/home-preview/09.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-accessories.html">Accessories</a><img
-															src="assets/images/home-preview/10.jpg" class="img-fluid" alt=""></li>
-												</ul>
-											</li>
-											<li><a href="javascript:void(0)" class="mega-column-title">Home Group</a>
-												<ul class="mega-sub-menu">
-													<li><a href="index-shoppable.html">Shoppable</a><img src="assets/images/home-preview/11.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-fashion.html">Fashion</a><img src="assets/images/home-preview/13.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-perfumes.html">Perfumes</a><img src="assets/images/home-preview/14.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-cosmetics.html">Cosmetics</a><img src="assets/images/home-preview/15.jpg"
-															class="img-fluid" alt=""></li>
-													<li><a href="index-decor.html">Home Decor</a><img src="assets/images/home-preview/16.png"
-															class="img-fluid" alt=""></li>
-												</ul>
-											</li>
-											<li><a href="javascript:void(0)" class="mega-column-title">Home Group</a>
-												<ul class="mega-sub-menu">
-													<li><a href="index-creative.html">Creative</a><img src="assets/images/home-preview/17.png"
-															class="img-fluid" alt=""></li>
-												</ul>
-											</li>
-											<li>
-												<div class="menu-image">
-													<img src="assets/images/menu-image/menu-element.png" class="img-fluid" alt="">
-												</div>
-											</li>
-										</ul>
-									</li>
-									<li class="menu-item-has-children"><a href="shop-left-sidebar.html">Shop</a>
+									<li class="menu"><a href="index.html">Trang chủ</a></li>
+									<li class="menu-item-has-children"><a href="shop-left-sidebar.html">Danh mục sản phẩm</a>
 										<ul class="sub-menu mega-menu mega-menu-column-4">
 											<li><a href="javascript:void(0)" class="mega-column-title">Shop Pages</a>
 												<ul class="mega-sub-menu">
@@ -190,7 +104,7 @@
 											</li>
 										</ul>
 									</li>
-									<li class="menu-item-has-children"><a href="javascript:void(0)">Elements</a>
+									<li class="menu-item-has-children"><a href="javascript:void(0)">Sản phẩm mới phát hành</a>
 										<ul class="sub-menu mega-menu mega-menu-column-5">
 											<li><a href="javascript:void(0)" class="mega-column-title">Shop / Products</a>
 												<ul class="mega-sub-menu">
@@ -235,7 +149,7 @@
 											</li>
 										</ul>
 									</li>
-									<li class="menu-item-has-children"><a href="javascript:void(0)">Pages</a>
+									<li class="menu-item-has-children"><a href="javascript:void(0)">Khuyến mãi</a>
 										<ul class="sub-menu single-column-menu">
 											<li><a href="about-us.html">About Us</a></li>
 											<li><a href="about-us-2.html">About Us 2</a></li>
@@ -247,7 +161,7 @@
 											<li><a href="compare.html">Compare</a></li>
 										</ul>
 									</li>
-									<li class="menu-item-has-children "><a href="javascript:void(0)">Blog</a>
+									<li class="menu-item-has-children "><a href="javascript:void(0)">Tin tức - Blog</a>
 										<ul class="sub-menu single-column-menu single-column-has-children">
 											<li><a href="blog-standard-right-sidebar.html">Standard Layout</a>
 												<ul class="multilevel-submenu">
@@ -297,30 +211,27 @@
 							</nav>
 						</div>
 					</div>
-
 					<!--=======  End of header bottom navigation  =======-->
 
-					<!--=======  headeer right container  =======-->
 
+					<!--=======  headeer right container  =======-->
 					<div class="header-right-container">
 
 						<!--=======  header right icons  =======-->
-
 						<div class="header-right-icons d-flex justify-content-end align-items-center h-100">
-							<!--=======  single-icon  =======-->
 
+							<!--=======  single-icon  =======-->
 							<div class="single-icon search">
 								<a href="javascript:void(0)" id="search-icon">
 									<i class="ion-ios-search-strong"></i>
 								</a>
 							</div>
-
 							<!--=======  End of single-icon  =======-->
 							<!--=======  single-icon  =======-->
 
 							<div class="single-icon user-login">
-								<a href="shop-customer-login.html">
-									<i class="ion-android-person"></i>
+								<a href="{{ route('login') }}">
+									<i class="ion-android-person"></i>Login
 								</a>
 							</div>
 
@@ -343,21 +254,25 @@
 									<span class="count">3</span>
 								</a>
 							</div>
+
+                            <div class="single-icon user-login">
+								<a href="{{ route('login') }}">
+									<i class="ion-android-person"></i>Login
+								</a>
+							</div>
 							<!--=======  End of single-icon  =======-->
+
 						</div>
 						<!--=======  End of header right icons  =======-->
-
 					</div>
-
 					<!--=======  End of headeer right container  =======-->
 
 
 				</div>
-
 				<!--=======  End of header bottom container  =======-->
 
-				<!-- Mobile Navigation Start Here -->
 
+				<!-- Mobile Navigation Start Here -->
 				<div class="site-mobile-navigation d-block d-lg-none">
 					<div id="dl-menu" class="dl-menuwrapper site-mobile-nav">
 						<!--Site Mobile Menu Toggle Start-->
@@ -552,108 +467,8 @@
 
 		<!--=======  End of header bottom  =======-->
 	</header>
+	<!--===== End of Header wide topbar ======-->
 
-	<!--===== End of Header offcanvas about ======-->
-
-	<!--=======  breadcrumb area =======-->
-
-	<div class="breadcrumb-area breadcrumb-bg-1 pt-50 pb-70 mb-130">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<h1 class="breadcrumb-title">Customer login</h1>
-
-					<!--=======  breadcrumb list  =======-->
-
-					<ul class="breadcrumb-list">
-						<li class="breadcrumb-list__item"><a href="index.html">HOME</a></li>
-						<li class="breadcrumb-list__item breadcrumb-list__item--active">customer login</li>
-					</ul>
-
-					<!--=======  End of breadcrumb list  =======-->
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--=======  End of breadcrumb area =======-->
-
-	<!--=============================================
-    =            login page content         =
-    =============================================-->
-
-	<div class="login-area mb-130 mb-md-70 mb-sm-70 mb-xs-70 mb-xxs-70">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 mb-md-50 mb-sm-50">
-					<div class="lezada-form login-form">
-						<form action="#">
-							<div class="row">
-								<div class="col-lg-12">
-									<!--=======  login title  =======-->
-
-									<div class="section-title section-title--login text-center mb-50">
-										<h2 class="mb-20">Login</h2>
-										<p>Great to have you back!</p>
-									</div>
-
-									<!--=======  End of login title  =======-->
-								</div>
-								<div class="col-lg-12 mb-60">
-									<input type="text" placeholder="Username or email address" required>
-								</div>
-								<div class="col-lg-12 mb-60">
-									<input type="password" placeholder="Password" required>
-								</div>
-								<div class="col-lg-12 text-center mb-30">
-									<button class="lezada-button lezada-button--medium">login</button>
-								</div>
-
-								<div class="col-lg-12">
-									<input type="checkbox"> <span class="remember-text">Remember me</span>
-									<a href="#" class="reset-pass-link">Lost your password?</a>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="lezada-form login-form--register">
-						<form action="#">
-							<div class="row">
-								<div class="col-lg-12">
-									<!--=======  login title  =======-->
-
-									<div class="section-title section-title--login text-center mb-50">
-										<h2 class="mb-20">Register</h2>
-										<p>If you don’t have an account, register now!</p>
-									</div>
-
-									<!--=======  End of login title  =======-->
-								</div>
-								<div class="col-lg-12 mb-30">
-									<label for="regEmail">Email Address <span class="required">*</span> </label>
-									<input type="text" id="regEmail" required>
-								</div>
-								<div class="col-lg-12 mb-50">
-									<label for="regPassword">Password <span class="required">*</span> </label>
-									<input type="password" id="regPassword" required>
-								</div>
-								<div class="col-lg-12 text-center">
-									<button class="lezada-button lezada-button--medium">register</button>
-								</div>
-
-
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--=====  End of login content  ======-->
 
 
 	<!--=============================================
@@ -665,55 +480,44 @@
 			<div class="row">
 				<div class="col footer-single-widget">
 					<!--=======  copyright text  =======-->
-					<!--=======  logo  =======-->
-
-					<div class="logo">
+					{{-- <div class="logo">
 						<img src="assets/images/logo.png" class="img-fluid" alt="">
 					</div>
-
-					<!--=======  End of logo  =======-->
-
-					<!--=======  copyright text  =======-->
-
 					<div class="copyright-text">
 						<p> &copy; <script>document.write(new Date().getFullYear() + ' ');</script> lezada. <span>All Rights Reserved</span></p>
-					</div>
-
+					</div> --}}
 					<!--=======  End of copyright text  =======-->
-
-					<!--=======  End of copyright text  =======-->
+                    <div class="footer-top-single-widget">
+                        <h4 class="footer-top-widget-title">BẢO MẬT THANH TOÁN</h4>
+                        <div class="content">
+                            <img src="assets/images/icons/pay.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
 				</div>
 				<div class="col footer-single-widget">
-					<!--=======  single widget  =======-->
-					<h5 class="widget-title">ABOUT</h5>
-
-					<!--=======  footer navigation container  =======-->
-
+					<h5 class="widget-title">Liên hệ</h5>
 					<div class="footer-nav-container">
 						<nav>
 							<ul>
-								<li><a href="#">About us</a></li>
-								<li><a href="#">Store location</a></li>
-								<li><a href="#">Contact</a></li>
-								<li><a href="#">Orders tracking</a></li>
+								<li><a href="#">Mua sắm online - Đơn giản và tiết kiệm</a></li>
+								<li><a href="#">Địa chỉ: 175 P. Tây Sơn, Trung Liệt, Đống Đa, Hà Nội 116705</a></li>
+								<li><a href="#">SDT: 0902231050</a></li>
+								<li><a href="#">Email: 2051063588@e.tlu.edu.vn</a></li>
 							</ul>
 						</nav>
 					</div>
-
-					<!--=======  End of footer navigation container  =======-->
-
-					<!--=======  single widget  =======-->
 				</div>
+
 				<div class="col footer-single-widget">
 					<!--=======  single widget  =======-->
-					<h5 class="widget-title">USEFUL LINKS</h5>
+					<h5 class="widget-title">Giới thiệu</h5>
 
 					<!--=======  footer navigation container  =======-->
 
 					<div class="footer-nav-container">
 						<nav>
 							<ul>
-								<li><a href="#">Returns</a></li>
+								<li><a href="#">Hướng dẫn mua hàng</a></li>
 								<li><a href="#">Support Policy</a></li>
 								<li><a href="#">Size guide</a></li>
 								<li><a href="#">FAQs</a></li>
@@ -832,17 +636,17 @@
 					<div class="social-icons">
 						<ul>
 							<li><a href="http://www.twitter.com/" data-tippy="Twitter" data-tippy-inertia="true"
-									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-									data-tippy-theme="sharpborder" target="_blank"><i class="fa fa-twitter"></i></a></li>
+									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" target="_blank"><i
+										class="fa fa-twitter"></i></a></li>
 							<li><a href="http://www.facebook.com/" data-tippy="Facebook" data-tippy-inertia="true"
-									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-									data-tippy-theme="sharpborder" target="_blank"><i class="fa fa-facebook"></i></a></li>
+									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" target="_blank"><i
+										class="fa fa-facebook"></i></a></li>
 							<li><a href="http://www.instagram.com/" data-tippy="Instagram" data-tippy-inertia="true"
-									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-									data-tippy-theme="sharpborder" target="_blank"><i class="fa fa-instagram"></i></a></li>
+									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" target="_blank"><i
+										class="fa fa-instagram"></i></a></li>
 							<li><a href="http://www.youtube.com/" data-tippy="Youtube" data-tippy-inertia="true"
-									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-									data-tippy-theme="sharpborder" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" target="_blank"><i
+										class="fa fa-youtube-play"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -1179,6 +983,92 @@
 
 	<!--=====  End of overlay items  ======-->
 
+	<!--=============================================
+	=            quick view         =
+	=============================================-->
+
+	<div id="qv-1" class="cd-quick-view">
+		<div class="cd-slider-wrapper">
+			<ul class="cd-slider">
+				<li class="selected"><img src="assets/images/arts-craft-one/Product-20.jpg" alt="Product 2"></li>
+				<li><img src="assets/images/arts-craft-one/Product-21.jpg" alt="Product 1"></li>
+			</ul> <!-- cd-slider -->
+
+			<ul class="cd-slider-pagination">
+				<li class="active"><a href="#0">1</a></li>
+				<li><a href="#1">2</a></li>
+			</ul> <!-- cd-slider-pagination -->
+
+			<ul class="cd-slider-navigation">
+				<li><a class="cd-prev" href="#0">Prev</a></li>
+				<li><a class="cd-next" href="#0">Next</a></li>
+			</ul> <!-- cd-slider-navigation -->
+		</div> <!-- cd-slider-wrapper -->
+
+		<div class="lezada-item-info cd-item-info ps-scroll">
+
+			<h2 class="item-title">Demo product one</h2>
+			<p class="price">
+				<span class="main-price discounted">$360.00</span>
+				<span class="discounted-price">$300.00</span>
+			</p>
+
+			<p class="description">Hurley Dry-Fit Chino Short. Men's chino short. Outseam Length: 19 Dri-FIT Technology helps
+				keep you dry and comfortable. Made with sweat-wicking fabric. Fitted waist with belt loops. Button waist with
+				zip fly provides a classic look and feel .</p>
+
+			<span class="quickview-title">Quantity:</span>
+			<div class="pro-qty d-inline-block mb-40">
+				<input type="text" value="1">
+			</div>
+
+			<div class="add-to-cart-btn mb-25">
+
+				<button class="lezada-button lezada-button--medium">add to cart</button>
+			</div>
+
+			<div class="quick-view-other-info">
+				<table>
+					<tr class="single-info">
+						<td class="quickview-title">SKU: </td>
+						<td class="quickview-value">12345</td>
+					</tr>
+					<tr class="single-info">
+						<td class="quickview-title">Categories: </td>
+						<td class="quickview-value">
+							<a href="#">Fashion</a>,
+							<a href="#">Men</a>,
+							<a href="#">Sunglasses</a>
+						</td>
+					</tr>
+					<tr class="single-info">
+						<td class="quickview-title">Tags: </td>
+						<td class="quickview-value">
+							<a href="#">Fashion</a>,
+							<a href="#">Men</a>
+						</td>
+					</tr>
+					<tr class="single-info">
+						<td class="quickview-title">Share on: </td>
+						<td class="quickview-value">
+							<ul class="quickview-social-icons">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+
+		</div> <!-- cd-item-info -->
+		<a href="#0" class="cd-close">Close</a>
+	</div>
+
+	<!--=====  End of quick view  ======-->
+
 	<!-- scroll to top  -->
 	<a href="#" class="scroll-top"></a>
 	<!-- end of scroll to top -->
@@ -1200,5 +1090,23 @@
 	<!-- Main JS -->
 	<script src="assets/js/main.js"></script>
 
+
+	<!-- Revolution Slider JS -->
+	<script src="assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script src="assets/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script src="assets/revolution/revolution-active.js"></script>
+
+	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+
 </body>
+
+
+<!-- Mirrored from htmldemo.net/lezada/lezada/index-book-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 14:14:19 GMT -->
 </html>

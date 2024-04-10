@@ -1,55 +1,3 @@
-/*-----------------------------------------------------------------------------------
-
-    CSS INDEX
-    ===================
-
-    01. Theme default CSS
-    02. Header
-    03. Breadcrumb
-    04. Section Title
-    05. Category
-    06. Slider
-    07. Short single product
-    08. Buttons
-    09. Backgrounds
-    10. Lookbook Home
-    11. Countdown Timer
-    12. Blog
-    13. Pagination
-    14. Instagram section
-    15. Shoppable Home
-    16. About
-    17. Widget
-    18. Testimonial
-    19. Brands
-    20. Product List
-    21. Banner
-    22. Filter product
-    23. Fashion home
-    24. Cosmetics home
-    25. Shop
-    26. Shop product
-    27. Order tracking
-    28. My account
-    29. Cart and wishlist
-    30. Checkout
-    31. 404
-    32. Coming soon
-    33. FAQ
-    34. Call to action area
-    35. Contact Us
-    36. Icon box
-    37. Google map
-    38. Team
-    39. Newsletter
-    40. Footer
-    41. Compare
-
-
------------------------------------------------------------------------------------*/
-/*----------------------------------------*/
-/*  01. Theme default CSS
-/*----------------------------------------*/
 /*-- Google Font --*/
 @import url("https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900");
 @import url("https://fonts.googleapis.com/css?family=Spectral:300,300i,400,400i,500,500i,600,600i,700,700i&amp;display=swap");
@@ -11903,7 +11851,8 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 =            40. Footer             =
 =============================================*/
 .footer-container.footer-one {
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
+  background-color: #A3D39C;
 }
 .footer-container.footer-one.dark-bg {
   background-color: #191717;
@@ -12729,5 +12678,3 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   font-size: 15px;
   font-weight: 400;
 }
-
-/*=====  End of 41. compare  ======*/
