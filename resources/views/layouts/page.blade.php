@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
-
-
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,17 +15,10 @@
 	<link href="assets/css/plugins.css" rel="stylesheet">
 	<link href="assets/css/helper.css" rel="stylesheet">
 	<link href="assets/css/main.css" rel="stylesheet">
-
-
-	<!-- Revolution Slider CSS -->
 	<link href="assets/revolution/css/settings.css" rel="stylesheet">
 	<link href="assets/revolution/css/navigation.css" rel="stylesheet">
 	<link href="assets/revolution/custom-setting.css" rel="stylesheet">
-
-
-	<!-- Modernizer JS -->
 	<script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-
 </head>
 
 <body>
@@ -41,124 +32,39 @@
 
 				<!--=======  header bottom container  =======-->
 				<div class="header-bottom-container">
-
-					<!--=======  logo with off canvas  =======-->
 					<div class="logo-with-offcanvas d-flex">
-
-						<!--=======  logo   =======-->
 						<div class="logo">
 							<a href="index.html">
 								<img src="assets/images/logo.png" class="img-fluid" alt="">
 							</a>
 						</div>
-						<!--=======  End of logo   =======-->
 					</div>
-					<!--=======  End of logo with off canvas  =======-->
-
-
 					<!--=======  header bottom navigation  =======-->
 					<div class="header-bottom-navigation">
 						<div class="site-main-nav d-none d-lg-block">
 							<nav class="site-nav center-menu">
 								<ul>
 									<li class="menu"><a href="index.html">Trang chủ</a></li>
-									<li class="menu-item-has-children"><a href="shop-left-sidebar.html">Danh mục sản phẩm</a>
-										<ul class="sub-menu mega-menu mega-menu-column-4">
-											<li><a href="javascript:void(0)" class="mega-column-title">Shop Pages</a>
-												<ul class="mega-sub-menu">
-													<li><a href="shop-no-sidebar.html">Shop No Sidebar</a></li>
-													<li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-													<li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-													<li><a href="shop-fullwidth-no-space.html">Shop Fullwidth No Space</a></li>
-													<li><a href="shop-fullwidth-no-sidebar.html">Shop Fullwidth No Sidebar</a></li>
-													<li><a href="shop-fullwidth-left-sidebar.html">Shop Fullwidth Left Sidebar</a></li>
-													<li><a href="shop-fullwidth-right-sidebar.html">Shop Fullwidth Right Sidebar</a></li>
-												</ul>
-											</li>
-											<li><a href="javascript:void(0)" class="mega-column-title">Shop Pages</a>
-												<ul class="mega-sub-menu">
-													<li><a href="shop-product-basic.html">Basic </a></li>
-													<li><a href="shop-product-fullwidth.html">Fullwidth</a></li>
-													<li><a href="shop-product-sticky-details.html">Sticky details</a></li>
-													<li><a href="shop-product-with-sidebar.html">With Sidebar</a></li>
-													<li><a href="shop-product-extra-content.html">Extra Content</a></li>
-													<li><a href="shop-product-variation-image.html">Variation Image</a></li>
-													<li><a href="shop-product-bought-together.html">Bought Together</a></li>
-												</ul>
-											</li>
-											<li><a href="javascript:void(0)" class="mega-column-title">Shop Pages</a>
-												<ul class="mega-sub-menu">
-													<li><a href="shop-product-with-background.html">Product with background</a></li>
-													<li><a href="shop-cart.html">Shopping Cart</a></li>
-													<li><a href="shop-checkout.html">Checkout</a></li>
-													<li><a href="shop-order-tracking.html">Order Tracking</a></li>
-													<li><a href="shop-wishlist.html">Wishlist</a></li>
-													<li><a href="shop-customer-login.html">Customer Login</a></li>
-													<li><a href="shop-by-brand.html">Shop by Brand</a></li>
-												</ul>
-											</li>
-											<li>
-												<div class="menu-image">
-													<img src="assets/images/menu-image/megamenu-shop.png" class="img-fluid" alt="">
-												</div>
-											</li>
+									<li class="menu-item-has-children"><a href="javascript:void(0)">Danh mục sản phẩm</a>
+										<ul class="sub-menu single-column-menu">
+											<li><a href="#">About Us</a></li>
+											<li><a href="#">About Us 2</a></li>
+											<li><a href="#">Contact Us</a></li>
 										</ul>
 									</li>
 									<li class="menu-item-has-children"><a href="javascript:void(0)">Sản phẩm mới phát hành</a>
-										<ul class="sub-menu mega-menu mega-menu-column-5">
-											<li><a href="javascript:void(0)" class="mega-column-title">Shop / Products</a>
-												<ul class="mega-sub-menu">
-													<li><a href="element-product-categories.html">Product Categories</a></li>
-													<li><a href="element-product-sliders.html">Product Sliders</a></li>
-													<li><a href="element-product-tabs.html">Product Tabs</a></li>
-													<li><a href="element-product-widget.html">Product Widget</a></li>
-													<li><a href="element-recent-products.html">Recent Products</a></li>
-												</ul>
-											</li>
-											<li><a href="javascript:void(0)" class="mega-column-title">Shop / Products</a>
-												<ul class="mega-sub-menu">
-													<li><a href="element-sale-products.html">Sale Products </a></li>
-													<li><a href="element-featured-products.html">Featured products</a></li>
-													<li><a href="element-top-rated-products.html">Top Rated products</a></li>
-													<li><a href="element-bestselling-products.html">Best Selling products</a></li>
-													<li><a href="element-product-attributes.html">Product Attributes</a></li>
-												</ul>
-											</li>
-											<li><a href="javascript:void(0)" class="mega-column-title">Theming</a>
-												<ul class="mega-sub-menu">
-													<li><a href="element-blog-posts.html">Blog Posts</a></li>
-													<li><a href="element-mailchimp-form.html">Mailchimp Form</a></li>
-													<li><a href="element-icon-box.html">Icon Box</a></li>
-													<li><a href="element-team-member.html">Team Member</a></li>
-													<li><a href="element-instagram.html">Instagram</a></li>
-												</ul>
-											</li>
-											<li><a href="javascript:void(0)" class="mega-column-title">Theming</a>
-												<ul class="mega-sub-menu">
-													<li><a href="element-faq.html">FAQs / Toggles</a></li>
-													<li><a href="element-countdown-timer.html">Countdown Timer</a></li>
-													<li><a href="element-button.html">Buttons</a></li>
-													<li><a href="element-testimonials.html">Testimonials</a></li>
-													<li><a href="element-google-maps.html">Google Maps</a></li>
-												</ul>
-											</li>
-											<li>
-												<div class="menu-image">
-													<img src="assets/images/menu-image/menu-element.png" class="img-fluid" alt="">
-												</div>
-											</li>
+										<ul class="sub-menu single-column-menu">
+											<li><a href="#">About Us</a></li>
+											<li><a href="#">About Us 2</a></li>
+											<li><a href="#">Contact Us</a></li>
 										</ul>
 									</li>
 									<li class="menu-item-has-children"><a href="javascript:void(0)">Khuyến mãi</a>
 										<ul class="sub-menu single-column-menu">
-											<li><a href="about-us.html">About Us</a></li>
-											<li><a href="about-us-2.html">About Us 2</a></li>
-											<li><a href="contact-us.html">Contact Us</a></li>
-											<li><a href="faq.html">F.A.Q</a></li>
-											<li><a href="coming-soon.html">Coming Soon</a></li>
-											<li><a href="404.html">404</a></li>
-											<li><a href="my-account.html">My account</a></li>
-											<li><a href="compare.html">Compare</a></li>
+											<li><a href="#">About Us</a></li>
+											<li><a href="#">About Us 2</a></li>
+											<li><a href="#">Contact Us</a></li>
+											<li><a href="#">F.A.Q</a></li>
 										</ul>
 									</li>
 									<li class="menu-item-has-children "><a href="javascript:void(0)">Tin tức - Blog</a>
@@ -226,17 +132,12 @@
 									<i class="ion-ios-search-strong"></i>
 								</a>
 							</div>
-							<!--=======  End of single-icon  =======-->
-							<!--=======  single-icon  =======-->
 
 							<div class="single-icon user-login">
 								<a href="{{ route('login') }}">
 									<i class="ion-android-person"></i>Login
 								</a>
 							</div>
-
-							<!--=======  End of single-icon  =======-->
-							<!--=======  single-icon  =======-->
 
 							<div class="single-icon wishlist">
 								<a href="javascript:void(0)" id="offcanvas-wishlist-icon">
@@ -245,27 +146,14 @@
 								</a>
 							</div>
 
-							<!--=======  End of single-icon  =======-->
-							<!--=======  single-icon  =======-->
-
 							<div class="single-icon cart">
 								<a href="javascript:void(0)" id="offcanvas-cart-icon">
 									<i class="ion-ios-cart"></i>
 									<span class="count">3</span>
 								</a>
 							</div>
-
-                            <div class="single-icon user-login">
-								<a href="{{ route('login') }}">
-									<i class="ion-android-person"></i>Login
-								</a>
-							</div>
-							<!--=======  End of single-icon  =======-->
-
 						</div>
-						<!--=======  End of header right icons  =======-->
 					</div>
-					<!--=======  End of headeer right container  =======-->
 
 
 				</div>
@@ -283,42 +171,7 @@
 						</button>
 						<!--Site Mobile Menu Toggle End-->
 						<ul class="dl-menu dl-menu-toggle">
-							<li class=""><a href="#">Home</a>
-								<ul class="dl-submenu">
-									<li class=""> <a href="#">Home Group One</a>
-										<ul class="dl-submenu">
-											<li><a href="index-trending.html">Trending</a></li>
-											<li><a href="index-collection.html">My collection</a></li>
-											<li><a href="index-special.html">Special</a></li>
-											<li><a href="index-concept.html">concept</a></li>
-											<li><a href="index-smart.html">smart design</a></li>
-										</ul>
-									</li>
-									<li> <a href="#">Home Group Two</a>
-										<ul class="dl-submenu">
-											<li><a href="index-furniture.html">Furniture </a></li>
-											<li><a href="index-essentials.html">Essentials</a></li>
-											<li><a href="index-lookbook.html">Lookbook</a></li>
-											<li><a href="index-wearables.html">Wearables</a></li>
-											<li><a href="index-accessories.html">Accessories</a></li>
-										</ul>
-									</li>
-									<li> <a href="#">Home Group three</a>
-										<ul class="dl-submenu">
-											<li><a href="index-shoppable.html">Shoppable</a></li>
-
-											<li><a href="index-fashion.html">Fashion</a></li>
-											<li><a href="index-perfumes.html">Perfumes</a></li>
-											<li><a href="index-cosmetics.html">Cosmetics</a></li>
-										</ul>
-									</li>
-									<li> <a href="#">Home Group four</a>
-										<ul class="dl-submenu">
-											<li><a href="index-decor.html">Home Decor</a></li>
-											<li><a href="index-creative.html">Creative</a></li>
-										</ul>
-									</li>
-								</ul>
+							<li><a href="#">Trang chủ</a>
 							</li>
 
 							<li><a href="#">Shop</a>
@@ -458,14 +311,8 @@
 						</ul>
 					</div>
 				</div>
-
-				<!-- Mobile Navigation End Here -->
-
-
 			</div>
 		</div>
-
-		<!--=======  End of header bottom  =======-->
 	</header>
 	<!--===== End of Header wide topbar ======-->
 
@@ -479,14 +326,6 @@
 		<div class="container wide">
 			<div class="row">
 				<div class="col footer-single-widget">
-					<!--=======  copyright text  =======-->
-					{{-- <div class="logo">
-						<img src="assets/images/logo.png" class="img-fluid" alt="">
-					</div>
-					<div class="copyright-text">
-						<p> &copy; <script>document.write(new Date().getFullYear() + ' ');</script> lezada. <span>All Rights Reserved</span></p>
-					</div> --}}
-					<!--=======  End of copyright text  =======-->
                     <div class="footer-top-single-widget">
                         <h4 class="footer-top-widget-title">BẢO MẬT THANH TOÁN</h4>
                         <div class="content">
@@ -665,18 +504,11 @@
 	<div class="wishlist-overlay" id="wishlist-overlay">
 		<div class="wishlist-overlay-close inactive"></div>
 		<div class="wishlist-overlay-content">
-			<!--=======  close icon  =======-->
-
 			<span class="close-icon" id="wishlist-close-icon">
 				<a href="javascript:void(0)">
 					<i class="ion-android-close"></i>
 				</a>
 			</span>
-
-			<!--=======  End of close icon  =======-->
-
-			<!--=======  offcanvas wishlist content container  =======-->
-
 			<div class="offcanvas-cart-content-container">
 				<h3 class="cart-title">Wishlist</h3>
 
@@ -694,8 +526,8 @@
 								</a>
 							</div>
 							<div class="content">
-								<h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
-								<p><span class="main-price discounted">$200.00</span> <span class="discounted-price">$180.00</span></p>
+								<h5><a href="#">Dark Brown Leather Watch</a></h5>
+								<p><span class="#">$200.00</span> <span class="discounted-price">$180.00</span></p>
 
 							</div>
 						</div>
@@ -800,25 +632,21 @@
 	<div class="cart-overlay" id="cart-overlay">
 		<div class="cart-overlay-close inactive"></div>
 		<div class="cart-overlay-content">
-			<!--=======  close icon  =======-->
 
+			<!--=======  close icon  =======-->
 			<span class="close-icon" id="cart-close-icon">
 				<a href="javascript:void(0)">
 					<i class="ion-android-close"></i>
 				</a>
 			</span>
-
 			<!--=======  End of close icon  =======-->
 
 			<!--=======  offcanvas cart content container  =======-->
-
 			<div class="offcanvas-cart-content-container">
 				<h3 class="cart-title">Cart</h3>
-
 				<div class="cart-product-wrapper">
 					<div class="cart-product-container  ps-scroll">
 						<!--=======  single cart product  =======-->
-
 						<div class="single-cart-product">
 							<span class="cart-close-icon">
 								<a href="#"><i class="ti-close"></i></a>
@@ -835,9 +663,6 @@
 							</div>
 						</div>
 
-						<!--=======  End of single cart product  =======-->
-						<!--=======  single cart product  =======-->
-
 						<div class="single-cart-product">
 							<span class="cart-close-icon">
 								<a href="#"><i class="ti-close"></i></a>
@@ -848,14 +673,11 @@
 								</a>
 							</div>
 							<div class="content">
-								<h5><a href="shop-product-basic.html">Dining Chair</a></h5>
+								<h5><a href="#">Dining Chair</a></h5>
 								<p><span class="cart-count">2 x </span> <span class="discounted-price">$220.00</span></p>
 
 							</div>
 						</div>
-
-						<!--=======  End of single cart product  =======-->
-						<!--=======  single cart product  =======-->
 
 						<div class="single-cart-product">
 							<span class="cart-close-icon">
@@ -872,77 +694,20 @@
 
 							</div>
 						</div>
-
-						<!--=======  End of single cart product  =======-->
-						<!--=======  single cart product  =======-->
-
-						<div class="single-cart-product">
-							<span class="cart-close-icon">
-								<a href="#"><i class="ti-close"></i></a>
-							</span>
-							<div class="image">
-								<a href="shop-product-basic.html">
-									<img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
-								</a>
-							</div>
-							<div class="content">
-								<h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
-								<p><span class="cart-count">2 x </span> <span class="discounted-price">$180.00</span></p>
-
-							</div>
-						</div>
-
-						<!--=======  End of single cart product  =======-->
-						<!--=======  single cart product  =======-->
-
-						<div class="single-cart-product">
-							<span class="cart-close-icon">
-								<a href="#"><i class="ti-close"></i></a>
-							</span>
-							<div class="image">
-								<a href="shop-product-basic.html">
-									<img src="assets/images/cart-product-image/02.jpg" class="img-fluid" alt="">
-								</a>
-							</div>
-							<div class="content">
-								<h5><a href="shop-product-basic.html">Creative Wooden Stand</a></h5>
-								<p><span class="cart-count">2 x </span> <span class="discounted-price">$180.00</span></p>
-
-							</div>
-						</div>
-
-						<!--=======  End of single cart product  =======-->
 					</div>
-
-					<!--=======  subtotal calculation  =======-->
-
 					<p class="cart-subtotal">
 						<span class="subtotal-title">Subtotal:</span>
 						<span class="subtotal-amount">$200.00</span>
 					</p>
-
-					<!--=======  End of subtotal calculation  =======-->
-
-					<!--=======  cart buttons  =======-->
-
 					<div class="cart-buttons">
 						<a href="shop-cart.html">view cart</a>
 						<a href="shop-checkout.html">checkout</a>
 					</div>
-
-					<!--=======  End of cart buttons  =======-->
-
-					<!--=======  free shipping text  =======-->
-
 					<p class="free-shipping-text">
-						Free Shipping on All Orders Over $100!
+						Miễn phí vận chuyển cho đơn hàng trên 499.000Vnđ
 					</p>
-
-					<!--=======  End of free shipping text  =======-->
 				</div>
 			</div>
-
-			<!--=======  End of offcanvas cart content container   =======-->
 		</div>
 	</div>
 
@@ -950,21 +715,12 @@
 
 
 	<!--=======  search overlay  =======-->
-
 	<div class="search-overlay" id="search-overlay">
-
-		<!--=======  close icon  =======-->
-
 		<span class="close-icon search-close-icon">
 			<a href="javascript:void(0)" id="search-close-icon">
 				<i class="ti-close"></i>
 			</a>
 		</span>
-
-		<!--=======  End of close icon  =======-->
-
-		<!--=======  search overlay content  =======-->
-
 		<div class="search-overlay-content">
 			<div class="input-box">
 				<form action="https://htmldemo.net/lezada/lezada/index.html">
@@ -975,8 +731,6 @@
 				<span># Hit enter to search or ESC to close</span>
 			</div>
 		</div>
-
-		<!--=======  End of search overlay content  =======-->
 	</div>
 
 	<!--=======  End of search overlay  =======-->
@@ -1096,7 +850,6 @@
 	<script src="assets/revolution/js/jquery.themepunch.tools.min.js"></script>
 	<script src="assets/revolution/revolution-active.js"></script>
 
-	<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
 	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
 	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
