@@ -2968,6 +2968,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  background-image: url('../images/backgrounds/testimonial-bg.png');
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .breadcrumb-area {
@@ -6632,83 +6633,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 
 /*=====  End of lookbook bg overlay  ======*/
 /*=============================================
-=            10. Home Lookbook            =
-=============================================*/
-/*----------  lookbook content  ----------*/
-.lookbook-content-wrapper {
-  height: 100vh;
-}
 
-.lookbook-content p {
-  font-size: 16px;
-  line-height: 36px;
-  color: #fff;
-  font-weight: 600;
-  margin-bottom: 25px;
-}
-.lookbook-content h2 {
-  font-size: 72px;
-  line-height: 80px;
-  font-weight: 400;
-  color: #fff;
-  margin-bottom: 70px;
-}
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .lookbook-content h2 {
-    font-size: 60px;
-    line-height: 70px;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .lookbook-content h2 {
-    font-size: 60px;
-    line-height: 70px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .lookbook-content h2 {
-    font-size: 60px;
-    line-height: 70px;
-  }
-}
-@media only screen and (max-width: 575px) {
-  .lookbook-content h2 {
-    font-size: 50px;
-    line-height: 60px;
-  }
-}
-@media only screen and (max-width: 479px) {
-  .lookbook-content h2 {
-    font-size: 40px;
-    line-height: 50px;
-  }
-}
-.lookbook-content a.lookbook-btn {
-  background-color: #fff;
-  color: #333 !important;
-  border-color: #fff;
-}
-.lookbook-content a.lookbook-btn:hover {
-  background-color: #333;
-  color: #fff !important;
-}
-.lookbook-content--dark p {
-  color: #333;
-}
-.lookbook-content--dark h2 {
-  color: #333;
-}
-.lookbook-content--dark a.lookbook-btn {
-  background-color: #333;
-  color: #fff !important;
-  border-color: #333;
-}
-.lookbook-content--dark a.lookbook-btn:hover {
-  background-color: transparent;
-  color: #333 !important;
-}
-
-/*=====  End of 10. Home Lookbook  ======*/
 /*=============================================
 =            11. countdown timer            =
 =============================================*/
@@ -9998,6 +9923,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 .login-form {
   background-color: #f7f7f7;
   padding: 60px 50px;
+  border-radius: 5%
 }
 @media only screen and (max-width: 479px) {
   .login-form {
@@ -11851,8 +11777,9 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 =            40. Footer             =
 =============================================*/
 .footer-container.footer-one {
-  /* background-color: #f8f8f8; */
-  background-color: #A3D39C;
+  background-color: #f8f8f8;
+  /* background-color: #A3D39C; */
+  background-image: url('../images/backgrounds/testimonial-bg.png');
 }
 .footer-container.footer-one.dark-bg {
   background-color: #191717;

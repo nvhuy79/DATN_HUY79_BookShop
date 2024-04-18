@@ -17,7 +17,7 @@ use App\Http\Controllers\IndexController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/category', [CategoryController::class, 'index'])->name('category');
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/category', [IndexController::class, 'category'])->name('category');
 Route::get('/login', [IndexController::class, 'login'])->name('login');
 Route::get('/register', [IndexController::class, 'register'])->name('register');

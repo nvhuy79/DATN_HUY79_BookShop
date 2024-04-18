@@ -22,50 +22,38 @@
 </head>
 
 <body>
-    <!--===== Header wide topbar =============-->
+    <!--=======================- Header wide topbar =============-->
     <header class="header header-box-topbar header-sticky">
         <div class="header-bottom pt-40   pb-md-40  pb-sm-40">
             <div class="container">
                 <div class="header-bottom-container">
                     <div class="language-currency-change-container">
-                        <!--=======  acount options =======-->
-                        <div class="account change-dropdown">
+                        <div class="language-change change-dropdown d-none d-lg-block">
                             <a href="javascript:void(0)">Tài khoản</a>
                             <ul>
-                                <li><a href="{{ route('register') }}">Đăng ký</a></li>
                                 <li><a href="{{ route('login') }}">Đăng nhập</a></li>
-                                <li><a href="{{ route('login') }}">Đăng xuất</a></li>
+                                <li><a href="{{ route('register') }}">Đăng ký</a></li>
+                                <li><a href="{{ route('home') }}">Đăng xuất</a></li>
                             </ul>
                         </div>
-                        <!--=======  End acount options =======-->
-                        <span class="header-separator d-none d-lg-block">|</span>
-                        <!--=======  Phone number change =======-->
-                        <div class="phone d-none d-lg-block">
-                            <a href="#">+84902231050</a>
-                        </div>
-                        <!--=======  End of Phone number change =======-->
                     </div>
-    
-                    <div class="logo-with-offcanvas">  
+                    <div class="logo-with-offcanvas">
                         <div class="logo">
-                            <a href="#">
-                                <a href="#"><strong><h4>H A V E N B O O K</h4></strong></a>
+                            <a href="index.html">
                                 {{-- <img src="assets/images/logo.png" class="img-fluid" alt=""> --}}
+                                <p style="color: red" >Haven BookStore</p>
                             </a>
                         </div>
                     </div>
-    
                     <div class="header-right-container">
-                        <!--=======  header right icons  =======-->
                         <div class="header-right-icons d-flex justify-content-end align-items-center h-100">
-                            <!--=======  single-icon  =======-->
                             <div class="single-icon search">
                                 <a href="javascript:void(0)" id="search-icon">
                                     <i class="ion-ios-search-strong"></i>
                                 </a>
                             </div>
                             <div class="single-icon user-login">
-                                <a href="{{ asset('login') }}">
+                                <a href="shop-customer-login.html">
                                     <i class="ion-android-person"></i>
                                 </a>
                             </div>
@@ -76,41 +64,39 @@
                                 </a>
                             </div>
                             <div class="single-icon cart">
-                                <a href="javascript:void(0)" id="offcanvas-cart-icon">
-                                    <i class="ion-ios-cart"></i>
-                                    <span class="count">3</span>
-                                </a>
-                            </div>
+								<a href="javascript:void(0)" id="offcanvas-cart-icon">
+									<i class="ion-ios-cart"></i>
+									<span class="count">3</span>
+								</a>
+							</div>
                         </div>
-    
                     </div>
+
+                    <!--=======  End of headeer right container  =======-->
+
+                    <!--=======  header bottom navigation  =======-->
                     <div class="header-bottom-navigation">
                         <div class="site-main-nav d-none d-lg-block">
                             <nav class="site-nav center-menu">
                                 <ul>
-                                    <li class="menu-item"><a href="{{ route('home') }}">Trang chủ</a>
-                                    </li>
-                                    <li class="menu-item"><a href="javascript:void(0)">Khuyến mãi</a>
-                                    </li>
-                                    <li class="menu-item"><a href="javascript:void(0)">Mới phát hành</a>
-                                    <li class="menu-item-has-children"><a href="{{ route('category') }}">Danh mục</a>
+                                    <li class="menu-item"><a href="{{ route('home') }}">Trang chủ</a></li>
+                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Danh mục</a>
                                         <ul class="sub-menu single-column-menu">
-                                            <li><a href="#">About Us</a></li>
-                                            <li><a href="#">About Us 2</a></li>
-                                            <li><a href="#">Contact Us</a></li>
+                                            <li><a href="$">About Us</a></li>
+                                            <li><a href="$">About Us 2</a></li>
                                         </ul>
                                     </li>
-                                    </li>
-                                    <li class="menu-item"><a href="javascript:void(0)">Blog</a>
-                                    </li>
+                                    <li class="menu-item"><a href="javascript:void(0)">Mới phát hành</a></li>
+                                    <li class="menu-item"><a href="javascript:void(0)">Khuyến mãi</a></li>
+                                    <li class="menu-item"><a href="javascript:void(0)">Tin tức-Blog</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
                 </div>
-                <!--=======  End of header bottom container  =======-->
+                <!--==============  End of header =====================-->
 
-                <!-- Mobile Navigation Start Here -->
+                <!--===================== Mobile =====================-->
                 <div class="site-mobile-navigation d-block d-lg-none">
                     <div id="dl-menu" class="dl-menuwrapper site-mobile-nav">
                         <button class="dl-trigger hamburger hamburger--spin">
@@ -118,98 +104,96 @@
                                 <span class="hamburger-inner"></span>
                             </span>
                         </button>
+
                         <ul class="dl-menu dl-menu-toggle">
-                            <li><a href="#">Trang chủ</a></li>
-                            <li><a href="#">Danh mục sản phẩm</a></li>
-                            <li><a href="#">Sản phẩm mới phát hành</a></li>
+                            <li class=""><a href="{{ route('home') }}">Trang chủ</a></li>
+                            <li><a href="#">Danh mục</a>
+                                <ul class="dl-submenu">
+                                    <li class=""> <a href="#">Danh mục</a>
+                                        <ul class="dl-submenu">
+                                            <li><a href="#">Shop No Sidebar</a></li>
+                                            <li><a href="#">Shop Left Sidebar</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Mới phát hành</a></li>
                             <li><a href="#">Khuyến mãi</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Đăng nhập / Đăng ký</a></li>
+                            <li><a href="#">Tin tức-Blog</a></li>
+                            <li><a href="{{ route('register') }}">Đăng ký</a></li>
+                            <li><a href="{{ route('login') }}">Đăng nhập</a></li>
                             <li><a href="#">Đăng xuất</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!--=======  wishlist overlay  =======-->
+<!--=====================  overlay  ===============================-->
         <div class="wishlist-overlay" id="wishlist-overlay">
             <div class="wishlist-overlay-close inactive"></div>
             <div class="wishlist-overlay-content">
-
                 <span class="close-icon" id="wishlist-close-icon">
                     <a href="javascript:void(0)">
                         <i class="ion-android-close"></i>
                     </a>
                 </span>
-
+                <!--=====================  Wishlist  =====================-->
                 <div class="offcanvas-cart-content-container">
                     <h3 class="cart-title">Yêu thích</h3>
-
                     <div class="cart-product-wrapper">
                         <div class="cart-product-container  ps-scroll">
-
+    
                             <div class="single-cart-product">
                                 <span class="cart-close-icon">
                                     <a href="#"><i class="ti-close"></i></a>
                                 </span>
                                 <div class="image">
-                                    <a href="#">
-                                        <img src="assets/images/cart-product-image/01.jpg" class="img-fluid"
-                                            alt="">
+                                    <a href="shop-product-basic.html">
+                                        <img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <h5><a href="#">Dark Brown Leather Watch</a></h5>
-                                    <p><span class="#">$200.00</span> <span
-                                            class="discounted-price">$180.00</span></p>
-
+                                    <h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
+                                    <p><span class="main-price discounted">$200.00</span> <span class="discounted-price">$180.00</span></p>
+    
                                 </div>
                             </div>
                         </div>
-                        <!--=======  cart buttons  =======-->
                         <div class="cart-buttons">
-                            <a href="#">Xem danh sách</a>
+                            <a href="shop-wishlist.html">Xem danh sách</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--=======  End of wishlist overlay  =======-->
-
-        <!--=======  cart overlay  =======-->
+        <!--=====================  End of wishlist  ============================-->
+    
+        <!--=====================  cart overlay  ===============================-->
         <div class="cart-overlay" id="cart-overlay">
             <div class="cart-overlay-close inactive"></div>
             <div class="cart-overlay-content">
-
                 <span class="close-icon" id="cart-close-icon">
                     <a href="javascript:void(0)">
                         <i class="ion-android-close"></i>
                     </a>
                 </span>
-
                 <div class="offcanvas-cart-content-container">
                     <h3 class="cart-title">Giỏ hàng</h3>
                     <div class="cart-product-wrapper">
                         <div class="cart-product-container  ps-scroll">
-
                             <div class="single-cart-product">
                                 <span class="cart-close-icon">
                                     <a href="#"><i class="ti-close"></i></a>
                                 </span>
-
                                 <div class="image">
-                                    <a href="#">
-                                        <img src="assets/images/cart-product-image/01.jpg" class="img-fluid"
-                                            alt="">
+                                    <a href="shop-product-basic.html">
+                                        <img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
                                     </a>
                                 </div>
-
                                 <div class="content">
-                                    <h5><a href="#">Dark Brown Leather Watch</a></h5>
-                                    <p><span class="cart-count">2 x </span> <span
-                                            class="discounted-price">$180.00</span></p>
-
+                                    <h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
+                                    <p><span class="cart-count">2 x </span> <span class="discounted-price">$180.00</span></p>
+    
                                 </div>
                             </div>
                         </div>
@@ -218,18 +202,21 @@
                             <span class="subtotal-amount">$200.00</span>
                         </p>
                         <div class="cart-buttons">
-                            <a href="#">Thanh toán</a>
+                            <a href="shop-cart.html">Xem danh sách</a>
+                            <a href="shop-checkout.html">Thanh toán</a>
                         </div>
                         <p class="free-shipping-text">
-                            Miễn phí vận chuyển cho đơn hàng trên 499.000Vnđ
+                            Miến phí ship với đơn hàng từ 499.000đ!
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-        <!--=======  End of cart overlay  =======-->
-
-        <!--=======  search overlay  =======-->
+    
+        <!--=====================  End of cart  =====================-->
+    
+    
+        <!--============================  search  ============================-->
         <div class="search-overlay" id="search-overlay">
             <span class="close-icon search-close-icon">
                 <a href="javascript:void(0)" id="search-close-icon">
@@ -238,25 +225,26 @@
             </span>
             <div class="search-overlay-content">
                 <div class="input-box">
-                    <form action="https://htmldemo.net/lezada/lezada/index.html">
+                    <form action="#">
                         <input type="search" placeholder="Tìm kiếm sản phẩm...">
                     </form>
                 </div>
                 <div class="search-hint">
-                    <span>Bấm ESC để thoát</span>
+                    <span>Bấm # để tìm kiếm hoặc ESC để thoát</span>
                 </div>
             </div>
         </div>
-
-        <!--=======  End of search overlay  =======-->
     </header>
-    <!--===== End of Header wide topbar ======-->
+<!--======================= End of Header wide topbar ========================-->
+
+<!--============= Content ===========-->
+    <main class="py-4">
+        @yield('content')
+    </main>
+<!--====== End of Content ===========-->
 
 
-    @yield('content');
-
-
-    <!--=============== footer ==================-->
+<!--=============== footer ==================-->
     <div class="footer-container footer-one pt-100 pb-50">
         <div class="container wide">
             <div class="row">
@@ -282,7 +270,6 @@
                         </nav>
                     </div>
                 </div>
-
                 <div class="col footer-single-widget">
                     <h5 class="widget-title">Giới thiệu</h5>
                     <div class="footer-nav-container">
@@ -309,14 +296,16 @@
                 <div class="col footer-single-widget">
                     <div class="footer-subscription-widget">
                         <h2 class="footer-subscription-title">Khám phá.</h2>
+                        {{-- <div class="img">
+                            <img src="{{ asset('assets/images/logo1.png') }}" alt="">
+                        </div> --}}
                         <p class="subscription-subtitle">Tận hưởng thế giới đang chờ đợi trong từng trang sách.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--=================  End of footer ==================-->
+<!--=================  End of footer ==================-->
 
 
     <a href="#" class="scroll-top"></a>
