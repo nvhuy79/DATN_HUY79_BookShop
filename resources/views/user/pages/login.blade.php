@@ -1,7 +1,7 @@
 @extends('user/layouts/page')
 @section('content')
 
-<div class="breadcrumb-area pt-30 pb-30 mb-130">
+<div class="breadcrumb-area pt-20 pb-20 mb-130">
 	<div class="container">
 		<div class="col-lg-12">
 			<ul class="breadcrumb-list">
@@ -25,13 +25,13 @@
 								</div>
 							</div>
 							<div class="col-lg-12 mt-60 mb-60">
-								<input type="text" placeholder="Tên người dùng hoặc email" required>
+								<input type="text" placeholder="Email" required>
 							</div>
 							<div class="col-lg-12 mb-60">
 								<input type="password" placeholder="Mật khẩu" required>
 							</div>
 							<div class="col-lg-12 text-center mb-30">
-								<button class="lezada-button lezada-button--medium">Đăng nhập</button>
+								<button class="lezada-button lezada-button--medium"  style="border-radius: 15px">Đăng nhập</button>
 							</div>
 							<div class="col-lg-12">
 								{{-- <input type="checkbox"> <span class="remember-text">Ghi nhớ đăng nhập</span> --}}

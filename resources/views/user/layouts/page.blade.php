@@ -39,7 +39,7 @@
                     </div>
                     <div class="logo-with-offcanvas">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="{{ route('home') }}">
                                 {{-- <img src="assets/images/logo.png" class="img-fluid" alt=""> --}}
                                 <p style="color: red" >Haven BookStore</p>
                             </a>
@@ -53,7 +53,7 @@
                                 </a>
                             </div>
                             <div class="single-icon user-login">
-                                <a href="shop-customer-login.html">
+                                <a href="login">
                                     <i class="ion-android-person"></i>
                                 </a>
                             </div>

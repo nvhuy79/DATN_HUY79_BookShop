@@ -293,7 +293,7 @@ a.scroll-top:hover {
   transition: all 0.3s ease-in-out;
   background: transparent;
   border-bottom: 2px solid #cccccc;
-  padding: 9.5px 0;
+  padding: 2px 0;
 }
 .lezada-form form input[type=text]:hover, .lezada-form form input[type=text]:active, .lezada-form form input[type=text]:focus, .lezada-form form input[type=email]:hover, .lezada-form form input[type=email]:active, .lezada-form form input[type=email]:focus, .lezada-form form input[type=password]:hover, .lezada-form form input[type=password]:active, .lezada-form form input[type=password]:focus, .lezada-form form textarea:hover, .lezada-form form textarea:active, .lezada-form form textarea:focus {
   border-bottom-color: #333;
