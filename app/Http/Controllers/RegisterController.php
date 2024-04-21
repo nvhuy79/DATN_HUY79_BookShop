@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -14,24 +16,41 @@ class RegisterController extends Controller
 
     public function post_register(Request $request)
     {
-        // dd($request->all());
         $rules = [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|min:3|max:55',
+            'email' => 'required|string|email|min:9|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ];
 
         $message = [
-            'name.required' => 'Tên chỉ được chứa các ký tự chữ cái và không quá 255 ký tự.!',
-        ];
-        $validator = Validator::make($request->all(), $rules,$message);
+            'name.required' => 'Hãy nhập tên của bạn.',
+            'name.min' => 'Tên phải lớn hơn 3 ký tự.',
+            'name.max' => 'Tên phải nhỏ hơn 55 ký tự.',
+            'email.required' => 'Hãy nhập email của bạn.',
+            'email.email' => 'Nhập đúng định dạng email bao gồm @ và phần tử phía sau.',
+            'email.max' => 'Email phải nhỏ hơn 55 ký tự.',
+            'email.min' => 'Email phải lớn hơn 8 ký tự.',
+            'email.unique' => 'Email đã tổn tại.',
+            'password.required' => 'Hãy nhập mật khẩu của bạn.',
+            'password.min' => 'Mật khẩu tối thiểu 8 ký tự.',
+            'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
 
-        // Kiểm tra xem validation có thành công hay không
+        ];
+        $validator = Validator::make($request->all(), $rules, $message);
+
         if ($validator->fails()) {
-            // Nếu có lỗi, redirect trở lại form đăng ký với thông báo lỗi và dữ liệu đã nhập trước đó
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
+
+        $request->merge(['password' => Hash::make($request->password)]);
+        // Hash::make($request->password);
+        try {
+            User::create($request->all());
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+        return redirect() -> route('login');
     }
 }

@@ -21,34 +21,43 @@
                             @csrf
                             <div class="col-lg-12" style="margin-top: -30px">
                                 <div class="section-title text-center">
-                                    <h2 class="mb-20">Đăng ký</h2>
+                                    <h2 class="mb-10">Đăng ký</h2>
                                     <p>Hãy đăng ký để được sử dụng dịch vụ tốt nhất!</p>
                                 </div>
                             </div>
-                            <div class="col-lg-12 mt-60 mb-40">
-                                <input type="text" id="regisname" placeholder="Tên" name="name"
+                            <div class="col-lg-12 mt-40 mb-40">
+                                <input type="text" id="regis_name" placeholder="Tên" name="name"
                                     value="{{ old('name') }}">
                                 @error('name')
-                                    <div class="alert alert-danger mt-2" style="padding: 5px">
+                                    <div class="alert alert-danger mt-2" style="padding: 3px">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-lg-12  mb-40">
-                                <input type="email" id="regisEmail" placeholder="Email" name="email"
+                                <input type="text" id="regis_Email" placeholder="Email" name="email"
                                     value="{{ old('email') }}" required>
-                                @error('error_email')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @error('email')
+                                <div class="alert alert-danger mt-2" style="padding: 3px">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                             <div class="col-lg-12  mb-40">
-                                <input type="password" id="regisPass" placeholder="Mật khẩu" name="password" required>
+                                <input type="password" id="regis_password" placeholder="Mật khẩu" name="password" required>
+                                @error('password')
+                                <div class="alert alert-danger mt-2" style="padding: 3px">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                             </div>
-                            <div class="col-lg-12  mb-40">
-                                <input type="password" id="regisConfPass" placeholder="Xác nhận mật khẩu"
-                                    name="confpassword" required>
-                                @error('error_confpassword')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="col-lg-12 mb-40">
+                                <input type="password" id="regis_password_confirmation" placeholder="Xác nhận mật khẩu"
+                                       name="password_confirmation" required>
+                                @error('password')
+                                    <div class="alert alert-danger mt-2" style="padding: 3px">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
                             <div class="col-lg-12 text-center mb-30">

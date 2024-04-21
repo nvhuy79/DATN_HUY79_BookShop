@@ -22,5 +22,7 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', [IndexController::class, 'home'])->name('home');
 Route::get('/category', [CategoryController::class, 'category'])->name('category');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/login', [LoginController::class, 'post_login']);
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/register', [RegisterController::class, 'post_register']);

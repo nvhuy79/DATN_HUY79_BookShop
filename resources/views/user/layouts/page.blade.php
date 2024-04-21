@@ -31,9 +31,15 @@
                         <div class="language-change change-dropdown d-none d-lg-block">
                             <a href="javascript:void(0)">Tài khoản</a>
                             <ul>
+                                @if (Auth::check())
+                                <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
+                                @else
                                 <li><a href="{{ route('login') }}">Đăng nhập</a></li>
                                 <li><a href="{{ route('register') }}">Đăng ký</a></li>
-                                <li><a href="{{ route('home') }}">Đăng xuất</a></li>
+                                @endif
+                                {{-- <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+                                <li><a href="{{ route('register') }}">Đăng ký</a></li>
+                                <li><a href="{{ route('logout') }}">Đăng xuất</a></li> --}}
                             </ul>
                         </div>
                     </div>
@@ -53,9 +59,17 @@
                                 </a>
                             </div>
                             <div class="single-icon user-login">
-                                <a href="login">
-                                    <i class="ion-android-person"></i>
-                                </a>
+                                    @if (Auth::check())
+                                    <a>
+                                    <i class="ion-android-person"></i>{{ Auth::user()->name }}
+                                    </a>
+                                    @else
+                                        <a href="{{ route('login') }}">
+                                            <i class="ion-android-person"></i>
+                                        </a>
+                                    @endif
+                                    
+                                
                             </div>
                             <div class="single-icon wishlist">
                                 <a href="javascript:void(0)" id="offcanvas-wishlist-icon">
