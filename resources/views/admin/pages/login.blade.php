@@ -1,17 +1,38 @@
-@extends('user/layouts/page')
-@section('content')
-    <div class="breadcrumb-area pt-20 pb-20 mb-130">
-        <div class="container">
-            <div class="col-lg-12">
-                <ul class="breadcrumb-list">
-                    <li class="breadcrumb-list__item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-list__item breadcrumb-list__item--active">Đăng nhập</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="login" style="margin-top: -100px;">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Haven BookStore</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/images/favicon.ico">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/ionicons.css" rel="stylesheet">
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/plugins.css" rel="stylesheet">
+    <link href="assets/css/helper.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/revolution/css/settings.css" rel="stylesheet">
+    <link href="assets/revolution/css/navigation.css" rel="stylesheet">
+    <link href="assets/revolution/custom-setting.css" rel="stylesheet">
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<style>
+    body {
+        background-image: url('assets/images/backgrounds/login-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+<body>
+    <div class="login" style="margin-top: 10%;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 mb-md-50 mb-sm-50">
@@ -55,8 +76,9 @@
                             </div>
                             <div class="col-lg-12">
                                 {{-- <input type="checkbox"> <span class="remember-text">Ghi nhớ đăng nhập</span> --}}
-                                <a href="{{ route('register') }}" class="reset-pass-link">Bạn chưa có tài khoản? Đăng kí</a>
-                                <a href="{{ route('register') }}" class="reset-pass-link">Quên mật khẩu?</a>
+                                <a href="{{ route('admin_register') }}" class="reset-pass-link">Bạn chưa có tài khoản? Đăng
+                                    kí</a>
+                                <a href="#" class="reset-pass-link">Quên mật khẩu?</a>
                             </div>
                         </form>
                     </div>
@@ -64,4 +86,6 @@
             </div>
         </div>
     </div>
-@endsection
+</body>
+
+</html>

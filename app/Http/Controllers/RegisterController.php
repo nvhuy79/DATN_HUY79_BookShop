@@ -23,9 +23,9 @@ class RegisterController extends Controller
         ];
 
         $message = [
-            'name.required' => 'Hãy nhập tên của bạn.',
-            'name.min' => 'Tên phải lớn hơn 3 ký tự.',
-            'name.max' => 'Tên phải nhỏ hơn 55 ký tự.',
+            'name.required' => 'Hãy nhập họ và tên của bạn.',
+            'name.min' => 'Họ và tên phải lớn hơn 3 ký tự.',
+            'name.max' => 'Họ và tên  phải nhỏ hơn 55 ký tự.',
             'email.required' => 'Hãy nhập email của bạn.',
             'email.email' => 'Nhập đúng định dạng email bao gồm @ và phần tử phía sau.',
             'email.max' => 'Email phải nhỏ hơn 55 ký tự.',

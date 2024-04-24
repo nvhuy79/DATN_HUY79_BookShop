@@ -11,6 +11,9 @@ html, body {
   height: 100%;
 }
 
+.py-4{
+  background-image: url(assets/images/backgrounds/login-bg.jpg);
+}
 body {
   background-color: #ffffff;
   line-height: 24px;
@@ -283,7 +286,7 @@ a.scroll-top:hover {
 }
 
 /*----------  form  ----------*/
-.lezada-form form input[type=text], .lezada-form form input[type=email], .lezada-form form input[type=password], .lezada-form form textarea {
+.havenbook-form form input[type=text], .havenbook-form form input[type=email], .havenbook-form form input[type=password], .havenbook-form form textarea {
   font-size: 14px;
   display: block;
   color: #333;
@@ -295,33 +298,33 @@ a.scroll-top:hover {
   border-bottom: 2px solid #cccccc;
   padding: 2px 0;
 }
-.lezada-form form input[type=text]:hover, .lezada-form form input[type=text]:active, .lezada-form form input[type=text]:focus, .lezada-form form input[type=email]:hover, .lezada-form form input[type=email]:active, .lezada-form form input[type=email]:focus, .lezada-form form input[type=password]:hover, .lezada-form form input[type=password]:active, .lezada-form form input[type=password]:focus, .lezada-form form textarea:hover, .lezada-form form textarea:active, .lezada-form form textarea:focus {
+.havenbook-form form input[type=text]:hover, .havenbook-form form input[type=text]:active, .havenbook-form form input[type=text]:focus, .havenbook-form form input[type=email]:hover, .havenbook-form form input[type=email]:active, .havenbook-form form input[type=email]:focus, .havenbook-form form input[type=password]:hover, .havenbook-form form input[type=password]:active, .havenbook-form form input[type=password]:focus, .havenbook-form form textarea:hover, .havenbook-form form textarea:active, .havenbook-form form textarea:focus {
   border-bottom-color: #333;
 }
-.lezada-form form ::-webkit-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.havenbook-form form ::-webkit-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #777;
   opacity: 1; /* Firefox */
 }
-.lezada-form form ::-moz-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.havenbook-form form ::-moz-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #777;
   opacity: 1; /* Firefox */
 }
-.lezada-form form :-ms-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.havenbook-form form :-ms-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #777;
   opacity: 1; /* Firefox */
 }
-.lezada-form form ::-ms-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.havenbook-form form ::-ms-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #777;
   opacity: 1; /* Firefox */
 }
-.lezada-form form ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.havenbook-form form ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #777;
   opacity: 1; /* Firefox */
 }
-.lezada-form form :-ms-input-placeholder { /* Internet Explorer 10-11 */
+.havenbook-form form :-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: #777;
 }
-.lezada-form form ::-ms-input-placeholder { /* Microsoft Edge */
+.havenbook-form form ::-ms-input-placeholder { /* Microsoft Edge */
   color: #777;
 }
 
@@ -9684,7 +9687,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   font-weight: 400;
   text-align: center;
 }
-.shop-product .lezada-form--review .rating-title {
+.shop-product .havenbook-form--review .rating-title {
   font-size: 14px;
   line-height: 25px;
   letter-spacing: 1px;
@@ -9692,7 +9695,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   font-weight: 500;
   color: #333;
 }
-.shop-product .lezada-form--review .product-rating i {
+.shop-product .havenbook-form--review .product-rating i {
   cursor: pointer;
 }
 .shop-product .shop-product__big-image-gallery-wrapper {
@@ -9923,7 +9926,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 .login-form {
   background-color: #f7f7f7;
   padding: 60px 50px;
-  border-radius: 5%
+  border-radius: 12px;
 }
 @media only screen and (max-width: 479px) {
   .login-form {

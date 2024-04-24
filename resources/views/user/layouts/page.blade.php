@@ -8,9 +8,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="assets/images/favicon.ico">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/ionicons.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/ionicons.css" rel="stylesheet">
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/plugins.css" rel="stylesheet">
     <link href="assets/css/helper.css" rel="stylesheet">
@@ -24,30 +24,26 @@
 <body>
     <!--=======================- Header wide topbar =============-->
     <header class="header header-box-topbar header-sticky">
-        <div class="header-bottom pt-40   pb-md-40  pb-sm-40">
+        <div class="header-bottom pt-40 pb-md-40  pb-sm-40">
             <div class="container">
                 <div class="header-bottom-container">
                     <div class="language-currency-change-container">
                         <div class="language-change change-dropdown d-none d-lg-block">
-                            <a href="javascript:void(0)">Tài khoản</a>
+                            <a href="{{ route('admin_register') }}">Tài khoản</a>
                             <ul>
                                 @if (Auth::check())
-                                <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
+                                    <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                                 @else
-                                <li><a href="{{ route('login') }}">Đăng nhập</a></li>
-                                <li><a href="{{ route('register') }}">Đăng ký</a></li>
+                                    <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+                                    <li><a href="{{ route('register') }}">Đăng ký</a></li>
                                 @endif
-                                {{-- <li><a href="{{ route('login') }}">Đăng nhập</a></li>
-                                <li><a href="{{ route('register') }}">Đăng ký</a></li>
-                                <li><a href="{{ route('logout') }}">Đăng xuất</a></li> --}}
                             </ul>
                         </div>
                     </div>
                     <div class="logo-with-offcanvas">
                         <div class="logo">
                             <a href="{{ route('home') }}">
-                                {{-- <img src="assets/images/logo.png" class="img-fluid" alt=""> --}}
-                                <p style="color: red" >Haven BookStore</p>
+                                <img src="assets/images/logo1.png" class="img-fluid" alt="">
                             </a>
                         </div>
                     </div>
@@ -59,17 +55,17 @@
                                 </a>
                             </div>
                             <div class="single-icon user-login">
-                                    @if (Auth::check())
+                                @if (Auth::check())
                                     <a>
-                                    <i class="ion-android-person"></i>{{ Auth::user()->name }}
+                                        <i class="ion-android-person"></i>{{ Auth::user()->name }}
                                     </a>
-                                    @else
-                                        <a href="{{ route('login') }}">
-                                            <i class="ion-android-person"></i>
-                                        </a>
-                                    @endif
-                                    
-                                
+                                @else
+                                    <a href="{{ route('login') }}">
+                                        <i class="ion-android-person"></i>
+                                    </a>
+                                @endif
+
+
                             </div>
                             <div class="single-icon wishlist">
                                 <a href="javascript:void(0)" id="offcanvas-wishlist-icon">
@@ -78,11 +74,11 @@
                                 </a>
                             </div>
                             <div class="single-icon cart">
-								<a href="javascript:void(0)" id="offcanvas-cart-icon">
-									<i class="ion-ios-cart"></i>
-									<span class="count">3</span>
-								</a>
-							</div>
+                                <a href="javascript:void(0)" id="offcanvas-cart-icon">
+                                    <i class="ion-ios-cart"></i>
+                                    <span class="count">3</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -94,7 +90,7 @@
                             <nav class="site-nav center-menu">
                                 <ul>
                                     <li class="menu-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                                    <li class="menu-item-has-children"><a href="javascript:void(0)">Danh mục</a>
+                                    <li class="menu-item-has-children"><a href="{{ route('category') }}">Danh mục</a>
                                         <ul class="sub-menu single-column-menu">
                                             <li><a href="$">About Us</a></li>
                                             <li><a href="$">About Us 2</a></li>
@@ -123,7 +119,7 @@
                             <li class=""><a href="{{ route('home') }}">Trang chủ</a></li>
                             <li><a href="#">Danh mục</a>
                                 <ul class="dl-submenu">
-                                    <li class=""> <a href="#">Danh mục</a>
+                                    <li class=""> <a href="{{ route('category') }}">Danh mục</a>
                                         <ul class="dl-submenu">
                                             <li><a href="#">Shop No Sidebar</a></li>
                                             <li><a href="#">Shop Left Sidebar</a></li>
@@ -134,15 +130,18 @@
                             <li><a href="#">Mới phát hành</a></li>
                             <li><a href="#">Khuyến mãi</a></li>
                             <li><a href="#">Tin tức-Blog</a></li>
-                            <li><a href="{{ route('register') }}">Đăng ký</a></li>
-                            <li><a href="{{ route('login') }}">Đăng nhập</a></li>
-                            <li><a href="#">Đăng xuất</a></li>
+                            @if (Auth::check())
+                                <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
+                            @else
+                                <li><a href="{{ route('register') }}">Đăng ký</a></li>
+                                <li><a href="{{ route('login') }}">Đăng nhập</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-<!--=====================  overlay  ===============================-->
+        <!--=====================  overlay  ===============================-->
         <div class="wishlist-overlay" id="wishlist-overlay">
             <div class="wishlist-overlay-close inactive"></div>
             <div class="wishlist-overlay-content">
@@ -156,20 +155,21 @@
                     <h3 class="cart-title">Yêu thích</h3>
                     <div class="cart-product-wrapper">
                         <div class="cart-product-container  ps-scroll">
-    
+
                             <div class="single-cart-product">
                                 <span class="cart-close-icon">
                                     <a href="#"><i class="ti-close"></i></a>
                                 </span>
                                 <div class="image">
                                     <a href="shop-product-basic.html">
-                                        <img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
+                                        <img src="assets/images/cart-product-image/01.jpg" class="img-fluid"
+                                            alt="">
                                     </a>
                                 </div>
                                 <div class="content">
                                     <h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
-                                    <p><span class="main-price discounted">$200.00</span> <span class="discounted-price">$180.00</span></p>
-    
+                                    <p><span class="main-price discounted">$200.00</span> <span
+                                            class="discounted-price">$180.00</span></p>
                                 </div>
                             </div>
                         </div>
@@ -181,7 +181,7 @@
             </div>
         </div>
         <!--=====================  End of wishlist  ============================-->
-    
+
         <!--=====================  cart overlay  ===============================-->
         <div class="cart-overlay" id="cart-overlay">
             <div class="cart-overlay-close inactive"></div>
@@ -201,13 +201,15 @@
                                 </span>
                                 <div class="image">
                                     <a href="shop-product-basic.html">
-                                        <img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
+                                        <img src="assets/images/cart-product-image/01.jpg" class="img-fluid"
+                                            alt="">
                                     </a>
                                 </div>
                                 <div class="content">
                                     <h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
-                                    <p><span class="cart-count">2 x </span> <span class="discounted-price">$180.00</span></p>
-    
+                                    <p><span class="cart-count">2 x </span> <span
+                                            class="discounted-price">$180.00</span></p>
+
                                 </div>
                             </div>
                         </div>
@@ -226,10 +228,10 @@
                 </div>
             </div>
         </div>
-    
+
         <!--=====================  End of cart  =====================-->
-    
-    
+
+
         <!--============================  search  ============================-->
         <div class="search-overlay" id="search-overlay">
             <span class="close-icon search-close-icon">
@@ -249,16 +251,16 @@
             </div>
         </div>
     </header>
-<!--======================= End of Header wide topbar ========================-->
+    <!--======================= End of Header wide topbar ========================-->
 
-<!--============= Content ===========-->
+    <!--============= Content ===========-->
     <main class="py-4">
         @yield('content')
     </main>
-<!--====== End of Content ===========-->
+    <!--====== End of Content ===========-->
 
 
-<!--=============== footer ==================-->
+    <!--=============== footer ==================-->
     <div class="footer-container footer-one pt-100 pb-50">
         <div class="container wide">
             <div class="row">
@@ -319,7 +321,7 @@
             </div>
         </div>
     </div>
-<!--=================  End of footer ==================-->
+    <!--=================  End of footer ==================-->
 
 
     <a href="#" class="scroll-top"></a>

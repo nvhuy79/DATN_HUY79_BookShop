@@ -12,4 +12,5 @@
     </div>
 </div>
 
+<h1>Đây là danh mục</h1>
 @endsection
