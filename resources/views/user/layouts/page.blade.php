@@ -29,7 +29,7 @@
                 <div class="header-bottom-container">
                     <div class="language-currency-change-container">
                         <div class="language-change change-dropdown d-none d-lg-block">
-                            <a href="{{ route('admin_register') }}">Tài khoản</a>
+                            <a href="{{ route('admin_login') }}">Tài khoản</a>
                             <ul>
                                 @if (Auth::check())
                                     <li><a href="{{ route('logout') }}">Đăng xuất</a></li>

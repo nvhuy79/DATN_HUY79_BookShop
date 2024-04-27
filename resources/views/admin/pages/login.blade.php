@@ -7,7 +7,7 @@
     <title>Haven BookStore</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="assets/images/favicon.ico">
+    <link rel="icon" href="assets/images/favicphp on.ico">
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/font-awesome.css" rel="stylesheet">
     <link href="assets/css/ionicons.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 </style>
 
 <body>
-    <div class="login" style="margin-top: 10%;">
+    <div class="admin_login" style="margin-top: 10%;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 mb-md-50 mb-sm-50">
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 mt-60 mb-60">
-                                <input type="text" placeholder="Email" id="login_email" name="email">
+                                <input type="text" placeholder="Email" id="admin_email" name="email">
                                 @error('email')
                                     <div class="alert alert-danger mt-2" style="padding: 3px">
                                         {{ $message }}
@@ -60,7 +60,7 @@
                                 @enderror
                             </div>
                             <div class="col-lg-12 mb-60">
-                                <input type="password" placeholder="Mật khẩu" id="login_password" name="password">
+                                <input type="password" placeholder="Mật khẩu" id="admin_password" name="password">
                                 @error('password')
                                     <div class="alert alert-danger mt-2" style="padding: 3px">
                                         {{ $message }}
@@ -76,9 +76,7 @@
                             </div>
                             <div class="col-lg-12">
                                 {{-- <input type="checkbox"> <span class="remember-text">Ghi nhớ đăng nhập</span> --}}
-                                <a href="{{ route('admin_register') }}" class="reset-pass-link">Bạn chưa có tài khoản? Đăng
-                                    kí</a>
-                                <a href="#" class="reset-pass-link">Quên mật khẩu?</a>
+                                <a href="#}" class="reset-pass-link">Quên mật khẩu?</a>
                             </div>
                         </form>
                     </div>

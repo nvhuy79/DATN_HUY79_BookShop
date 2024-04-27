@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admin_LoginController;
-use App\Http\Controllers\Admin_RegisterController;
 use App\Http\Controllers\Category;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -32,7 +30,9 @@ Route::post('/register', [RegisterController::class, 'post_register']);
 
 // ========================== ADMIN ============================
 
-Route::get('/admin_register', [Admin_RegisterController::class, 'admin_register'])->name('admin_register');
-Route::post('/admin_register', [Admin_RegisterController::class, 'post_admin_register']);
-Route::get('/admin_login', [Admin_LoginController::class, 'admin_login'])->name('admin_login');
-Route::post('/admin_login', [Admin_LoginController::class, 'post_admin_login']);
+
+Route::get('/admin_login', [AdminController::class, 'admin_login'])->name('admin_login');
+Route::post('/admin_login', [AdminController::class, 'post_admin_login']);
+Route::get('/admin_logout', [AdminController::class, 'logout'])->name('admin_logout');
+Route::get('/admin_home', [AdminController::class, 'admin_home'])->name('admin_home');
+
