@@ -18,13 +18,13 @@
                                 data-easein="default,default,default,default,default,default,default,default"
                                 data-easeout="default,default,default,default,default,default,default,default"
                                 data-masterspeed="700,default,default,default,default,default,default,default"
-                                data-thumb="assets/images/revimages/furniture/100x50_slider-homepage6-img1.png"
+                                data-thumb="assets/user/images/revimages/furniture/100x50_slider-homepage6-img1.png"
                                 data-rotate="0,0,0,0,0,0,0,0" data-saveperformance="off" data-title="Slide" data-param1=""
                                 data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                                 data-param8="" data-param9="" data-param10="" data-description="">
                                 <!-- MAIN IMAGE -->
-                                <img src="assets/images/revimages/dummy.png" alt=""
-                                    data-lazyload="assets/images/revimages/furniture/slider-homepage6-img1.png"
+                                <img src="assets/user/images/revimages/dummy.png" alt=""
+                                    data-lazyload="assets/user/images/revimages/furniture/slider-homepage6-img1.png"
                                     data-bgposition="center center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone"
                                     data-scalestart="100" data-scaleend="110" data-rotatestart="0" data-rotateend="0" data-blurstart="0"
                                     data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
@@ -75,13 +75,13 @@
                                 data-hideslideonmobile="off" data-easein="default,default,default,default,default,default"
                                 data-easeout="default,default,default,default,default,default"
                                 data-masterspeed="700,default,default,default,default,default"
-                                data-thumb="assets/images/revimages/furniture/100x50_slider-homepage6-img2.png"
+                                data-thumb="assets/user/images/revimages/furniture/100x50_slider-homepage6-img2.png"
                                 data-rotate="0,0,0,0,0,0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2=""
                                 data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8=""
                                 data-param9="" data-param10="" data-description="">
                                 <!-- MAIN IMAGE -->
-                                <img src="assets/images/revimages/dummy.png" alt=""
-                                    data-lazyload="assets/images/revimages/furniture/slider-homepage6-img2.png"
+                                <img src="assets/user/images/revimages/dummy.png" alt=""
+                                    data-lazyload="assets/user/images/revimages/furniture/slider-homepage6-img2.png"
                                     data-bgposition="center center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone"
                                     data-scalestart="100" data-scaleend="110" data-rotatestart="0" data-rotateend="0" data-blurstart="0"
                                     data-blurend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
@@ -157,8 +157,8 @@
                     <!--=======  single product image  =======-->
                     <div class="single-product__image">
                         <a class="image-wrap" href="shop-product-basic.html">
-                            <img src="assets/images/products/cloth-1-1-600x800.jpg" class="img-fluid" alt="">
-                            <img src="assets/images/products/cloth-1-2-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/cloth-1-1-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/cloth-1-2-600x800.jpg" class="img-fluid" alt="">
                         </a>
 
                         <div class="single-product__floating-badges">
@@ -218,8 +218,8 @@
                     <!--=======  single product image  =======-->
                     <div class="single-product__image">
                         <a class="image-wrap" href="shop-product-basic.html">
-                            <img src="assets/images/products/watch-1-1-600x800.jpg" class="img-fluid" alt="">
-                            <img src="assets/images/products/watch-1-2-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/watch-1-1-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/watch-1-2-600x800.jpg" class="img-fluid" alt="">
                         </a>
 
                         <div class="single-product__floating-badges">
@@ -268,8 +268,8 @@
 
                     <div class="single-product__image">
                         <a class="image-wrap" href="shop-product-basic.html">
-                            <img src="assets/images/products/watch-2-1-600x800.jpg" class="img-fluid" alt="">
-                            <img src="assets/images/products/watch-2-2-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/watch-2-1-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/watch-2-2-600x800.jpg" class="img-fluid" alt="">
                         </a>
 
                         <div class="single-product__floating-badges">
@@ -319,8 +319,8 @@
 
                     <div class="single-product__image">
                         <a class="image-wrap" href="shop-product-basic.html">
-                            <img src="assets/images/products/watch-3-1-600x800.jpg" class="img-fluid" alt="">
-                            <img src="assets/images/products/watch-3-2-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/watch-3-1-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/watch-3-2-600x800.jpg" class="img-fluid" alt="">
                         </a>
 
                         <div class="single-product__floating-badges">
@@ -369,8 +369,8 @@
 
                     <div class="single-product__image">
                         <a class="image-wrap" href="shop-product-basic.html">
-                            <img src="assets/images/products/cosmetics-1-1-600x800.jpg" class="img-fluid" alt="">
-                            <img src="assets/images/products/cosmetics-1-2-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/cosmetics-1-1-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/cosmetics-1-2-600x800.jpg" class="img-fluid" alt="">
                         </a>
 
                         <div class="single-product__floating-badges">
@@ -420,8 +420,8 @@
 
                     <div class="single-product__image">
                         <a class="image-wrap" href="shop-product-basic.html">
-                            <img src="assets/images/products/furniture-1-1-600x800.jpg" class="img-fluid" alt="">
-                            <img src="assets/images/products/furniture-1-2-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/furniture-1-1-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/furniture-1-2-600x800.jpg" class="img-fluid" alt="">
                         </a>
 
                         <div class="single-product__floating-badges">
@@ -471,8 +471,8 @@
 
                     <div class="single-product__image">
                         <a class="image-wrap" href="shop-product-basic.html">
-                            <img src="assets/images/products/furniture-2-1-600x800.jpg" class="img-fluid" alt="">
-                            <img src="assets/images/products/furniture-2-2-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/furniture-2-1-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/furniture-2-2-600x800.jpg" class="img-fluid" alt="">
                         </a>
 
                         <div class="single-product__floating-badges">
@@ -520,8 +520,8 @@
 
                     <div class="single-product__image">
                         <a class="image-wrap" href="shop-product-basic.html">
-                            <img src="assets/images/products/furniture-3-1-600x800.jpg" class="img-fluid" alt="">
-                            <img src="assets/images/products/furniture-3-2-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/furniture-3-1-600x800.jpg" class="img-fluid" alt="">
+                            <img src="assets/user/images/products/furniture-3-2-600x800.jpg" class="img-fluid" alt="">
                         </a>
 
                         <div class="single-product__floating-badges">

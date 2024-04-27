@@ -51,6 +51,6 @@ class RegisterController extends Controller
         } catch (\Throwable $th) {
             dd($th);
         }
-        return redirect() -> route('login');
+        return redirect()->route('login');
     }
 }

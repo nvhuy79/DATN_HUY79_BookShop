@@ -7,18 +7,18 @@
     <title>Haven BookStore</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="assets/images/favicon.ico">
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/font-awesome.css" rel="stylesheet">
-    <link href="assets/css/ionicons.css" rel="stylesheet">
-    <link href="assets/css/themify-icons.css" rel="stylesheet">
-    <link href="assets/css/plugins.css" rel="stylesheet">
-    <link href="assets/css/helper.css" rel="stylesheet">
-    <link href="assets/css/main.css" rel="stylesheet">
-    <link href="assets/revolution/css/settings.css" rel="stylesheet">
-    <link href="assets/revolution/css/navigation.css" rel="stylesheet">
-    <link href="assets/revolution/custom-setting.css" rel="stylesheet">
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="icon" href="assets/user/images/favicon.ico">
+    <link href="assets/user/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/user/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/user/css/ionicons.css" rel="stylesheet">
+    <link href="assets/user/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/user/css/plugins.css" rel="stylesheet">
+    <link href="assets/user/css/helper.css" rel="stylesheet">
+    <link href="assets/user/css/main.css" rel="stylesheet">
+    <link href="assets/user/revolution/css/settings.css" rel="stylesheet">
+    <link href="assets/user/revolution/css/navigation.css" rel="stylesheet">
+    <link href="assets/user/revolution/custom-setting.css" rel="stylesheet">
+    <script src="assets/user/userjs/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
@@ -43,7 +43,7 @@
                     <div class="logo-with-offcanvas">
                         <div class="logo">
                             <a href="{{ route('home') }}">
-                                <img src="assets/images/logo1.png" class="img-fluid" alt="">
+                                <img src="assets/user/images/logo1.png" class="img-fluid" alt="">
                             </a>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                                 </span>
                                 <div class="image">
                                     <a href="shop-product-basic.html">
-                                        <img src="assets/images/cart-product-image/01.jpg" class="img-fluid"
+                                        <img src="assets/user/images/cart-product-image/01.jpg" class="img-fluid"
                                             alt="">
                                     </a>
                                 </div>
@@ -201,7 +201,7 @@
                                 </span>
                                 <div class="image">
                                     <a href="shop-product-basic.html">
-                                        <img src="assets/images/cart-product-image/01.jpg" class="img-fluid"
+                                        <img src="assets/user/images/cart-product-image/01.jpg" class="img-fluid"
                                             alt="">
                                     </a>
                                 </div>
@@ -268,7 +268,7 @@
                     <div class="footer-top-single-widget">
                         <h4 class="footer-top-widget-title">BẢO MẬT THANH TOÁN</h4>
                         <div class="content">
-                            <img src="{{ asset('assets/images/icons/pay.png') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('assets/user/images/icons/pay.png') }}" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
@@ -313,7 +313,7 @@
                     <div class="footer-subscription-widget">
                         <h2 class="footer-subscription-title">Khám phá.</h2>
                         {{-- <div class="img">
-                            <img src="{{ asset('assets/images/logo1.png') }}" alt="">
+                            <img src="{{ asset('assets/user/images/logo1.png') }}" alt="">
                         </div> --}}
                         <p class="subscription-subtitle">Tận hưởng thế giới đang chờ đợi trong từng trang sách.</p>
                     </div>
@@ -325,21 +325,21 @@
 
 
     <a href="#" class="scroll-top"></a>
-    <script src="assets/js/vendor/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="assets/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script src="assets/revolution/revolution-active.js"></script>
-    <script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.layeranimation.min.js">
+    <script src="assets/user/js/vendor/jquery.min.js"></script>
+    <script src="assets/user/js/popper.min.js"></script>
+    <script src="assets/user/js/bootstrap.min.js"></script>
+    <script src="assets/user/js/plugins.js"></script>
+    <script src="assets/user/js/main.js"></script>
+    <script src="assets/user/revolution/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="assets/user/revolution/js/jquery.themepunch.tools.min.js"></script>
+    <script src="assets/user/revolution/revolution-active.js"></script>
+    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.layeranimation.min.js">
     </script>
-    <script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript" src="assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
 
 </body>
 

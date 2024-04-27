@@ -7,23 +7,23 @@
     <title>Haven BookStore</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="assets/images/favicphp on.ico">
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/font-awesome.css" rel="stylesheet">
-    <link href="assets/css/ionicons.css" rel="stylesheet">
-    <link href="assets/css/themify-icons.css" rel="stylesheet">
-    <link href="assets/css/plugins.css" rel="stylesheet">
-    <link href="assets/css/helper.css" rel="stylesheet">
-    <link href="assets/css/main.css" rel="stylesheet">
-    <link href="assets/revolution/css/settings.css" rel="stylesheet">
-    <link href="assets/revolution/css/navigation.css" rel="stylesheet">
-    <link href="assets/revolution/custom-setting.css" rel="stylesheet">
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="icon" href="user/assets/user/images/favicphp on.ico">
+    <link href="assets/user/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/user/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/user/css/ionicons.css" rel="stylesheet">
+    <link href="assets/user/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/user/css/plugins.css" rel="stylesheet">
+    <link href="assets/user/css/helper.css" rel="stylesheet">
+    <link href="assets/user/css/main.css" rel="stylesheet">
+    <link href="assets/user/revolution/css/settings.css" rel="stylesheet">
+    <link href="assets/user/revolution/css/navigation.css" rel="stylesheet">
+    <link href="assets/user/revolution/custom-setting.css" rel="stylesheet">
+    <script src="assets/user/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <style>
     body {
-        background-image: url('assets/images/backgrounds/login-bg.jpg');
+        background-image: url('assets/user/images/backgrounds/login-bg.jpg');
         background-size: cover;
         background-position: center;
         width: 100%;
@@ -73,9 +73,6 @@
                             </div>
                             <div class="col-lg-12">
                                 <input type="checkbox"> <span class="remember-text">Ghi nhớ đăng nhập</span>
-                            </div>
-                            <div class="col-lg-12">
-                                {{-- <input type="checkbox"> <span class="remember-text">Ghi nhớ đăng nhập</span> --}}
                                 <a href="#}" class="reset-pass-link">Quên mật khẩu?</a>
                             </div>
                         </form>
