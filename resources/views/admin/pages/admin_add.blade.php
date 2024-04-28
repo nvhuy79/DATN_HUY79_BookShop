@@ -11,7 +11,12 @@
                             <div class="section-title text-center">
                                 <h2 class="mb-10">Đăng ký</h2>
                                 <p>Hãy đăng ký để được sử dụng dịch vụ tốt nhất!</p>
-                            </div>
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                            </div>                            
                         </div>
                         <div class="col-lg-12 mt-40 mb-40">
                             <input type="text" id="regis_name" placeholder="Họ và tên" name="name"

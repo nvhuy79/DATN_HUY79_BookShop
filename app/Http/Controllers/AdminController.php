@@ -103,7 +103,8 @@ class AdminController extends Controller
         } catch (\Throwable $th) {
             dd($th);
         }
-        return redirect()->route('login');
+        return redirect()->back()->with('success', 'Thêm quản trị viên thành công.');
+        // return redirect()->route('login');
 
     }
 
