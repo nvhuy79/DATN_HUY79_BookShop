@@ -42,7 +42,7 @@
                             <div class="col-lg-12">
                                 <div class="section-title text-center">
                                     <h2 class="mb-10">Đăng nhập</h2>
-                                    <p>Tận hưởng thế giới đang chờ đợi trong từng trang sách!</p>
+                                    <p>Đăng nhập với tư cách quản trị viên!</p>
                                     @if (session('error'))
                                         <div class="alert alert-danger">
                                             {{ session('error') }}

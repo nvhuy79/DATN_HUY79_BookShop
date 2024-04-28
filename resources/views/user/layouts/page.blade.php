@@ -18,7 +18,7 @@
     <link href="assets/user/revolution/css/settings.css" rel="stylesheet">
     <link href="assets/user/revolution/css/navigation.css" rel="stylesheet">
     <link href="assets/user/revolution/custom-setting.css" rel="stylesheet">
-    <script src="assets/user/userjs/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="assets/user/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                 <div class="header-bottom-container">
                     <div class="language-currency-change-container">
                         <div class="language-change change-dropdown d-none d-lg-block">
-                            <a href="{{ route('admin_login') }}">Tài khoản</a>
+                            <a href="#">Tài khoản</a>
                             <ul>
                                 @if (Auth::check())
                                     <li><a href="{{ route('logout') }}">Đăng xuất</a></li>

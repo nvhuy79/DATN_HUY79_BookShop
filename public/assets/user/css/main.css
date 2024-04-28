@@ -1,3 +1,55 @@
+/*-----------------------------------------------------------------------------------
+
+    CSS INDEX
+    ===================
+
+    01. Theme default CSS
+    02. Header
+    03. Breadcrumb
+    04. Section Title
+    05. Category
+    06. Slider
+    07. Short single product
+    08. Buttons
+    09. Backgrounds
+    10. Lookbook Home
+    11. Countdown Timer
+    12. Blog
+    13. Pagination
+    14. Instagram section
+    15. Shoppable Home
+    16. About
+    17. Widget
+    18. Testimonial
+    19. Brands
+    20. Product List
+    21. Banner
+    22. Filter product
+    23. Fashion home
+    24. Cosmetics home
+    25. Shop
+    26. Shop product
+    27. Order tracking
+    28. My account
+    29. Cart and wishlist
+    30. Checkout
+    31. 404
+    32. Coming soon
+    33. FAQ
+    34. Call to action area
+    35. Contact Us
+    36. Icon box
+    37. Google map
+    38. Team
+    39. Newsletter
+    40. Footer
+    41. Compare
+
+
+-----------------------------------------------------------------------------------*/
+/*----------------------------------------*/
+/*  01. Theme default CSS
+/*----------------------------------------*/
 /*-- Google Font --*/
 @import url("https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900");
 @import url("https://fonts.googleapis.com/css?family=Spectral:300,300i,400,400i,500,500i,600,600i,700,700i&amp;display=swap");
@@ -11,9 +63,6 @@ html, body {
   height: 100%;
 }
 
-.py-4{
-  background-image: url(assets/images/backgrounds/login-bg.jpg);
-}
 body {
   background-color: #ffffff;
   line-height: 24px;
@@ -296,7 +345,7 @@ a.scroll-top:hover {
   transition: all 0.3s ease-in-out;
   background: transparent;
   border-bottom: 2px solid #cccccc;
-  padding: 2px 0;
+  padding: 9.5px 0;
 }
 .havenbook-form form input[type=text]:hover, .havenbook-form form input[type=text]:active, .havenbook-form form input[type=text]:focus, .havenbook-form form input[type=email]:hover, .havenbook-form form input[type=email]:active, .havenbook-form form input[type=email]:focus, .havenbook-form form input[type=password]:hover, .havenbook-form form input[type=password]:active, .havenbook-form form input[type=password]:focus, .havenbook-form form textarea:hover, .havenbook-form form textarea:active, .havenbook-form form textarea:focus {
   border-bottom-color: #333;
@@ -2971,7 +3020,6 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url('../images/backgrounds/testimonial-bg.png');
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .breadcrumb-area {
@@ -6636,7 +6684,83 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 
 /*=====  End of lookbook bg overlay  ======*/
 /*=============================================
+=            10. Home Lookbook            =
+=============================================*/
+/*----------  lookbook content  ----------*/
+.lookbook-content-wrapper {
+  height: 100vh;
+}
 
+.lookbook-content p {
+  font-size: 16px;
+  line-height: 36px;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+.lookbook-content h2 {
+  font-size: 72px;
+  line-height: 80px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 70px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .lookbook-content h2 {
+    font-size: 60px;
+    line-height: 70px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .lookbook-content h2 {
+    font-size: 60px;
+    line-height: 70px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .lookbook-content h2 {
+    font-size: 60px;
+    line-height: 70px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .lookbook-content h2 {
+    font-size: 50px;
+    line-height: 60px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .lookbook-content h2 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+}
+.lookbook-content a.lookbook-btn {
+  background-color: #fff;
+  color: #333 !important;
+  border-color: #fff;
+}
+.lookbook-content a.lookbook-btn:hover {
+  background-color: #333;
+  color: #fff !important;
+}
+.lookbook-content--dark p {
+  color: #333;
+}
+.lookbook-content--dark h2 {
+  color: #333;
+}
+.lookbook-content--dark a.lookbook-btn {
+  background-color: #333;
+  color: #fff !important;
+  border-color: #333;
+}
+.lookbook-content--dark a.lookbook-btn:hover {
+  background-color: transparent;
+  color: #333 !important;
+}
+
+/*=====  End of 10. Home Lookbook  ======*/
 /*=============================================
 =            11. countdown timer            =
 =============================================*/
@@ -9926,7 +10050,6 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 .login-form {
   background-color: #f7f7f7;
   padding: 60px 50px;
-  border-radius: 12px;
 }
 @media only screen and (max-width: 479px) {
   .login-form {
@@ -11781,8 +11904,6 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 =============================================*/
 .footer-container.footer-one {
   background-color: #f8f8f8;
-  /* background-color: #A3D39C; */
-  background-image: url('../images/backgrounds/testimonial-bg.png');
 }
 .footer-container.footer-one.dark-bg {
   background-color: #191717;
@@ -12608,3 +12729,5 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   font-size: 15px;
   font-weight: 400;
 }
+
+/*=====  End of 41. compare  ======*/
