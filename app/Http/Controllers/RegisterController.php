@@ -45,7 +45,6 @@ class RegisterController extends Controller
         }
 
         $request->merge(['password' => Hash::make($request->password)]);
-        // Hash::make($request->password);
         try {
             User::create($request->all());
         } catch (\Throwable $th) {

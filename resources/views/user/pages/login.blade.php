@@ -31,19 +31,19 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 mt-60 mb-60">
-                                <input type="text" placeholder="Email" id="login_email" name="email">
+                                <input type="text" placeholder="Email" id="login_email" value="{{ old('email') }}" name="email">
                                 @error('email')
-                                    <div class="alert alert-danger mt-2" style="padding: 3px">
-                                        {{ $message }}
-                                    </div>
+                                <span style="color: red">
+                                    {{ $message }}
+                                </span>
                                 @enderror
                             </div>
                             <div class="col-lg-12 mb-60">
-                                <input type="password" placeholder="Mật khẩu" id="login_password" name="password">
+                                <input type="password" placeholder="Mật khẩu" id="login_password"  name="password">
                                 @error('password')
-                                    <div class="alert alert-danger mt-2" style="padding: 3px">
+                                    <span style="color: red">
                                         {{ $message }}
-                                    </div>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="col-lg-12 text-center mb-30">

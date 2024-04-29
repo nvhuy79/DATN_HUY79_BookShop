@@ -10050,6 +10050,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 .login-form {
   background-color: #f7f7f7;
   padding: 60px 50px;
+  border-radius: 12px;
 }
 @media only screen and (max-width: 479px) {
   .login-form {

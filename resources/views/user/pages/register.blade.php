@@ -29,35 +29,35 @@
                                 <input type="text" id="regis_name" placeholder="Họ và tên" name="name"
                                     value="{{ old('name') }}">
                                 @error('name')
-                                    <div class="alert alert-danger mt-2" style="padding: 3px">
+                                    <span style="color: red">
                                         {{ $message }}
-                                    </div>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="col-lg-12  mb-40">
                                 <input type="text" id="regis_Email" placeholder="Email" name="email"
-                                    value="{{ old('email') }}" required>
+                                    value="{{ old('email') }}">
                                 @error('email')
-                                <div class="alert alert-danger mt-2" style="padding: 3px">
-                                    {{ $message }}
-                                </div>
+                                    <span style="color: red">
+                                        {{ $message }}
+                                    </span>
                                 @enderror
                             </div>
                             <div class="col-lg-12  mb-40">
-                                <input type="password" id="regis_password" placeholder="Mật khẩu" name="password" required>
+                                <input type="password" id="regis_password" placeholder="Mật khẩu" name="password">
                                 @error('password')
-                                <div class="alert alert-danger mt-2" style="padding: 3px">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                                    <span style="color: red">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-lg-12 mb-40">
                                 <input type="password" id="regis_password_confirmation" placeholder="Xác nhận mật khẩu"
-                                       name="password_confirmation" required>
+                                    name="password_confirmation">
                                 @error('password')
-                                    <div class="alert alert-danger mt-2" style="padding: 3px">
+                                    <span style="color: red">
                                         {{ $message }}
-                                    </div>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="col-lg-12 text-center mb-30">

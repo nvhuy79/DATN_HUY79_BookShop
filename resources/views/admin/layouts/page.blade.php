@@ -8,19 +8,19 @@
     <title>Admin HavenBook</title>
 
     {{-- <link rel="icon" href="assets/admin/img/mini_logo.png" type="image/png"> --}}
-    <link rel="stylesheet" href="assets/admin/css/bootstrap1.min.css" />
+    <link rel="stylesheet" href="assets/admin/css/bootstrap1.css" />
     <link rel="stylesheet" href="assets/admin/vendors/themefy_icon/themify-icons.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/niceselect/assets/admin/css/nice-select.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/owl_carousel/assets/admin/css/owl.carousel.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/gijgo/gijgo.min.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/font_awesome/assets/admin/css/all.min.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/tagsinput/tagsinput.css" />
+    <link rel="stylesheet" href="assets/admin/vendors/niceselect/css/nice-select.css" />
+    <link rel="stylesheet" href="assets/admin/vendors/owl_carousel/css/owl.carousel.css" />
+    <link rel="stylesheet" href="assets/admin/vendors/gijgo/gijgo.min.css" />  
+    <link rel="stylesheet" href="assets/admin/vendors/font_awesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/admin/vendors/tagsinput/tagsinput.css" />   
     <link rel="stylesheet" href="assets/admin/vendors/datepicker/date-picker.css" />
     <link rel="stylesheet" href="assets/admin/vendors/vectormap-home/vectormap-2.0.2.css" />
     <link rel="stylesheet" href="assets/admin/vendors/scroll/scrollable.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/datatable/assets/admin/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/datatable/assets/admin/css/responsive.dataTables.min.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/datatable/assets/admin/css/buttons.dataTables.min.css" />
+    <link rel="stylesheet" href="assets/admin/vendors/datatable/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="assets/admin/vendors/datatable/css/responsive.dataTables.min.css" />
+    <link rel="stylesheet" href="assets/admin/vendors/datatable/css/buttons.dataTables.min.css" />
     <link rel="stylesheet" href="assets/admin/vendors/text_editor/summernote-bs4.css" />
     <link rel="stylesheet" href="assets/admin/vendors/morris/morris.css">
     <link rel="stylesheet" href="assets/admin/vendors/material_icon/material-icons.css" />
@@ -52,8 +52,6 @@
                 </a>
                 <ul>
                     <li><a href="index_2.html">Default</a></li>
-                    <li><a href="index_3.html">Light Sidebar</a></li>
-                    <li><a href="index-2.html">Dark Sidebar</a></li>
                 </ul>
             </li>
             <li class>
@@ -73,26 +71,6 @@
                     </div>
                     <div class="nav_title">
                         <span>Buy & Sell</span>
-                    </div>
-                </a>
-            </li>
-            <li class>
-                <a href="Trader_Profile.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/4.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Trader Profile</span>
-                    </div>
-                </a>
-            </li>
-            <li class>
-                <a href="crypto_stats.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/5.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Crypto Stats</span>
                     </div>
                 </a>
             </li>
@@ -139,11 +117,6 @@
                     <li><a href="editor.html">Editor</a></li>
                     <li><a href="invoice.html">Invoice</a></li>
                     <li><a href="Builder.html">Builder</a></li>
-                    <li><a href="calender.html">Calander</a></li>
-                    <li><a href="Board.html">Board</a></li>
-                    <li><a href="basic_card.html">Basic Card</a></li>
-                    <li><a href="theme_card.html">Theme Card</a></li>
-                    <li><a href="dargable_card.html">Draggable Card</a></li>
                 </ul>
             </li>
             <li class>
@@ -160,15 +133,7 @@
                     <li><a href="faq.html">FAQ</a></li>
                     <li><a href="login.html">Login</a></li>
                     <li><a href="resister.html">Register</a></li>
-                    <li><a href="error_400.html">Error 404</a></li>
-                    <li><a href="error_500.html">Error 500</a></li>
-                    <li><a href="forgot_pass.html">Forgot Password</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="module_setting.html">Module Setting</a></li>
-                    <li><a href="Products.html">Products</a></li>
-                    <li><a href="Product_Details.html">Product Details</a></li>
-                    <li><a href="Cart.html">Cart</a></li>
-                    <li><a href="Checkout.html">Checkout</a></li>
+
                 </ul>
             </li>
             <li class>
@@ -182,8 +147,7 @@
                 </a>
                 <ul>
                     <li><a href="Minimized_Aside.html">Minimized Aside</a></li>
-                    <li><a href="empty_page.html">Empty page</a></li>
-                    <li><a href="fixed_footer.html">Fixed Footer</a></li>
+
                 </ul>
             </li>
             <li class>
@@ -198,9 +162,6 @@
                 <ul>
                     <li><a href="mail_box.html">Mail Box</a></li>
                     <li><a href="compose.html">Compose</a></li>
-                    <li><a href="important_mail.html">Important Mail</a></li>
-                    <li><a href="mail_trash.html">Mail Trash</a></li>
-                    <li><a href="chat.html">Chat</a></li>
                 </ul>
             </li>
             <li class>
@@ -229,18 +190,6 @@
                 <ul>
                     <li><a href="colors.html">colors</a></li>
                     <li><a href="Alerts.html">Alerts</a></li>
-                    <li><a href="buttons.html">Buttons</a></li>
-                    <li><a href="modal.html">modal</a></li>
-                    <li><a href="dropdown.html">Droopdowns</a></li>
-                    <li><a href="Badges.html">Badges</a></li>
-                    <li><a href="Loading_Indicators.html">Loading Indicators</a></li>
-                    <li><a href="color_plate.html">Color Plate</a></li>
-                    <li><a href="typography.html">Typography</a></li>
-                    <li><a href="datepicker.html">Date Picker</a></li>
-                    <li><a href="wow_animation.html">Animate</a></li>
-                    <li><a href="Scroll_Reveal.html">Scroll Reveal</a></li>
-                    <li><a href="tilt.html">Tilt Animation</a></li>
-                    <li><a href="navs.html">Navs</a></li>
                 </ul>
             </li>
             <li class>
@@ -255,8 +204,6 @@
                 <ul>
                     <li><a href="Basic_Elements.html">Basic Elements</a></li>
                     <li><a href="Groups.html">Groups</a></li>
-                    <li><a href="Max_Length.html">Max Length</a></li>
-                    <li><a href="Layouts.html">Layouts</a></li>
                 </ul>
             </li>
             <li class>
@@ -271,10 +218,6 @@
                 <ul>
                     <li><a href="accordion.html">Accordions</a></li>
                     <li><a href="Scrollable.html">Scrollable</a></li>
-                    <li><a href="notification.html">Notifications</a></li>
-                    <li><a href="carousel.html">Carousel</a></li>
-                    <li><a href="Pagination.html">Pagination</a></li>
-                    <li><a href="profilebox.html">Profile Box</a></li>
                 </ul>
             </li>
             <li class>
@@ -303,9 +246,6 @@
                 <ul>
                     <li><a href="chartjs.html">ChartJS</a></li>
                     <li><a href="apex_chart.html">Apex Charts</a></li>
-                    <li><a href="chart_sparkline.html">Chart sparkline</a></li>
-                    <li><a href="am_chart.html">am-charts</a></li>
-                    <li><a href="nvd3_charts.html">nvd3 charts.</a></li>
                 </ul>
             </li>
             <li class>
@@ -335,7 +275,7 @@
                             <i class="ti-menu"></i>
                         </div>
                         <div class="line_icon open_miniSide d-none d-lg-block">
-                            <img src="assets/admin/img/line_img.png" alt>
+                            {{-- <img src="assets/admin/img/line_img.png" alt> --}}
                         </div>
                         <div class="header_right d-flex justify-content-between align-items-center">
                             <div class="header_notification_warp d-flex align-items-center">
@@ -445,14 +385,8 @@
                                     <p class="f_s_12 f_w_400">Manager</p>
                                 </div>
                                 <div class="profile_info_iner">
-                                    <div class="profile_author_name">
-                                        <p>Manager</p>
-                                        <h5>Jiue Anderson</h5>
-                                    </div>
                                     <div class="profile_info_details">
-                                        <a href="#">My Profile </a>
-                                        <a href="#">Settings</a>
-                                        <a href="#">Log Out </a>
+                                        <a href="{{ route('admin_logout') }}">Đăng xuất</a>
                                     </div>
                                 </div>
                             </div>
@@ -465,19 +399,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-
-        {{-- <div class="footer_part">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer_iner text-center">
-                            <p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a
-                                    href="#"> DashboardPack</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
     </section>
 
 
@@ -596,12 +517,6 @@
         </div>
     </div>
 
-    <div id="back-top" style="display: none;">
-        <a title="Go to Top" href="#">
-            <i class="ti-angle-up"></i>
-        </a>
-    </div>
-
     <script src="assets/admin/js/jquery1-3.4.1.min.js"></script>
     <script src="assets/admin/js/popper1.min.js"></script>
     <script src="assets/admin/js/bootstrap1.min.js"></script>
@@ -609,22 +524,22 @@
     <script src="assets/admin/vendors/count_up/jquery.waypoints.min.js"></script>
     <script src="assets/admin/vendors/chartlist/Chart.min.js"></script>
     <script src="assets/admin/vendors/count_up/jquery.counterup.min.js"></script>
-    <script src="assets/admin/vendors/niceselect/assets/admin/js/jquery.nice-select.min.js"></script>
-    <script src="assets/admin/vendors/owl_carousel/assets/admin/js/owl.carousel.min.js"></script>
-    <script src="assets/admin/vendors/datatable/assets/admin/js/jquery.dataTables.min.js"></script>
-    <script src="assets/admin/vendors/datatable/assets/admin/js/dataTables.responsive.min.js"></script>
-    <script src="assets/admin/vendors/datatable/assets/admin/js/dataTables.buttons.min.js"></script>
-    <script src="assets/admin/vendors/datatable/assets/admin/js/buttons.flash.min.js"></script>
-    <script src="assets/admin/vendors/datatable/assets/admin/js/jszip.min.js"></script>
-    <script src="assets/admin/vendors/datatable/assets/admin/js/pdfmake.min.js"></script>
-    <script src="assets/admin/vendors/datatable/assets/admin/js/vfs_fonts.js"></script>
-    <script src="assets/admin/vendors/datatable/assets/admin/js/buttons.html5.min.js"></script>
-    <script src="assets/admin/vendors/datatable/assets/admin/js/buttons.print.min.js"></script>
+    <script src="assets/admin/vendors/niceselect/js/jquery.nice-select.min.js"></script>
+    <script src="assets/admin/vendors/owl_carousel/js/owl.carousel.min.js"></script>
+    <script src="assets/admin/vendors/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="assets/admin/vendors/datatable/js/dataTables.responsive.min.js"></script>
+    <script src="assets/admin/vendors/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="assets/admin/vendors/datatable/js/buttons.flash.min.js"></script>
+    <script src="assets/admin/vendors/datatable/js/jszip.min.js"></script>
+    <script src="assets/admin/vendors/datatable/js/pdfmake.min.js"></script>
+    <script src="assets/admin/vendors/datatable/js/vfs_fonts.js"></script>
+    <script src="assets/admin/vendors/datatable/js/buttons.html5.min.js"></script>
+    <script src="assets/admin/vendors/datatable/js/buttons.print.min.js"></script>
     <script src="assets/admin/vendors/datepicker/datepicker.js"></script>
     <script src="assets/admin/vendors/datepicker/datepicker.en.js"></script>
     <script src="assets/admin/vendors/datepicker/datepicker.custom.js"></script>
     <script src="assets/admin/js/chart.min.js"></script>
-    <script src="assets/admin/vendors/chartassets/admin/js/roundedBar.min.js"></script>
+    <script src="assets/admin/vendors/chartjs/roundedBar.min.js"></script>
     <script src="assets/admin/vendors/progressbar/jquery.barfiller.js"></script>
     <script src="assets/admin/vendors/tagsinput/tagsinput.js"></script>
     <script src="assets/admin/vendors/text_editor/summernote-bs4.js"></script>

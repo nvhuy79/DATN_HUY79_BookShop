@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 class AdminController extends Controller
 {
     /**
@@ -17,13 +18,18 @@ class AdminController extends Controller
 
     public function admin_home()
     {
-        return view('admin/pages/home');
+        if (Auth::guard('admin')->check()) {
+            return view('admin/pages/home');
+        }
+        return redirect()->route('admin_login');
     }
-    // public function adminlogout()
-    // {
-    //     Auth::logout();
-    //     return redirect()->back();
-    // }
+
+    public function admin_logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->back();
+    }
+
     public function admin_login()
     {
         return view('admin/pages/login');
@@ -51,7 +57,6 @@ class AdminController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-        // dd($request->all());
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('admin_home');
         }
@@ -61,16 +66,19 @@ class AdminController extends Controller
      * Demo
      */
 
-     public function admin_add()
-     {
-         return view('admin/pages/admin_add');
-     }
+    public function admin_add()
+    {
+        if (Auth::guard('admin')->check()) {
+            return view('admin/pages/admin_add');
+        }
+        return redirect()->route('admin_login');
+    }
 
     public function post_admin_add(Request $request)
     {
         $rules = [
             'name' => 'required|string|min:3|max:55',
-            'email' => 'required|string|email|min:9|max:255|unique:users',
+            'email' => 'required|string|email|min:9|max:255|unique:admins',
             'password' => 'required|string|min:8|confirmed',
         ];
 
@@ -97,15 +105,12 @@ class AdminController extends Controller
         }
 
         $request->merge(['password' => Hash::make($request->password)]);
-        // Hash::make($request->password);
         try {
             Admin::create($request->all());
         } catch (\Throwable $th) {
             dd($th);
         }
         return redirect()->back()->with('success', 'Thêm quản trị viên thành công.');
-        // return redirect()->route('login');
-
     }
 
     /**

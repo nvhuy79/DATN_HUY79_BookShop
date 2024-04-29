@@ -37,7 +37,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 mb-md-50 mb-sm-50">
                     <div class="havenbook-form login-form">
-                        <form action="" method="POST">
+                        <form action="{{ route('admin_login') }}" method="POST">
                             @csrf
                             <div class="col-lg-12">
                                 <div class="section-title text-center">
@@ -52,19 +52,20 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 mt-60 mb-60">
-                                <input type="text" placeholder="Email" id="admin_email" name="email">
+                                <input type="text" placeholder="Email" id="admin_email" value="{{ old('email') }}"
+                                    name="email">
                                 @error('email')
-                                    <div class="alert alert-danger mt-2" style="padding: 3px">
+                                    <span style="color: red">
                                         {{ $message }}
-                                    </div>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="col-lg-12 mb-60">
                                 <input type="password" placeholder="Mật khẩu" id="admin_password" name="password">
                                 @error('password')
-                                    <div class="alert alert-danger mt-2" style="padding: 3px">
+                                    <span style="color: red">
                                         {{ $message }}
-                                    </div>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="col-lg-12 text-center mb-30">
