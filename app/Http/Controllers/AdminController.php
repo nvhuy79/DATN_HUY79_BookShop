@@ -27,7 +27,7 @@ class AdminController extends Controller
     public function admin_logout()
     {
         Auth::guard('admin')->logout();
-        return redirect()->back();
+        return redirect()->back()->with('logout_success', 'Bạn đã đăng xuất!.');
     }
 
     public function admin_login()
@@ -58,9 +58,9 @@ class AdminController extends Controller
                 ->withInput();
         }
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('admin_home');
+            return redirect()->route('admin_home')->with('success', 'Đăng nhập thành công!');
         }
-        return redirect()->back()->with('error', 'Đăng nhập thất bại. Vui lòng kiểm tra lại email, mật khẩu.');
+        return redirect()->back()->withInput()->with('error', 'Đăng nhập thất bại. Vui lòng kiểm tra lại email, mật khẩu.');
     }
     /**
      * Demo
@@ -77,7 +77,7 @@ class AdminController extends Controller
     public function post_admin_add(Request $request)
     {
         $rules = [
-            'name' => 'required|string|min:3|max:55',
+            'name' => 'required|string|min:3|max:25',
             'email' => 'required|string|email|min:9|max:255|unique:admins',
             'password' => 'required|string|min:8|confirmed',
         ];
@@ -85,7 +85,7 @@ class AdminController extends Controller
         $message = [
             'name.required' => 'Hãy nhập họ và tên của bạn.',
             'name.min' => 'Họ và tên phải lớn hơn 3 ký tự.',
-            'name.max' => 'Họ và tên  phải nhỏ hơn 55 ký tự.',
+            'name.max' => 'Họ và tên  phải nhỏ hơn 25 ký tự.',
             'email.required' => 'Hãy nhập email của bạn.',
             'email.email' => 'Nhập đúng định dạng email bao gồm @ và phần tử phía sau.',
             'email.max' => 'Email phải nhỏ hơn 55 ký tự.',

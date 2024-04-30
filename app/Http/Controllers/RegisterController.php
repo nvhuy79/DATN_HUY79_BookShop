@@ -13,11 +13,11 @@ class RegisterController extends Controller
     {
         return view('user/pages/register');
     }
-
+    
     public function post_register(Request $request)
     {
         $rules = [
-            'name' => 'required|string|min:3|max:55',
+            'name' => 'required|string|min:3|max:40',
             'email' => 'required|string|email|min:9|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ];
@@ -25,7 +25,7 @@ class RegisterController extends Controller
         $message = [
             'name.required' => 'Hãy nhập họ và tên của bạn.',
             'name.min' => 'Họ và tên phải lớn hơn 3 ký tự.',
-            'name.max' => 'Họ và tên  phải nhỏ hơn 55 ký tự.',
+            'name.max' => 'Họ và tên  phải nhỏ hơn 40 ký tự.',
             'email.required' => 'Hãy nhập email của bạn.',
             'email.email' => 'Nhập đúng định dạng email bao gồm @ và phần tử phía sau.',
             'email.max' => 'Email phải nhỏ hơn 55 ký tự.',

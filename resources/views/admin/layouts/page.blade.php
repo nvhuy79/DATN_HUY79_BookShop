@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Admin HavenBook</title>
 
-    {{-- <link rel="icon" href="assets/admin/img/mini_logo.png" type="image/png"> --}}
+    <link rel="icon" href="assets/admin/img/mini_logo.png" type="image/png">
     <link rel="stylesheet" href="assets/admin/css/bootstrap1.css" />
     <link rel="stylesheet" href="assets/admin/vendors/themefy_icon/themify-icons.css" />
     <link rel="stylesheet" href="assets/admin/vendors/niceselect/css/nice-select.css" />
     <link rel="stylesheet" href="assets/admin/vendors/owl_carousel/css/owl.carousel.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/gijgo/gijgo.min.css" />  
+    <link rel="stylesheet" href="assets/admin/vendors/gijgo/gijgo.min.css" />
     <link rel="stylesheet" href="assets/admin/vendors/font_awesome/css/all.min.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/tagsinput/tagsinput.css" />   
+    <link rel="stylesheet" href="assets/admin/vendors/tagsinput/tagsinput.css" />
     <link rel="stylesheet" href="assets/admin/vendors/datepicker/date-picker.css" />
     <link rel="stylesheet" href="assets/admin/vendors/vectormap-home/vectormap-2.0.2.css" />
     <link rel="stylesheet" href="assets/admin/vendors/scroll/scrollable.css" />
@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="assets/admin/css/metisMenu.css">
     <link rel="stylesheet" href="assets/admin/css/style1.css" />
     <link rel="stylesheet" href="assets/admin/css/colors/default.css" id="colorSkinCSS">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
 </head>
 
 <body class="crm_body_bg">
@@ -34,7 +36,7 @@
 
     <nav class="sidebar dark_sidebar">
         <div class="logo d-flex justify-content-between">
-            <a class="large_logo" href="index-2.html"><img src="assets/admin/img/logo_white.png" alt></a>
+            <a class="large_logo" href="index-2.html"><img src="assets/user/images/logo1.png" alt></a>
             <a class="small_logo" href="index-2.html"><img src="assets/admin/img/mini_logo.png" alt></a>
             <div class="sidebar_close_icon d-lg-none">
                 <i class="ti-close"></i>
@@ -47,11 +49,12 @@
                         <img src="assets/admin/img/menu-icon/1.svg" alt>
                     </div>
                     <div class="nav_title">
-                        <span>Dashboard </span>
+                        <span>Tài khoản</span>
                     </div>
                 </a>
                 <ul>
-                    <li><a href="index_2.html">Default</a></li>
+                    <li><a href="index_2.html">Đăng xuất</a></li>
+                    <li><a href="index_2.html">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li class>
@@ -60,17 +63,7 @@
                         <img src="assets/admin/img/menu-icon/2.svg" alt>
                     </div>
                     <div class="nav_title">
-                        <span>Crypto Wallet</span>
-                    </div>
-                </a>
-            </li>
-            <li class>
-                <a href="buy_sell.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/3.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Buy & Sell</span>
+                        <span>Thể loại</span>
                     </div>
                 </a>
             </li>
@@ -135,133 +128,6 @@
                     <li><a href="resister.html">Register</a></li>
 
                 </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/General.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>General</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="Minimized_Aside.html">Minimized Aside</a></li>
-
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/Mail_Box.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Mail Box </span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="mail_box.html">Mail Box</a></li>
-                    <li><a href="compose.html">Compose</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/icon.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Icons</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="Fontawesome_Icon.html">Fontawesome Icon</a></li>
-                    <li><a href="themefy_icon.html">themefy icon</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/18.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>UI Elements </span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="colors.html">colors</a></li>
-                    <li><a href="Alerts.html">Alerts</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/forms.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>forms</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="Basic_Elements.html">Basic Elements</a></li>
-                    <li><a href="Groups.html">Groups</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/14.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Widgets</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="accordion.html">Accordions</a></li>
-                    <li><a href="Scrollable.html">Scrollable</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/17.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Table</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="data_table.html">Data Tables</a></li>
-                    <li><a href="bootstrap_table.html">Bootstrap</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/16.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Charts</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="chartjs.html">ChartJS</a></li>
-                    <li><a href="apex_chart.html">Apex Charts</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/map.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Maps</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="mapjs.html">Maps JS</a></li>
-                    <li><a href="vector_map.html">Vector Maps</a></li>
-                </ul>
-            </li>
         </ul>
     </nav>
 
@@ -275,7 +141,7 @@
                             <i class="ti-menu"></i>
                         </div>
                         <div class="line_icon open_miniSide d-none d-lg-block">
-                            {{-- <img src="assets/admin/img/line_img.png" alt> --}}
+                            {{-- <img src="assets/user/images/logo1.png" alt> --}}
                         </div>
                         <div class="header_right d-flex justify-content-between align-items-center">
                             <div class="header_notification_warp d-flex align-items-center">
@@ -381,8 +247,8 @@
                                     <img src="assets/admin/img/transfer/4.png" alt="#">
                                 </div>
                                 <div class="author_name">
-                                    <h4 class="f_s_15 f_w_500 mb-0">Jiue Anderson</h4>
-                                    <p class="f_s_12 f_w_400">Manager</p>
+                                    <h4 class="f_s_15 f_w_500 mb-0">{{ Auth::guard('admin')->name }}</h4>
+                                    <p class="f_s_12 f_w_400">Quản trị viên</p>
                                 </div>
                                 <div class="profile_info_iner">
                                     <div class="profile_info_details">
@@ -557,6 +423,29 @@
     <script src="assets/admin/vendors/chart_am/chart-custom.js"></script>
     <script src="assets/admin/js/dashboard_init.js"></script>
     <script src="assets/admin/js/custom.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+
+    @if (Session::has('success'))
+        <script>
+            $.toast({
+                heading: 'Thành công!',
+                text: '{{ session('success') }}',
+                showHideTransition: 'slide',
+                icon: 'success'
+            });
+        </script>
+    @elseif(Session::has('logout_success'))
+        <script>
+            $.toast({
+                heading: 'Thành công!',
+                text: '{{ session('logout_success') }}',
+                showHideTransition: 'slide',
+                icon: 'success',
+            });
+        </script>
+    @endif
 </body>
 
 </html>

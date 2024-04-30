@@ -18,6 +18,8 @@
     <link href="assets/user/revolution/css/settings.css" rel="stylesheet">
     <link href="assets/user/revolution/css/navigation.css" rel="stylesheet">
     <link href="assets/user/revolution/custom-setting.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
     <script src="assets/user/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -29,7 +31,7 @@
                 <div class="header-bottom-container">
                     <div class="language-currency-change-container">
                         <div class="language-change change-dropdown d-none d-lg-block">
-                            <a href="#">Tài khoản</a>
+                            <a>Tài khoản</a>
                             <ul>
                                 @if (Auth::check())
                                     <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
@@ -56,9 +58,11 @@
                             </div>
                             <div class="single-icon user-login">
                                 @if (Auth::check())
-                                    <a>
-                                        <i class="ion-android-person"></i>{{ Auth::user()->name }}
-                                    </a>
+                                <span style="font-weight: 400;sans-serif; font-size: 16px; color: #333;">
+                                    Nguyễn Văn Huy
+                                </span>
+                                
+                                
                                 @else
                                     <a href="{{ route('login') }}">
                                         <i class="ion-android-person"></i>
@@ -90,7 +94,7 @@
                             <nav class="site-nav center-menu">
                                 <ul>
                                     <li class="menu-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                                    <li class="menu-item-has-children"><a href="{{ route('category') }}">Danh mục</a>
+                                    <li class="menu-item-has-children"><a href="{{ route('category') }}">Thể loại</a>
                                         <ul class="sub-menu single-column-menu">
                                             <li><a href="$">About Us</a></li>
                                             <li><a href="$">About Us 2</a></li>
@@ -268,7 +272,8 @@
                     <div class="footer-top-single-widget">
                         <h4 class="footer-top-widget-title">BẢO MẬT THANH TOÁN</h4>
                         <div class="content">
-                            <img src="{{ asset('assets/user/images/icons/pay.png') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('assets/user/images/icons/pay.png') }}" class="img-fluid"
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -334,12 +339,46 @@
     <script src="assets/user/revolution/js/jquery.themepunch.tools.min.js"></script>
     <script src="assets/user/revolution/revolution-active.js"></script>
     <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.slideanims.min.js">
+    </script>
     <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.actions.min.js"></script>
     <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.layeranimation.min.js">
     </script>
-    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.navigation.min.js">
+    </script>
     <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+
+    @if (Session::has('success'))
+        <script>
+            $.toast({
+                heading: 'Thành công!',
+                text: '{{ session('success') }}',
+                showHideTransition: 'slide',
+                icon: 'success'
+            });
+        </script>
+    @elseif(Session::has('error'))
+        <script>
+            $.toast({
+                heading: 'Lỗi!',
+                text: '{{ session('error') }}',
+                showHideTransition: 'slide',
+                icon: 'error',
+            });
+        </script>
+    @elseif(Session::has('logout_success'))
+        <script>
+            $.toast({
+                heading: 'Thành công!',
+                text: '{{ session('logout_success') }}',
+                showHideTransition: 'slide',
+                icon: 'success',
+            });
+        </script>
+    @endif
+
+
 
 </body>
 

@@ -44,9 +44,9 @@
                                     <h2 class="mb-10">Đăng nhập</h2>
                                     <p>Đăng nhập với tư cách quản trị viên!</p>
                                     @if (session('error'))
-                                        <div class="alert alert-danger">
+                                        <span style="color: red">
                                             {{ session('error') }}
-                                        </div>
+                                        </span>
                                     @endif
 
                                 </div>

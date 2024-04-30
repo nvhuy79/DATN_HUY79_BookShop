@@ -15,7 +15,7 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->back();
+        return redirect()->back()->with('logout_success', 'Bạn đã đăng xuất!.');
     }
 
     public function post_login(Request $request)
@@ -41,10 +41,12 @@ class LoginController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-        // dd($request->all());
+
+
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('home');
+            return redirect()->route('home')->with('success', 'Đăng nhập thành công! Hy vọng bạn sẽ có những trải nhiệm tuyệt vời.');
         }
-        return redirect()->back()->with('error', 'Đăng nhập thất bại. Vui lòng kiểm tra lại email, mật khẩu.');
+        return redirect()->back()->withInput()->with('error', 'Đăng nhập thất bại! Vui lòng kiểm tra lại email, mật khẩu.');
     }
+    
 }
