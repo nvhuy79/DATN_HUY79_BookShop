@@ -7,20 +7,20 @@
     <title>Haven BookStore</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="assets/user/images/favicon.ico">
-    <link href="assets/user/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/user/css/font-awesome.css" rel="stylesheet">
-    <link href="assets/user/css/ionicons.css" rel="stylesheet">
-    <link href="assets/user/css/themify-icons.css" rel="stylesheet">
-    <link href="assets/user/css/plugins.css" rel="stylesheet">
-    <link href="assets/user/css/helper.css" rel="stylesheet">
-    <link href="assets/user/css/main.css" rel="stylesheet">
-    <link href="assets/user/revolution/css/settings.css" rel="stylesheet">
-    <link href="assets/user/revolution/css/navigation.css" rel="stylesheet">
-    <link href="assets/user/revolution/custom-setting.css" rel="stylesheet">
+    <link rel="icon" href="{{ asset('user/images/favicon.ico') }}">
+    <link href="{{ asset('user/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/css/ionicons.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/css/themify-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/css/plugins.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/css/helper.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/revolution/css/settings.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/revolution/css/navigation.css') }}" rel="stylesheet">
+    <link href="{{ asset('user/revolution/custom-setting.css') }}" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
-    <script src="assets/user/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="{{ asset('user/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
                     <div class="logo-with-offcanvas">
                         <div class="logo">
                             <a href="{{ route('home') }}">
-                                <img src="assets/user/images/logo1.png" class="img-fluid" alt="">
+                                <img src="{{ asset('user/images/logo1.png') }}" class="img-fluid" alt="">
                             </a>
                         </div>
                     </div>
@@ -58,11 +58,11 @@
                             </div>
                             <div class="single-icon user-login">
                                 @if (Auth::check())
-                                <span style="font-weight: 400;sans-serif; font-size: 16px; color: #333;">
-                                    Nguyễn Văn Huy
-                                </span>
-                                
-                                
+                                    <span
+                                        style="font-weight: 450; font-size: 16px; color: #333; display: inline-block; max-width: 150px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                        <i class="ion-android-person"
+                                            style="margin-right: 5px;"></i><a>{{ Auth()->user()->name }}</a>
+                                    </span>
                                 @else
                                     <a href="{{ route('login') }}">
                                         <i class="ion-android-person"></i>
@@ -123,7 +123,7 @@
                             <li class=""><a href="{{ route('home') }}">Trang chủ</a></li>
                             <li><a href="#">Danh mục</a>
                                 <ul class="dl-submenu">
-                                    <li class=""> <a href="{{ route('category') }}">Danh mục</a>
+                                    <li class=""> <a href="{{ route('category') }}">Thể loại</a>
                                         <ul class="dl-submenu">
                                             <li><a href="#">Shop No Sidebar</a></li>
                                             <li><a href="#">Shop Left Sidebar</a></li>
@@ -166,8 +166,8 @@
                                 </span>
                                 <div class="image">
                                     <a href="shop-product-basic.html">
-                                        <img src="assets/user/images/cart-product-image/01.jpg" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('user/images/cart-product-image/01.jpg') }}"
+                                            class="img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="content">
@@ -205,8 +205,8 @@
                                 </span>
                                 <div class="image">
                                     <a href="shop-product-basic.html">
-                                        <img src="assets/user/images/cart-product-image/01.jpg" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset('user/images/cart-product-image/01.jpg') }}"
+                                            class="img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="content">
@@ -272,8 +272,7 @@
                     <div class="footer-top-single-widget">
                         <h4 class="footer-top-widget-title">BẢO MẬT THANH TOÁN</h4>
                         <div class="content">
-                            <img src="{{ asset('assets/user/images/icons/pay.png') }}" class="img-fluid"
-                                alt="">
+                            <img src="{{ asset('user/images/icons/pay.png') }}" class="img-fluid" alt="">
                         </div>
                     </div>
                 </div>
@@ -318,7 +317,7 @@
                     <div class="footer-subscription-widget">
                         <h2 class="footer-subscription-title">Khám phá.</h2>
                         {{-- <div class="img">
-                            <img src="{{ asset('assets/user/images/logo1.png') }}" alt="">
+                            <img src="{{ asset('{{asset('user/images/logo1.png') }}" alt="">
                         </div> --}}
                         <p class="subscription-subtitle">Tận hưởng thế giới đang chờ đợi trong từng trang sách.</p>
                     </div>
@@ -330,23 +329,26 @@
 
 
     <a href="#" class="scroll-top"></a>
-    <script src="assets/user/js/vendor/jquery.min.js"></script>
-    <script src="assets/user/js/popper.min.js"></script>
-    <script src="assets/user/js/bootstrap.min.js"></script>
-    <script src="assets/user/js/plugins.js"></script>
-    <script src="assets/user/js/main.js"></script>
-    <script src="assets/user/revolution/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="assets/user/revolution/js/jquery.themepunch.tools.min.js"></script>
-    <script src="assets/user/revolution/revolution-active.js"></script>
-    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.slideanims.min.js">
+    <script src="{{ asset('user/js/vendor/jquery.min.js') }}"></script>
+    <script src="{{ asset('user/js/popper.min.js') }}"></script>
+    <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('user/js/plugins.js') }}"></script>
+    <script src="{{ asset('user/js/main.js') }}"></script>
+    <script src="{{ asset('user/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script src="{{ asset('user/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('user/revolution/revolution-active.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.kenburn.min.js') }}">
     </script>
-    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.layeranimation.min.js">
+    <script type="text/javascript"
+        src="{{ asset('user/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.actions.min.js') }}">
     </script>
-    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.navigation.min.js">
+    <script type="text/javascript"
+        src="{{ asset('user/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+    <script type="text/javascript"
+        src="{{ asset('user/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.parallax.min.js') }}">
     </script>
-    <script type="text/javascript" src="assets/user/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 
     @if (Session::has('success'))
@@ -365,6 +367,15 @@
                 text: '{{ session('error') }}',
                 showHideTransition: 'slide',
                 icon: 'error',
+            });
+        </script>
+    @elseif(Session::has('Success_Regis'))
+        <script>
+            $.toast({
+                heading: 'Thành công!',
+                text: '{{ session('Success_Regis') }}',
+                showHideTransition: 'slide',
+                icon: 'success',
             });
         </script>
     @elseif(Session::has('logout_success'))

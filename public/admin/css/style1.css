@@ -1,5 +1,4 @@
-@import https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&amp;display=swap;
-
+@import "https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&amp;display=swap";
 .profile_info .profile_info_iner .profile_author_name
 {
    background-image:linear-gradient(to bottom right,#863ee2,#571f9e)

@@ -1,6 +1,6 @@
 @extends('user/layouts/page')
 @section('content')
-    <div class="breadcrumb-area pt-20 pb-20 mb-130">
+    <div class="breadcrumb-area pt-20 pb-20">
         <div class="container">
             <div class="col-lg-12">
                 <ul class="breadcrumb-list">
@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="login" style="margin-top: -100px;">
+    <div class="login" style="margin-top: 2%;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 mb-md-50 mb-sm-50">
@@ -20,8 +20,8 @@
                             @csrf
                             <div class="col-lg-12">
                                 <div class="section-title text-center">
-                                    <h2 class="mb-10">Đăng nhập</h2>
-                                    <p>Tận hưởng thế giới đang chờ đợi trong từng trang sách!</p>
+                                    <h2 class="mb-10" style="font-weight: 450">Đăng nhập</h2>
+                                    <p>Tận hưởng thế giới mới trong mỗi trang sách!</p>
                                     @if (session('error'))
                                         <span style="color: red">
                                             {{ session('error') }}

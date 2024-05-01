@@ -5,28 +5,28 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Admin HavenBook</title>
+    <title>HavenBook Admin</title>
 
-    <link rel="icon" href="assets/admin/img/mini_logo.png" type="image/png">
-    <link rel="stylesheet" href="assets/admin/css/bootstrap1.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/themefy_icon/themify-icons.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/niceselect/css/nice-select.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/owl_carousel/css/owl.carousel.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/gijgo/gijgo.min.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/font_awesome/css/all.min.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/tagsinput/tagsinput.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/datepicker/date-picker.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/vectormap-home/vectormap-2.0.2.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/scroll/scrollable.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/datatable/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/datatable/css/responsive.dataTables.min.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/datatable/css/buttons.dataTables.min.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/text_editor/summernote-bs4.css" />
-    <link rel="stylesheet" href="assets/admin/vendors/morris/morris.css">
-    <link rel="stylesheet" href="assets/admin/vendors/material_icon/material-icons.css" />
-    <link rel="stylesheet" href="assets/admin/css/metisMenu.css">
-    <link rel="stylesheet" href="assets/admin/css/style1.css" />
-    <link rel="stylesheet" href="assets/admin/css/colors/default.css" id="colorSkinCSS">
+    {{-- <link rel="icon" href="img/mini_logo.png" type="image/png"> --}}
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap1.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/themefy_icon/themify-icons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/niceselect/css/nice-select.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/owl_carousel/css/owl.carousel.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/gijgo/gijgo.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/font_awesome/css/all.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/tagsinput/tagsinput.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/datepicker/date-picker.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/vectormap-home/vectormap-2.0.2.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/scroll/scrollable.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/datatable/css/jquery.dataTables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/datatable/css/responsive.dataTables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/datatable/css/buttons.dataTables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/text_editor/summernote-bs4.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/vendors/morris/morris.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/vendors/material_icon/material-icons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/css/metisMenu.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/style1.css') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/css/colors/default.css') }}" id="colorSkinCSS">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
 </head>
@@ -36,8 +36,8 @@
 
     <nav class="sidebar dark_sidebar">
         <div class="logo d-flex justify-content-between">
-            <a class="large_logo" href="index-2.html"><img src="assets/user/images/logo1.png" alt></a>
-            <a class="small_logo" href="index-2.html"><img src="assets/admin/img/mini_logo.png" alt></a>
+            <a class="large_logo" href="index-2.html"><img src="{{ asset('admin/img/logo1.png') }}" alt></a>
+            {{-- <a class="small_logo" href="index-2.html"><img src="img/mini_logo.png" alt></a> --}}
             <div class="sidebar_close_icon d-lg-none">
                 <i class="ti-close"></i>
             </div>
@@ -46,31 +46,51 @@
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/1.svg" alt>
+                        <img src="img/menu-icon/1.svg" alt>
                     </div>
                     <div class="nav_title">
                         <span>Tài khoản</span>
                     </div>
                 </a>
                 <ul>
-                    <li><a href="index_2.html">Đăng xuất</a></li>
-                    <li><a href="index_2.html">Đổi mật khẩu</a></li>
+                    <li><a href="index_3.html">Đổi mật khẩu</a></li>
+                    <li><a href="{{ route('admin_logout') }}">Đăng xuất</a></li>
                 </ul>
             </li>
             <li class>
                 <a href="crypto_wallet.html" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/2.svg" alt>
+                        <img src="{{ asset('admin/img/menu-icon/2.svg') }}" alt>
                     </div>
                     <div class="nav_title">
-                        <span>Thể loại</span>
+                        <span>Crypto Wallet</span>
+                    </div>
+                </a>
+            </li>
+            <li class>
+                <a href="buy_sell.html" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="img/menu-icon/3.svg" alt>
+                    </div>
+                    <div class="nav_title">
+                        <span>Buy & Sell</span>
+                    </div>
+                </a>
+            </li>
+            <li class>
+                <a href="Trader_Profile.html" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="img/menu-icon/4.svg" alt>
+                    </div>
+                    <div class="nav_title">
+                        <span>Trader Profile</span>
                     </div>
                 </a>
             </li>
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/6.svg" alt>
+                        <img src="img/menu-icon/6.svg" alt>
                     </div>
                     <div class="nav_title">
                         <span>Transactions</span>
@@ -86,7 +106,7 @@
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/7.svg" alt>
+                        <img src="img/menu-icon/7.svg" alt>
                     </div>
                     <div class="nav_title">
                         <span>Tickers</span>
@@ -96,38 +116,20 @@
                     <li><a href="ticker_dark.html">Ticker Dark</a></li>
                     <li><a href="Ticker_Light.html">Ticker Light</a></li>
                 </ul>
-            </li>
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/8.svg" alt>
+                        <img src="img/menu-icon/map.svg" alt>
                     </div>
                     <div class="nav_title">
-                        <span>Apps </span>
+                        <span>Maps</span>
                     </div>
                 </a>
                 <ul>
-                    <li><a href="editor.html">Editor</a></li>
-                    <li><a href="invoice.html">Invoice</a></li>
-                    <li><a href="Builder.html">Builder</a></li>
+                    <li><a href="mapjs.html">Maps JS</a></li>
+                    <li><a href="vector_map.html">Vector Maps</a></li>
                 </ul>
             </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="assets/admin/img/menu-icon/Pages.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Pages</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="role_permissions.html">Role & Permissions</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="resister.html">Register</a></li>
-
-                </ul>
         </ul>
     </nav>
 
@@ -140,94 +142,34 @@
                         <div class="sidebar_icon d-lg-none">
                             <i class="ti-menu"></i>
                         </div>
-                        <div class="line_icon open_miniSide d-none d-lg-block">
-                            {{-- <img src="assets/user/images/logo1.png" alt> --}}
-                        </div>
+                        {{-- <div class="line_icon open_miniSide d-none d-lg-block">
+                            <img src="img/line_img.png" alt>
+                        </div> --}}
                         <div class="header_right d-flex justify-content-between align-items-center">
                             <div class="header_notification_warp d-flex align-items-center">
                                 <li>
                                     <a class="CHATBOX_open nav-link-notify" href="#"> <img
-                                            src="assets/admin/img/icon/msg.svg" alt> </a>
+                                            src="img/icon/msg.svg" alt> </a>
                                 </li>
                                 <li>
                                     <a class="bell_notification_clicker nav-link-notify" href="#"> <img
-                                            src="assets/admin/img/icon/bell.svg" alt>
+                                            src="img/icon/bell.svg" alt>
 
                                     </a>
 
                                     <div class="Menu_NOtification_Wrap">
                                         <div class="notification_Header">
-                                            <h4>Notifications</h4>
+                                            <h4>Thông báo</h4>
                                         </div>
                                         <div class="Notification_body">
 
                                             <div class="single_notify d-flex align-items-center">
                                                 <div class="notify_thumb">
-                                                    <a href="#"><img src="assets/admin/img/staf/2.png" alt></a>
+                                                    <a href="#"><img src="img/staf/2.png" alt></a>
                                                 </div>
                                                 <div class="notify_content">
                                                     <a href="#">
                                                         <h5>Cool Marketing </h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="assets/admin/img/staf/4.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>Awesome packages</h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="assets/admin/img/staf/3.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>what a packages</h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="assets/admin/img/staf/2.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>Cool Marketing </h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="assets/admin/img/staf/4.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>Awesome packages</h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="assets/admin/img/staf/3.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>what a packages</h5>
                                                     </a>
                                                     <p>Lorem ipsum dolor sit amet</p>
                                                 </div>
@@ -244,14 +186,20 @@
                             </div>
                             <div class="profile_info d-flex align-items-center">
                                 <div class="profile_thumb mr_20">
-                                    <img src="assets/admin/img/transfer/4.png" alt="#">
+                                    <img src="img/transfer/4.png" alt="#">
                                 </div>
                                 <div class="author_name">
-                                    <h4 class="f_s_15 f_w_500 mb-0">{{ Auth::guard('admin')->name }}</h4>
+                                    <h4 class="f_s_15 f_w_500 mb-0">{{ Auth()->guard('admin')->name }}</h4>
                                     <p class="f_s_12 f_w_400">Quản trị viên</p>
                                 </div>
                                 <div class="profile_info_iner">
+                                    <div class="profile_author_name">
+                                        <p>Quản trị viên</p>
+                                        <h5>{{ Auth()->guard('admin')->name }}</h5>
+                                    </div>
                                     <div class="profile_info_details">
+                                        <a href="#">Tài khoản </a>
+                                        <a href="#">Đổi mật khẩu</a>
                                         <a href="{{ route('admin_logout') }}">Đăng xuất</a>
                                     </div>
                                 </div>
@@ -261,10 +209,6 @@
                 </div>
             </div>
         </div>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
     </section>
 
 
@@ -284,35 +228,35 @@
                     <li>
                         <a href="#">
                             <div class="member_thumb">
-                                <img src="assets/admin/img/staf/1.png" alt>
+                                <img src="img/staf/1.png" alt>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="#">
                             <div class="member_thumb">
-                                <img src="assets/admin/img/staf/2.png" alt>
+                                <img src="img/staf/2.png" alt>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="#">
                             <div class="member_thumb">
-                                <img src="assets/admin/img/staf/3.png" alt>
+                                <img src="img/staf/3.png" alt>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="#">
                             <div class="member_thumb">
-                                <img src="assets/admin/img/staf/4.png" alt>
+                                <img src="img/staf/4.png" alt>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="#">
                             <div class="member_thumb">
-                                <img src="assets/admin/img/staf/5.png" alt>
+                                <img src="img/staf/5.png" alt>
                             </div>
                         </a>
                     </li>
@@ -334,7 +278,7 @@
             </p>
             <div class="CHATING_SENDER">
                 <div class="SMS_thumb">
-                    <img src="assets/admin/img/staf/1.png" alt>
+                    <img src="img/staf/1.png" alt>
                 </div>
                 <div class="SEND_SMS_VIEW">
                     <P>Hi! Welcome .
@@ -346,7 +290,7 @@
                     <P>Hello</P>
                 </div>
                 <div class="SMS_thumb">
-                    <img src="assets/admin/img/staf/1.png" alt>
+                    <img src="img/staf/1.png" alt>
                 </div>
             </div>
         </div>
@@ -383,48 +327,52 @@
         </div>
     </div>
 
-    <script src="assets/admin/js/jquery1-3.4.1.min.js"></script>
-    <script src="assets/admin/js/popper1.min.js"></script>
-    <script src="assets/admin/js/bootstrap1.min.js"></script>
-    <script src="assets/admin/js/metisMenu.js"></script>
-    <script src="assets/admin/vendors/count_up/jquery.waypoints.min.js"></script>
-    <script src="assets/admin/vendors/chartlist/Chart.min.js"></script>
-    <script src="assets/admin/vendors/count_up/jquery.counterup.min.js"></script>
-    <script src="assets/admin/vendors/niceselect/js/jquery.nice-select.min.js"></script>
-    <script src="assets/admin/vendors/owl_carousel/js/owl.carousel.min.js"></script>
-    <script src="assets/admin/vendors/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="assets/admin/vendors/datatable/js/dataTables.responsive.min.js"></script>
-    <script src="assets/admin/vendors/datatable/js/dataTables.buttons.min.js"></script>
-    <script src="assets/admin/vendors/datatable/js/buttons.flash.min.js"></script>
-    <script src="assets/admin/vendors/datatable/js/jszip.min.js"></script>
-    <script src="assets/admin/vendors/datatable/js/pdfmake.min.js"></script>
-    <script src="assets/admin/vendors/datatable/js/vfs_fonts.js"></script>
-    <script src="assets/admin/vendors/datatable/js/buttons.html5.min.js"></script>
-    <script src="assets/admin/vendors/datatable/js/buttons.print.min.js"></script>
-    <script src="assets/admin/vendors/datepicker/datepicker.js"></script>
-    <script src="assets/admin/vendors/datepicker/datepicker.en.js"></script>
-    <script src="assets/admin/vendors/datepicker/datepicker.custom.js"></script>
-    <script src="assets/admin/js/chart.min.js"></script>
-    <script src="assets/admin/vendors/chartjs/roundedBar.min.js"></script>
-    <script src="assets/admin/vendors/progressbar/jquery.barfiller.js"></script>
-    <script src="assets/admin/vendors/tagsinput/tagsinput.js"></script>
-    <script src="assets/admin/vendors/text_editor/summernote-bs4.js"></script>
-    <script src="assets/admin/vendors/am_chart/amcharts.js"></script>
-    <script src="assets/admin/vendors/scroll/perfect-scrollbar.min.js"></script>
-    <script src="assets/admin/vendors/scroll/scrollable-custom.js"></script>
-    <script src="assets/admin/vendors/vectormap-home/vectormap-2.0.2.min.js"></script>
-    <script src="assets/admin/vendors/vectormap-home/vectormap-world-mill-en.js"></script>
-    <script src="assets/admin/vendors/apex_chart/apex-chart2.js"></script>
-    <script src="assets/admin/vendors/apex_chart/apex_dashboard.js"></script>
-    <script src="assets/admin/vendors/chart_am/core.js"></script>
-    <script src="assets/admin/vendors/chart_am/charts.js"></script>
-    <script src="assets/admin/vendors/chart_am/animated.js"></script>
-    <script src="assets/admin/vendors/chart_am/kelly.js"></script>
-    <script src="assets/admin/vendors/chart_am/chart-custom.js"></script>
-    <script src="assets/admin/js/dashboard_init.js"></script>
-    <script src="assets/admin/js/custom.js"></script>
+    <div id="back-top" style="display: none;">
+        <a title="Go to Top" href="#">
+            <i class="ti-angle-up"></i>
+        </a>
+    </div>
 
-
+    <script src="{{ asset('admin/js/jquery1-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('admin/js/popper1.min.js') }}"></script>
+    <script src="{{ asset('admin/js/bootstrap1.min.js') }}"></script>
+    <script src="{{ asset('admin/js/metisMenu.js') }}"></script>
+    <script src="{{ asset('admin/vendors/count_up/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/chartlist/Chart.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/count_up/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/niceselect/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/owl_carousel/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datatable/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datatable/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datatable/js/jszip.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datatable/js/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datatable/js/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datatable/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datatable/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datepicker/datepicker.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datepicker/datepicker.en.js') }}"></script>
+    <script src="{{ asset('admin/vendors/datepicker/datepicker.custom.js') }}"></script>
+    <script src="{{ asset('admin/js/chart.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/chartjs/roundedBar.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/progressbar/jquery.barfiller.js') }}"></script>
+    <script src="{{ asset('admin/vendors/tagsinput/tagsinput.js') }}"></script>
+    <script src="{{ asset('admin/vendors/text_editor/summernote-bs4.js') }}"></script>
+    <script src="{{ asset('admin/vendors/am_chart/amcharts.js') }}"></script>
+    <script src="{{ asset('admin/vendors/scroll/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/scroll/scrollable-custom.js') }}"></script>
+    <script src="{{ asset('admin/vendors/vectormap-home/vectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/vectormap-home/vectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('admin/vendors/apex_chart/apex-chart2.js') }}"></script>
+    <script src="{{ asset('admin/vendors/apex_chart/apex_dashboard.js') }}"></script>
+    <script src="{{ asset('admin/vendors/chart_am/core.js') }}"></script>
+    <script src="{{ asset('admin/vendors/chart_am/charts.js') }}"></script>
+    <script src="{{ asset('admin/vendors/chart_am/animated.js') }}"></script>
+    <script src="{{ asset('admin/vendors/chart_am/kelly.js') }}"></script>
+    <script src="{{ asset('admin/vendors/chart_am/chart-custom.js') }}"></script>
+    <script src="{{ asset('admin/js/dashboard_init.js') }}"></script>
+    <script src="{{ asset('admin/js/custom.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 
     @if (Session::has('success'))

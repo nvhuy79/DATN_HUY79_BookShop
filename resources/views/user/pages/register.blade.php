@@ -1,6 +1,6 @@
 @extends('user/layouts/page')
 @section('content')
-    <div class="breadcrumb-area pt-20 pb-20 mb-130">
+    <div class="breadcrumb-area pt-20 pb-20 mb-20">
         <div class="container">
             <div class="col-lg-12">
                 <ul class="breadcrumb-list">
@@ -12,7 +12,7 @@
     </div>
 
 
-    <div class="register" style="margin-top: -100px;">
+    <div class="register" style="margin-top: 2%;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 mb-md-50 mb-sm-50">

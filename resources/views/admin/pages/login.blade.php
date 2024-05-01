@@ -7,23 +7,24 @@
     <title>Haven BookStore</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="user/assets/user/images/favicphp on.ico">
-    <link href="assets/user/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/user/css/font-awesome.css" rel="stylesheet">
-    <link href="assets/user/css/ionicons.css" rel="stylesheet">
-    <link href="assets/user/css/themify-icons.css" rel="stylesheet">
-    <link href="assets/user/css/plugins.css" rel="stylesheet">
-    <link href="assets/user/css/helper.css" rel="stylesheet">
-    <link href="assets/user/css/main.css" rel="stylesheet">
-    <link href="assets/user/revolution/css/settings.css" rel="stylesheet">
-    <link href="assets/user/revolution/css/navigation.css" rel="stylesheet">
-    <link href="assets/user/revolution/custom-setting.css" rel="stylesheet">
-    <script src="assets/user/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="icon" href="{{ asset('user/assets/user/images/favicphp on.ico') }}">
+    <link href="{{ asset('/user/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user/css/ionicons.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user/css/themify-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user/css/plugins.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user/css/helper.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user/revolution/css/settings.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user/revolution/css/navigation.css') }}" rel="stylesheet">
+    <link href="{{ asset('/user/revolution/custom-setting.css') }}" rel="stylesheet">
+    <script src="{{ asset('/user/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+
 </head>
 
 <style>
     body {
-        background-image: url('assets/user/images/backgrounds/login-bg.jpg');
+        background-image: url('{{ asset('/user/images/backgrounds/bg-login1.jpg') }}');
         background-size: cover;
         background-position: center;
         width: 100%;
@@ -36,13 +37,13 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 mb-md-50 mb-sm-50">
-                    <div class="havenbook-form login-form">
+                    <div class="havenbook-form login-form-admin">
                         <form action="{{ route('admin_login') }}" method="POST">
                             @csrf
                             <div class="col-lg-12">
-                                <div class="section-title text-center">
-                                    <h2 class="mb-10">Đăng nhập</h2>
-                                    <p>Đăng nhập với tư cách quản trị viên!</p>
+                                <div class="section-title text-center" style="font-family:'Courier New', Courier, monospace">
+                                    <h2 class="mb-10" style="font-weight: 450">HavenBook Store</h2>
+                                    <p >Đăng nhập với tư cách quản trị viên!</p>
                                     @if (session('error'))
                                         <span style="color: red">
                                             {{ session('error') }}

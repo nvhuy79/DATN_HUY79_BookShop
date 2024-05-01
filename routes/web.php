@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Category;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
@@ -19,29 +20,40 @@ use App\Http\Controllers\RegisterController;
 |
 */
 // ========================== USER ============================
-Route::get('/', [IndexController::class, 'home'])->name('home');
-Route::get('/category', [CategoryController::class, 'category'])->name('category');
+Route::prefix('user')->group(function () {
+    Route::get('/home', [LoginController::class, 'home'])->name('home');
+    Route::get('/category', [CategoryController::class, 'category'])->name('category');
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/login', [LoginController::class, 'post_login']);
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::post('/login', [LoginController::class, 'post_login']);
 
+    Route::get('/register', [RegisterController::class, 'register'])->name('register');
+    Route::post('/register', [RegisterController::class, 'post_register']);
 
-Route::get('/register', [RegisterController::class, 'register'])->name('register');
-Route::post('/register', [RegisterController::class, 'post_register']);
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+    Route::post('/profile', [AccountController::class, 'post_profile']);
+
+    Route::get('/change-pass', [AccountController::class, 'change_pass'])->name('change_pass');
+    Route::post('/change-pass', [AccountController::class, 'post_change_pass']);
+
+    Route::get('/forgot-pass', [AccountController::class, 'forgot_pass'])->name('forgot_pass');
+    Route::post('/forgot-pass', [AccountController::class, 'post_forgot_pass']);
+
+    Route::get('/reset-pass', [AccountController::class, 'reset_pass'])->name('reset_pass');
+    Route::post('/reset-pass', [AccountController::class, 'post_reset_pass']);
+});
 
 
 
 
 // ========================== ADMIN ============================
-Route::get('/admin_home', [AdminController::class, 'admin_home'])->name('admin_home');
-
-Route::get('/admin_login', [AdminController::class, 'admin_login'])->name('admin_login');
-Route::post('/admin_login', [AdminController::class, 'post_admin_login']);
-
-Route::get('/admin_add', [AdminController::class, 'admin_add'])->name('admin_add');
-Route::post('/admin_add', [AdminController::class, 'post_admin_add']);
-
-Route::get('/admin_logout', [AdminController::class, 'admin_logout'])->name('admin_logout');
-
+Route::prefix('admin')->group(function () {
+    Route::get('/home', [AdminController::class, 'admin_home'])->name('admin_home');
+    Route::get('/login', [AdminController::class, 'admin_login'])->name('admin_login');
+    Route::post('/login', [AdminController::class, 'post_admin_login']);
+    Route::get('/add', [AdminController::class, 'admin_add'])->name('admin_add');
+    Route::post('/add', [AdminController::class, 'post_admin_add']);
+    Route::get('/logout', [AdminController::class, 'admin_logout'])->name('admin_logout');
+});

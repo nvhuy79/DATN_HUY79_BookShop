@@ -50,6 +50,6 @@ class RegisterController extends Controller
         } catch (\Throwable $th) {
             dd($th);
         }
-        return redirect()->route('login');
+        return redirect()->route('login')->with('Success_Regis','Đăng ký thành vông! Gờ bạn có thể đăng nhập.');
     }
 }
