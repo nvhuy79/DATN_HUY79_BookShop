@@ -15,18 +15,29 @@
       <div class="myaccount-content">
         <h3>Chi tiết</h3>
         <div class="account-details-form">
-          <form action="#">
+          <form action="" method="POST">
+            @csrf
             <div class="row">
               <div class="col-lg-6">
                 <div class="single-input-item">
                   <label for="name" class="required">Họ và tên</label>
-                  <input type="text" id="name" />
+                  <input type="text" name="name" value="{{ Auth::user()->name }}"/>
+                  @error('name')
+                  <span style="color: red">
+                      {{ $message }}
+                  </span>
+                  @enderror
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="single-input-item">
                   <label for="email" class="required">Email</label>
-                  <input type="text" id="email" />
+                  <input type="text" name="email" value="{{ Auth::user()->email }}" />
+                  @error('email')
+                  <span style="color: red">
+                      {{ $message }}
+                  </span>
+                  @enderror
                 </div>
               </div>
             </div>
@@ -34,19 +45,34 @@
               {{-- <legend>Password change</legend> --}}
               <div class="single-input-item">
                 <label for="current-pwd" class="required">Mật khẩu hiện tại</label>
-                <input type="password" id="current-pwd" />
+                <input type="password" name="current_pwd" />
+                @error('current-pwd')
+                <span style="color: red">
+                    {{ $message }}
+                </span>
+                @enderror
               </div>
 
                 <div class="col-lg-6">
                   <div class="single-input-item">
                     <label for="new-pwd" class="required">Mật khẩu mới</label>
-                    <input type="password" id="new-pwd" />
+                    <input type="password" name="new_pwd" />
+                    @error('new-pwd')
+                    <span style="color: red">
+                        {{ $message }}
+                    </span>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="single-input-item">
                     <label for="confirm-pwd" class="required">Xác nhận mật khẩu mới</label>
-                    <input type="password" id="confirm-pwd" />
+                    <input type="password" name ="confirm_pwd" />
+                    @error('confirm-pwd')
+                    <span style="color: red">
+                        {{ $message }}
+                    </span>
+                    @enderror
                   </div>
                 </div>
             </fieldset>

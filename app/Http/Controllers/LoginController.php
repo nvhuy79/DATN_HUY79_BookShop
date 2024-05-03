@@ -18,7 +18,7 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->back()->with('logout_success', 'Bạn đã đăng xuất!.');
+        return redirect()->route('home')->with('logout_success', 'Bạn đã đăng xuất!.');
     }
 
     public function post_login(Request $request)

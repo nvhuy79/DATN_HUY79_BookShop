@@ -34,7 +34,7 @@
                             <a>Tài khoản</a>
                             <ul>
                                 @if (Auth::check())
-                                    <li><a href="{{ route('logout') }}">Đổi mật khẩu</a></li>
+                                    <li><a href="{{ route('change_inf') }}">Thông tin</a></li>
                                     <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                                 @else
                                     <li><a href="{{ route('login') }}">Đăng nhập</a></li>
@@ -62,7 +62,7 @@
                                     <span
                                         style="font-weight: 450; font-size: 16px; color: #333; display: inline-block; max-width: 150px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                                         <i class="ion-android-person"
-                                            style="margin-right: 5px;"></i><a>{{ Auth()->user()->name }}</a>
+                                            style="margin-right: 5px;"></i><a href="{{ route('change_inf') }}">{{ Auth()->user()->name }}</a>
                                     </span>
                                 @else
                                     <a href="{{ route('login') }}">
