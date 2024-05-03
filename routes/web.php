@@ -1,11 +1,9 @@
 <?php
 
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\Category;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
@@ -20,8 +18,9 @@ use App\Http\Controllers\RegisterController;
 |
 */
 // ========================== USER ============================
+Route::get('/', [LoginController::class, 'home'])->name('home');
 Route::prefix('user')->group(function () {
-    Route::get('/home', [LoginController::class, 'home'])->name('home');
+    // Route::get('/home', [LoginController::class, 'home'])->name('home');
     Route::get('/category', [CategoryController::class, 'category'])->name('category');
 
     Route::get('/login', [LoginController::class, 'login'])->name('login');

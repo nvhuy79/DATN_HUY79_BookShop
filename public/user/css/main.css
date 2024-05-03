@@ -10182,7 +10182,7 @@ border-radius: 12px;
   }
 }
 .myaccount-content form {
-  margin-top: -20px;
+  margin-top: 20px;
 }
 .myaccount-content h3 {
   font-size: 20px;
@@ -10202,11 +10202,12 @@ border-radius: 12px;
   margin-top: 20px;
 }
 .myaccount-content fieldset legend {
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 20px;
-  font-weight: 600;
+  font-weight: 500;
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
+  color: #000000;
 }
 .myaccount-content .account-details-form {
   margin-top: 50px;
@@ -10219,6 +10220,7 @@ border-radius: 12px;
   text-transform: capitalize;
   display: block;
   margin: 0 0 5px;
+  color: #000000;
 }
 .myaccount-content .account-details-form .single-input-item input {
   border: 1px solid #e8e8e8;
@@ -10240,6 +10242,7 @@ border-radius: 12px;
   padding: 9px 25px;
   color: #fff;
   font-size: 13px;
+  width: 30%;
 }
 .myaccount-content .account-details-form .single-input-item button:hover {
   background-color: #1f2226;

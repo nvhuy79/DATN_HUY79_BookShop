@@ -38,6 +38,7 @@
                                 </span>
                                 @enderror
                             </div>
+                            
                             <div class="col-lg-12 mb-60">
                                 <input type="password" placeholder="Mật khẩu" id="login_password"  name="password">
                                 @error('password')

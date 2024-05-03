@@ -34,6 +34,7 @@
                             <a>Tài khoản</a>
                             <ul>
                                 @if (Auth::check())
+                                    <li><a href="{{ route('logout') }}">Đổi mật khẩu</a></li>
                                     <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                                 @else
                                     <li><a href="{{ route('login') }}">Đăng nhập</a></li>
