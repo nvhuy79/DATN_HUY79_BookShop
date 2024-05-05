@@ -7,7 +7,6 @@
     <title>Haven BookStore</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ asset('user/images/favicon.ico') }}">
     <link href="{{ asset('user/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('user/css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('user/css/ionicons.css') }}" rel="stylesheet">
@@ -27,14 +26,14 @@
     <!--=======================- Header wide topbar =============-->
     <header class="header header-box-topbar header-sticky">
         <div class="header-bottom pt-40 pb-md-40  pb-sm-40">
-            <div class="container">
+            <div class="container wide">
                 <div class="header-bottom-container">
                     <div class="language-currency-change-container">
                         <div class="language-change change-dropdown d-none d-lg-block">
                             <a>Tài khoản</a>
                             <ul>
                                 @if (Auth::check())
-                                    <li><a href="{{ route('change_inf') }}">Thông tin</a></li>
+                                    <li><a href="{{ route('profile') }}">Tài khoản</a></li>
                                     <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                                 @else
                                     <li><a href="{{ route('login') }}">Đăng nhập</a></li>
@@ -60,9 +59,9 @@
                             <div class="single-icon user-login">
                                 @if (Auth::check())
                                     <span
-                                        style="font-weight: 450; font-size: 16px; color: #333; display: inline-block; max-width: 150px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-                                        <i class="ion-android-person"
-                                            style="margin-right: 5px;"></i><a href="{{ route('change_inf') }}">{{ Auth()->user()->name }}</a>
+                                        style="font-weight: 450; font-size: 16px; color: #333; display: inline-block; max-width: 150px; ; white-space: nowrap; text-overflow: ellipsis;">
+                                        <i class="ion-android-person" style="margin-right: 5px;"></i><a
+                                            href="{{ route('profile') }}">{{ Auth()->user()->name }}</a>
                                     </span>
                                 @else
                                     <a href="{{ route('login') }}">

@@ -32,10 +32,10 @@ Route::prefix('user')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
-    Route::post('/profile', [AccountController::class, 'post_profile']);
+    Route::post('/profile', [AccountController::class, 'post_profile'])->name('post_profile');
 
-    Route::get('/change-inf', [AccountController::class, 'change_inf'])->name('change_inf');
-    Route::post('/change-inf', [AccountController::class, 'post_change_inf']);
+    Route::get('/change-pass', [AccountController::class, 'change_pass'])->name('change_pass');
+    Route::post('/change-pass', [AccountController::class, 'post_change_pass'])->name('post_change_pass');
 
     Route::get('/forgot-pass', [AccountController::class, 'forgot_pass'])->name('forgot_pass');
     Route::post('/forgot-pass', [AccountController::class, 'post_forgot_pass']);
