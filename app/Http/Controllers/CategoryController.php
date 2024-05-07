@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -10,8 +10,15 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function category(){
+    public function category()
+    {
         return view('user/pages/category');
+    }
+    public function index(){
+        $categories = Category::all();
+        return view('admin/pages/category/index',compact('categories'));
+
+
     }
 
     /**

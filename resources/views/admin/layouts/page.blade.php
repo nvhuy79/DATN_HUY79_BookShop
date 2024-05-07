@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>HavenBook Admin</title>
 
-    {{-- <link rel="icon" href="img/mini_logo.png" type="image/png"> --}}
     <link rel="stylesheet" href="{{ asset('admin/css/bootstrap1.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/vendors/themefy_icon/themify-icons.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/vendors/niceselect/css/nice-select.css') }}" />
@@ -134,7 +133,7 @@
     </nav>
 
     <section class="main_content dashboard_part large_header_bg">
-
+        
         <div class="container-fluid g-0">
             <div class="row">
                 <div class="col-lg-12 p-0 ">
@@ -142,9 +141,9 @@
                         <div class="sidebar_icon d-lg-none">
                             <i class="ti-menu"></i>
                         </div>
-                        {{-- <div class="line_icon open_miniSide d-none d-lg-block">
-                            <img src="img/line_img.png" alt>
-                        </div> --}}
+                        <div class="line_icon open_miniSide d-none d-lg-block">
+                            {{-- <img src="img/line_img.png" alt> --}}
+                        </div>
                         <div class="header_right d-flex justify-content-between align-items-center">
                             <div class="header_notification_warp d-flex align-items-center">
                                 <li>
@@ -209,9 +208,25 @@
                 </div>
             </div>
         </div>
+        {{-- Content --}}
+        <div class="main_content_iner overly_inner ">
+            <div class="container-fluid p-0 ">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+                            <div class="page_title_left d-flex align-items-center">
+                                <h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            @yield('content')
+        </div>
     </section>
 
-
+    
     <div class="CHAT_MESSAGE_POPUPBOX">
         <div class="CHAT_POPUP_HEADER">
             <div class="MSEESAGE_CHATBOX_CLOSE">
