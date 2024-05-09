@@ -10,6 +10,12 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+    {
+        $this->middleware('admin.auth');
+    }
+    
     public function category()
     {
         return view('user/pages/category');
@@ -26,7 +32,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/pages/category/add');
     }
 
     /**
@@ -42,7 +48,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**

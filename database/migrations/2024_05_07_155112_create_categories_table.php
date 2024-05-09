@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->tinyInteger('status');
             $table->unsignedBigInteger('id_parent')->nullable();
-            $table->foreign('id_parent')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

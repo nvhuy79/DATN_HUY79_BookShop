@@ -94,7 +94,7 @@
                             <nav class="site-nav center-menu">
                                 <ul>
                                     <li class="menu-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                                    <li class="menu-item-has-children"><a href="{{ route('category') }}">Thể loại</a>
+                                    <li class="menu-item-has-children"><a href="{{ route('category') }}">Danh mục</a>
                                         <ul class="sub-menu single-column-menu">
                                             <li><a href="$">About Us</a></li>
                                             <li><a href="$">About Us 2</a></li>

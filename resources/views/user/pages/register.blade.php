@@ -48,6 +48,8 @@
                             <div class="col-lg-12  mb-40">
                                 <input type="text" id="regis_Email" placeholder="Email" name="email"
                                     value="{{ old('email') }}">
+                                <small id="emailHelp" class="form-text text-muted">Thông tin của bạn sẽ được bảo mật tuyệt
+                                    đối.</small>
                                 @error('email')
                                     <span style="color: red">
                                         {{ $message }}

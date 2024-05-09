@@ -7,14 +7,15 @@
             <div class="white_card_body">
                 <div class="QA_section">
                     <div class="white_box_tittle list_header">
-                        <h4>Module Setting</h4>
+                        {{-- <h4>Module Setting</h4> --}}
+                        <a href="{{ route('category.create') }}" class="btn btn-success">+ Thêm mới danh mục</a>
                         <div class="box_right d-flex lms_block">
                             <div class="serach_field_2">
                                 <div class="search_inner">
                                     <form Active="#">
                                         <div class="search_field">
                                             <input type="text"
-                                                placeholder="tìm kiếm..">
+                                                placeholder="Tìm kiếm...">
                                         </div>
                                         <button type="submit"> <i class="ti-search"></i> </button>
                                     </form>
@@ -43,13 +44,13 @@
                             <tbody>
                                 @forelse ($categories as $item)
                                 <tr>
-                                    <th scope="row"> <a href="#" class="question_content"> 1
-                                        </a></th>
-                                    <td>Backup & Export</td>
-                                    <td>Export</td>
-                                    <td>fa-database</td>
-                                    <td>access</td>
-                                    <td>access</td>
+                                    
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->title }}</td>
+                                    <td>{{ $item->description }}</td>
+                                    <td>{{ $item->id_parent }}</td>
+                                    <td>{!! $item->status ? '<span class="status_btn">Hiển thị</span>' : '<span class="status_btn">Ẩn</span>' !!}</td>
+                                    <td>{{ $item->created_at }}</td>
                                     <td>
                                         <div class="action_btns d-flex">
                                             <a href="#" class="action_btn mr_10"> <i

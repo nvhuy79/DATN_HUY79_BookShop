@@ -57,19 +57,19 @@
                 </ul>
             </li>
             <li class>
-                <a href="crypto_wallet.html" aria-expanded="false">
+                <a href="{{ route('category.index') }}" aria-expanded="false">
                     <div class="nav_icon_small">
                         <img src="{{ asset('admin/img/menu-icon/2.svg') }}" alt>
                     </div>
                     <div class="nav_title">
-                        <span>Crypto Wallet</span>
+                        <span>Danh mục</span>
                     </div>
                 </a>
             </li>
             <li class>
-                <a href="buy_sell.html" aria-expanded="false">
+                <a href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="img/menu-icon/3.svg" alt>
+                        <img src="{{ asset('admin/img/menu-icon/3.svg') }}" alt>
                     </div>
                     <div class="nav_title">
                         <span>Buy & Sell</span>
@@ -79,7 +79,7 @@
             <li class>
                 <a href="Trader_Profile.html" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="img/menu-icon/4.svg" alt>
+                        <img src="{{ asset('admin/img/menu-icon/4.svg') }}" alt>
                     </div>
                     <div class="nav_title">
                         <span>Trader Profile</span>
@@ -89,7 +89,7 @@
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="img/menu-icon/6.svg" alt>
+                        <img src="{{ asset('admin/img/menu-icon/6.svg') }}" alt>
                     </div>
                     <div class="nav_title">
                         <span>Transactions</span>
@@ -105,7 +105,7 @@
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="img/menu-icon/7.svg" alt>
+                        <img src="{{ asset('admin/img/menu-icon/7.svg') }}" alt>
                     </div>
                     <div class="nav_title">
                         <span>Tickers</span>
@@ -118,7 +118,7 @@
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="img/menu-icon/map.svg" alt>
+                        <img src="{{ asset('admin/img/menu-icon/map.svg') }}" alt>
                     </div>
                     <div class="nav_title">
                         <span>Maps</span>
@@ -133,7 +133,7 @@
     </nav>
 
     <section class="main_content dashboard_part large_header_bg">
-        
+
         <div class="container-fluid g-0">
             <div class="row">
                 <div class="col-lg-12 p-0 ">
@@ -141,18 +141,18 @@
                         <div class="sidebar_icon d-lg-none">
                             <i class="ti-menu"></i>
                         </div>
-                        <div class="line_icon open_miniSide d-none d-lg-block">
-                            {{-- <img src="img/line_img.png" alt> --}}
+                        <div class="page_title_left d-flex align-items-center">
+                            <h3 class="f_s_25 f_w_700 dark_text mr_30">Trang quản trị</h3>
                         </div>
                         <div class="header_right d-flex justify-content-between align-items-center">
                             <div class="header_notification_warp d-flex align-items-center">
                                 <li>
                                     <a class="CHATBOX_open nav-link-notify" href="#"> <img
-                                            src="img/icon/msg.svg" alt> </a>
+                                            src="{{ asset('admin/img/icon/msg.svg') }}" alt> </a>
                                 </li>
                                 <li>
                                     <a class="bell_notification_clicker nav-link-notify" href="#"> <img
-                                            src="img/icon/bell.svg" alt>
+                                            src="{{ asset('admin/img/icon/bell.svg') }}" alt>
 
                                     </a>
 
@@ -164,7 +164,7 @@
 
                                             <div class="single_notify d-flex align-items-center">
                                                 <div class="notify_thumb">
-                                                    <a href="#"><img src="img/staf/2.png" alt></a>
+                                                    <a href="#"><img src="{{ asset('admin/img/staf/2.png') }}" alt></a>
                                                 </div>
                                                 <div class="notify_content">
                                                     <a href="#">
@@ -185,7 +185,7 @@
                             </div>
                             <div class="profile_info d-flex align-items-center">
                                 <div class="profile_thumb mr_20">
-                                    <img src="img/transfer/4.png" alt="#">
+                                    <img src="{{ asset('admin/img/transfer/4.png') }}" alt="#">
                                 </div>
                                 <div class="author_name">
                                     <h4 class="f_s_15 f_w_500 mb-0">{{ Auth()->guard('admin')->name }}</h4>
@@ -210,23 +210,11 @@
         </div>
         {{-- Content --}}
         <div class="main_content_iner overly_inner ">
-            <div class="container-fluid p-0 ">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
-                            <div class="page_title_left d-flex align-items-center">
-                                <h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
             @yield('content')
         </div>
     </section>
 
-    
+
     <div class="CHAT_MESSAGE_POPUPBOX">
         <div class="CHAT_POPUP_HEADER">
             <div class="MSEESAGE_CHATBOX_CLOSE">
