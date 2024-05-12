@@ -7,7 +7,7 @@
                     <div class="white_card_header text-center">
                         <div class="box_header m-0">
                             <div class="main-title">
-                                <h3 class="m-0 ">Thêm danh mục</h3>
+                                <h3 class="m-0 ">Cập nhật danh mục</h3>
                                 @if (session('error'))
                                 <span style="color: red">
                                     {{ session('error') }}
@@ -17,12 +17,13 @@
                         </div>
                     </div>
                     <div class="white_card_body">
-                        <form action="{{ route('category.store') }}" method="POST">
+                        <form action="{{ route('category.update',$category) }}" method="POST">
+                            @method('PUT')
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label" for="exampleInputTitle">Tiêu đề</label>
                                 <input type="text" name="title" class="form-control" id="exampleInputTitle"
-                                    placeholder="Nhập tên tiêu đề...">
+                                   value="{{ $category->title }}">
                                 @error('title')
                                 <span style="color: red">
                                     {{ $message }}
@@ -40,19 +41,19 @@
                                 <select class="form-select" aria-label="Default select example" name="parent_id">
                                     <option value="" selected>--- Chọn danh mục cha ---</option>
                                     @foreach ($categories as $item)
-                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                        <option value="{{ $item->id }}"{{ $category->parent_id == $item->id ? 'selected': '' }}>{{ $item->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="cs_check_box mt-3">
                                 <input type="checkbox" id="check_box" class="common_checkbox" name="status"
-                                    value="0" id="flexCheckChecked" checked>
+                                    value="1" id="flexCheckChecked" {{ $category->status ? '' : 'checked' }}>
                                 <label class="form-label" for="check_box">
                                     Ẩn danh mục
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-primary" style="margin-top: 3%;">Thêm mới</button>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 3%;">Cập nhật</button>
                         </form>
                     </div>
                 </div>

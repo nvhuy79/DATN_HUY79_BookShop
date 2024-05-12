@@ -56,8 +56,10 @@
                     <li><a href="{{ route('admin_logout') }}">Đăng xuất</a></li>
                 </ul>
             </li>
+
+
             <li class>
-                <a href="{{ route('category.index') }}" aria-expanded="false">
+                <a class="has-arrow" aria-expanded="false">
                     <div class="nav_icon_small">
                         <img src="{{ asset('admin/img/menu-icon/2.svg') }}" alt>
                     </div>
@@ -65,7 +67,12 @@
                         <span>Danh mục</span>
                     </div>
                 </a>
+                <ul>
+                    <li><a href="{{ route('category.index') }}">Xem danh mục</a></li>
+                    <li><a href="#">Thêm danh mục</a></li>
+                </ul>
             </li>
+
             <li class>
                 <a href="#" aria-expanded="false">
                     <div class="nav_icon_small">
@@ -142,7 +149,7 @@
                             <i class="ti-menu"></i>
                         </div>
                         <div class="page_title_left d-flex align-items-center">
-                            <h3 class="f_s_25 f_w_700 dark_text mr_30">Trang quản trị</h3>
+
                         </div>
                         <div class="header_right d-flex justify-content-between align-items-center">
                             <div class="header_notification_warp d-flex align-items-center">
@@ -164,7 +171,8 @@
 
                                             <div class="single_notify d-flex align-items-center">
                                                 <div class="notify_thumb">
-                                                    <a href="#"><img src="{{ asset('admin/img/staf/2.png') }}" alt></a>
+                                                    <a href="#"><img src="{{ asset('admin/img/staf/2.png') }}"
+                                                            alt></a>
                                                 </div>
                                                 <div class="notify_content">
                                                     <a href="#">
@@ -343,7 +351,7 @@
     <script src="{{ asset('admin/vendors/count_up/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('admin/vendors/chartlist/Chart.min.js') }}"></script>
     <script src="{{ asset('admin/vendors/count_up/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/niceselect/js/jquery.nice-select.min.js') }}"></script>
+    {{-- <script src="{{ asset('admin/vendors/niceselect/js/jquery.nice-select.min.js') }}"></script> --}}
     <script src="{{ asset('admin/vendors/owl_carousel/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('admin/vendors/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin/vendors/datatable/js/dataTables.responsive.min.js') }}"></script>

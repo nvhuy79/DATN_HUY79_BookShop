@@ -3258,9 +3258,21 @@ p a:hover
    text-align:center
 }
 
-.status_btn.yellow_btn
+.status_btn.red_btn
 {
-   background:#ffba00
+   display:inline-block;
+   padding:2px 15px;
+   font-size:11px;
+   font-weight:300;
+   color: red !important;
+   background:#f08c8c;
+   -webkit-border-radius:4px;
+   -moz-border-radius:4px;
+   border-radius:4px;
+   text-transform:capitalize;
+   white-space:nowrap;
+   min-width:70px;
+   text-align:center
 }
 
 .status_btn.pending_btn
@@ -5100,7 +5112,7 @@ body::-webkit-scrollbar
 
 .box_header
 {
-   display:flex;
+   /* display:flex; */
    justify-content:space-between;
    margin-bottom:30px;
    align-items:center
@@ -8057,14 +8069,14 @@ canvas#highlights
    border:0
 }
 
-#DataTables_Table_0_info
+/* #DataTables_Table_0_info
 {
    font-size:14px;
    color:#415094;
    font-weight:400;
    margin-top:35px;
    padding-top:0
-}
+} */
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover
 {

@@ -18,7 +18,6 @@ class AccountController extends Controller
     {
         $rules = [
             'name' => 'required|string|min:3|max:17',
-            // 'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:8',
         ];
 
@@ -26,10 +25,6 @@ class AccountController extends Controller
             'name.required' => 'Hãy nhập họ và tên của bạn.',
             'name.min' => 'Họ và tên phải lớn hơn 3 ký tự.',
             'name.max' => 'Họ và tên  phải nhỏ hơn 17 ký tự.',
-            // 'email.required' => 'Hãy nhập email của bạn.',
-            // 'email.email' => 'Nhập đúng định dạng email bao gồm @ và phần tử phía sau.',
-            // 'email.max' => 'Email phải nhỏ hơn 255 ký tự.',
-            // 'email.min' => 'Email phải lớn hơn 8 ký tự.',
             'password.required' => 'Hãy nhập mật khẩu hiện tại của bạn.',
             'password.min' => 'Mật khẩu hiện tại tối thiểu 8 ký tự.',
         ];

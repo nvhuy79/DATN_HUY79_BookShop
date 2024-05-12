@@ -52,9 +52,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/home', [AdminController::class, 'admin_home'])->name('admin_home');
     Route::get('/login', [AdminController::class, 'admin_login'])->name('admin_login');
     Route::post('/login', [AdminController::class, 'post_admin_login']);
-    Route::get('/add', [AdminController::class, 'admin_add'])->name('   ');
+    Route::get('/add', [AdminController::class, 'admin_add'])->name('admin_add');
     Route::post('/add', [AdminController::class, 'post_admin_add']);
     Route::get('/logout', [AdminController::class, 'admin_logout'])->name('admin_logout');
 
-    Route::resource('category', CategoryController::class);
+    Route::resource('category', CategoryController::class)->middleware('admin.auth');
 });

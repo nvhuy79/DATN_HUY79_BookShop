@@ -68,10 +68,10 @@ class AdminController extends Controller
 
     public function admin_add()
     {
-        if (Auth::guard('admin')->check()) {
+        // if (Auth::guard('admin')->check()) {
             return view('admin/pages/admin_add');
-        }
-        return redirect()->route('admin_login');
+        // }
+        // return redirect()->route('admin_login');
     }
 
     public function post_admin_add(Request $request)
