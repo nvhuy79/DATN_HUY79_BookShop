@@ -20,10 +20,11 @@
                         <form action="{{ route('category.update',$category) }}" method="POST">
                             @method('PUT')
                             @csrf
+                            <input type="hidden" name="id" value="{{ $category->id }}">
                             <div class="mb-3">
                                 <label class="form-label" for="exampleInputTitle">Tiêu đề</label>
                                 <input type="text" name="title" class="form-control" id="exampleInputTitle"
-                                   value="{{ $category->title }}">
+                                   value="{{ old('title') ? old('title'): $category->title }}">
                                 @error('title')
                                 <span style="color: red">
                                     {{ $message }}
@@ -46,12 +47,16 @@
                                 </select>
                             </div>
 
-                            <div class="cs_check_box mt-3">
-                                <input type="checkbox" id="check_box" class="common_checkbox" name="status"
-                                    value="1" id="flexCheckChecked" {{ $category->status ? '' : 'checked' }}>
-                                <label class="form-label" for="check_box">
-                                    Ẩn danh mục
-                                </label>
+                            <div class="mb-3">
+                                <label class="form-label">Trạng thái</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="status1" value="1" {{ $category->status == 1 ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status1">Hiển thị</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="status0" value="0" {{ $category->status == 0 ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status0">Ẩn</label>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary" style="margin-top: 3%;">Cập nhật</button>
                         </form>

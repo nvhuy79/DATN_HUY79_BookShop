@@ -27,41 +27,58 @@
                         <div class="QA_table mb_30">
                             <table class="table">
                                 <thead>
-                                  <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Tiêu đề</th>
-                                    <th scope="col">Chi tiết</th>
-                                    <th scope="col">Danh mục cha</th>
-                                    <th scope="col">Trạng thái</th>
-                                    <th scope="col">Ngày tạo</th>
-                                    <th scope="col">Tùy chọn</th>
-                                  </tr>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Tiêu đề</th>
+                                        <th scope="col">Chi tiết</th>
+                                        <th scope="col">Danh mục cha</th>
+                                        <th scope="col">Trạng thái</th>
+                                        <th scope="col">Ngày tạo</th>
+                                        <th scope="col">Tùy chọn</th>
+                                    </tr>
                                 </thead>
                                 <tbody class="table-group-divider">
                                     @forelse ($categories as $item)
-                                    <tr>
+                                        <tr>
 
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->title }}</td>
-                                        <td>{{ $item->description }}</td>
-                                        <td>{{ $item->parent_id }}</td>
-                                        <td>{!! $item->status ? '<span class="status_btn">Hiển thị</span>' : '<span class="status_btn red_btn" >Ẩn</span>' !!}</td>
-                                        <td>{{ $item->created_at }}</td>
-                                        <td>
-                                            <div class="action_btns d-flex">
-                                                <a href="{{ route('category.edit',$item) }}" class="action_btn mr_10"> <i class="far fa-edit"></i>
-                                                </a>
-                                                <a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <span>Chưa có dữ liệu</span>
-                                @endforelse
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->title }}</td>
+                                            <td>{{ $item->description }}</td>
+                                            <td>{{ $item->parent_id }}</td>
+                                            <td>{!! $item->status ? '<span class="status_btn">Hiển thị</span>' : '<span class="status_btn red_btn" >Ẩn</span>' !!}</td>
+                                            <td>{{ $item->created_at }}</td>
+                                            <td>
+                                                <div class="action_btns d-flex">
+                                                    <a href="{{ route('category.edit', $item) }}" class="action_btn mr_10"><i class="far fa-edit"></i>
+                                                    </a>
+                                                    <a href="{{ route('category.destroy', $item) }}" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <span>Chưa có dữ liệu</span>
+                                    @endforelse
                                 </tbody>
-                              </table>
+                            </table>
                         </div>
                     </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\Category\Store_CategoryRequest;
 use PhpParser\Node\Stmt\TryCatch;
+use App\Http\Requests\Category\Store_CategoryRequest;
+use App\Http\Requests\Category\Update_CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -70,7 +71,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Update_CategoryRequest $request, Category $category)
     {
         try {
             $category->update($request->all());
@@ -78,6 +79,7 @@ class CategoryController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error','Cập nhật  thất bại!');
         }
+        //dd($request->all());
     }
 
     /**
