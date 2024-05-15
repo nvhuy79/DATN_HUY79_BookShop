@@ -3559,7 +3559,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child::before,tabl
    font-size:12px;
    transition:.3s;
    display:inline-block;
-   flex:32px 0 0
+   flex:32px 0 0;
+   border: none;
 }
 
 .action_btn:hover

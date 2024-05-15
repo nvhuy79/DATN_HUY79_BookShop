@@ -19,16 +19,18 @@
                     <div class="white_card_body">
                         <form action="{{ route('category.store') }}" method="POST">
                             @csrf
+
                             <div class="mb-3">
-                                <label class="form-label" for="exampleInputTitle">Tiêu đề</label>
-                                <input type="text" name="title" class="form-control" id="exampleInputTitle"
-                                    placeholder="Nhập tên tiêu đề...">
+                                <label class="form-floating" for="exampleInputTitle">Tiêu đề</label>
+                                <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="exampleInputTitle"
+                                placeholder="Nhập tên tiêu đề...">
                                 @error('title')
                                 <span style="color: red">
                                     {{ $message }}
                                 </span>
                                 @enderror
                             </div>
+                            
                             <div class="mb-3">
                                 <label class="form-label" for="description">Chi tiết</label>
                                 <textarea style ="width: 100%" id="description" name="description" cols="90" rows="5"

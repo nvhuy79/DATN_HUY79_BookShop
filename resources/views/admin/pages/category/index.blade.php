@@ -41,17 +41,22 @@
                                     @forelse ($categories as $item)
                                         <tr>
 
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->id }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->description }}</td>
-                                            <td>{{ $item->parent_id }}</td>
+                                            {{-- <td>{{ $item->parent_id }}</td> --}}
+                                            <td>{{ $item->parent ? $item->parent->title : '' }}</td>
                                             <td>{!! $item->status ? '<span class="status_btn">Hiển thị</span>' : '<span class="status_btn red_btn" >Ẩn</span>' !!}</td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 <div class="action_btns d-flex">
                                                     <a href="{{ route('category.edit', $item) }}" class="action_btn mr_10"><i class="far fa-edit"></i>
                                                     </a>
-                                                    <a href="{{ route('category.destroy', $item) }}" class="action_btn"> <i class="fas fa-trash"></i> </a>
+                                                    <form action="{{ route('category.destroy', $item) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="action_btn"><i class="fas fa-trash"></i></button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -62,21 +67,40 @@
                             </table>
                         </div>
                     </div>
-                    <nav aria-label="Page navigation example">
+                    <nav aria-label="Page navigation examplee">
                         <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
+                            {{-- Previous Page Link --}}
+                            @if ($categories->onFirstPage())
+                                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                            @else
+                                <li class="page-item"><a class="page-link" href="{{ $categories->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                            @endif
+
+                            {{-- Pagination Elements --}}
+                            @foreach ($categories as $item)
+                                {{-- "Three Dots" Separator --}}
+                                @if (is_string($item))
+                                    <li class="page-item disabled"><span class="page-link">{{ $item }}</span></li>
+                                @endif
+
+                                {{-- Array Of Links --}}
+                                @if (is_array($item))
+                                    @foreach ($item as $page => $url)
+                                        @if ($page == $categories->currentPage())
+                                            <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                                        @else
+                                            <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            @endforeach
+
+                            {{-- Next Page Link --}}
+                            @if ($categories->hasMorePages())
+                                <li class="page-item"><a class="page-link" href="{{ $categories->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+                            @else
+                                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                            @endif
                         </ul>
                     </nav>
                 </div>

@@ -30,7 +30,7 @@ class Store_CategoryRequest extends FormRequest
     {
         return [
             'title.required' => "Tiêu đề là bắt buộc.",
-            'title.unique' => "$this->name đã tồn tại trong hệ thống.",
+            'title.unique' => "Danh mục  \"$this->title\"  đã tồn tại trong hệ thống."
         ];
     }
 }
