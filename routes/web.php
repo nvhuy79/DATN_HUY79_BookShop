@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -57,4 +58,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/logout', [AdminController::class, 'admin_logout'])->name('admin_logout');
 
     Route::resource('category', CategoryController::class)->middleware('admin.auth');
+    Route::resource('product', ProductController::class)->middleware('admin.auth');
 });

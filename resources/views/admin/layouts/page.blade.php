@@ -68,8 +68,8 @@
                     </div>
                 </a>
                 <ul>
-                    <li><a href="{{ route('category.index') }}">Xem danh mục</a></li>
-                    <li><a href="#">Thêm danh mục</a></li>
+                    <li><a href="{{ route('category.index') }}">Danh sách danh mục</a></li>
+                    <li><a href="#">Thêm mới danh mục</a></li>
                 </ul>
             </li>
 
@@ -84,29 +84,19 @@
                 </a>
             </li>
             <li class>
-                <a href="Trader_Profile.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="{{ asset('admin/img/menu-icon/4.svg') }}" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Trader Profile</span>
-                    </div>
-                </a>
-            </li>
+
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="{{ asset('admin/img/menu-icon/6.svg') }}" alt>
+                        <img src="{{ asset('admin/img/menu-icon/3.svg') }}" alt>
                     </div>
                     <div class="nav_title">
-                        <span>Transactions</span>
+                        <span>Sản phẩm</span>
                     </div>
                 </a>
                 <ul>
-                    <li><a href="Request.html">Request</a></li>
-                    <li><a href="tan_cancel.html">Cancel</a></li>
-                    <li><a href="Refound.html">Refound</a></li>
-                    <li><a href="Payment_details.html">Payment details</a></li>
+                    <li><a href="{{ route('product.create') }}">Danh sách sản phẩm</a></li>
+                    <li><a href="tan_cancel.html">Thêm mới sản phẩm</a></li>
                 </ul>
             </li>
             <li class>
@@ -385,6 +375,7 @@
     <script src="{{ asset('admin/js/dashboard_init.js') }}"></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+    @yield('custom-js');
 
     @if (Session::has('success'))
         <script>

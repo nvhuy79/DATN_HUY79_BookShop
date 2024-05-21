@@ -4867,7 +4867,7 @@ table.dataTable
    padding:10px 0 10px 8px!important;
    margin-top:0;
    margin-left:0;
-   text-transform:capitalize
+   /* text-transform:capitalize */
 }
 
 .sidebar #sidebar_menu>li ul li a::before
