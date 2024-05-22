@@ -25,8 +25,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin/pages/product/add',compact('categories'));
-        
+        return view('admin/pages/product/add', compact('categories'));
     }
 
     /**
@@ -35,62 +34,30 @@ class ProductController extends Controller
     public function store(Store_ProductRequest $request)
     {
 
-        // Upload file
-        // $fileName = $request->product_image->getClientOriginalName();
-        // $request->product_image->storeAs('public/admin/images',$fileName);
-        // $request->merge(['image'=>$fileName]);
+        // dd($request->all());
+        $fileName = $request->product_image->getClientOriginalName();
+        $request->product_image->storeAs('public/admin/images', $fileName);
+        $request->merge(['image' => $fileName]);
 
-        // try {
-        //    $product =  Product::create($request->all());
-        //     // return redirect()->route('product.index')->with('success','Thêm mới thành công!');
-        //     if ($product && $request->hasFile('desc_image')) {
-        //        foreach ($request-> desc_image as $key => $value) {
-        //         $fileName = $value->getClientOriginalName();
-        //         $value >storeAs('public/admin/images',$fileName);
-
-        //         ImageProduct::create([
-        //             'product_id'=>$product->id,
-        //             'image'=>$fileName
-        //         ]);
-        //        }
-        //     }
-            
-        // } catch (\Throwable $th) {
-        //     return redirect()->back()->with('error','Thêm mới thất bại!');
-        // }
-
-        if ($request->hasFile('product_image')) {
-            $fileName = time() . '_' . $request->product_image->getClientOriginalName();
-            $request->product_image->storeAs('public/admin/images', $fileName);
-            $request->merge(['image' => $fileName]);
-        }
-    
         try {
-            // Tạo sản phẩm mới
             $product = Product::create($request->all());
-    
-            // Nếu sản phẩm tạo thành công và có ảnh mô tả
             if ($product && $request->hasFile('desc_image')) {
-                foreach ($request->file('desc_image') as $key => $value) {
-                    $descFileName = time() . '_' . $value->getClientOriginalName();
-                    $value->storeAs('public/admin/images', $descFileName);
-    
-                    // Tạo bản ghi cho ảnh mô tả
+                foreach ($request->desc_image as $key => $value) {
+                    $fileName = $value->getClientOriginalName();
+                    $value->storeAs('public/admin/images', $fileName);
+
                     ImageProduct::create([
                         'product_id' => $product->id,
-                        'image' => $descFileName
+                        'image' => $fileName
                     ]);
                 }
             }
-    
-            // Chuyển hướng hoặc trả về view tương ứng với thông báo thành công
             return redirect()->route('product.index')->with('success', 'Thêm mới thành công!');
-        } catch (\Exception $e) {
-            // Xử lý lỗi nếu có
-            return redirect()->back()->with('error', 'Đã xảy ra lỗi khi thêm mới sản phẩm: ' . $e->getMessage());
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Thêm mới thất bại!');
         }
     }
-    
+
 
     /**
      * Display the specified resource.

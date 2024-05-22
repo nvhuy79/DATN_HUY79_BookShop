@@ -33,8 +33,8 @@ class Store_ProductRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required' => "Tiêu đề là bắt buộc.",
-            'title.unique' => "Danh mục  \"$this->title\"  đã tồn tại trong hệ thống.",
+            'name.required' => "Tiêu đề là bắt buộc.",
+            'name.unique' => "Danh mục  \"$this->title\"  đã tồn tại trong hệ thống.",
             'slug.required' => "Đường dẫn không được để trống.",
             'slug.unique' => "Đường dẫn đã tồn tại.",
             'price.numeric' => "Giá bán có định dạng là số.",
