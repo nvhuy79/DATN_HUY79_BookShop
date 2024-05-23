@@ -16,7 +16,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // $products = Product::all();
+        // return view('admin/pages/product/index',compact('products'));
+        $products = Product::with('category')->get();
+        return view('admin/pages/product/index', compact('products'));
     }
 
     /**

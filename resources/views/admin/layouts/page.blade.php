@@ -95,8 +95,8 @@
                     </div>
                 </a>
                 <ul>
-                    <li><a href="{{ route('product.create') }}">Danh sách sản phẩm</a></li>
-                    <li><a href="tan_cancel.html">Thêm mới sản phẩm</a></li>
+                    <li><a href="{{ route('product.index') }}">Danh sách sản phẩm</a></li>
+                    <li><a href="{{ route('product.create') }}">Thêm mới sản phẩm</a></li>
                 </ul>
             </li>
             <li class>

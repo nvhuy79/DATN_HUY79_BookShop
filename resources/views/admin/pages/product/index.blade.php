@@ -6,7 +6,7 @@
                 <div class="white_card_body">
                     <div class="QA_section">
                         <div class="white_box_tittle list_header">
-                            <a href="{{ route('category.create') }}" class="btn btn-success mb-3">+ Thêm sản phẩm</a>
+                            <a href="{{ route('product.create') }}" class="btn btn-success mb-3">+ Thêm sản phẩm</a>
                             <div class="box_right d-flex lms_block">
                                 <div class="serach_field_2">
                                     <div class="search_inner">
@@ -29,24 +29,28 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">Tiêu đề</th>
-                                        <th scope="col">Chi tiết</th>
-                                        <th scope="col">Danh mục cha</th>
-                                        <th scope="col">Trạng thái</th>
+                                        <th scope="col">Sản phẩm</th>
+                                        <th scope="col">Giá bán</th>
+                                        <th scope="col">Giá khuyến mãi</th>
+                                        <th scope="col">Danh mục</th>
+                                        <th scope="col">Ảnh</th>
                                         <th scope="col">Ngày tạo</th>
                                         <th scope="col">Tùy chọn</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-group-divider">
-                                    @forelse ($categories as $item)
+                                    @forelse ($products as $item)
                                         <tr>
 
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td>{{ $item->description }}</td>
-                                            {{-- <td>{{ $item->parent_id }}</td> --}}
-                                            <td>{{ $item->parent ? $item->parent->title : '' }}</td>
-                                            <td>{!! $item->status ? '<span class="status_btn">Hiển thị</span>' : '<span class="status_btn red_btn" >Ẩn</span>' !!}</td>
+                                            <td>{{ $item->price }}</td>
+                                            <td>{{ $item->sale_price }}</td>
+                                            {{-- <td>{{ $item->category_id }}</td> --}}
+                                            <td>{{ $item->category->title }}</td>
+                                            <td>
+                                                <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}" alt="" width="100px">
+                                            </td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 <div class="action_btns d-flex">
@@ -67,26 +71,24 @@
                             </table>
                         </div>
                     </div>
-                    <nav aria-label="Page navigation examplee">
+                    {{-- <nav aria-label="Page navigation examplee">
                         <ul class="pagination">
-                            {{-- Previous Page Link --}}
-                            @if ($categories->onFirstPage())
+
+                            @if ($products->onFirstPage())
                                 <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
                             @else
-                                <li class="page-item"><a class="page-link" href="{{ $categories->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                                <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
                             @endif
+                            @foreach ($products as $item)
 
-                            {{-- Pagination Elements --}}
-                            @foreach ($categories as $item)
-                                {{-- "Three Dots" Separator --}}
                                 @if (is_string($item))
                                     <li class="page-item disabled"><span class="page-link">{{ $item }}</span></li>
                                 @endif
 
-                                {{-- Array Of Links --}}
+
                                 @if (is_array($item))
                                     @foreach ($item as $page => $url)
-                                        @if ($page == $categories->currentPage())
+                                        @if ($page == $products->currentPage())
                                             <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
                                         @else
                                             <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
@@ -95,14 +97,14 @@
                                 @endif
                             @endforeach
 
-                            {{-- Next Page Link --}}
-                            @if ($categories->hasMorePages())
-                                <li class="page-item"><a class="page-link" href="{{ $categories->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+
+                            @if ($products->hasMorePages())
+                                <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
                             @else
                                 <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
                             @endif
                         </ul>
-                    </nav>
+                    </nav> --}}
                 </div>
             </div>
         </div>
