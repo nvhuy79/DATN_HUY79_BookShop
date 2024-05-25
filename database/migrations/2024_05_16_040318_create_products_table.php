@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('slug',100)->unique();
             $table->text('description')->nullable();
+            $table->tinyInteger('featured')->default(1);
             $table->timestamps();
         });
     }

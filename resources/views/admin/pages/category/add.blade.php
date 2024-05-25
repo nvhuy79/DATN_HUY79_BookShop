@@ -23,7 +23,7 @@
                             <div class="mb-3">
                                 <label class="form-floating" for="exampleInputTitle">Tiêu đề</label>
                                 <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="exampleInputTitle"
-                                placeholder="Nhập tên tiêu đề...">
+                                placeholder="Nhập tên tiêu đề..." value="{{ old('title') }}">
                                 @error('title')
                                 <span style="color: red">
                                     {{ $message }}
@@ -34,7 +34,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="description">Chi tiết</label>
                                 <textarea style ="width: 100%" id="description" name="description" cols="90" rows="5"
-                                    placeholder="Nhập dữ liệu..."></textarea>
+                                    placeholder="Nhập dữ liệu...">{{ old('description') }}</textarea>
                             </div>
 
                             <div class="mb-3">

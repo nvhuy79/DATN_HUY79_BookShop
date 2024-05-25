@@ -27,7 +27,7 @@ class AdminController extends Controller
     public function admin_logout()
     {
         Auth::guard('admin')->logout();
-        return redirect()->back()->with('logout_success', 'Bạn đã đăng xuất!.');
+        return redirect()->route('admin_login')->with('logout_success', 'Bạn đã đăng xuất!.');
     }
 
     public function admin_login()

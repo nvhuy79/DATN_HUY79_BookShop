@@ -35,7 +35,8 @@
 
     <nav class="sidebar dark_sidebar">
         <div class="logo d-flex justify-content-between">
-            <a class="large_logo" href="{{ route('category.index') }}"><img src="{{ asset('admin/img/logo1.png') }}" alt></a>
+            <a class="large_logo" href="{{ route('category.index') }}"><img src="{{ asset('admin/img/logo1.png') }}"
+                    alt></a>
             {{-- <a class="small_logo" href="index-2.html"><img src="img/mini_logo.png" alt></a> --}}
             <div class="sidebar_close_icon d-lg-none">
                 <i class="ti-close"></i>
@@ -45,14 +46,15 @@
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="img/menu-icon/1.svg" alt>
+                        <img src="{{ asset('admin/img/menu-icon/1.svg') }}" alt>
                     </div>
                     <div class="nav_title">
                         <span>Tài khoản</span>
                     </div>
                 </a>
                 <ul>
-                    <li><a href="index_3.html">Đổi mật khẩu</a></li>
+                    <li><a href="{{ route('admin_add') }}">Thêm tài khoản</a></li>
+                    <li><a href="{{ route('admin_logout') }}">Danh sách tài khoản</a></li>
                     <li><a href="{{ route('admin_logout') }}">Đăng xuất</a></li>
                 </ul>
             </li>
@@ -69,7 +71,7 @@
                 </a>
                 <ul>
                     <li><a href="{{ route('category.index') }}">Danh sách danh mục</a></li>
-                    <li><a href="#">Thêm mới danh mục</a></li>
+                    <li><a href="{{ route('category.create') }}">Thêm mới danh mục</a></li>
                 </ul>
             </li>
 
@@ -186,13 +188,13 @@
                                     <img src="{{ asset('admin/img/transfer/4.png') }}" alt="#">
                                 </div>
                                 <div class="author_name">
-                                    <h4 class="f_s_15 f_w_500 mb-0">{{ Auth()->guard('admin')->name }}</h4>
+                                    <h4 class="f_s_15 f_w_500 mb-0">{{ Auth::guard('admin')->user()->name }}</h4>
                                     <p class="f_s_12 f_w_400">Quản trị viên</p>
                                 </div>
                                 <div class="profile_info_iner">
                                     <div class="profile_author_name">
                                         <p>Quản trị viên</p>
-                                        <h5>{{ Auth()->guard('admin')->name }}</h5>
+                                        <h5>{{ Auth::guard('admin')->user()->name }}</h5>
                                     </div>
                                     <div class="profile_info_details">
                                         <a href="#">Tài khoản </a>
@@ -382,7 +384,8 @@
             $.toast({
                 heading: 'Thành công!',
                 text: '{{ session('success') }}',
-                showHideTransition: 'slide',
+                position: 'top-center',
+                stack: false,
                 icon: 'success'
             });
         </script>
@@ -397,5 +400,11 @@
         </script>
     @endif
 </body>
+{{-- $.toast({
+    heading: 'Positioning',
+    text: 'Use the predefined ones, or specify a custom position object.',
+    position: 'top-center',
+    stack: false
+}) --}}
 
 </html>

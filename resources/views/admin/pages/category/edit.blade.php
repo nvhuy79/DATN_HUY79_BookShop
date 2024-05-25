@@ -35,7 +35,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="description">Chi tiết</label>
                                 <textarea style ="width: 100%" id="description" name="description" cols="90" rows="5"
-                                    placeholder="Nhập dữ liệu..."></textarea>
+                                    placeholder="Nhập dữ liệu...">{{ old('description', $category->description) }}</textarea>
                             </div>
 
                             <div class="mb-3">
