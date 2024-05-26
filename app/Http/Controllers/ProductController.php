@@ -28,9 +28,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin/pages/product/add', compact('categories'));
+        $products = new Product();
+        return view('admin.pages.product.add', compact('categories', 'products'));
     }
-
     /**
      * Store a newly created resource in storage.
      */

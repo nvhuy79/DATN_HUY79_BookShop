@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
@@ -19,7 +20,7 @@ use App\Http\Controllers\RegisterController;
 |
 */
 // ========================== USER ============================
-Route::get('/', [LoginController::class, 'home'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::prefix('user')->group(function () {
     // Route::get('/home', [LoginController::class, 'home'])->name('home');
     Route::get('/category', [CategoryController::class, 'category'])->name('category');

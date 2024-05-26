@@ -398,6 +398,15 @@
                 icon: 'success',
             });
         </script>
+    @elseif(Session::has('login_success'))
+        <script>
+            $.toast({
+                heading: 'Thành công!',
+                text: '{{ session('login_success') }}',
+                showHideTransition: 'slide',
+                icon: 'success',
+            });
+        </script>
     @endif
 </body>
 {{-- $.toast({

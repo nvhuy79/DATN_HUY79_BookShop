@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function home(){
-        return view('user/pages/home');
-    }
+   
     public function login(){
         return view('user/pages/login');
     }

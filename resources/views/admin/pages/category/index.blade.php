@@ -44,7 +44,6 @@
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->description }}</td>
-                                            {{-- <td>{{ $item->parent_id }}</td> --}}
                                             <td>{{ $item->parent ? $item->parent->title : '' }}</td>
                                             <td>{!! $item->status ? '<span class="status_btn">Hiển thị</span>' : '<span class="status_btn red_btn" >Ẩn</span>' !!}</td>
                                             <td>{{ $item->created_at }}</td>
@@ -61,7 +60,7 @@
                                             </td>
                                         </tr>
                                     @empty
-                                        <span>Chưa có dữ liệu</span>
+                                          <td colspan="7" class="text-center">Chưa có dữ liệu</td>
                                     @endforelse
                                 </tbody>
                             </table>

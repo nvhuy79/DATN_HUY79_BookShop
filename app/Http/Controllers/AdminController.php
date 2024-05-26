@@ -58,7 +58,7 @@ class AdminController extends Controller
                 ->withInput();
         }
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('admin_home')->with('success', 'Đăng nhập thành công!');
+            return redirect()->route('admin_home')->with('login_success', 'Đăng nhập thành công!');
         }
         return redirect()->back()->withInput()->with('error', 'Đăng nhập thất bại. Vui lòng kiểm tra lại email, mật khẩu.');
     }

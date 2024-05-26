@@ -85,6 +85,20 @@
                                 </select>
                             </div>
 
+                            <div class="mb-3">
+                                <label class="form-label">Sản phẩm nổi bật</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="featured" id="featured1"
+                                        value="1" {{ $products->featured == 1 ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="featured1">Có</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="featured" id="featured0"
+                                        value="0" {{ $products->featured == 0 ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="featured0">Không</label>
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn btn-primary" style="margin-top: 3%;">Thêm mới</button>
                         </form>
                     </div>

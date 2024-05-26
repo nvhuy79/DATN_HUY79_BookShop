@@ -35,6 +35,7 @@
                                         <th scope="col">Danh mục</th>
                                         <th scope="col">Ảnh</th>
                                         <th scope="col">Ngày tạo</th>
+                                        <th scope="col">Nổi bật</th>
                                         <th scope="col">Tùy chọn</th>
                                     </tr>
                                 </thead>
@@ -52,6 +53,7 @@
                                                 <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}" alt="" width="100px">
                                             </td>
                                             <td>{{ $item->created_at }}</td>
+                                            <td>{{ $item->featured ? 'Có' : 'Không' }}</td>
                                             <td>
                                                 <div class="action_btns d-flex">
                                                     <a href="{{ route('category.edit', $item) }}" class="action_btn mr_10"><i class="far fa-edit"></i>
