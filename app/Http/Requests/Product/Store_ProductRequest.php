@@ -23,6 +23,7 @@ class Store_ProductRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:categories',
+            'author' => 'required',
             'slug' => 'required|unique:products,slug',
             'price' => 'required|numeric',
             'sale_price' => 'nullable|numeric',
@@ -33,7 +34,8 @@ class Store_ProductRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required' => "Tiêu đề là bắt buộc.",
+            'title.required' => "Hãy nhập tiêu đề.",
+            'author.required' => "Hãy nhập tên tác giả.",
             'title.unique' => "Danh mục  \"$this->title\"  đã tồn tại trong hệ thống.",
             'slug.required' => "Đường dẫn không được để trống.",
             'slug.unique' => "Đường dẫn đã tồn tại.",

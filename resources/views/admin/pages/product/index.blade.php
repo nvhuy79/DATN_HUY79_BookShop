@@ -30,11 +30,11 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Sản phẩm</th>
+                                        <th scope="col">Tác giả</th>
+                                        <th scope="col">Danh mục</th>
                                         <th scope="col">Giá bán</th>
                                         <th scope="col">Giá khuyến mãi</th>
-                                        <th scope="col">Danh mục</th>
                                         <th scope="col">Ảnh</th>
-                                        <th scope="col">Ngày tạo</th>
                                         <th scope="col">Nổi bật</th>
                                         <th scope="col">Tùy chọn</th>
                                     </tr>
@@ -45,20 +45,19 @@
 
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->title }}</td>
+                                            <td>{{ $item->author }}</td>
+                                            <td>{{ $item->category->title }}</td>
                                             <td>{{ $item->price }}</td>
                                             <td>{{ $item->sale_price }}</td>
-                                            {{-- <td>{{ $item->category_id }}</td> --}}
-                                            <td>{{ $item->category->title }}</td>
                                             <td>
                                                 <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}" alt="" width="100px">
                                             </td>
-                                            <td>{{ $item->created_at }}</td>
                                             <td>{{ $item->featured ? 'Có' : 'Không' }}</td>
                                             <td>
                                                 <div class="action_btns d-flex">
-                                                    <a href="{{ route('category.edit', $item) }}" class="action_btn mr_10"><i class="far fa-edit"></i>
+                                                    <a href="{{ route('product.edit', $item) }}" class="action_btn mr_10"><i class="far fa-edit"></i>
                                                     </a>
-                                                    <form action="{{ route('category.destroy', $item) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')">
+                                                    <form action="{{ route('product.destroy', $item) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="action_btn"><i class="fas fa-trash"></i></button>
@@ -73,7 +72,7 @@
                             </table>
                         </div>
                     </div>
-                    {{-- <nav aria-label="Page navigation examplee">
+                    <nav aria-label="Page navigation examplee">
                         <ul class="pagination">
 
                             @if ($products->onFirstPage())
@@ -106,7 +105,7 @@
                                 <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
                             @endif
                         </ul>
-                    </nav> --}}
+                    </nav>
                 </div>
             </div>
         </div>

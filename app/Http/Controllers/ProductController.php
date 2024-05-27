@@ -8,6 +8,7 @@ use App\Models\ImageProduct;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\Store_ProductRequest;
+use App\Http\Requests\Product\Update_ProductRequest;
 
 class ProductController extends Controller
 {
@@ -16,9 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = Product::all();
-        // return view('admin/pages/product/index',compact('products'));
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->paginate(8);
         return view('admin/pages/product/index', compact('products'));
     }
 
@@ -73,24 +72,31 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        return view('admin/pages/product/edit', compact('categories', 'product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Update_ProductRequest $request, Product $product)
     {
-        //
+        try {
+            $product->update($request->all());
+            return redirect()->route('product.index')->with('success','Cập nhật thành công!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error','Cập nhật  thất bại!');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('product.index')->with('success', 'Danh mục đã được xóa thành công.');
     }
 }
