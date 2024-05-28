@@ -63,6 +63,7 @@ html, body {
   height: 100%;
 }
 
+
 body {
   background-color:#F7F5EE;
   line-height: 24px;
@@ -5716,6 +5717,16 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   -webkit-transition: 0.9s;
   transition: 0.9s;
 }
+
+/* Thiết lập kích thước cố định cho các hình ảnh */
+.product-image {
+  width: 200px; /* Chiều rộng cố định */
+  height: 400px; /* Chiều cao cố định */
+  object-fit: cover; /* Hiển thị hình ảnh mà không làm thay đổi tỷ lệ */
+}
+
+
+
 .single-product__image > a img:nth-child(1) {
   visibility: visible;
   opacity: 1;

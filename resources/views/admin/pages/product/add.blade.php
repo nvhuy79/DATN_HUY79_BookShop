@@ -32,7 +32,8 @@
                                 <div class="col-md-6">
                                     <label class="form-floating" for="exampleInputSlug">Tác giả</label>
                                     <input type="text" name="author"
-                                        class="form-control @error('author') is-invalid @enderror" id="author" placeholder="Nhập tên tác giả...">
+                                        class="form-control @error('author') is-invalid @enderror" id="author"
+                                        placeholder="Nhập tên tác giả...">
                                     @error('author')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -41,31 +42,32 @@
 
                             <div class="mb-3">
                                 <label class="form-floating" for="exampleInputSlug">Đường dẫn</label>
-                                    <input type="text" name="slug"
-                                        class="form-control @error('slug') is-invalid @enderror" id="slug">
-                                    @error('slug')
+                                <input type="text" name="slug"
+                                    class="form-control @error('slug') is-invalid @enderror" id="slug">
+                                @error('slug')
+                                    <span style="color: red">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-floating" for="exampleInputPrice">Giá sản phẩm</label>
+                                    <input type="text" name="price"
+                                        class="form-control @error('price') is-invalid @enderror" id="exampleInputPrice"
+                                        placeholder="Nhập giá sản phẩm...">
+                                    @error('price')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-floating" for="exampleInputPrice">Giá sản phẩm</label>
-                                <input type="text" name="price"
-                                    class="form-control @error('price') is-invalid @enderror" id="exampleInputPrice"
-                                    placeholder="Nhập giá sản phẩm...">
-                                @error('price')
-                                    <span style="color: red">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-floating" for="exampleInputSalePrice">Giá khuyến mãi</label>
-                                <input type="text" name="sale_price"
-                                    class="form-control @error('sale_price') is-invalid @enderror"
-                                    id="exampleInputSalePrice" placeholder="Nhập giá khuyến mãi...">
-                                @error('sale_price')
-                                    <span style="color: red">{{ $message }}</span>
-                                @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-floating" for="exampleInputSalePrice">Giá khuyến mãi</label>
+                                    <input type="text" name="sale_price"
+                                        class="form-control @error('sale_price') is-invalid @enderror"
+                                        id="exampleInputSalePrice" placeholder="Nhập giá khuyến mãi...">
+                                    @error('sale_price')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="mb-3">

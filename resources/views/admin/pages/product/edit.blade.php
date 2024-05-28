@@ -35,7 +35,8 @@
                                 <div class="col-md-6">
                                     <label class="form-floating" for="exampleInputSlug">Tác giả</label>
                                     <input type="text" name="author"
-                                        class="form-control @error('author') is-invalid @enderror" id="author" placeholder="Nhập tên tác giả..." value="{{ old('slug', $product->author) }}">
+                                        class="form-control @error('author') is-invalid @enderror" id="author"
+                                        placeholder="Nhập tên tác giả..." value="{{ old('slug', $product->author) }}">
                                     @error('author')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -44,45 +45,59 @@
 
                             <div class="mb-3">
                                 <label class="form-floating" for="exampleInputSlug">Đường dẫn</label>
-                                    <input type="text" name="slug"
-                                        class="form-control @error('slug') is-invalid @enderror" id="slug"
-                                        value="{{ old('slug', $product->slug) }}">
-                                    @error('slug')
+                                <input type="text" name="slug"
+                                    class="form-control @error('slug') is-invalid @enderror" id="slug"
+                                    value="{{ old('slug', $product->slug) }}">
+                                @error('slug')
+                                    <span style="color: red">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-floating" for="exampleInputPrice">Giá sản phẩm</label>
+                                    <input type="text" name="price"
+                                        class="form-control @error('price') is-invalid @enderror" id="exampleInputPrice"
+                                        placeholder="Nhập giá sản phẩm..." value="{{ old('price', $product->price) }}">
+                                    @error('price')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-floating" for="exampleInputSalePrice">Giá khuyến mãi</label>
+                                    <input type="text" name="sale_price"
+                                        class="form-control @error('sale_price') is-invalid @enderror"
+                                        id="exampleInputSalePrice" placeholder="Nhập giá khuyến mãi..."
+                                        value="{{ old('sale_price', $product->sale_price) }}">
+                                    @error('sale_price')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-floating" for="exampleInputPrice">Giá sản phẩm</label>
-                                <input type="text" name="price"
-                                    class="form-control @error('price') is-invalid @enderror" id="exampleInputPrice"
-                                    placeholder="Nhập giá sản phẩm..." value="{{ old('price', $product->price) }}">
-                                @error('price')
-                                    <span style="color: red">{{ $message }}</span>
-                                @enderror
+                                <label for="image" class="form-label">Ảnh sản phẩm</label>
+                                <input type="file" class="form-control" id="image" name="image">
+                                @if ($product->image)
+                                    <img src="{{ asset('storage/admin/images/' . $product->image) }}" alt=""
+                                        width="100px">
+                                @endif
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-floating" for="exampleInputSalePrice">Giá khuyến mãi</label>
-                                <input type="text" name="sale_price"
-                                    class="form-control @error('sale_price') is-invalid @enderror"
-                                    id="exampleInputSalePrice" placeholder="Nhập giá khuyến mãi..."
-                                    value="{{ old('sale_price', $product->sale_price) }}">
-                                @error('sale_price')
-                                    <span style="color: red">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="formFileProductImage" class="form-floating">Ảnh sản phẩm</label>
-                                <input class="form-control" type="file" id="formFileProductImage" name="product_image">
-                            </div>
-
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="formFileDescImage" class="form-floating">Ảnh mô tả</label>
                                 <input class="form-control" type="file" id="formFileDescImage" name="desc_image[]"
                                     multiple>
+                            </div> --}}
+
+                            <div class="mb-3">
+                                <label for="formFileDescImage" class="form-floating">Ảnh mô tả</label>
+                                <input class="form-control" type="file" id="formFileDescImage" name="desc_image[]" multiple>
+                                @foreach($product->images as $image)
+                                    <img src="{{ asset('storage/admin/images/' . $image->image) }}" alt="" width="100px">
+                                @endforeach
                             </div>
+
 
                             <div class="mb-3">
                                 <label class="form-floating" for="exampleInputDescription">Mô tả sản phẩm</label>
