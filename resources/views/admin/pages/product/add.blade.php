@@ -24,7 +24,7 @@
                                     <label class="form-floating" for="exampleInputTitle">Tên sản phẩm</label>
                                     <input type="text" name="title"
                                         class="form-control @error('title') is-invalid @enderror" id="title_product"
-                                        placeholder="Nhập tên tiêu đề..." onkeyup="ChangeToSlug()">
+                                        placeholder="Nhập tên tiêu đề..." onkeyup="ChangeToSlug()" value="{{ old('title') }}">
                                     @error('title')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -33,7 +33,7 @@
                                     <label class="form-floating" for="exampleInputSlug">Tác giả</label>
                                     <input type="text" name="author"
                                         class="form-control @error('author') is-invalid @enderror" id="author"
-                                        placeholder="Nhập tên tác giả...">
+                                        placeholder="Nhập tên tác giả..." value="{{ old('author') }}">
                                     @error('author')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -43,7 +43,7 @@
                             <div class="mb-3">
                                 <label class="form-floating" for="exampleInputSlug">Đường dẫn</label>
                                 <input type="text" name="slug"
-                                    class="form-control @error('slug') is-invalid @enderror" id="slug">
+                                    class="form-control @error('slug') is-invalid @enderror" id="slug" value="{{ old('slug') }}">
                                 @error('slug')
                                     <span style="color: red">{{ $message }}</span>
                                 @enderror
@@ -54,7 +54,7 @@
                                     <label class="form-floating" for="exampleInputPrice">Giá sản phẩm</label>
                                     <input type="text" name="price"
                                         class="form-control @error('price') is-invalid @enderror" id="exampleInputPrice"
-                                        placeholder="Nhập giá sản phẩm...">
+                                        placeholder="Nhập giá sản phẩm..." value="{{ old('price') }}">
                                     @error('price')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -63,7 +63,7 @@
                                     <label class="form-floating" for="exampleInputSalePrice">Giá khuyến mãi</label>
                                     <input type="text" name="sale_price"
                                         class="form-control @error('sale_price') is-invalid @enderror"
-                                        id="exampleInputSalePrice" placeholder="Nhập giá khuyến mãi...">
+                                        id="exampleInputSalePrice" placeholder="Nhập giá khuyến mãi..." value="{{ old('sale_price') }}">
                                     @error('sale_price')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -72,7 +72,10 @@
 
                             <div class="mb-3">
                                 <label for="formFileProductImage" class="form-floating">Ảnh sản phẩm</label>
-                                <input class="form-control" type="file" id="formFileProductImage" name="product_image">
+                                <input class="form-control" type="file" id="formFileProductImage" name="product_image" value="{{ old('product_image') }}">
+                                @error('product_image')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
                             </div>
 
                             <div class="mb-3">
@@ -83,7 +86,7 @@
 
                             <div class="mb-3">
                                 <label class="form-floating" for="exampleInputDescription">Mô tả sản phẩm</label>
-                                <textarea name="description" id="editor1" rows="10" cols="80">Hãy nhập mô tả chi tiết sản phẩm.</textarea>
+                                <textarea name="description" id="editor1" rows="10" cols="80" value="{{ old('description') }}">Hãy nhập mô tả chi tiết sản phẩm.</textarea>
                             </div>
 
                             <div class="mb-3">

@@ -80,44 +80,44 @@ class ProductController extends Controller
     }
 
     public function update(Update_ProductRequest $request, Product $product, ImageProduct $imageProduct)
-{
-    try {
-        // Xử lý các trường không phải là file ảnh
-        $data = $request->except('image');
+    {
+        try {
+            // Xử lý các trường không phải là file ảnh
+            $data = $request->except('image');
 
-        // Xử lý file ảnh nếu có upload ảnh mới
-        if ($request->hasFile('image')) {
-            if ($product->image) {
-                Storage::delete('public/admin/images/' . $product->image);
+            // Xử lý file ảnh nếu có upload ảnh mới
+            if ($request->hasFile('image')) {
+                if ($product->image) {
+                    Storage::delete('public/admin/images/' . $product->image);
+                }
+
+                // Lưu ảnh mới
+                $imageName = time() . '.' . $request->image->extension();
+                $request->image->storeAs('public/admin/images', $imageName);
+                $data['image'] = $imageName;
             }
 
-            // Lưu ảnh mới
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('public/admin/images', $imageName);
-            $data['image'] = $imageName;
-        }
+            $product->update($data);
 
-        $product->update($data);
+            // Xử lý các ảnh mô tả sản phẩm nếu có
+            if ($request->hasFile('desc_image')) {
+                foreach ($request->file('desc_image') as $image) {
+                    $imageName = time() . '_' . $image->getClientOriginalName();
+                    $image->storeAs('public/admin/images', $imageName);
 
-         // Xử lý các ảnh mô tả sản phẩm nếu có
-         if ($request->hasFile('desc_image')) {
-            foreach ($request->file('desc_image') as $image) {
-                $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->storeAs('public/admin/images', $imageName);
-
-                // Tạo mới ImageProduct
-                $newImageProduct = new ImageProduct();
-                $newImageProduct->product_id = $product->id;
-                $newImageProduct->image = $imageName;
-                $newImageProduct->save();
+                    // Tạo mới ImageProduct
+                    $newImageProduct = new ImageProduct();
+                    $newImageProduct->product_id = $product->id;
+                    $newImageProduct->image = $imageName;
+                    $newImageProduct->save();
+                }
             }
-        }
 
-        return redirect()->route('product.index')->with('success', 'Cập nhật thành công!');
-    } catch (\Throwable $th) {
-        return redirect()->back()->with('error', 'Cập nhật thất bại!');
+            return redirect()->route('product.index')->with('success', 'Cập nhật thành công!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Cập nhật thất bại!');
+        }
     }
-}
 
 
     /**

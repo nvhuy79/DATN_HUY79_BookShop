@@ -11,16 +11,17 @@ class Product extends Model
     protected $fillable = [
         'title',
         'author',
-        'price',	
-    	'sale_price',    
-        'image',	
-        'category_id',	
+        'price',
+        'sale_price',
+        'image',
+        'category_id',
         'slug',
         'description',
         'featured'
     ];
 
-    public function category() {
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
@@ -28,5 +29,4 @@ class Product extends Model
     {
         return $this->hasMany(ImageProduct::class);
     }
-    
 }

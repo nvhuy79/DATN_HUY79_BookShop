@@ -28,25 +28,24 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Sản phẩm</th>
-                                        <th scope="col">Tác giả</th>
-                                        <th scope="col">Danh mục</th>
-                                        <th scope="col">Giá bán</th>
-                                        <th scope="col">Giá khuyến mãi</th>
-                                        <th scope="col">Ảnh</th>
-                                        <th scope="col">Nổi bật</th>
-                                        <th scope="col">Tùy chọn</th>
+                                        <th scope="col" style="width: 5%;">ID</th>
+                                        <th scope="col" style="width: 15%;">Sản phẩm</th>
+                                        <th scope="col" style="width: 15%;">Tác giả</th>
+                                        <th scope="col" style="width: 15%;">Danh mục</th>
+                                        <th scope="col" style="width: 10%;">Giá bán</th>
+                                        <th scope="col" style="width: 10%;">Giá khuyến mãi</th>
+                                        <th scope="col" style="width: 15%;">Ảnh</th>
+                                        <th scope="col" style="width: 5%;">Nổi bật</th>
+                                        <th scope="col" style="width: 10%;">Tùy chọn</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-group-divider">
                                     @forelse ($products as $item)
                                         <tr>
-
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->title }}</td>
-                                            <td>{{ $item->author }}</td>
-                                            <td>{{ $item->category->title }}</td>
+                                            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->title }}</td>
+                                            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->author }}</td>
+                                            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->category->title }}</td>
                                             <td>{{ $item->price }}</td>
                                             <td>{{ $item->sale_price }}</td>
                                             <td>

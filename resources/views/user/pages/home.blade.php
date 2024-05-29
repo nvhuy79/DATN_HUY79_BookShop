@@ -201,21 +201,18 @@
 
                             <!--=======  single product content  =======-->
                             <div class="single-product__content">
-                                <div class="single-product__variations">
-                                    <div class="color-container">
-                                        <span class="black"></span>
-                                        <span class="blue"></span>
-                                        <span class="yellow"></span>
-                                    </div>
-                                    <!-- <a href="#" class="clear-link">clear</a> -->
-                                </div>
                                 <div class="title">
-                                    <h3> <a href="shop-product-basic.html">High-waist Trousers</a></h3>
-                                    <a href="#">Select options</a>
+                                    <h3 style="font-weight: bold;"> <a href="shop-product-basic.html">{{ $item->title }}</a></h3>
+                                    <h5> <a href="shop-product-basic.html">{{ $item->category->title }}</a></h5>
+                                    <a href="#">Thêm vào giỏ hàng</a>
                                 </div>
                                 <div class="price">
-                                    <span class="main-price discounted">$160.00</span>
-                                    <span class="discounted-price">$180.00</span>
+                                    @if ($item->sale_price && $item->sale_price < $item->price)
+                                        <span class="main-price discounted">{{ number_format($item->price)}}đ</span>
+                                        <span class="discounted-price" style="color: red">{{number_format($item->sale_price)}}đ</span>
+                                    @else
+                                        <span class="main-price">{{ $item->price }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
