@@ -45,10 +45,10 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                    <label class="form-floating" for="password_confirmation">Xác nhận mật khẩu</label>
-                                    <input type="password" name="password_confirmation"
-                                        class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation"
-                                        placeholder="Nhập mật khẩu của bạn...">
+                                <label class="form-floating" for="password_confirmation">Xác nhận mật khẩu</label>
+                                <input type="password" name="password_confirmation"
+                                    class="form-control @error('password_confirmation') is-invalid @enderror"
+                                    id="password_confirmation" placeholder="Nhập mật khẩu của bạn...">
                             </div>
                             <div class=" cs_check_box">
                                 <input type="checkbox" id="check_box" class="common_checkbox">

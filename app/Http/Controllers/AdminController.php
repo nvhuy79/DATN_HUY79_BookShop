@@ -69,6 +69,11 @@ class AdminController extends Controller
     public function admin_add()
     {
         // if (Auth::guard('admin')->check()) {
+            // $user = Auth::guard('admin')->user();
+        
+            // Truyền thông tin người dùng sang view
+            // return view('admin/pages/admin_add', compact('user'));
+
             return view('admin/pages/admin_add');
         // }
         // return redirect()->route('admin_login');

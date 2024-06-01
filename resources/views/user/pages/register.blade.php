@@ -26,17 +26,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 mt-40 mb-40">
-                                <input type="text" id="regis_name" placeholder="Họ và tên" name="first_name"
-                                    value="{{ old('name') }}">
-                                @error('name')
-                                    <span style="color: red">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="col-lg-12 mt-40 mb-40">
-                                <input type="text" id="regis_name" placeholder="Họ và tên" name="last_name"
+                                <input type="text" id="regis_name" placeholder="Nhập vào họ tên của bạn" name="name"
                                     value="{{ old('name') }}">
                                 @error('name')
                                     <span style="color: red">

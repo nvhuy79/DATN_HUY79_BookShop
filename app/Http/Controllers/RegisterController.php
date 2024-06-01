@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
     public function register()
     {
-        return view('user/pages/register');
+        $categories = Category::all();
+        return view('user/pages/register',compact('categories'));
     }
 
     public function post_register(Request $request)

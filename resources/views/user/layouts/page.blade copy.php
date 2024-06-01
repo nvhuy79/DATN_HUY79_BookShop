@@ -23,9 +23,10 @@
 </head>
 
 <body>
+    <!--=======================- Header wide topbar =============-->
     <header class="header header-box-topbar header-sticky">
-        <div class="header-bottom pt-40   pb-md-40  pb-sm-40">
-            <div class="container">
+        <div class="header-bottom pt-40 pb-md-40  pb-sm-40">
+            <div class="container wide">
                 <div class="header-bottom-container">
                     <div class="language-currency-change-container">
                         <div class="language-change change-dropdown d-none d-lg-block">
@@ -40,7 +41,6 @@
                                 @endif
                             </ul>
                         </div>
-
                     </div>
                     <div class="logo-with-offcanvas">
                         <div class="logo">
@@ -48,7 +48,6 @@
                                 <img src="{{ asset('user/images/logo1.png') }}" class="img-fluid" alt="">
                             </a>
                         </div>
-
                     </div>
                     <div class="header-right-container">
                         <div class="header-right-icons d-flex justify-content-end align-items-center h-100">
@@ -90,18 +89,15 @@
                     <!--=======  End of headeer right container  =======-->
 
                     <!--=======  header bottom navigation  =======-->
-
                     <div class="header-bottom-navigation">
                         <div class="site-main-nav d-none d-lg-block">
                             <nav class="site-nav center-menu">
                                 <ul>
                                     <li class="menu-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                                    <li class="menu-item-has-children"><a href="#">Danh
-                                            mục</a>
+                                    <li class="menu-item-has-children"><a href="{{ route('category') }}">Danh mục</a>
                                         <ul class="sub-menu single-column-menu">
-                                            @foreach($categories as $item)
-                                            <li><a href="#">{{ $item->title }}</a></li>
-                                        @endforeach
+                                            <li><a href="$">About Us</a></li>
+                                            <li><a href="$">About Us 2</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item"><a href="javascript:void(0)">Mới phát hành</a></li>
@@ -112,10 +108,9 @@
                         </div>
                     </div>
                 </div>
+                <!--==============  End of header =====================-->
 
-                <!--=======  End of header bottom container  =======-->
-
-                <!-- Mobile Navigation -->
+                <!--===================== Mobile =====================-->
                 <div class="site-mobile-navigation d-block d-lg-none">
                     <div id="dl-menu" class="dl-menuwrapper site-mobile-nav">
                         <button class="dl-trigger hamburger hamburger--spin">
@@ -123,7 +118,7 @@
                                 <span class="hamburger-inner"></span>
                             </span>
                         </button>
-                        <!--Site Mobile Menu Toggle End-->
+
                         <ul class="dl-menu dl-menu-toggle">
                             <li class=""><a href="{{ route('home') }}">Trang chủ</a></li>
                             <li><a href="#">Danh mục</a>
@@ -148,24 +143,9 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Mobile Navigation End  -->
             </div>
         </div>
-
-
-        <!--=======  about overlay  =======-->
-        <div class="header-offcanvas about-overlay" id="about-overlay">
-            <div class="overlay-close inactive"></div>
-            <div class="overlay-content">
-                <span class="close-icon" id="about-close-icon">
-                    <a href="javascript:void(0)">
-                        <i class="ti-close"></i>
-                    </a>
-                </span>
-            </div>
-        </div>
-
-        <!--=======  wishlist overlay  =======-->
+        <!--=====================  overlay  ===============================-->
         <div class="wishlist-overlay" id="wishlist-overlay">
             <div class="wishlist-overlay-close inactive"></div>
             <div class="wishlist-overlay-content">
@@ -174,6 +154,7 @@
                         <i class="ion-android-close"></i>
                     </a>
                 </span>
+                <!--=====================  Wishlist  =====================-->
                 <div class="offcanvas-cart-content-container">
                     <h3 class="cart-title">Yêu thích</h3>
                     <div class="cart-product-wrapper">
@@ -203,8 +184,9 @@
                 </div>
             </div>
         </div>
+        <!--=====================  End of wishlist  ============================-->
 
-        <!--=======  cart overlay  =======-->
+        <!--=====================  cart overlay  ===============================-->
         <div class="cart-overlay" id="cart-overlay">
             <div class="cart-overlay-close inactive"></div>
             <div class="cart-overlay-content">
@@ -251,8 +233,10 @@
             </div>
         </div>
 
+        <!--=====================  End of cart  =====================-->
 
-        <!--=======  search overlay  =======-->
+
+        <!--============================  search  ============================-->
         <div class="search-overlay" id="search-overlay">
             <span class="close-icon search-close-icon">
                 <a href="javascript:void(0)" id="search-close-icon">
@@ -270,98 +254,17 @@
                 </div>
             </div>
         </div>
-        <!--=============================================
-            =            quick view         =
-            =============================================-->
-
-        <div id="qv-1" class="cd-quick-view">
-            <div class="cd-slider-wrapper">
-                <ul class="cd-slider">
-                    <li class="selected"><img src="assets/images/products/cloth-1-2-600x800.jpg" alt="Product 2">
-                    </li>
-                    <li><img src="assets/images/products/cloth-1-1-600x800.jpg" alt="Product 1"></li>
-                </ul> <!-- cd-slider -->
-
-                <ul class="cd-slider-pagination">
-                    <li class="active"><a href="#0">1</a></li>
-                    <li><a href="#1">2</a></li>
-                </ul> <!-- cd-slider-pagination -->
-
-                <ul class="cd-slider-navigation">
-                    <li><a class="cd-prev" href="#0">Prev</a></li>
-                    <li><a class="cd-next" href="#0">Next</a></li>
-                </ul> <!-- cd-slider-navigation -->
-            </div> <!-- cd-slider-wrapper -->
-
-            <div class="lezada-item-info cd-item-info ps-scroll">
-
-                <h2 class="item-title">High Waist Trousers</h2>
-                <p class="price">
-                    <span class="main-price discounted">$360.00</span>
-                    <span class="discounted-price">$300.00</span>
-                </p>
-
-                <p class="description">Hurley Dry-Fit Chino Short. Men's chino short. Outseam Length: 19 Dri-FIT
-                    Technology helps
-                    keep you dry and comfortable. Made with sweat-wicking fabric. Fitted waist with belt loops.
-                    Button waist with
-                    zip fly provides a classic look and feel .</p>
-
-                <span class="quickview-title">Quantity:</span>
-                <div class="pro-qty d-inline-block mb-40">
-                    <input type="text" value="1">
-                </div>
-
-                <div class="add-to-cart-btn mb-25">
-
-                    <button class="lezada-button lezada-button--medium">add to cart</button>
-                </div>
-
-                <div class="quick-view-other-info">
-                    <table>
-                        <tr class="single-info">
-                            <td class="quickview-title">SKU: </td>
-                            <td class="quickview-value">12345</td>
-                        </tr>
-                        <tr class="single-info">
-                            <td class="quickview-title">Categories: </td>
-                            <td class="quickview-value">
-                                <a href="#">Fashion</a>,
-                                <a href="#">Men</a>,
-                                <a href="#">Sunglasses</a>
-                            </td>
-                        </tr>
-                        <tr class="single-info">
-                            <td class="quickview-title">Tags: </td>
-                            <td class="quickview-value">
-                                <a href="#">Fashion</a>,
-                                <a href="#">Men</a>
-                            </td>
-                        </tr>
-                        <tr class="single-info">
-                            <td class="quickview-title">Share on: </td>
-                            <td class="quickview-value">
-                                <ul class="quickview-social-icons">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
-
-            </div> <!-- cd-item-info -->
-            <a href="#0" class="cd-close">Close</a>
-        </div>
     </header>
+    <!--======================= End of Header wide topbar ========================-->
 
+    <!--============= Content ===========-->
     <main class="py-4">
         @yield('content')
     </main>
+    <!--====== End of Content ===========-->
 
+
+    <!--=============== footer ==================-->
     <div class="footer-container footer-one pt-100 pb-50">
         <div class="container wide">
             <div class="row">
@@ -379,8 +282,7 @@
                         <nav>
                             <ul>
                                 <li><a href="#">Mua sắm online - Đơn giản và tiết kiệm</a></li>
-                                <li><a href="#">Địa chỉ: 175 P. Tây Sơn, Trung Liệt, Đống Đa, Hà Nội
-                                        116705</a>
+                                <li><a href="#">Địa chỉ: 175 P. Tây Sơn, Trung Liệt, Đống Đa, Hà Nội 116705</a>
                                 </li>
                                 <li><a href="#">SDT: 0902231050</a></li>
                                 <li><a href="#">Email: 2051063588@e.tlu.edu.vn</a></li>
@@ -404,10 +306,8 @@
                     <div class="footer-nav-container footer-social-links">
                         <nav>
                             <ul>
-                                <li><a href="http://facebook.com/"> <i class="fa fa-facebook"></i> Facebook</a>
-                                </li>
-                                <li><a href="http://instagram.com/"><i class="fa fa-instagram"></i> Instagram</a>
-                                </li>
+                                <li><a href="http://facebook.com/"> <i class="fa fa-facebook"></i> Facebook</a></li>
+                                <li><a href="http://instagram.com/"><i class="fa fa-instagram"></i> Instagram</a></li>
                                 <li><a href="http://youtube.com/"> <i class="fa fa-youtube"></i> Youtube</a></li>
                             </ul>
                         </nav>
@@ -417,14 +317,16 @@
                     <div class="footer-subscription-widget">
                         <h2 class="footer-subscription-title">Khám phá.</h2>
                         {{-- <div class="img">
-                                    <img src="{{ asset('{{asset('user/images/logo1.png') }}" alt="">
-                                </div> --}}
+                            <img src="{{ asset('{{asset('user/images/logo1.png') }}" alt="">
+                        </div> --}}
                         <p class="subscription-subtitle">Tận hưởng thế giới đang chờ đợi trong từng trang sách.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!--=================  End of footer ==================-->
+
 
     <a href="#" class="scroll-top"></a>
     <script src="{{ asset('user/js/vendor/jquery.min.js') }}"></script>
@@ -486,6 +388,9 @@
             });
         </script>
     @endif
+
+
+
 </body>
 
 </html>

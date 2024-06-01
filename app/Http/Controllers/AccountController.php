@@ -11,6 +11,7 @@ class AccountController extends Controller
 {
     public function profile()
     {
+        
         return view('user/pages/profile');
     }
 

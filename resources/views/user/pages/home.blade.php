@@ -161,14 +161,14 @@
     <div class="product-carousel-container mb-70">
         <div class="container">
             <div class="row">
-                @foreach ($featureProducts as $item)
+                @foreach ($newProducts as $item)
                     <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
 
                         <div class="single-product">
                             <div class="single-product__image">
-                                <a class="image-wrap" href="shop-product-basic.html">
-                                    <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}" class="img-fluid product-image"
-                                        alt="">
+                                <a class="image-wrap" href="{{ route('detail_product',$item->slug) }}">
+                                    <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
+                                        class="img-fluid product-image" alt="">
                                 </a>
 
                                 <div class="single-product__floating-badges">
@@ -176,7 +176,10 @@
                                         data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
                                         data-tippy-theme="sharpborder" data-tippy-placement="right"><i
                                             class="ion-android-sad"></i></span>
-                                    <span class="onsale">-10%</span>
+                                    @if ($item->sale_price && $item->sale_price < $item->price)
+                                        <span
+                                            class="onsale">-{{ calculateDiscountPercentage($item->price, $item->sale_price) }}%</span>
+                                    @endif
                                     <span class="hot">hot</span>
                                 </div>
 
@@ -202,16 +205,18 @@
                             <!--=======  single product content  =======-->
                             <div class="single-product__content">
                                 <div class="title">
-                                    <h3 style="font-weight: bold;"> <a href="shop-product-basic.html">{{ $item->title }}</a></h3>
+                                    <h3 style="font-weight: bold;"> <a
+                                            href="shop-product-basic.html">{{ $item->title }}</a></h3>
                                     <h5> <a href="shop-product-basic.html">{{ $item->category->title }}</a></h5>
                                     <a href="#">Thêm vào giỏ hàng</a>
                                 </div>
                                 <div class="price">
                                     @if ($item->sale_price && $item->sale_price < $item->price)
-                                        <span class="main-price discounted">{{ number_format($item->price)}}đ</span>
-                                        <span class="discounted-price" style="color: red">{{number_format($item->sale_price)}}đ</span>
+                                        <span class="main-price discounted">{{ number_format($item->price) }}đ</span>
+                                        <span class="discounted-price"
+                                            style="color: red">{{ number_format($item->sale_price) }}đ</span>
                                     @else
-                                        <span class="main-price">{{ $item->price }}</span>
+                                        <span class="main-price">{{ number_format($item->price) }}đ</span>
                                     @endif
                                 </div>
                             </div>
@@ -221,11 +226,105 @@
                 @endforeach
             </div>
 
+
+
             <div class="row">
                 <div class="col-lg-12 text-center mb-25 mt-30">
                     <a class="lezada-loadmore-button" href="#"><i class="ion-ios-plus-empty"></i> LOAD MORE ...</a>
                 </div>
             </div>
         </div>
+
+
+        <div class="section-title-container mt-80 mb-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title section-title--one text-center">
+                            <h1>Sản phẩm mới phát hành</h1>
+                            <p>Browse our top rated products to catch up with the trend.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="product-carousel-container mb-70">
+            <div class="container">
+                <div class="row">
+                    @foreach ($featureProducts as $item)
+                        <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
+    
+                            <div class="single-product">
+                                <div class="single-product__image">
+                                    <a class="image-wrap" href="{{ route('detail_product',$item->slug) }}">
+                                        <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
+                                            class="img-fluid product-image" alt="">
+                                    </a>
+    
+                                    <div class="single-product__floating-badges">
+                                        <span class="out-of-stock" data-tippy="Out of stock" data-tippy-inertia="true"
+                                            data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                            data-tippy-theme="sharpborder" data-tippy-placement="right"><i
+                                                class="ion-android-sad"></i></span>
+                                        @if ($item->sale_price && $item->sale_price < $item->price)
+                                            <span
+                                                class="onsale">-{{ calculateDiscountPercentage($item->price, $item->sale_price) }}%</span>
+                                        @endif
+                                        <span class="hot">hot</span>
+                                    </div>
+    
+                                    <div class="single-product__floating-icons">
+                                        <span class="wishlist"><a href="#" data-tippy="Add to wishlist"
+                                                data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                                data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
+                                                data-tippy-placement="left"><i
+                                                    class="ion-android-favorite-outline"></i></a></span>
+    
+                                        <span class="compare"><a href="#" data-tippy="Compare"
+                                                data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                                data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
+                                                data-tippy-placement="left"><i class="ion-ios-shuffle-strong"></i></a></span>
+    
+                                        <span class="quickview"><a class="cd-trigger" href="#qv-1" data-tippy="Quick View"
+                                                data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                                data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
+                                                data-tippy-placement="left"><i class="ion-ios-search-strong"></i></a></span>
+                                    </div>
+                                </div>
+    
+                                <!--=======  single product content  =======-->
+                                <div class="single-product__content">
+                                    <div class="title">
+                                        <h3 style="font-weight: bold;"> <a
+                                                href="shop-product-basic.html">{{ $item->title }}</a></h3>
+                                        <h5> <a href="shop-product-basic.html">{{ $item->category->title }}</a></h5>
+                                        <a href="#">Thêm vào giỏ hàng</a>
+                                    </div>
+                                    <div class="price">
+                                        @if ($item->sale_price && $item->sale_price < $item->price)
+                                            <span class="main-price discounted">{{ number_format($item->price) }}đ</span>
+                                            <span class="discounted-price"
+                                                style="color: red">{{ number_format($item->sale_price) }}đ</span>
+                                        @else
+                                            <span class="main-price">{{ number_format($item->price) }}đ</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                    @endforeach
+                </div>
+    
+                
+    
+                <div class="row">
+                    <div class="col-lg-12 text-center mb-25 mt-30">
+                        <a class="lezada-loadmore-button" href="#"><i class="ion-ios-plus-empty"></i> LOAD MORE ...</a>
+                    </div>
+                </div>
+            </div>
+
     </div>
 @endsection
