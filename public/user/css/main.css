@@ -9633,12 +9633,14 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   color: #aaa;
   text-decoration: line-through;
   margin-right: 10px;
+  font-family: serif;
 }
 .shop-product__price .discounted-price {
-  font-size: 18px;
+  font-size: 24px;
   line-height: 28px;
   font-weight: 600;
   color: #333;
+  font-family: serif;
 }
 .shop-product__short-desc {
   font-size: 15px;

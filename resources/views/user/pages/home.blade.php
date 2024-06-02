@@ -150,7 +150,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title section-title--one text-center">
-                        <h1>Sản phẩm nổi bật</h1>
+                        <h1>Sản phẩm mới phát hành</h1>
                         <p>Browse our top rated products to catch up with the trend.</p>
                     </div>
                 </div>
@@ -166,21 +166,25 @@
 
                         <div class="single-product">
                             <div class="single-product__image">
-                                <a class="image-wrap" href="{{ route('detail_product',$item->slug) }}">
+                                <a class="image-wrap" href="{{ route('detail_product', $item->slug) }}">
                                     <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
                                         class="img-fluid product-image" alt="">
                                 </a>
 
                                 <div class="single-product__floating-badges">
-                                    <span class="out-of-stock" data-tippy="Out of stock" data-tippy-inertia="true"
-                                        data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                        data-tippy-theme="sharpborder" data-tippy-placement="right"><i
-                                            class="ion-android-sad"></i></span>
+                                    @if ($item->stock <= 0)
+                                        <span class="out-of-stock" data-tippy="Tạm hết hàng" data-tippy-inertia="true"
+                                            data-tippy-animation="shift-away" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-theme="sharpborder"
+                                            data-tippy-placement="right"><i class="ion-android-sad"></i></span>
+                                    @endif
                                     @if ($item->sale_price && $item->sale_price < $item->price)
                                         <span
                                             class="onsale">-{{ calculateDiscountPercentage($item->price, $item->sale_price) }}%</span>
                                     @endif
-                                    <span class="hot">hot</span>
+                                    @if ($item->featured == 1)
+                                        <span class="hot">hot</span>
+                                    @endif
                                 </div>
 
                                 <div class="single-product__floating-icons">
@@ -189,16 +193,6 @@
                                             data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
                                             data-tippy-placement="left"><i
                                                 class="ion-android-favorite-outline"></i></a></span>
-
-                                    <span class="compare"><a href="#" data-tippy="Compare"
-                                            data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                            data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                            data-tippy-placement="left"><i class="ion-ios-shuffle-strong"></i></a></span>
-
-                                    <span class="quickview"><a class="cd-trigger" href="#qv-1" data-tippy="Quick View"
-                                            data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                            data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                            data-tippy-placement="left"><i class="ion-ios-search-strong"></i></a></span>
                                 </div>
                             </div>
 
@@ -241,58 +235,51 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title section-title--one text-center">
-                            <h1>Sản phẩm mới phát hành</h1>
+                            <h1>Sản phẩm nổi bật</h1>
                             <p>Browse our top rated products to catch up with the trend.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    
+
         <div class="product-carousel-container mb-70">
             <div class="container">
                 <div class="row">
                     @foreach ($featureProducts as $item)
                         <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
-    
+
                             <div class="single-product">
                                 <div class="single-product__image">
-                                    <a class="image-wrap" href="{{ route('detail_product',$item->slug) }}">
+                                    <a class="image-wrap" href="{{ route('detail_product', $item->slug) }}">
                                         <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
                                             class="img-fluid product-image" alt="">
                                     </a>
-    
+
                                     <div class="single-product__floating-badges">
-                                        <span class="out-of-stock" data-tippy="Out of stock" data-tippy-inertia="true"
-                                            data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                            data-tippy-theme="sharpborder" data-tippy-placement="right"><i
-                                                class="ion-android-sad"></i></span>
+                                        @if ($item->stock <= 0)
+                                            <span class="out-of-stock" data-tippy="Tạm hết hàng"
+                                                data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                                data-tippy-delay="50" data-tippy-arrow="true"
+                                                data-tippy-theme="sharpborder" data-tippy-placement="right"><i
+                                                    class="ion-android-sad"></i></span>
+                                        @endif
                                         @if ($item->sale_price && $item->sale_price < $item->price)
                                             <span
                                                 class="onsale">-{{ calculateDiscountPercentage($item->price, $item->sale_price) }}%</span>
                                         @endif
                                         <span class="hot">hot</span>
                                     </div>
-    
+
                                     <div class="single-product__floating-icons">
-                                        <span class="wishlist"><a href="#" data-tippy="Add to wishlist"
+                                        <span class="wishlist"><a href="#" data-tippy="Thêm vào yêu thích"
                                                 data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                data-tippy-placement="left"><i
+                                                data-tippy-delay="50" data-tippy-arrow="true"
+                                                data-tippy-theme="sharpborder" data-tippy-placement="left"><i
                                                     class="ion-android-favorite-outline"></i></a></span>
-    
-                                        <span class="compare"><a href="#" data-tippy="Compare"
-                                                data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                data-tippy-placement="left"><i class="ion-ios-shuffle-strong"></i></a></span>
-    
-                                        <span class="quickview"><a class="cd-trigger" href="#qv-1" data-tippy="Quick View"
-                                                data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                data-tippy-placement="left"><i class="ion-ios-search-strong"></i></a></span>
                                     </div>
                                 </div>
-    
+
                                 <!--=======  single product content  =======-->
                                 <div class="single-product__content">
                                     <div class="title">
@@ -312,19 +299,20 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                         </div>
                     @endforeach
                 </div>
-    
-                
-    
+
+
+
                 <div class="row">
                     <div class="col-lg-12 text-center mb-25 mt-30">
-                        <a class="lezada-loadmore-button" href="#"><i class="ion-ios-plus-empty"></i> LOAD MORE ...</a>
+                        <a class="lezada-loadmore-button" href="#"><i class="ion-ios-plus-empty"></i> LOAD MORE
+                            ...</a>
                     </div>
                 </div>
             </div>
 
-    </div>
-@endsection
+        </div>
+    @endsection

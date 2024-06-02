@@ -43,15 +43,28 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-floating" for="exampleInputSlug">Đường dẫn</label>
-                                <input type="text" name="slug"
-                                    class="form-control @error('slug') is-invalid @enderror" id="slug"
-                                    value="{{ old('slug', $product->slug) }}">
-                                @error('slug')
-                                    <span style="color: red">{{ $message }}</span>
-                                @enderror
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-floating" for="exampleInputSlug">Đường dẫn</label>
+                                    <input type="text" name="slug"
+                                        class="form-control @error('slug') is-invalid @enderror" id="slug"
+                                        value="{{ old('slug', $product->slug) }}">
+                                    @error('slug')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-floating" for="exampleInputStock">Số lượng</label>
+                                    <input type="text" name="stock"
+                                        class="form-control @error('stock') is-invalid @enderror"
+                                        id="exampleInputStock" value="{{ old('stock', $product->stock) }}">
+                                    @error('stock')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
+
+
 
                             <div class="row mb-3">
                                 <div class="col-md-6">

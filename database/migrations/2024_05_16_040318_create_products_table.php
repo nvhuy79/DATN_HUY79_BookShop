@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('slug', 100)->unique();
             $table->text('description')->nullable();
             $table->tinyInteger('featured')->default(1);
+            $table->integer('stock');
             $table->timestamps();
         });
     }

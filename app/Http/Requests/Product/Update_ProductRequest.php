@@ -27,6 +27,7 @@ class Update_ProductRequest extends FormRequest
             'price' => 'required|numeric',
             'sale_price' => 'nullable|numeric',
             'description' => 'required',
+            'stock' => 'required|integer|min:0',
             'featured' => 'boolean',
             // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
@@ -42,6 +43,9 @@ class Update_ProductRequest extends FormRequest
             'price.numeric' => 'Giá sản phẩm phải là số.',
             'sale_price.numeric' => 'Giá khuyến mãi phải là dạng số.',
             'description.required' => 'Mô tả là bắt buộc.',
+            'stock.required' => 'Số lượng là bắt buộc.',
+            'stock.integer' => 'Số lượng phải là một số nguyên.',
+            'stock.min' => 'Số lượng phải lớn hơn hoặc bằng 0.',
             // 'image.required' => 'Hãy tải lên một hình ảnh.',
             // 'image.image' => 'Tệp tải lên phải là một hình ảnh.',
             // 'image.mimes' => 'Hình ảnh phải có định dạng: jpeg, png, jpg, gif, svg.',

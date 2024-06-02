@@ -27,6 +27,7 @@ class Store_ProductRequest extends FormRequest
             'slug' => 'required|unique:products,slug',
             'price' => 'required|numeric',
             'sale_price' => 'nullable|numeric',
+            'stock' => 'required|integer|min:0',
             'description' => 'required',
         ];
     }
@@ -41,6 +42,9 @@ class Store_ProductRequest extends FormRequest
             'slug.unique' => "Đường dẫn đã tồn tại.",
             'price.numeric' => "Giá bán có định dạng là số.",
             'price.required' => "Giá bán không được để trống.",
+            'stock.required' => 'Số lượng là bắt buộc.',
+            'stock.integer' => 'Số lượng phải là một số nguyên.',
+            'stock.min' => 'Số lượng phải lớn hơn hoặc bằng 0.',
             'sale_price.numeric' => "Giá bán có định dạng là số.",
             'description.required' => "Hãy nhập chi tiết của sản phẩm."
         ];

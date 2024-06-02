@@ -30,14 +30,19 @@
         width: 100%;
         height: auto;
     }
+
+    .havenbook-form {
+            background-color: rgba(255, 255, 255, 0.4);
+            
+        }
 </style>
 
 <body>
-    <div class="admin_login" style="margin-top: 10%;">
+    <div class="login" style="margin-top: 10%;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 mb-md-50 mb-sm-50">
-                    <div class="havenbook-form login-form-admin">
+                    <div class="havenbook-form login-form">
                         <form action="{{ route('admin_login') }}" method="POST">
                             @csrf
                             <div class="col-lg-12">

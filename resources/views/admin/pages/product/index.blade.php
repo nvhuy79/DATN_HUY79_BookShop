@@ -29,13 +29,14 @@
                                 <thead>
                                     <tr>
                                         <th scope="col" style="width: 5%;">ID</th>
-                                        <th scope="col" style="width: 15%;">Sản phẩm</th>
-                                        <th scope="col" style="width: 15%;">Tác giả</th>
+                                        <th scope="col" style="width: 13%;">Sản phẩm</th>
+                                        <th scope="col" style="width: 10%;">Tác giả</th>
                                         <th scope="col" style="width: 15%;">Danh mục</th>
                                         <th scope="col" style="width: 10%;">Giá bán</th>
-                                        <th scope="col" style="width: 10%;">Giá khuyến mãi</th>
-                                        <th scope="col" style="width: 15%;">Ảnh</th>
+                                        <th scope="col" style="width: 10%;">Giá giảm</th>
+                                        <th scope="col" style="width: 10%; text-align: center;">Ảnh</th>
                                         <th scope="col" style="width: 5%;">Nổi bật</th>
+                                        <th scope="col" style="width: 7%;">Số lượng</th>
                                         <th scope="col" style="width: 10%;">Tùy chọn</th>
                                     </tr>
                                 </thead>
@@ -52,6 +53,7 @@
                                                 <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}" alt="" width="100px">
                                             </td>
                                             <td>{{ $item->featured ? 'Có' : 'Không' }}</td>
+                                            <td>{{ $item->stock}}</td>
                                             <td>
                                                 <div class="action_btns d-flex">
                                                     <a href="{{ route('product.edit', $item) }}" class="action_btn mr_10"><i class="far fa-edit"></i>

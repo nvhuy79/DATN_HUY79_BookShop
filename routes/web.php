@@ -20,8 +20,9 @@ use App\Http\Controllers\RegisterController;
 |
 */
 // ========================== USER ============================
-Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::prefix('user')->group(function () {
+
+Route::prefix('/')->group(function () {
+    Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('/category', [CategoryController::class, 'category'])->name('category');
 
     Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -44,7 +45,7 @@ Route::prefix('user')->group(function () {
     Route::get('/reset-pass', [AccountController::class, 'reset_pass'])->name('reset_pass');
     Route::post('/reset-pass', [AccountController::class, 'post_reset_pass']);
 
-    Route::get('detail_product/{slug}', [HomeController::class, 'detail_product'])->name('detail_product');
+    Route::get('/{slug}', [HomeController::class, 'detail_product'])->name('detail_product');
 
 });
 

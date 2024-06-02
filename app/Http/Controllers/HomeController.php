@@ -19,4 +19,11 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('user/layouts/page', compact('categories'));
     }
+
+    public function detail_product($slug){
+        $categories = Category::all();
+        $product = Product::where('slug',$slug)->first();
+        $related =  Product::where('category_id',$product->category_id)->where('id','!=', $product->id)->get();
+        return view('user/pages/detail_product', compact('product','categories','related'));
+    }
 }
