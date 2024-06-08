@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
     public function profile()
     {
-        
-        return view('user/pages/profile');
+        $categories = Category::all();
+        return view('user/pages/profile', compact('categories'));
     }
 
     public function post_profile(Request $request)

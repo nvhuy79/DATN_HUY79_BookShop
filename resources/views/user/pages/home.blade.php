@@ -161,6 +161,7 @@
     <div class="product-carousel-container mb-70">
         <div class="container">
             <div class="row">
+                {{-- Sp mới phát hành --}}
                 @foreach ($newProducts as $item)
                     <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
 
@@ -206,11 +207,11 @@
                                 </div>
                                 <div class="price">
                                     @if ($item->sale_price && $item->sale_price < $item->price)
-                                        <span class="main-price discounted">{{ number_format($item->price) }}đ</span>
+                                        <span class="main-price discounted">{{ number_format($item->price) }}₫</span>
                                         <span class="discounted-price"
-                                            style="color: red">{{ number_format($item->sale_price) }}đ</span>
+                                            style="color: red">{{ number_format($item->sale_price) }}₫</span>
                                     @else
-                                        <span class="main-price">{{ number_format($item->price) }}đ</span>
+                                        <span class="main-price">{{ number_format($item->price) }}₫</span>
                                     @endif
                                 </div>
                             </div>
@@ -245,6 +246,7 @@
 
         <div class="product-carousel-container mb-70">
             <div class="container">
+                {{-- Sản phẩm nổi bật --}}
                 <div class="row">
                     @foreach ($featureProducts as $item)
                         <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
@@ -282,21 +284,26 @@
 
                                 <!--=======  single product content  =======-->
                                 <div class="single-product__content">
-                                    <div class="title">
-                                        <h3 style="font-weight: bold;"> <a
-                                                href="shop-product-basic.html">{{ $item->title }}</a></h3>
-                                        <h5> <a href="shop-product-basic.html">{{ $item->category->title }}</a></h5>
-                                        <a href="#">Thêm vào giỏ hàng</a>
-                                    </div>
-                                    <div class="price">
-                                        @if ($item->sale_price && $item->sale_price < $item->price)
-                                            <span class="main-price discounted">{{ number_format($item->price) }}đ</span>
-                                            <span class="discounted-price"
-                                                style="color: red">{{ number_format($item->sale_price) }}đ</span>
-                                        @else
-                                            <span class="main-price">{{ number_format($item->price) }}đ</span>
-                                        @endif
-                                    </div>
+                                    {{-- <form action="{{ route('cart_add') }}" method="POST">
+                                        @csrf --}}
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                        <div class="title">
+                                            <h3 style="font-weight: bold;"> <a
+                                                    href="shop-product-basic.html">{{ $item->title }}</a></h3>
+                                            <h5> <a href="shop-product-basic.html">{{ $item->category->title }}</a></h5>
+                                            <button href="#">Thêm vào giỏ hàng</button>
+                                        </div>
+                                        <div class="price">
+                                            @if ($item->sale_price && $item->sale_price < $item->price)
+                                                <span
+                                                    class="main-price discounted">{{ number_format($item->price) }}đ</span>
+                                                <span class="discounted-price"
+                                                    style="color: red">{{ number_format($item->sale_price) }}đ</span>
+                                            @else
+                                                <span class="main-price">{{ number_format($item->price) }}đ</span>
+                                            @endif
+                                        </div>
+                                    {{-- </form> --}}
                                 </div>
                             </div>
 

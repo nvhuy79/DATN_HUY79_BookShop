@@ -5,7 +5,7 @@
             <div class="col-lg-12">
                 <ul class="breadcrumb-list">
                     <li class="breadcrumb-list__item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-list__item breadcrumb-list__item--active">Đăng ký</li>
+                    <li class="breadcrumb-list__item breadcrumb-list__item--active">Chi tiết sản phầm</li>
                 </ul>
             </div>
         </div>
@@ -19,12 +19,6 @@
                         <div class="row pb-100">
                             <div class="col-lg-6 mb-md-70 mb-sm-70">
                                 <div class="shop-product__big-image-gallery-wrapper mb-30">
-                                    {{-- <div
-                                        class="single-product__floating-badges single-product__floating-badges--shop-product">
-                                        <span class="hot">hot</span>
-
-                                    </div> --}}
-
                                     <div class="single-product__floating-badges">
                                         @if ($product->stock <= 0)
                                             <span class="out-of-stock" data-tippy="Hết hàng" data-tippy-inertia="true"
@@ -36,8 +30,8 @@
                                             <span
                                                 class="onsale">-{{ calculateDiscountPercentage($product->price, $product->sale_price) }}%</span>
                                         @endif
-                                        @if ($product->featured ==1)
-                                        <span class="hot">hot</span>
+                                        @if ($product->featured == 1)
+                                            <span class="hot">hot</span>
                                         @endif
                                     </div>
 
@@ -94,7 +88,6 @@
                             </div>
 
                             <div class="col-lg-6">
-                                <!--=======  shop product description  =======-->
                                 <div class="shop-product__description">
                                     <div class="shop-product__rating mb-15">
                                         <span class="product-rating">
@@ -105,8 +98,6 @@
                                             <i class="ion-android-star-outline"></i>
                                         </span>
                                     </div>
-
-                                    <!--=======  shop product title  =======-->
                                     <div class="shop-product__title mb-15">
                                         <h2>{{ $product->title }}</h2>
                                     </div>
@@ -114,21 +105,21 @@
                                         <div class="price">
                                             @if ($product->sale_price && $product->sale_price < $product->price)
                                                 <span
-                                                    class="main-price discounted">{{ number_format($product->price) }}đ</span>
+                                                    class="main-price discounted">{{ number_format($product->price) }}₫</span>
                                                 <span class="discounted-price"
-                                                    style="color: red">{{ number_format($product->sale_price) }}đ</span>
+                                                    style="color: red">{{ number_format($product->sale_price) }}₫</span>
                                             @else
-                                                <span class="main-price">{{ number_format($product->price) }}đ</span>
+                                                <span class="main-price">{{ number_format($product->price) }}₫</span>
                                             @endif
                                         </div>
                                     </div>
 
-                                    <!--=======  shop product short description  =======-->
+
                                     <div class="shop-product__short-desc mb-50">
                                         {!! $product->description !!}
                                     </div>
 
-                                    <!--=======  shop product size block  =======-->
+
                                     <div class="shop-product__block shop-product__block--size mb-20">
                                         <div class="shop-product__block__title">Size: </div>
                                         <div class="shop-product__block__value">
@@ -140,20 +131,31 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!--=======  shop product quantity block  =======-->
-                                    <div class="shop-product__block shop-product__block--quantity mb-40">
-                                        <div class="shop-product__block__title">Số lượng: </div>
-                                        <div class="shop-product__block__value">
-                                            <div class="pro-qty d-inline-block mx-0 pt-0">
-                                                <input type="text" value="1">
+                                   
+                                    <form action="{{ route('cart.add', ['product' => $product->id]) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <div class="shop-product__block shop-product__block--quantity mb-40">
+                                            <div class="shop-product__block__title">Số lượng: </div>
+                                            <div class="shop-product__block__value">
+                                                <div class="pro-qty d-inline-block mx-0 pt-0">
+                                                    <input type="number" name="quantity" value="1" min="1">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="shop-product__buttons mb-40">
-                                        <a class="lezada-button lezada-button--medium" href="#">Thêm vào giỏ
-                                            hàng</a>
-                                    </div>
+                                        @if (Auth::check())
+                                        <div class="shop-product__buttons mb-40">
+                                            <button type="submit" class="lezada-button lezada-button--medium">Thêm vào
+                                                giỏ hàng</button>
+                                        </div>
+                                        @else
+                                        <div class="shop-product__buttons mb-40">
+                                            <a href="javascript:void(0)" class="lezada-button lezada-button--medium" onclick="alert('Vui lòng đăng nhập trước khi thêm giỏ hàng!')">
+                                                Thêm vào giỏ hàng
+                                            </a>
+                                        </div>
+                                        @endif
+                                    </form>
                                     <div class="quick-view-other-info pb-0">
                                         <table>
                                             <tr class="single-info">
@@ -247,7 +249,7 @@
                                                             </div>
                                                             <div class="col-lg-12 text-center">
                                                                 <button type="submit"
-                                                                    class="lezada-button lezada-button--medium">submit</button>
+                                                                    class="lezada-button lezada-button--medium">Đăng</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -293,7 +295,7 @@
                     @endforeach
                 </div>
             </div>
-            
+
         </div>
     </div>
 @endsection

@@ -10424,7 +10424,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   height: 45px;
   width: 45px;
   color: #ababab;
-  border: 2px solid #e6e6e6;
+  /* border: 2px solid #e6e6e6; */
 }
 .cart-table td.product-remove a i {
   font-size: 20px;

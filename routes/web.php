@@ -5,6 +5,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartControllerTest;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -31,9 +33,9 @@ Route::prefix('/')->group(function () {
     Route::get('/register', [RegisterController::class, 'register'])->name('register');
     Route::post('/register', [RegisterController::class, 'post_register']);
 
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-    Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+    Route::get('/profile', [AccountController::class, 'profile'])->name('profile')->middleware('auth');
     Route::post('/profile', [AccountController::class, 'post_profile'])->name('post_profile');
 
     Route::get('/change-pass', [AccountController::class, 'change_pass'])->name('change_pass');
@@ -46,10 +48,18 @@ Route::prefix('/')->group(function () {
     Route::post('/reset-pass', [AccountController::class, 'post_reset_pass']);
 
     Route::get('/{slug}', [HomeController::class, 'detail_product'])->name('detail_product');
+    
+
 
 });
 
-
+Route::prefix('/cart')->middleware('auth')->group(function () {
+    Route::get('/index', [CartController::class, 'index'])->name('cart.index');
+    Route::post('products/{product}', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/delete/{product}', [CartController::class, 'delete'])->name('cart.delete');
+    Route::get('/update/{product}', [CartController::class, 'update'])->name('cart.update');
+    Route::get('/clear/{product}', [CartController::class, 'clear'])->name('cart.clear');
+});
 
 
 // ========================== ADMIN ============================

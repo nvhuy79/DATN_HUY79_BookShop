@@ -10,7 +10,7 @@
                             <div class="box_right d-flex lms_block">
                                 <div class="serach_field_2">
                                     <div class="search_inner">
-                                        <form Active="#">
+                                        <form action="#">
                                             <div class="search_field">
                                                 <input type="text" placeholder="Tìm kiếm...">
                                             </div>
@@ -47,13 +47,13 @@
                                             <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->title }}</td>
                                             <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->author }}</td>
                                             <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->category->title }}</td>
-                                            <td>{{ $item->price }}</td>
-                                            <td>{{ $item->sale_price }}</td>
+                                            <td>{{ number_format($item->price, 0, ',', '.') }} ₫</td>
+                                            <td>{{ number_format($item->sale_price, 0, ',', '.') }} ₫</td>
                                             <td>
                                                 <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}" alt="" width="100px">
                                             </td>
                                             <td>{{ $item->featured ? 'Có' : 'Không' }}</td>
-                                            <td>{{ $item->stock}}</td>
+                                            <td>{{ number_format($item->stock, 0, ',', '.') }}</td>
                                             <td>
                                                 <div class="action_btns d-flex">
                                                     <a href="{{ route('product.edit', $item) }}" class="action_btn mr_10"><i class="far fa-edit"></i>
@@ -75,19 +75,15 @@
                     </div>
                     <nav aria-label="Page navigation examplee">
                         <ul class="pagination">
-
                             @if ($products->onFirstPage())
                                 <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
                             @else
                                 <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
                             @endif
                             @foreach ($products as $item)
-
                                 @if (is_string($item))
                                     <li class="page-item disabled"><span class="page-link">{{ $item }}</span></li>
                                 @endif
-
-
                                 @if (is_array($item))
                                     @foreach ($item as $page => $url)
                                         @if ($page == $products->currentPage())
@@ -98,8 +94,6 @@
                                     @endforeach
                                 @endif
                             @endforeach
-
-
                             @if ($products->hasMorePages())
                                 <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
                             @else

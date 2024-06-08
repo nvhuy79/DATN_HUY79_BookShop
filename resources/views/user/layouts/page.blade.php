@@ -72,14 +72,14 @@
 
 
                             </div>
-                            <div class="single-icon wishlist">
+                            {{-- <div class="single-icon wishlist">
                                 <a href="javascript:void(0)" id="offcanvas-wishlist-icon">
                                     <i class="ion-android-favorite-outline"></i>
                                     <span class="count">2</span>
                                 </a>
-                            </div>
+                            </div> --}}
                             <div class="single-icon cart">
-                                <a href="javascript:void(0)" id="offcanvas-cart-icon">
+                                <a href="#" id="offcanvas-cart-icon">
                                     <i class="ion-ios-cart"></i>
                                     <span class="count">3</span>
                                 </a>
@@ -106,7 +106,7 @@
                                     </li>
                                     <li class="menu-item"><a href="javascript:void(0)">Mới phát hành</a></li>
                                     <li class="menu-item"><a href="javascript:void(0)">Khuyến mãi</a></li>
-                                    <li class="menu-item"><a href="javascript:void(0)">Tin tức-Blog</a></li>
+                                    <li class="menu-item"><a href="{{ route('cart.index') }}">Giỏ hàng</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -138,7 +138,7 @@
                             </li>
                             <li><a href="#">Mới phát hành</a></li>
                             <li><a href="#">Khuyến mãi</a></li>
-                            <li><a href="#">Tin tức-Blog</a></li>
+                            <li><a href="#">Giỏ hàng</a></li>
                             @if (Auth::check())
                                 <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                             @else
