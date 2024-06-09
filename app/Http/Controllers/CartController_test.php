@@ -17,7 +17,7 @@ class CartController extends Controller
     {
         $categories = Category::all();
         $carts = Cart::orderBy('quantity', 'ASC')->get();
-        return view('user/pages/cart', compact('categories','carts'));
+        return view('user/pages/cart', compact('categories', 'carts'));
     }
 
     /**
@@ -26,7 +26,6 @@ class CartController extends Controller
     public function create(Product $product, Request $request)
     {
         $product = Product::find($request->id);
-        $categories = Category::all();
         $quantity = $request->quantity ? floor($request->quantity) : 1;
         $cartExist = Cart::where(['user_id' => Auth::user()->id, 'product_id' => $product->id])->first();
         if ($cartExist) {
@@ -41,7 +40,7 @@ class CartController extends Controller
             ];
 
             if (Cart::create($data)) {
-                 return redirect()->route('cart.index')->with('success', 'Thêm giỏ hàng thành công!');
+                return redirect()->back()->with('success', 'Thêm giỏ hàng thành công!');
             }
         }
         return redirect()->back()->with('error', 'Thêm giỏ hàng không thành công!');

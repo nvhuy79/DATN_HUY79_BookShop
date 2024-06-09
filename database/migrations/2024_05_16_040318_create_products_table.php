@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100);
             $table->string('author', 100);
+            $table->string('publisher', 100)->nullable();
             $table->float('price');
             $table->float('sale_price');
             $table->string('image', 255)->nullable();

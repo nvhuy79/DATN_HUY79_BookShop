@@ -67,7 +67,7 @@
 
 
                             <div class="row mb-3">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label class="form-floating" for="exampleInputPrice">Giá sản phẩm</label>
                                     <input type="text" name="price"
                                         class="form-control @error('price') is-invalid @enderror" id="exampleInputPrice"
@@ -76,13 +76,23 @@
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label class="form-floating" for="exampleInputSalePrice">Giá khuyến mãi</label>
                                     <input type="text" name="sale_price"
                                         class="form-control @error('sale_price') is-invalid @enderror"
                                         id="exampleInputSalePrice" placeholder="Nhập giá khuyến mãi..."
                                         value="{{ old('sale_price', $product->sale_price) }}">
                                     @error('sale_price')
+                                        <span style="color: red">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-floating" for="exampleInputPublisher">Nhà xuất bản</label>
+                                    <input type="text" name="publisher"
+                                        class="form-control @error('publisher') is-invalid @enderror"
+                                        id="exampleInputPublisher" placeholder="Nhập nhà xuất bản..."
+                                        value="{{ old('publisher', $product->publisher) }}">
+                                    @error('publisher')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
                                 </div>

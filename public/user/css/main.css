@@ -9725,9 +9725,9 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 .shop-product__brands a {
   display: block;
 }
-.shop-product__description-tab {
+/* .shop-product__description-tab {
   border-top: 1px solid #ededed;
-}
+} */
 .shop-product__description-tab--double-border {
   border-bottom: 1px solid #ededed;
 }

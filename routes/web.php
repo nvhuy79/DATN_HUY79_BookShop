@@ -57,7 +57,7 @@ Route::prefix('/cart')->middleware('auth')->group(function () {
     Route::get('/index', [CartController::class, 'index'])->name('cart.index');
     Route::post('products/{product}', [CartController::class, 'add'])->name('cart.add');
     Route::get('/delete/{product}', [CartController::class, 'delete'])->name('cart.delete');
-    Route::get('/update/{product}', [CartController::class, 'update'])->name('cart.update');
+    Route::put('/update/{product}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/clear/{product}', [CartController::class, 'clear'])->name('cart.clear');
 });
 

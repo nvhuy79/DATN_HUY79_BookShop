@@ -31,7 +31,7 @@
                                         <th scope="col">ID</th>
                                         <th scope="col">Tiêu đề</th>
                                         <th scope="col">Chi tiết</th>
-                                        <th scope="col">Danh mục cha</th>
+                                        {{-- <th scope="col">Danh mục cha</th> --}}
                                         <th scope="col">Trạng thái</th>
                                         <th scope="col">Ngày tạo</th>
                                         <th scope="col">Tùy chọn</th>
@@ -44,7 +44,7 @@
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->description }}</td>
-                                            <td>{{ $item->parent ? $item->parent->title : '' }}</td>
+                                            {{-- <td>{{ $item->parent ? $item->parent->title : '' }}</td> --}}
                                             <td>{!! $item->status ? '<span class="status_btn">Hiển thị</span>' : '<span class="status_btn red_btn" >Ẩn</span>' !!}</td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>

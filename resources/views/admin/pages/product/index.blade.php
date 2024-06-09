@@ -32,6 +32,7 @@
                                         <th scope="col" style="width: 13%;">Sản phẩm</th>
                                         <th scope="col" style="width: 10%;">Tác giả</th>
                                         <th scope="col" style="width: 15%;">Danh mục</th>
+                                        <th scope="col" style="width: 10%;">Nhà xuất bản</th>
                                         <th scope="col" style="width: 10%;">Giá bán</th>
                                         <th scope="col" style="width: 10%;">Giá giảm</th>
                                         <th scope="col" style="width: 10%; text-align: center;">Ảnh</th>
@@ -47,6 +48,7 @@
                                             <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->title }}</td>
                                             <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->author }}</td>
                                             <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->category->title }}</td>
+                                            <td>{{ $item->publisher ?? 'Chưa có thông tin' }}</td>
                                             <td>{{ number_format($item->price, 0, ',', '.') }} ₫</td>
                                             <td>{{ number_format($item->sale_price, 0, ',', '.') }} ₫</td>
                                             <td>

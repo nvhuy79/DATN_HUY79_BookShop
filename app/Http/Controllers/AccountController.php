@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,8 +13,10 @@ class AccountController extends Controller
 {
     public function profile()
     {
+        $user_id = Auth::id();
+        $carts = Cart::where('user_id', $user_id)->get();
         $categories = Category::all();
-        return view('user/pages/profile', compact('categories'));
+        return view('user/pages/profile', compact('categories','carts'));
     }
 
     public function post_profile(Request $request)

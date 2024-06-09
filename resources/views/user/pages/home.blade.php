@@ -151,7 +151,7 @@
                 <div class="col-lg-12">
                     <div class="section-title section-title--one text-center">
                         <h1>Sản phẩm mới phát hành</h1>
-                        <p>Browse our top rated products to catch up with the trend.</p>
+                        <p>Những sản phẩm mới nhất .</p>
                     </div>
                 </div>
             </div>
@@ -164,14 +164,12 @@
                 {{-- Sp mới phát hành --}}
                 @foreach ($newProducts as $item)
                     <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
-
                         <div class="single-product">
                             <div class="single-product__image">
                                 <a class="image-wrap" href="{{ route('detail_product', $item->slug) }}">
                                     <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
                                         class="img-fluid product-image" alt="">
                                 </a>
-
                                 <div class="single-product__floating-badges">
                                     @if ($item->stock <= 0)
                                         <span class="out-of-stock" data-tippy="Tạm hết hàng" data-tippy-inertia="true"
@@ -187,17 +185,31 @@
                                         <span class="hot">hot</span>
                                     @endif
                                 </div>
-
-                                <div class="single-product__floating-icons">
-                                    <span class="wishlist"><a href="#" data-tippy="Add to wishlist"
-                                            data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                            data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                            data-tippy-placement="left"><i
-                                                class="ion-android-favorite-outline"></i></a></span>
-                                </div>
+                                <form action="{{ route('cart.add', ['product' => $item->id])}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                    <div class="single-product__floating-icons">
+                                        <span class="wishlist"><a href="#" data-tippy="Add to wishlist"
+                                                data-tippy-inertia="true" data-tippy-animation="shift-away"
+                                                data-tippy-delay="50" data-tippy-arrow="true"
+                                                data-tippy-theme="sharpborder" data-tippy-placement="left"><i
+                                                    class="ion-android-favorite-outline"></i></a></span>
+                                        @if (Auth::check())
+                                            <span class="wishlist"><button href="#" data-tippy="Thêm vào giỏ hàng"
+                                                    {{-- data-tippy-inertia="true" data-tippy-animation="shift-away" --}}
+                                                    {{-- data-tippy-delay="50" data-tippy-arrow="true" --}}
+                                                    ><i
+                                                        class="ion-ios-cart"></i></button></span>
+                                        @else
+                                            <span class="wishlist"><a href="#" data-tippy="Thêm vào giỏ hàng"
+                                                    onclick="showLoginAlert()" class="ion-ios-cart"></i></a></span>
+                                        @endif
+                                    </div>
+                                </form>
                             </div>
 
                             <!--=======  single product content  =======-->
+
                             <div class="single-product__content">
                                 <div class="title">
                                     <h3 style="font-weight: bold;"> <a
@@ -215,6 +227,7 @@
                                     @endif
                                 </div>
                             </div>
+                            </form>
                         </div>
 
                     </div>
@@ -257,6 +270,12 @@
                                         <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
                                             class="img-fluid product-image" alt="">
                                     </a>
+                                    {{-- @foreach ($item->images as $image)
+                                        <a class="image-wrap" href="{{ route('detail_product', $item->slug) }}">
+                                            <img src="{{ asset('storage/admin/images') }}/{{ $image->image }}"
+                                                class="img-fluid product-image" alt="">
+                                        </a>
+                                    @endforeach --}}
 
                                     <div class="single-product__floating-badges">
                                         @if ($item->stock <= 0)
@@ -270,7 +289,9 @@
                                             <span
                                                 class="onsale">-{{ calculateDiscountPercentage($item->price, $item->sale_price) }}%</span>
                                         @endif
-                                        <span class="hot">hot</span>
+                                        @if ($item->featured == 1)
+                                            <span class="hot">hot</span>
+                                        @endif
                                     </div>
 
                                     <div class="single-product__floating-icons">
@@ -279,31 +300,33 @@
                                                 data-tippy-delay="50" data-tippy-arrow="true"
                                                 data-tippy-theme="sharpborder" data-tippy-placement="left"><i
                                                     class="ion-android-favorite-outline"></i></a></span>
+
+                                        <span class="quickview"><a class="cd-trigger" href="#qv-1"
+                                                data-tippy="Thêm vào giỏ hàng" data-tippy-inertia="true"
+                                                data-tippy-animation="shift-away" data-tippy-delay="50"
+                                                data-tippy-arrow="true" data-tippy-theme="sharpborder"
+                                                data-tippy-placement="left"><i class="ion-ios-cart"></i></a></span>
                                     </div>
                                 </div>
 
                                 <!--=======  single product content  =======-->
                                 <div class="single-product__content">
-                                    {{-- <form action="{{ route('cart_add') }}" method="POST">
-                                        @csrf --}}
-                                        <input type="hidden" name="id" value="{{ $item->id }}">
-                                        <div class="title">
-                                            <h3 style="font-weight: bold;"> <a
-                                                    href="shop-product-basic.html">{{ $item->title }}</a></h3>
-                                            <h5> <a href="shop-product-basic.html">{{ $item->category->title }}</a></h5>
-                                            <button href="#">Thêm vào giỏ hàng</button>
-                                        </div>
-                                        <div class="price">
-                                            @if ($item->sale_price && $item->sale_price < $item->price)
-                                                <span
-                                                    class="main-price discounted">{{ number_format($item->price) }}đ</span>
-                                                <span class="discounted-price"
-                                                    style="color: red">{{ number_format($item->sale_price) }}đ</span>
-                                            @else
-                                                <span class="main-price">{{ number_format($item->price) }}đ</span>
-                                            @endif
-                                        </div>
-                                    {{-- </form> --}}
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                    <div class="title">
+                                        <h4 style="font-weight: bold;"> <a
+                                                href="shop-product-basic.html">{{ $item->title }}</a></h4>
+                                        <h5> <a href="shop-product-basic.html">{{ $item->category->title }}</a></h5>
+                                        {{-- <button href="#">Thêm vào giỏ hàng</button> --}}
+                                    </div>
+                                    <div class="price">
+                                        @if ($item->sale_price && $item->sale_price < $item->price)
+                                            <span class="main-price discounted">{{ number_format($item->price) }}đ</span>
+                                            <span class="discounted-price"
+                                                style="color: red">{{ number_format($item->sale_price) }}đ</span>
+                                        @else
+                                            <span class="main-price">{{ number_format($item->price) }}đ</span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
 

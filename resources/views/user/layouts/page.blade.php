@@ -72,16 +72,13 @@
 
 
                             </div>
-                            {{-- <div class="single-icon wishlist">
-                                <a href="javascript:void(0)" id="offcanvas-wishlist-icon">
-                                    <i class="ion-android-favorite-outline"></i>
-                                    <span class="count">2</span>
-                                </a>
-                            </div> --}}
+
                             <div class="single-icon cart">
                                 <a href="#" id="offcanvas-cart-icon">
                                     <i class="ion-ios-cart"></i>
-                                    <span class="count">3</span>
+                                    @foreach ($carts as $cart)
+                                        <span class="count">{{ $cart->count() }}</span>
+                                    @endforeach
                                 </a>
                             </div>
                         </div>
@@ -99,14 +96,18 @@
                                     <li class="menu-item-has-children"><a href="#">Danh
                                             mục</a>
                                         <ul class="sub-menu single-column-menu">
-                                            @foreach($categories as $item)
-                                            <li><a href="#">{{ $item->title }}</a></li>
-                                        @endforeach
+                                            @foreach ($categories as $item)
+                                                <li><a href="#">{{ $item->title }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                     <li class="menu-item"><a href="javascript:void(0)">Mới phát hành</a></li>
                                     <li class="menu-item"><a href="javascript:void(0)">Khuyến mãi</a></li>
-                                    <li class="menu-item"><a href="{{ route('cart.index') }}">Giỏ hàng</a></li>
+                                    @if (Auth::check())
+                                        <li class="menu-item"><a href="{{ route('cart.index') }}">Giỏ hàng</a></li>
+                                    @else
+                                        <li class="menu-item"><a onclick="showLoginAlert()">Giỏ hàng</a></li>
+                                    @endif
                                 </ul>
                             </nav>
                         </div>
@@ -216,33 +217,49 @@
                 <div class="offcanvas-cart-content-container">
                     <h3 class="cart-title">Giỏ hàng</h3>
                     <div class="cart-product-wrapper">
-                        <div class="cart-product-container  ps-scroll">
-                            <div class="single-cart-product">
-                                <span class="cart-close-icon">
-                                    <a href="#"><i class="ti-close"></i></a>
-                                </span>
-                                <div class="image">
-                                    <a href="shop-product-basic.html">
-                                        <img src="{{ asset('user/images/cart-product-image/01.jpg') }}"
-                                            class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
-                                    <p><span class="cart-count">2 x </span> <span
-                                            class="discounted-price">$180.00</span></p>
+                        @foreach ($carts as $cart)
+                            <div class="cart-product-container  ps-scroll">
+
+                                <div class="single-cart-product">
+                                    <span class="cart-close-icon">
+                                        <a href="{{ route('cart.delete', $cart->product_id) }}"
+                                            onclick="return confirm('Bạn muốn xóa sản phẩm khỏi giỏ hàng?')">
+                                            <i class="ti-close"></i>
+                                        </a>
+                                    </span>
+                                    <div class="image">
+                                        <a href="shop-product-basic.html">
+                                            <img src="{{ asset('storage/admin/images') }}/{{ $cart->prod->image }}"
+                                                class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h5><a href="shop-product-basic.html">{{ $cart->prod->title }}</a></h5>
+                                        <p><span class="cart-count">{{ $cart->quantity }}x </span> <span
+                                                class="discounted-price">{{ number_format($cart->price, 0, ',', '.') }}
+                                                ₫</span></p>
+                                    </div>
 
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
+                        @php
+                            $totalPrice = 0;
+                            foreach ($carts as $cart) {
+                                $totalPrice += $cart->price * $cart->quantity;
+                            }
+                        @endphp
                         <p class="cart-subtotal">
                             <span class="subtotal-title">Tổng tiền:</span>
-                            <span class="subtotal-amount">$200.00</span>
+                            <span
+                                class="subtotal-amount">{{ number_format($totalPrice, 0, ',', '.') }} ₫</span>
                         </p>
+
                         <div class="cart-buttons">
-                            <a href="shop-cart.html">Xem danh sách</a>
+                            <a href="{{ route('cart.index') }}">Xem danh sách</a>
                             <a href="shop-checkout.html">Thanh toán</a>
                         </div>
+
                         <p class="free-shipping-text">
                             Miến phí ship với đơn hàng từ 499.000đ!
                         </p>
@@ -269,92 +286,6 @@
                     <span>Bấm # để tìm kiếm hoặc ESC để thoát</span>
                 </div>
             </div>
-        </div>
-        <!--=============================================
-            =            quick view         =
-            =============================================-->
-
-        <div id="qv-1" class="cd-quick-view">
-            <div class="cd-slider-wrapper">
-                <ul class="cd-slider">
-                    <li class="selected"><img src="assets/images/products/cloth-1-2-600x800.jpg" alt="Product 2">
-                    </li>
-                    <li><img src="assets/images/products/cloth-1-1-600x800.jpg" alt="Product 1"></li>
-                </ul> <!-- cd-slider -->
-
-                <ul class="cd-slider-pagination">
-                    <li class="active"><a href="#0">1</a></li>
-                    <li><a href="#1">2</a></li>
-                </ul> <!-- cd-slider-pagination -->
-
-                <ul class="cd-slider-navigation">
-                    <li><a class="cd-prev" href="#0">Prev</a></li>
-                    <li><a class="cd-next" href="#0">Next</a></li>
-                </ul> <!-- cd-slider-navigation -->
-            </div> <!-- cd-slider-wrapper -->
-
-            <div class="lezada-item-info cd-item-info ps-scroll">
-
-                <h2 class="item-title">High Waist Trousers</h2>
-                <p class="price">
-                    <span class="main-price discounted">$360.00</span>
-                    <span class="discounted-price">$300.00</span>
-                </p>
-
-                <p class="description">Hurley Dry-Fit Chino Short. Men's chino short. Outseam Length: 19 Dri-FIT
-                    Technology helps
-                    keep you dry and comfortable. Made with sweat-wicking fabric. Fitted waist with belt loops.
-                    Button waist with
-                    zip fly provides a classic look and feel .</p>
-
-                <span class="quickview-title">Quantity:</span>
-                <div class="pro-qty d-inline-block mb-40">
-                    <input type="text" value="1">
-                </div>
-
-                <div class="add-to-cart-btn mb-25">
-
-                    <button class="lezada-button lezada-button--medium">add to cart</button>
-                </div>
-
-                <div class="quick-view-other-info">
-                    <table>
-                        <tr class="single-info">
-                            <td class="quickview-title">SKU: </td>
-                            <td class="quickview-value">12345</td>
-                        </tr>
-                        <tr class="single-info">
-                            <td class="quickview-title">Categories: </td>
-                            <td class="quickview-value">
-                                <a href="#">Fashion</a>,
-                                <a href="#">Men</a>,
-                                <a href="#">Sunglasses</a>
-                            </td>
-                        </tr>
-                        <tr class="single-info">
-                            <td class="quickview-title">Tags: </td>
-                            <td class="quickview-value">
-                                <a href="#">Fashion</a>,
-                                <a href="#">Men</a>
-                            </td>
-                        </tr>
-                        <tr class="single-info">
-                            <td class="quickview-title">Share on: </td>
-                            <td class="quickview-value">
-                                <ul class="quickview-social-icons">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
-
-            </div> <!-- cd-item-info -->
-            <a href="#0" class="cd-close">Close</a>
         </div>
     </header>
 
@@ -449,43 +380,45 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 
-    @if (Session::has('success'))
-        <script>
+    <script>
+        function showLoginAlert() {
+            var userConfirmed = confirm("Bạn cần đăng nhập trước khi bắt đầu. Bạn có muốn đăng nhập ?");
+            if (userConfirmed) {
+                window.location.href = "/login";
+            }
+        }
+
+        @if (Session::has('success'))
             $.toast({
                 heading: 'Thành công!',
                 text: '{{ session('success') }}',
                 showHideTransition: 'slide',
                 icon: 'success'
             });
-        </script>
-    @elseif(Session::has('error'))
-        <script>
+        @elseif (Session::has('error'))
             $.toast({
                 heading: 'Lỗi!',
                 text: '{{ session('error') }}',
                 showHideTransition: 'slide',
                 icon: 'error',
             });
-        </script>
-    @elseif(Session::has('Success_Regis'))
-        <script>
+        @elseif (Session::has('Success_Regis'))
             $.toast({
                 heading: 'Thành công!',
                 text: '{{ session('Success_Regis') }}',
                 showHideTransition: 'slide',
                 icon: 'success',
             });
-        </script>
-    @elseif(Session::has('logout_success'))
-        <script>
+        @elseif (Session::has('logout_success'))
             $.toast({
                 heading: 'Thành công!',
                 text: '{{ session('logout_success') }}',
                 showHideTransition: 'slide',
                 icon: 'success',
             });
-        </script>
-    @endif
+        @endif
+    </script>
+
 </body>
 
 </html>

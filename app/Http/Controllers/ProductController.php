@@ -37,7 +37,6 @@ class ProductController extends Controller
     public function store(Store_ProductRequest $request)
     {
 
-        // dd($request->all());
         $fileName = $request->product_image->getClientOriginalName();
         $request->product_image->storeAs('public/admin/images', $fileName);
         $request->merge(['image' => $fileName]);
@@ -120,9 +119,30 @@ class ProductController extends Controller
     }
 
 
+    // public function destroy(Product $product)
+    // {
+    //     $product->delete();
+    //     return redirect()->route('product.index')->with('success', 'Danh mục đã được xóa thành công.');
+    // }
+
     public function destroy(Product $product)
     {
-        $product->delete();
-        return redirect()->route('product.index')->with('success', 'Danh mục đã được xóa thành công.');
+        try {
+            // Xóa tất cả các ảnh liên quan của sản phẩm từ storage
+            foreach ($product->images as $image) {
+                Storage::delete('public/admin/images/' . $image->image);
+                $image->delete(); // Xóa bản ghi trong bảng ImageProduct
+            }
+
+            // Xóa ảnh chính của sản phẩm từ storage
+            Storage::delete('public/admin/images/' . $product->image);
+
+            // Xóa sản phẩm từ cơ sở dữ liệu
+            $product->delete();
+
+            return redirect()->route('product.index')->with('success', 'Danh mục đã được xóa thành công.');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Đã xảy ra lỗi khi xóa danh mục.');
+        }
     }
 }
