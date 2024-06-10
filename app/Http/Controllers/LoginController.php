@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+use App\Models\Cart;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,8 +12,10 @@ class LoginController extends Controller
 {
    
     public function login(){
+        $user_id = Auth::id();
+        $carts = Cart::where('user_id', $user_id)->get();
         $categories = Category::all();
-        return view('user/pages/login', compact('categories'));
+        return view('user/pages/login', compact('categories','carts'));
     }
 
     public function logout(){

@@ -101,8 +101,8 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li class="menu-item"><a href="javascript:void(0)">Mới phát hành</a></li>
-                                    <li class="menu-item"><a href="javascript:void(0)">Khuyến mãi</a></li>
+                                    <li class="menu-item"><a href="#new_products">Mới phát hành</a></li>
+                                    <li class="menu-item"><a href="#">Khuyến mãi</a></li>
                                     @if (Auth::check())
                                         <li class="menu-item"><a href="{{ route('cart.index') }}">Giỏ hàng</a></li>
                                     @else

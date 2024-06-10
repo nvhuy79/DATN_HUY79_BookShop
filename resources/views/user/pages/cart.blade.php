@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-lg-12 mb-30">
                     <div class="cart-table-container">
-                        <table class="cart-table">
+                        <table class="cart-table" >
                             <thead>
                                 <tr>
                                     <th class="product-name" colspan="2">Sản phẩm</th>
@@ -28,49 +28,58 @@
                                 </tr>
                             </thead>
 
+
                             <tbody>
                                 @foreach ($carts as $cart)
-                                    <tr>
-                                        <td class="product-thumbnail">
-                                            <a href="shop-product-basic.html">
-                                                <img src="{{ asset('storage/admin/images') }}/{{ $cart->prod->image }}"
-                                                    alt="" width="100px">
-                                            </a>
-                                        </td>
-                                        <td class="product-name">
-                                            <a href="shop-product-basic.html">{{ $cart->prod->title }}</a>
-                                            <span class="product-variation">Danh mục: {{ $cart->prod->title }}</span>
-                                        </td>
+                                    <form action="{{ route('cart.add', $cart->product_id) }}" method="post">
+                                        @method('PUT')
+                                        @csrf
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <a href="shop-product-basic.html">
+                                                    <img src="{{ asset('storage/admin/images') }}/{{ $cart->prod->image }}"
+                                                        alt="" width="100px">
+                                                </a>
+                                            </td>
+                                            <td class="product-name">
+                                                <a href="shop-product-basic.html">{{ $cart->prod->title }}</a>
+                                                <span class="product-variation">Danh mục: {{ $cart->prod->title }}</span>
+                                            </td>
 
-                                        <td class="product-price"><span
-                                                class="price">{{ number_format($cart->price, 0, ',', '.') }} ₫</span></td>
+                                            <td class="product-price"><span
+                                                    class="price">{{ number_format($cart->price, 0, ',', '.') }} ₫</span>
+                                            </td>
 
-                                        <td class="product-quantity">
-                                            <div class="pro-qty d-inline-block mx-0">
-                                                <input type="text" value="{{ $cart->quantity }}">
-                                            </div>
-                                        </td>
+                                            <td class="product-quantity">
+                                                <div class="pro-qty d-inline-block mx-0">
+                                                    <input type="number" value="{{ $cart->quantity }}" name="quantity">
 
-                                        <td class="total-price"><span
-                                                class="price">{{ number_format($cart->price * $cart->quantity, 0, ',', '.') }}
-                                                ₫</span></td>
+                                                </div>
+                                                <button><i class="ion-android-favorite-outline"></i></button>
+                                            </td>
 
-                                        <td class="product-remove">
-                                            <a href="{{ route('cart.delete', $cart->product_id) }}"
-                                                onclick="return confirm('Bạn muốn xóa sản phẩm khỏi giỏ hàng?')">
-                                                <i class="ion-android-close"></i>
-                                            </a>
-                                        </td>
+                                            <td class="total-price"><span
+                                                    class="price">{{ number_format($cart->price * $cart->quantity, 0, ',', '.') }}
+                                                    ₫</span></td>
 
-
-                                    </tr>
+                                            <td class="product-remove">
+                                                <a href="{{ route('cart.delete', $cart->product_id) }}"
+                                                    onclick="return confirm('Bạn muốn xóa sản phẩm khỏi giỏ hàng?')">
+                                                    <i class="ion-android-close"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </form>
                                 @endforeach
-                                @if ($carts->isEmpty())
-                                    <tr>
-                                        <td colspan="6" class="text-center" style="color: black">Giỏ hàng của bạn trống.
-                                            Hãy khám phá thêm sản phẩm và mua sắm ngay!</td>
-                                    </tr>
-                                @endif
+                            </tbody>
+
+
+                            @if ($carts->isEmpty())
+                                <tr>
+                                    <td colspan="6" class="text-center" style="color: black">Giỏ hàng của bạn trống.
+                                        Hãy khám phá thêm sản phẩm và mua sắm ngay!</td>
+                                </tr>
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -96,8 +105,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 text-start text-lg-end">
-                                <button class="lezada-button lezada-button--medium" onclick="goBack()">Tiếp tục mua
-                                    sắm</button>
+                                <a href="{{ route('home') }}" class="lezada-button lezada-button--medium">Tiếp tục mua sắm</a>
                             </div>
                         </div>
                     </div>
@@ -109,7 +117,7 @@
                     }
                 @endphp
                 <div class="col-xl-4 offset-xl-8 col-lg-5 offset-lg-7">
-                    <div class="cart-calculation-area">
+                    <div class="cart-calculation-area"  style="border: 1px solid #cccccc; border-radius: 12px;">
                         <h2 class="mb-40">Tổng tiền</h2>
 
                         <table class="cart-calculation-table mb-30">
@@ -117,13 +125,16 @@
                                 <th>Sản phẩm</th>
                                 <td class="subtotal">{{ $carts->count() }}</td>
                             </tr>
-                            <th>Số lượng</th>
-                            <td class="total-quantity">{{ $totalQuantity }}</td>
-                            <tr>
+                            <tr> 
+                                <th >Số lượng</th>
+                                <td class="subtotal">{{ $totalQuantity }}</td>
+                            </tr>
+                            <tr> 
                                 <th>Tổng</th>
                                 <td class="total">{{ number_format($totalPrice, 0, ',', '.') }} ₫</td>
                             </tr>
                         </table>
+                        
 
                         <div class="cart-calculation-button text-center">
                             <button class="lezada-button lezada-button--medium">Thanh toán</button>
@@ -162,4 +173,5 @@
             });
         });
     </script>
+    
 @endsection

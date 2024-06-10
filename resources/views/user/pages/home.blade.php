@@ -145,16 +145,14 @@
         </div>
     </div>
 
-    <div class="section-title-container mt-80 mb-30">
+    <div id="new_products" class="section-title-container mt-80 mb-30">
         <div class="container">
-            <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title section-title--one text-center">
                         <h1>Sản phẩm mới phát hành</h1>
                         <p>Những sản phẩm mới nhất .</p>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 

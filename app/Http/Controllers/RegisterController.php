@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,8 +14,10 @@ class RegisterController extends Controller
 {
     public function register()
     {
+        $user_id = Auth::id();
+        $carts = Cart::where('user_id', $user_id)->get();
         $categories = Category::all();
-        return view('user/pages/register',compact('categories'));
+        return view('user/pages/register',compact('categories','carts'));
     }
 
     public function post_register(Request $request)
