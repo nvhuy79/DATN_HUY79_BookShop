@@ -45,7 +45,7 @@
                                                     class="ion-android-favorite-outline"></i></a>
                                         </span>
                                         <span class="enlarge-icon">
-                                            <a class="btn-zoom-popup" href="#" data-tippy="Click to enlarge"
+                                            <a class="btn-zoom-popup" href="#" 
                                                 data-tippy-placement="left" data-tippy-inertia="true"
                                                 data-tippy-animation="shift-away" data-tippy-delay="50"
                                                 data-tippy-arrow="true" data-tippy-theme="sharpborder"><i

@@ -251,8 +251,7 @@
                         @endphp
                         <p class="cart-subtotal">
                             <span class="subtotal-title">Tổng tiền:</span>
-                            <span
-                                class="subtotal-amount">{{ number_format($totalPrice, 0, ',', '.') }} ₫</span>
+                            <span class="subtotal-amount">{{ number_format($totalPrice, 0, ',', '.') }} ₫</span>
                         </p>
 
                         <div class="cart-buttons">
@@ -379,7 +378,6 @@
     <script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.parallax.min.js') }}">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
-
     <script>
         function showLoginAlert() {
             var userConfirmed = confirm("Bạn cần đăng nhập trước khi bắt đầu. Bạn có muốn đăng nhập ?");

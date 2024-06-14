@@ -68,15 +68,7 @@ class AdminController extends Controller
 
     public function admin_add()
     {
-        // if (Auth::guard('admin')->check()) {
-            // $user = Auth::guard('admin')->user();
-        
-            // Truyền thông tin người dùng sang view
-            // return view('admin/pages/admin_add', compact('user'));
-
-            return view('admin/pages/admin_add');
-        // }
-        // return redirect()->route('admin_login');
+        return view('admin/pages/admin_add');
     }
 
     public function post_admin_add(Request $request)
@@ -121,17 +113,25 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function list_acc()
     {
-        //
+        $admins = Admin::paginate(8);
+        return view('admin.pages.list_acc', compact('admins'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function list_acc_search(Request $request)
     {
-        //
+        $query = $request->input('query');
+
+        // Tìm kiếm sản phẩm theo tiêu đề hoặc mô tả
+        $admins = Admin::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('email', 'LIKE', "%{$query}%")
+            ->paginate(8);
+
+        return view('admin.pages.list_acc', compact('admins'));
     }
 
     /**

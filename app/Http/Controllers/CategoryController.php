@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\TryCatch;
 use App\Http\Requests\Category\Store_CategoryRequest;
 use App\Http\Requests\Category\Update_CategoryRequest;
 
@@ -14,19 +13,20 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      */
 
-     public function __construct()
+    public function __construct()
     {
         $this->middleware('admin.auth');
     }
     
     public function category()
     {
-        return view('user/pages/category');
+        return view('user.pages.category');
     }
 
-    public function index(){
+    public function index()
+    {
         $categories = Category::paginate(8);
-        return view('admin/pages/category/index',compact('categories'));
+        return view('admin.pages.category.index', compact('categories'));
     }
 
     /**
@@ -35,7 +35,7 @@ class CategoryController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin/pages/category/add',compact('categories'));
+        return view('admin.pages.category.add', compact('categories'));
     }
 
     /**
@@ -45,9 +45,9 @@ class CategoryController extends Controller
     {
         try {
             Category::create($request->all());
-            return redirect()->route('category.index')->with('success','Thêm mới thành công!');
+            return redirect()->route('category.index')->with('success', 'Thêm mới thành công!');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error','Thêm mới thất bại!');
+            return redirect()->back()->with('error', 'Thêm mới thất bại!');
         }
     }
 
@@ -56,7 +56,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        
+        //
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $categories = Category::all();
-        return view('admin/pages/category/edit',compact('category','categories'));
+        return view('admin.pages.category.edit', compact('category', 'categories'));
     }
 
     /**
@@ -75,11 +75,10 @@ class CategoryController extends Controller
     {
         try {
             $category->update($request->all());
-            return redirect()->route('category.index')->with('success','Cập nhật thành công!');
+            return redirect()->route('category.index')->with('success', 'Cập nhật thành công!');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error','Cập nhật  thất bại!');
+            return redirect()->back()->with('error', 'Cập nhật thất bại!');
         }
-        //dd($request->all());
     }
 
     /**
@@ -89,5 +88,21 @@ class CategoryController extends Controller
     {
         $category->delete();
         return redirect()->route('category.index')->with('success', 'Danh mục đã được xóa thành công.');
+    }
+
+    /**
+     * Search for categories.
+     */
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        
+        // Tìm kiếm danh mục theo tên hoặc mô tả
+        $categories = Category::where('title', 'LIKE', "%{$query}%")
+                              ->orWhere('description', 'LIKE', "%{$query}%")
+                              ->orWhere('id', 'LIKE', "%{$query}%")
+                              ->paginate(8);
+
+        return view('admin.pages.category.index', compact('categories'));
     }
 }

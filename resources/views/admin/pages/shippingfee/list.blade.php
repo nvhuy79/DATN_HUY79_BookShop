@@ -6,11 +6,11 @@
                 <div class="white_card_body">
                     <div class="QA_section">
                         <div class="white_box_tittle list_header">
-                            <a href="{{ route('product.create') }}" class="btn_1" style="background-color: rgb(50, 165, 50)">+ Thêm sản phẩm</a>
+                            <a href="{{ route('product.create') }}" class="btn_1" style="background-color: rgb(50, 165, 50)">+ Thêm phí vận chuyển</a>
                             <div class="box_right d-flex lms_block">
                                 <div class="serach_field_2">
                                     <div class="search_inner">
-                                        <form action="{{ route('product.search') }}" method="GET">
+                                        <form action="{{ route('list_acc.search') }}" method="GET">
                                             <div class="search_field">
                                                 <input type="text" name="query" placeholder="Tìm kiếm..." value="{{ request()->input('query') }}">
                                             </div>
@@ -28,34 +28,19 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col" style="width: 5%;">ID</th>
-                                        <th scope="col" style="width: 13%;">Sản phẩm</th>
-                                        <th scope="col" style="width: 10%;">Tác giả</th>
-                                        <th scope="col" style="width: 15%;">Danh mục</th>
-                                        <th scope="col" style="width: 10%;">Nhà xuất bản</th>
-                                        <th scope="col" style="width: 10%;">Giá bán</th>
-                                        <th scope="col" style="width: 10%;">Giá giảm</th>
-                                        <th scope="col" style="width: 10%; text-align: center;">Ảnh</th>
-                                        <th scope="col" style="width: 5%;">Nổi bật</th>
-                                        <th scope="col" style="width: 7%;">Số lượng</th>
+                                        <th scope="col" style="width: 10%;">ID</th>
+                                        <th scope="col" style="width: 40%;">Tên</th>
+                                        <th scope="col" style="width: 40%;">Email</th>
                                         <th scope="col" style="width: 10%;">Tùy chọn</th>
+                                    
                                     </tr>
                                 </thead>
                                 <tbody class="table-group-divider">
-                                    @forelse ($products as $item)
+                                    @forelse ($admins as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->title }}</td>
-                                            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->author }}</td>
-                                            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->category->title }}</td>
-                                            <td>{{ $item->publisher ?? 'Chưa có thông tin' }}</td>
-                                            <td>{{ number_format($item->price, 0, ',', '.') }} ₫</td>
-                                            <td>{{ number_format($item->sale_price, 0, ',', '.') }} ₫</td>
-                                            <td>
-                                                <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}" alt="" width="100px">
-                                            </td>
-                                            <td>{{ $item->featured ? 'Có' : 'Không' }}</td>
-                                            <td>{{ number_format($item->stock, 0, ',', '.') }}</td>
+                                            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->name }}</td>
+                                            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->email }}</td>
                                             <td>
                                                 <div class="action_btns d-flex">
                                                     <a href="{{ route('product.edit', $item) }}" class="action_btn mr_10"><i class="far fa-edit"></i>
@@ -77,18 +62,18 @@
                     </div>
                     <nav aria-label="Page navigation examplee">
                         <ul class="pagination">
-                            @if ($products->onFirstPage())
+                            @if ($admins->onFirstPage())
                                 <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
                             @else
-                                <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                                <li class="page-item"><a class="page-link" href="{{ $admins->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Trước</span></a></li>
                             @endif
-                            @foreach ($products as $item)
+                            @foreach ($admins as $item)
                                 @if (is_string($item))
                                     <li class="page-item disabled"><span class="page-link">{{ $item }}</span></li>
                                 @endif
                                 @if (is_array($item))
                                     @foreach ($item as $page => $url)
-                                        @if ($page == $products->currentPage())
+                                        @if ($page == $admins->currentPage())
                                             <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
                                         @else
                                             <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
@@ -96,8 +81,8 @@
                                     @endforeach
                                 @endif
                             @endforeach
-                            @if ($products->hasMorePages())
-                                <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+                            @if ($admins->hasMorePages())
+                                <li class="page-item"><a class="page-link" href="{{ $admins->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Tiếp</span></a></li>
                             @else
                                 <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
                             @endif

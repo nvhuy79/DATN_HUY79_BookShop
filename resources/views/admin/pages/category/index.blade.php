@@ -6,13 +6,13 @@
                 <div class="white_card_body">
                     <div class="QA_section">
                         <div class="white_box_tittle list_header">
-                            <a href="{{ route('category.create') }}" class="btn btn-success mb-3">+ Thêm danh mục</a>
+                            <a href="{{ route('category.create') }}" class="btn_1" style="background-color: rgb(50, 165, 50)">+ Thêm danh mục</a>
                             <div class="box_right d-flex lms_block">
                                 <div class="serach_field_2">
                                     <div class="search_inner">
-                                        <form Active="#">
+                                        <form action="{{ route('category.search') }}" method="GET">
                                             <div class="search_field">
-                                                <input type="text" placeholder="Tìm kiếm...">
+                                                <input type="text" name="query" placeholder="Tìm kiếm..." value="{{ request()->input('query') }}">
                                             </div>
                                             <button type="submit"> <i class="ti-search"></i> </button>
                                         </form>

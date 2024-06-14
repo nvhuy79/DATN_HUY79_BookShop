@@ -107,12 +107,12 @@
                         <img src="{{ asset('admin/img/menu-icon/7.svg') }}" alt>
                     </div>
                     <div class="nav_title">
-                        <span>Tickers</span>
+                        <span>Phí vận chuyển</span>
                     </div>
                 </a>
                 <ul>
-                    <li><a href="ticker_dark.html">Ticker Dark</a></li>
-                    <li><a href="Ticker_Light.html">Ticker Light</a></li>
+                    <li><a href="ticker_dark.html">Danh sách phí vận chuyển</a></li>
+                    <li><a href="Ticker_Light.html">Thêm phí vận chuyển</a></li>
                 </ul>
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">

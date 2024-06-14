@@ -213,7 +213,7 @@
                                     <h3 style="font-weight: bold;"> <a
                                             href="shop-product-basic.html">{{ $item->title }}</a></h3>
                                     <h5> <a href="shop-product-basic.html">{{ $item->category->title }}</a></h5>
-                                    <a href="#">Thêm vào giỏ hàng</a>
+                                    <a href="#">{{ $item->title }}</a>
                                 </div>
                                 <div class="price">
                                     @if ($item->sale_price && $item->sale_price < $item->price)

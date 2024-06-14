@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\ImageProduct;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Product\Store_ProductRequest;
 use App\Http\Requests\Product\Update_ProductRequest;
@@ -118,13 +118,6 @@ class ProductController extends Controller
         }
     }
 
-
-    // public function destroy(Product $product)
-    // {
-    //     $product->delete();
-    //     return redirect()->route('product.index')->with('success', 'Danh mục đã được xóa thành công.');
-    // }
-
     public function destroy(Product $product)
     {
         try {
@@ -144,5 +137,17 @@ class ProductController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Đã xảy ra lỗi khi xóa danh mục.');
         }
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        // Tìm kiếm sản phẩm theo tiêu đề hoặc mô tả
+        $products = Product::where('title', 'LIKE', "%{$query}%")
+            ->orWhere('description', 'LIKE', "%{$query}%")
+            ->paginate(8);
+
+        return view('admin.pages.product.index', compact('products'));
     }
 }

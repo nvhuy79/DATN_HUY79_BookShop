@@ -6,10 +6,11 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CartControllerTest;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ShippingFeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,14 +48,14 @@ Route::prefix('/')->group(function () {
     Route::get('/reset-pass', [AccountController::class, 'reset_pass'])->name('reset_pass');
     Route::post('/reset-pass', [AccountController::class, 'post_reset_pass']);
 
-    Route::get('/{slug}', [HomeController::class, 'detail_product'])->name('detail_product');
-    
-
+    Route::get('/products/{slug}', [HomeController::class, 'detail_product'])->name('detail_product');
+    Route::resource('checkout', CheckoutController::class);
+    Route::get('/get-districts/{provinceId}', [CheckoutController::class, 'getDistricts'])->name('get-districts');
 
 });
 
 Route::prefix('/cart')->middleware('auth')->group(function () {
-    Route::get('/index', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/', [CartController::class, 'index'])->name('cart.index');
     Route::post('products/{product}', [CartController::class, 'add'])->name('cart.add');
     Route::get('/delete/{product}', [CartController::class, 'delete'])->name('cart.delete');
     Route::put('products/{product}', [CartController::class, 'update'])->name('cart.update');
@@ -67,10 +68,19 @@ Route::prefix('admin')->group(function () {
     Route::get('/home', [AdminController::class, 'admin_home'])->name('admin_home');
     Route::get('/login', [AdminController::class, 'admin_login'])->name('admin_login');
     Route::post('/login', [AdminController::class, 'post_admin_login']);
-    Route::get('/add', [AdminController::class, 'admin_add'])->name('admin_add');
+    Route::get('/add', [AdminController::class, 'admin_add'])->name('admin_add')->middleware('admin.auth');;
     Route::post('/add', [AdminController::class, 'post_admin_add']);
     Route::get('/logout', [AdminController::class, 'admin_logout'])->name('admin_logout');
 
+    Route::get('/list_acc', [AdminController::class, 'list_acc'])->name('list_acc');
+    Route::get('/list_acc/search', [AdminController::class, 'list_acc_search'])->name('list_acc.search');
+
     Route::resource('category', CategoryController::class)->middleware('admin.auth');
+    Route::get('categories/search', [CategoryController::class, 'search'])->name('category.search');
+
     Route::resource('product', ProductController::class)->middleware('admin.auth');
+    Route::get('products/search', [ProductController::class, 'search'])->name('product.search');
+
+    Route::resource('shippingfee', ShippingFeeController::class)->middleware('admin.auth');
+
 });
