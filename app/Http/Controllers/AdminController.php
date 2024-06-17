@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -18,10 +19,8 @@ class AdminController extends Controller
 
     public function admin_home()
     {
-        if (Auth::guard('admin')->check()) {
-            return view('admin/pages/home');
-        }
-        return redirect()->route('admin_login');
+        $products = Product::with('category')->paginate(8);
+        return view('admin/pages/product/index', compact('products'));
     }
 
     public function admin_logout()
@@ -116,7 +115,7 @@ class AdminController extends Controller
     public function list_acc()
     {
         $admins = Admin::paginate(8);
-        return view('admin.pages.list_acc', compact('admins'));
+        return view('admin/pages/list_acc', compact('admins'));
     }
 
     /**

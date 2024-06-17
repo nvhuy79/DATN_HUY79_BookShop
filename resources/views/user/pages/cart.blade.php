@@ -90,19 +90,24 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6 mb-md-30 mb-sm-30">
                                 <div class="lezada-form coupon-form">
-                                    <form action="#">
-                                        <div class="row">
+
+                                    <div class="row">
+                                        <form action="{{ route('check_discount') }}" method="post">
+                                            @csrf
                                             <div class="col-md-7 mb-sm-10">
-                                                <input type="text" placeholder="Enter your coupon code">
+                                                <input type="text" name="discount_code" placeholder="Nhập mã giảm giá">
                                             </div>
-                                            <div class="col-md-5">
-                                                @if (!$carts->isEmpty())
-                                                    <button id="refresh-button"
-                                                        class="lezada-button lezada-button--medium">Cập nhật</button>
-                                                @endif
-                                            </div>
+                                            <button type="submit" id="button" class="lezada-button">Cập
+                                                nhật</button>
+                                        </form>
+
+                                        <div class="col-md-5">
+                                            @if (!$carts->isEmpty())
+                                                <button id="refresh-button" class="lezada-button lezada-button--medium">Cập
+                                                    nhật</button>
+                                            @endif
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 text-start text-lg-end">
@@ -132,14 +137,61 @@
                                 <td class="subtotal">{{ $totalQuantity }}</td>
                             </tr>
                             <tr>
-                                <th>Tổng</th>
-                                <td class="total">{{ number_format($totalPrice, 0, ',', '.') }} ₫</td>
+                                <th>Tổng tiền hàng</th>
+                                <td class="subtotal">{{ number_format($totalPrice, 0, ',', '.') }} ₫</td>
                             </tr>
+
+                            <tr>
+                                @if (Session::get('discount_code'))
+                                    @foreach (Session::get('discount_code') as $key => $count)
+                                        @if ($count['method'] == 1)
+                                            <tr>
+                                                <th>Mã giảm</th>
+                                                <td class="subtotal">{{ number_format($count['discount_value'], 0, ',', '.') }}đ</td>
+                                            </tr>
+
+                                            @php
+                                                $total_discount = ($totalPrice * $count['discount_value']) / 100;
+                                            @endphp
+                                            <tr>
+                                                <th>Tổng tiền giảm:</th>
+                                                <td class="subtotal">{{ number_format($total_discount, 0, ',', '.') }} đ</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tổng tiền sau giảm:</th>
+                                                <td class="subtotal">{{ number_format($totalPrice - $total_discount, 0, ',', '.') }}</td>
+                                            </tr>
+                                        @elseif ($count['method'] == 2)
+                                            <tr>
+                                                <th>Mã giảm:</th>
+                                                <td class="subtotal">{{ number_format($count['discount_value'], 0, ',', '.') }} %</td>
+                                            </tr>
+                                            
+                                                @php
+                                                    $total_discount = ($totalPrice * $count['discount_value']) / 100;
+                                                @endphp
+                                            <tr>
+                                                <th>Tổng giảm:</th>
+                                                <td class="subtotal">{{ number_format($total_discount, 0, ',', '.') }} %</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Tổng tiền sau giảm:</th>
+                                                <td class="subtotal">{{ number_format($totalPrice - $total_discount, 0, ',', '.') }}</td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </tr>
+
+
+
                         </table>
 
 
                         <div class="cart-calculation-button text-center">
-                            <a href="{{ route('checkout.index') }}" class="lezada-button lezada-button--medium">Thanh toán</a>
+                            <a href="{{ route('checkout.index') }}" class="lezada-button lezada-button--medium">Thanh
+                                toán</a>
                         </div>
                     </div>
                 </div>
@@ -212,28 +264,5 @@
                 });
             });
         });
-
-
-
-        // $(document).ready(function() {
-        //     $('.update-cart-form').on('submit', function(e) {
-        //         e.preventDefault();
-        //         var formData = $(this).serialize();
-        //         var url = $(this).attr('action');
-
-        //         $.ajax({
-        //             type: 'PUT',
-        //             url: url,
-        //             data: formData,
-        //             success: function(response) {
-        //                 // Cập nhật lại thông tin giỏ hàng trên trang
-        //                 location.reload();
-        //             },
-        //             error: function(xhr, status, error) {
-        //                 console.error(xhr.responseText);
-        //             }
-        //         });
-        //     });
-        // });
     </script>
 @endsection

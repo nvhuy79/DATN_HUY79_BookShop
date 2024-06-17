@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Discount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -21,8 +23,82 @@ class CartController extends Controller
         } else {
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để xem giỏ hàng.');
         }
-        
     }
+
+    public function check_discount(Request $request)
+    {
+        $data = $request->all();
+        $discount  = Discount::where('code', $data['discount_code'])->first();
+        if ($discount) {
+            $count_discount = $discount->count();
+            if ($count_discount > 0) {
+                $discount_session = Session::get('discount_code');
+                if ($discount_session == true) {
+                    $is_avaiable = 0;
+                    if ($is_avaiable == 0) {
+                        $count[]  = array(
+                            'code' => $discount->code,
+                            'discount_value' => $discount->discount_value,
+                            'method' => $discount->method,
+                        );
+                        Session::put('discount', $count);
+                    }
+                } else {
+                    $count[]  = array(
+                        'code' => $discount->code,
+                        'discount_value' => $discount->discount_value,
+                        'method' => $discount->method,
+                    );
+                    Session::put('discount', $count);
+                }
+                Session::save();
+                return redirect()->back()->with('success', 'Áp dụng mã giảm giá thành công');
+            }
+        }
+        else{
+            return redirect()->back()->with('error', 'Áp dụng mã giảm giá không thành công');
+        }
+    }
+
+    // public function check_discount(Request $request)
+    // {
+    //     $data = $request->all();
+    //     $discount = Discount::where('code', $data['discount_code'])->first();
+    
+    //     if ($discount) {
+    //         // Check if the discount code still has usage left
+    //         if ($discount->usage_count > 0) {
+    //             $discount_session = Session::get('discount', []);
+    
+    //             // Check if the discount code has already been applied
+    //             $is_applied = collect($discount_session)->contains('code', $discount->code);
+    
+    //             if (!$is_applied) {
+    //                 // Add discount code information to the session
+    //                 $discount_session[] = [
+    //                     'code' => $discount->code,
+    //                     'usage_count' => $discount->usage_count,
+    //                     'method' => $discount->method,
+    //                 ];
+    
+    //                 // Save the 'discount' session
+    //                 Session::put('discount', $discount_session);
+    
+    //                 return redirect()->back()->with('success', 'Áp dụng mã giảm giá thành công');
+    //             } else {
+    //                 return redirect()->back()->with('error', 'Mã giảm giá đã được áp dụng trước đó');
+    //             }
+    //         } else {
+    //             return redirect()->back()->with('error', 'Mã giảm giá đã hết lượt sử dụng');
+    //         }
+    //     } else {
+    //         return redirect()->back()->with('error', 'Mã giảm giá không hợp lệ');
+    //     }
+    // }
+    
+    
+
+    
 
     public function CartOverlay(Product $product, Request $request)
     {
@@ -67,7 +143,7 @@ class CartController extends Controller
             'user_id' => $user_id,
             'product_id' => $product_id,
         ])->first();
-    
+
         // Kiểm tra xem sản phẩm có tồn tại trong giỏ hàng không
         if ($cartItem) {
             $quantity = $request->input('quantity');

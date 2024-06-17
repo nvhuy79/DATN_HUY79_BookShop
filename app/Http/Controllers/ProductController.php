@@ -124,7 +124,7 @@ class ProductController extends Controller
             // Xóa tất cả các ảnh liên quan của sản phẩm từ storage
             foreach ($product->images as $image) {
                 Storage::delete('public/admin/images/' . $image->image);
-                $image->delete(); // Xóa bản ghi trong bảng ImageProduct
+                $image->delete(); 
             }
 
             // Xóa ảnh chính của sản phẩm từ storage

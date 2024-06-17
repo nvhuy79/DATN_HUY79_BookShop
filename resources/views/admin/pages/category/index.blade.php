@@ -6,23 +6,27 @@
                 <div class="white_card_body">
                     <div class="QA_section">
                         <div class="white_box_tittle list_header">
-                            <a href="{{ route('category.create') }}" class="btn_1" style="background-color: rgb(50, 165, 50)">+ Thêm danh mục</a>
-                            <div class="box_right d-flex lms_block">
-                                <div class="serach_field_2">
-                                    <div class="search_inner">
-                                        <form action="{{ route('category.search') }}" method="GET">
+                            <a href="{{ route('category.create') }}" class="btn_1"
+                                style="background-color: rgb(50, 165, 50)">+ Thêm danh mục</a>
+                            <form action="{{ route('product.search') }}" method="GET">
+                                <div class="box_right d-flex lms_block">
+                                    <div class="serach_field_2">
+                                        <div class="search_inner">
+
                                             <div class="search_field">
-                                                <input type="text" name="query" placeholder="Tìm kiếm..." value="{{ request()->input('query') }}">
+                                                <input type="text" name="query" placeholder="Tìm kiếm..."
+                                                    value="{{ request()->input('query') }}">
                                             </div>
                                             <button type="submit"> <i class="ti-search"></i> </button>
-                                        </form>
+
+                                        </div>
+                                    </div>
+                                    <div class="add_button ms-2">
+                                        <button type="submit" data-bs-toggle="modal" data-bs-target="#addcategory"
+                                            class="btn_1">Tìm kiếm</button>
                                     </div>
                                 </div>
-                                <div class="add_button ms-2">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#addcategory"
-                                        class="btn_1">Tìm kiếm</a>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                         <div class="QA_table mb_30">
                             <table class="table">
@@ -49,18 +53,21 @@
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 <div class="action_btns d-flex">
-                                                    <a href="{{ route('category.edit', $item) }}" class="action_btn mr_10"><i class="far fa-edit"></i>
+                                                    <a href="{{ route('category.edit', $item) }}"
+                                                        class="action_btn mr_10"><i class="far fa-edit"></i>
                                                     </a>
-                                                    <form action="{{ route('category.destroy', $item) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')">
+                                                    <form action="{{ route('category.destroy', $item) }}" method="POST"
+                                                        onsubmit="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="action_btn"><i class="fas fa-trash"></i></button>
+                                                        <button type="submit" class="action_btn"><i
+                                                                class="fas fa-trash"></i></button>
                                                     </form>
                                                 </div>
                                             </td>
                                         </tr>
                                     @empty
-                                          <td colspan="7" class="text-center">Chưa có dữ liệu</td>
+                                        <td colspan="7" class="text-center">Chưa có dữ liệu</td>
                                     @endforelse
                                 </tbody>
                             </table>
@@ -72,7 +79,9 @@
                             @if ($categories->onFirstPage())
                                 <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
                             @else
-                                <li class="page-item"><a class="page-link" href="{{ $categories->previousPageUrl() }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>
+                                <li class="page-item"><a class="page-link" href="{{ $categories->previousPageUrl() }}"
+                                        aria-label="Previous"><span aria-hidden="true">&laquo;</span><span
+                                            class="sr-only">Previous</span></a></li>
                             @endif
 
                             {{-- Pagination Elements --}}
@@ -86,9 +95,11 @@
                                 @if (is_array($item))
                                     @foreach ($item as $page => $url)
                                         @if ($page == $categories->currentPage())
-                                            <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                                            <li class="page-item active"><span class="page-link">{{ $page }}</span>
+                                            </li>
                                         @else
-                                            <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="{{ $url }}">{{ $page }}</a></li>
                                         @endif
                                     @endforeach
                                 @endif
@@ -96,7 +107,9 @@
 
                             {{-- Next Page Link --}}
                             @if ($categories->hasMorePages())
-                                <li class="page-item"><a class="page-link" href="{{ $categories->nextPageUrl() }}" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
+                                <li class="page-item"><a class="page-link" href="{{ $categories->nextPageUrl() }}"
+                                        aria-label="Next"><span aria-hidden="true">&raquo;</span><span
+                                            class="sr-only">Next</span></a></li>
                             @else
                                 <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
                             @endif

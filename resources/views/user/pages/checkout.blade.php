@@ -88,20 +88,22 @@
                                 <div class="col-lg-5">
                                     <div class="row">
                                         <!-- Cart Total -->
-                                        @foreach ($carts as $cart)
+                                        
                                             <div class="col-12 mb-60">
                                                 <h4 class="checkout-title">Giỏ hàng</h4>
                                                 <div class="checkout-cart-total">
                                                     <h4>Sản phẩm <span>Tổng</span></h4>
+                                                    @foreach ($carts as $cart)
                                                     <ul>
                                                         <li>{{ $cart->prod->title }} X {{ $cart->quantity }} <span>{{ number_format($cart->price, 0, ',', '.') }} ₫</span></li>
                                                     </ul>
+                                                    @endforeach
                                                     <p>Tổng tiền <span>$104.00</span></p>
                                                     <p>Phí vận chuyển <span>$00.00</span></p>
                                                     <h4>Tổng thanh toán <span>$104.00</span></h4>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                       
                                         <!-- Payment Method -->
                                         <div class="col-12">
                                             <h4 class="checkout-title">Phương thức thanh toán</h4>

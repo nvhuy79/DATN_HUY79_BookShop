@@ -6,7 +6,7 @@
                 <div class="white_card_body">
                     <div class="QA_section">
                         <div class="white_box_tittle list_header">
-                            <a href="{{ route('product.create') }}" class="btn_1" style="background-color: rgb(50, 165, 50)">+ Thêm tài khoản</a>
+                            <a href="{{ route('admin_add') }}" class="btn_1" style="background-color: rgb(50, 165, 50)">+ Thêm tài khoản</a>
                             <div class="box_right d-flex lms_block">
                                 <div class="serach_field_2">
                                     <div class="search_inner">

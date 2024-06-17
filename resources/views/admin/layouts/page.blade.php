@@ -54,7 +54,7 @@
                 </a>
                 <ul>
                     <li><a href="{{ route('admin_add') }}">Thêm tài khoản</a></li>
-                    <li><a href="{{ route('admin_logout') }}">Danh sách tài khoản</a></li>
+                    <li><a href="{{ route('list_acc') }}">Danh sách tài khoản</a></li>
                     <li><a href="{{ route('admin_logout') }}">Đăng xuất</a></li>
                 </ul>
             </li>
@@ -85,13 +85,13 @@
                     </div>
                 </a>
             </li>
-            <li class>
 
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="{{ asset('admin/img/menu-icon/3.svg') }}" alt>
+                        <img src="{{ asset('admin/img/menu-icon/18.svg') }}" alt>
                     </div>
+
                     <div class="nav_title">
                         <span>Sản phẩm</span>
                     </div>
@@ -99,6 +99,21 @@
                 <ul>
                     <li><a href="{{ route('product.index') }}">Danh sách sản phẩm</a></li>
                     <li><a href="{{ route('product.create') }}">Thêm mới sản phẩm</a></li>
+                </ul>
+            </li>
+
+            <li class>
+                <a class="has-arrow" href="#" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{{ asset('admin/img/menu-icon/forms.svg') }}" alt>
+                    </div>
+                    <div class="nav_title">
+                        <span>Mã giảm giá</span>
+                    </div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('discount.index') }}">Danh sách mã giảm giá</a></li>
+                    <li><a href="{{ route('discount.create') }}">Thêm mới mã giảm giá</a></li>
                 </ul>
             </li>
             <li class>
@@ -114,6 +129,7 @@
                     <li><a href="ticker_dark.html">Danh sách phí vận chuyển</a></li>
                     <li><a href="Ticker_Light.html">Thêm phí vận chuyển</a></li>
                 </ul>
+            </li>
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">

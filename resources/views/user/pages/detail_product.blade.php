@@ -161,6 +161,10 @@
                                     <div class="quick-view-other-info pb-0">
                                         <table>
                                             <tr class="single-info">
+                                                <td class="quickview-title">Tác giả: </td>
+                                                <td class="quickview-value">{{ $product->author }}</td>
+                                            </tr>
+                                            <tr class="single-info">
                                                 <td class="quickview-title">Nhà xuất bản: </td>
                                                 <td class="quickview-value">{{ $product->publisher }}</td>
                                             </tr>

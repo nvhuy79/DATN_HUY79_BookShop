@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -60,19 +61,20 @@ Route::prefix('/cart')->middleware('auth')->group(function () {
     Route::get('/delete/{product}', [CartController::class, 'delete'])->name('cart.delete');
     Route::put('products/{product}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/clear/{product}', [CartController::class, 'clear'])->name('cart.clear');
+    Route::post('check_discount', [CartController::class, 'check_discount'])->name('check_discount');
 });
 
 
 // ========================== ADMIN ============================
 Route::prefix('admin')->group(function () {
-    Route::get('/home', [AdminController::class, 'admin_home'])->name('admin_home');
+    Route::get('/home', [AdminController::class, 'admin_home'])->name('admin_home')->middleware('admin.auth');
     Route::get('/login', [AdminController::class, 'admin_login'])->name('admin_login');
     Route::post('/login', [AdminController::class, 'post_admin_login']);
-    Route::get('/add', [AdminController::class, 'admin_add'])->name('admin_add')->middleware('admin.auth');;
+    Route::get('/add', [AdminController::class, 'admin_add'])->name('admin_add')->middleware('admin.auth');
     Route::post('/add', [AdminController::class, 'post_admin_add']);
     Route::get('/logout', [AdminController::class, 'admin_logout'])->name('admin_logout');
 
-    Route::get('/list_acc', [AdminController::class, 'list_acc'])->name('list_acc');
+    Route::get('/list_acc', [AdminController::class, 'list_acc'])->name('list_acc')->middleware('admin.auth');
     Route::get('/list_acc/search', [AdminController::class, 'list_acc_search'])->name('list_acc.search');
 
     Route::resource('category', CategoryController::class)->middleware('admin.auth');
@@ -82,5 +84,7 @@ Route::prefix('admin')->group(function () {
     Route::get('products/search', [ProductController::class, 'search'])->name('product.search');
 
     Route::resource('shippingfee', ShippingFeeController::class)->middleware('admin.auth');
+    Route::resource('discount', DiscountController::class);
+    Route::get('discounts/search', [DiscountController::class, 'search'])->name('discount.search');
 
 });

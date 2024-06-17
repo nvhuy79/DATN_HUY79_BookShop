@@ -6,9 +6,9 @@
                 <div class="white_card_body">
                     <div class="QA_section">
                         <div class="white_box_tittle list_header">
-                            <a href="{{ route('product.create') }}" class="btn_1" style="background-color: rgb(50, 165, 50)">+
-                                Thêm sản phẩm</a>
-                            <form action="{{ route('product.search') }}" method="GET">
+                            <a href="{{ route('discount.create') }}" class="btn_1"
+                                style="background-color: rgb(50, 165, 50)">+ Thêm mã giảm giá</a>
+                            <form action="{{ route('discount.search') }}" method="GET">
                                 <div class="box_right d-flex lms_block">
                                     <div class="serach_field_2">
                                         <div class="search_inner">
@@ -32,47 +32,37 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col" style="width: 5%;">ID</th>
-                                        <th scope="col" style="width: 13%;">Sản phẩm</th>
-                                        <th scope="col" style="width: 10%;">Tác giả</th>
-                                        <th scope="col" style="width: 15%;">Danh mục</th>
-                                        <th scope="col" style="width: 10%;">Nhà xuất bản</th>
-                                        <th scope="col" style="width: 10%;">Giá bán</th>
-                                        <th scope="col" style="width: 10%;">Giá giảm</th>
-                                        <th scope="col" style="width: 10%; text-align: center;">Ảnh</th>
-                                        <th scope="col" style="width: 5%;">Nổi bật</th>
-                                        <th scope="col" style="width: 7%;">Số lượng</th>
-                                        <th scope="col" style="width: 10%;">Tùy chọn</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Tên mã</th>
+                                        <th scope="col">Mã giảm giá</th>
+                                        <th scope="col">Số lượng</th>
+                                        <th scope="col">Hình thức giảm</th>
+                                        <th scope="col">Mức giảm</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-group-divider">
-                                    @forelse ($products as $item)
+                                    @forelse ($discounts as $discount)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td
-                                                style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                                {{ $item->title }}</td>
-                                            <td
-                                                style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                                {{ $item->author }}</td>
-                                            <td
-                                                style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                                {{ $item->category->title }}</td>
-                                            <td>{{ $item->publisher ?? 'Chưa có thông tin' }}</td>
-                                            <td>{{ number_format($item->price, 0, ',', '.') }} ₫</td>
-                                            <td>{{ number_format($item->sale_price, 0, ',', '.') }} ₫</td>
+
+                                            <td>{{ $discount->id }}</td>
+                                            <td>{{ $discount->title }}</td>
+                                            <td>{{ $discount->code }}</td>
+                                            <td>{{ $discount->usage_count }}</td>
+                                            <td>{{ $discount->method_description }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
-                                                    alt="" width="100px">
+                                                @if ($discount->method == 1)
+                                                    {{ number_format($discount->discount_value, 0, ',', '.') }} đ
+                                                @elseif ($discount->method == 2)
+                                                    {{ number_format($discount->discount_value, 0, ',', '.') }} %
+                                                @endif
                                             </td>
-                                            <td>{{ $item->featured ? 'Có' : 'Không' }}</td>
-                                            <td>{{ number_format($item->stock, 0, ',', '.') }}</td>
+                                           
                                             <td>
                                                 <div class="action_btns d-flex">
-                                                    <a href="{{ route('product.edit', $item) }}"
+                                                    {{-- <a href="{{ route('category.edit', $item) }}"
                                                         class="action_btn mr_10"><i class="far fa-edit"></i>
-                                                    </a>
-                                                    <form action="{{ route('product.destroy', $item) }}" method="POST"
+                                                    </a> --}}
+                                                    <form action="{{ route('discount.destroy', $discount) }}" method="POST"
                                                         onsubmit="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')">
                                                         @csrf
                                                         @method('DELETE')
@@ -83,7 +73,7 @@
                                             </td>
                                         </tr>
                                     @empty
-                                        <td colspan="11" class="text-center">Chưa có dữ liệu</td>
+                                        <td colspan="7" class="text-center">Chưa có dữ liệu</td>
                                     @endforelse
                                 </tbody>
                             </table>
@@ -91,20 +81,26 @@
                     </div>
                     <nav aria-label="Page navigation examplee">
                         <ul class="pagination">
-                            @if ($products->onFirstPage())
+                            {{-- Previous Page Link --}}
+                            @if ($discounts->onFirstPage())
                                 <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
                             @else
-                                <li class="page-item"><a class="page-link" href="{{ $products->previousPageUrl() }}"
+                                <li class="page-item"><a class="page-link" href="{{ $discounts->previousPageUrl() }}"
                                         aria-label="Previous"><span aria-hidden="true">&laquo;</span><span
                                             class="sr-only">Previous</span></a></li>
                             @endif
-                            @foreach ($products as $item)
+
+                            {{-- Pagination Elements --}}
+                            @foreach ($discounts as $item)
+                                {{-- "Three Dots" Separator --}}
                                 @if (is_string($item))
                                     <li class="page-item disabled"><span class="page-link">{{ $item }}</span></li>
                                 @endif
+
+                                {{-- Array Of Links --}}
                                 @if (is_array($item))
                                     @foreach ($item as $page => $url)
-                                        @if ($page == $products->currentPage())
+                                        @if ($page == $discounts->currentPage())
                                             <li class="page-item active"><span class="page-link">{{ $page }}</span>
                                             </li>
                                         @else
@@ -114,8 +110,10 @@
                                     @endforeach
                                 @endif
                             @endforeach
-                            @if ($products->hasMorePages())
-                                <li class="page-item"><a class="page-link" href="{{ $products->nextPageUrl() }}"
+
+                            {{-- Next Page Link --}}
+                            @if ($discounts->hasMorePages())
+                                <li class="page-item"><a class="page-link" href="{{ $discounts->nextPageUrl() }}"
                                         aria-label="Next"><span aria-hidden="true">&raquo;</span><span
                                             class="sr-only">Next</span></a></li>
                             @else

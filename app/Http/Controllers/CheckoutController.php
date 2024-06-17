@@ -25,7 +25,6 @@ class CheckoutController extends Controller
             $user_id = Auth::id();
             $carts = Cart::where('user_id', $user_id)->get();
             return view('user/pages/checkout', compact('carts', 'categories', 'provinces'));
-            // Thay đổi 'province' thành 'provinces' trong hàm compact
         } else {
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để tiến hành thanh toán.');
         }
