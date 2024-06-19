@@ -40,7 +40,7 @@
                                         </td>
                                         <td class="product-name">
                                             <a href="shop-product-basic.html">{{ $cart->prod->title }}</a>
-                                            <span class="product-variation">Danh mục: {{ $cart->prod->title }}</span>
+                                            <span class="product-variation">Danh mục: {{ $cart->prod->category->title }}</span>
                                         </td>
                                         <td class="product-price">
                                             <span class="price">{{ number_format($cart->price, 0, ',', '.') }} ₫</span>
@@ -92,18 +92,22 @@
                                 <div class="lezada-form coupon-form">
 
                                     <div class="row">
-                                        <form action="{{ route('check_discount') }}" method="post">
-                                            @csrf
-                                            <div class="col-md-7 mb-sm-10">
-                                                <input type="text" name="discount_code" placeholder="Nhập mã giảm giá">
-                                            </div>
-                                            <button type="submit" id="button" class="lezada-button">Cập
-                                                nhật</button>
-                                        </form>
+                                        <div class="row">
+                                            <form action="{{ route('check_discount') }}" method="post" class="d-flex align-items-center w-100">
+                                                @csrf
+                                                <div class="col-md-7 mb-3 mb-sm-0"> <!-- Thay đổi class mb-sm-10 thành mb-3 và mb-sm-0 -->
+                                                    <input type="text" name="discount_code" placeholder="Nhập mã giảm giá..." value="{{ Session::get('current_discount_code') }}" class="form-control">
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <button type="submit" id="button" class="lezada-button">Áp mã</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        
 
                                         <div class="col-md-5">
                                             @if (!$carts->isEmpty())
-                                                <button id="refresh-button" class="lezada-button lezada-button--medium">Cập
+                                                <button id="refresh-button" class="lezada-button lezada-button--medium mt-5">Cập
                                                     nhật</button>
                                             @endif
                                         </div>
@@ -125,7 +129,7 @@
                 @endphp
                 <div class="col-xl-4 offset-xl-8 col-lg-5 offset-lg-7">
                     <div class="cart-calculation-area" style="border: 1px solid #cccccc; border-radius: 12px;">
-                        <h2 class="mb-40">Tổng tiền</h2>
+                        <h2 class="mb-40">Thanh toán</h2>
 
                         <table class="cart-calculation-table mb-30">
                             <tr>
@@ -142,23 +146,22 @@
                             </tr>
 
                             <tr>
-                                @if (Session::get('discount_code'))
-                                    @foreach (Session::get('discount_code') as $key => $count)
+                                @if (Session::has('discount'))
+                                    @foreach (Session::get('discount') as $key => $count)
                                         @if ($count['method'] == 1)
                                             <tr>
-                                                <th>Mã giảm</th>
+                                                <th>Mã giảm:</th>
                                                 <td class="subtotal">{{ number_format($count['discount_value'], 0, ',', '.') }}đ</td>
                                             </tr>
-
                                             @php
-                                                $total_discount = ($totalPrice * $count['discount_value']) / 100;
+                                                $total_discount = $count['discount_value'];
                                             @endphp
                                             <tr>
                                                 <th>Tổng tiền giảm:</th>
                                                 <td class="subtotal">{{ number_format($total_discount, 0, ',', '.') }} đ</td>
                                             </tr>
                                             <tr>
-                                                <th>Tổng tiền sau giảm:</th>
+                                                <th>Thành tiền:</th>
                                                 <td class="subtotal">{{ number_format($totalPrice - $total_discount, 0, ',', '.') }}</td>
                                             </tr>
                                         @elseif ($count['method'] == 2)
@@ -166,23 +169,22 @@
                                                 <th>Mã giảm:</th>
                                                 <td class="subtotal">{{ number_format($count['discount_value'], 0, ',', '.') }} %</td>
                                             </tr>
-                                            
-                                                @php
-                                                    $total_discount = ($totalPrice * $count['discount_value']) / 100;
-                                                @endphp
+                                            @php
+                                                $total_discount = ($totalPrice * $count['discount_value']) / 100;
+                                            @endphp
                                             <tr>
                                                 <th>Tổng giảm:</th>
-                                                <td class="subtotal">{{ number_format($total_discount, 0, ',', '.') }} %</td>
+                                                <td class="subtotal">{{ number_format($total_discount, 0, ',', '.') }}đ</td>
                                             </tr>
-
                                             <tr>
-                                                <th>Tổng tiền sau giảm:</th>
+                                                <th>Thành tiền:</th>
                                                 <td class="subtotal">{{ number_format($totalPrice - $total_discount, 0, ',', '.') }}</td>
                                             </tr>
                                         @endif
                                     @endforeach
                                 @endif
                             </tr>
+                            
 
 
 

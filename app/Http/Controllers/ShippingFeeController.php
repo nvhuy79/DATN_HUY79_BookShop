@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Province;
 use Illuminate\Http\Request;
 
 class ShippingFeeController extends Controller
@@ -11,15 +12,17 @@ class ShippingFeeController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.shippingfee.list');
+        $provinces = Province::orderBy('province_id','ASC')->get();
+        return view('admin.pages.shippingfee.add', compact('provinces'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $provinces = Province::orderBy('province_id','ASC')->get();
+        return view('admin.pages.shippingfee.add', compact('provinces'));
     }
 
     /**

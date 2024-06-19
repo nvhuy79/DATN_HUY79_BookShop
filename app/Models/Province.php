@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Province extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'province_id',
-        'name',
+        'name_province',
+        'type',
     ];
 
-
+    protected $primaryKey = 'province_id';
+    protected $table = 'provinces';
 }

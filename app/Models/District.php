@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class District extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'district_id',
+        'name_district',
+        'type',
         'province_id',
-        'name',
     ];
 
-    public function province()
-    {
-        return $this->belongsTo(Province::class);
-    }
+    protected $primaryKey = 'district_id';
+    protected $table = 'districts';
 }

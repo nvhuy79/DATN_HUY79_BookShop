@@ -187,7 +187,7 @@
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                     <div class="single-product__floating-icons">
-                                        <span class="wishlist"><a href="#" data-tippy="Add to wishlist"
+                                        <span class="wishlist"><a href="#" data-tippy="Thêm vào yêu thích"
                                                 data-tippy-inertia="true" data-tippy-animation="shift-away"
                                                 data-tippy-delay="50" data-tippy-arrow="true"
                                                 data-tippy-theme="sharpborder" data-tippy-placement="left"><i
