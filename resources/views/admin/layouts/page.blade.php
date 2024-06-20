@@ -126,8 +126,8 @@
                     </div>
                 </a>
                 <ul>
-                    <li><a href="ticker_dark.html">Danh sách phí vận chuyển</a></li>
-                    <li><a href="Ticker_Light.html">Thêm phí vận chuyển</a></li>
+                    <li><a href="">Danh sách phí vận chuyển</a></li>
+                    <li><a href="{{ route('shippingfee.create') }}">Thêm phí vận chuyển</a></li>
                 </ul>
             </li>
             <li class>
@@ -394,6 +394,64 @@
     <script src="{{ asset('admin/js/custom.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
     @yield('custom-js');
+
+
+
+    {{-- <script type="text/javascript">
+        $(document).ready(function() {
+            $('.choose').on('change', function() {
+                var action = $(this).attr('id');
+                var province_id = $(this).val();
+                var _token = $('input[name="_token"]').val();
+                var result = '';
+
+                if(action='district'){
+                    result= 'district';
+                }else{
+                    result = 'ward';
+                }
+                $.ajx({
+                    url: '{{url('/select-shippingfee')}}',
+                    medthod: 'POST',
+                    data:{action:action,province_id:province_id,_token:_token},
+                    success:function(data){
+                        $('#'+result).html(data);
+                    }
+                })
+            });
+        });
+    </script> --}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.choose').on('change', function() {
+                var action = $(this).attr('id');
+                var ma_id = $(this).val();
+                var _token = $('input[name="_token"]').val();
+                var result = '';
+    
+                if (action == 'province') {
+                    result = 'district';
+                } else if (action == 'district') {
+                    result = 'ward';
+                }
+    
+                $.ajax({
+                    url: '{{ url('/select-shippingfee') }}',
+                    method: 'POST',
+                    data: { action: action, ma_id: ma_id, _token: _token },
+                    success: function(data) {
+                        $('#' + result).html(data);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+    
+    
+
 
     @if (Session::has('success'))
         <script>

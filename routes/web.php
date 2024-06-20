@@ -52,7 +52,6 @@ Route::prefix('/')->group(function () {
     Route::get('/products/{slug}', [HomeController::class, 'detail_product'])->name('detail_product');
     Route::resource('checkout', CheckoutController::class);
     Route::get('/get-districts/{provinceId}', [CheckoutController::class, 'getDistricts'])->name('get-districts');
-
 });
 
 Route::prefix('/cart')->middleware('auth')->group(function () {
@@ -84,7 +83,9 @@ Route::prefix('admin')->group(function () {
     Route::get('products/search', [ProductController::class, 'search'])->name('product.search');
 
     Route::resource('shippingfee', ShippingFeeController::class)->middleware('admin.auth');
+    Route::post('/select-shippingfee', [ShippingFeeController::class, 'select_shippingfee'])->middleware('admin.auth');
+
+
     Route::resource('discount', DiscountController::class);
     Route::get('discounts/search', [DiscountController::class, 'search'])->name('discount.search');
-
 });

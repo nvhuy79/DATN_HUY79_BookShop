@@ -38,6 +38,7 @@
                                         <th scope="col">Số lượng</th>
                                         <th scope="col">Hình thức giảm</th>
                                         <th scope="col">Mức giảm</th>
+                                        <th scope="col">Tùy chọn</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-group-divider">
