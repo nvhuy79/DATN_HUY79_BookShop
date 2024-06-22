@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShippingFeeController;
+use App\Http\Controllers\SlideController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +34,12 @@ Route::prefix('/')->group(function () {
     Route::post('/login', [LoginController::class, 'post_login']);
 
     Route::get('/register', [RegisterController::class, 'register'])->name('register');
+    Route::get('/account/activation/{token}', [RegisterController::class, 'account_activication'])->name('account_activation');
     Route::post('/register', [RegisterController::class, 'post_register']);
 
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth.custom');
 
-    Route::get('/profile', [AccountController::class, 'profile'])->name('profile')->middleware('auth');
+    Route::get('/profile', [AccountController::class, 'profile'])->name('profile')->middleware('auth.custom');
     Route::post('/profile', [AccountController::class, 'post_profile'])->name('post_profile');
 
     Route::get('/change-pass', [AccountController::class, 'change_pass'])->name('change_pass');
@@ -51,10 +53,9 @@ Route::prefix('/')->group(function () {
 
     Route::get('/products/{slug}', [HomeController::class, 'detail_product'])->name('detail_product');
     Route::resource('checkout', CheckoutController::class);
-    Route::get('/get-districts/{provinceId}', [CheckoutController::class, 'getDistricts'])->name('get-districts');
 });
 
-Route::prefix('/cart')->middleware('auth')->group(function () {
+Route::prefix('/cart')->middleware('auth.custom')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
     Route::post('products/{product}', [CartController::class, 'add'])->name('cart.add');
     Route::get('/delete/{product}', [CartController::class, 'delete'])->name('cart.delete');
@@ -83,9 +84,12 @@ Route::prefix('admin')->group(function () {
     Route::get('products/search', [ProductController::class, 'search'])->name('product.search');
 
     Route::resource('shippingfee', ShippingFeeController::class)->middleware('admin.auth');
-    Route::post('/select-shippingfee', [ShippingFeeController::class, 'select_shippingfee'])->middleware('admin.auth');
-
+    Route::get('shippingfee/search', [ShippingFeeController::class, 'search'])->name('shippingfee.search');
+    Route::post('/calculate-shippingfee', [ShippingFeeController::class, 'calculateShippingFee'])->name('calculate_shippingfee');
 
     Route::resource('discount', DiscountController::class);
     Route::get('discounts/search', [DiscountController::class, 'search'])->name('discount.search');
+
+    Route::resource('slide', SlideController::class)->middleware('admin.auth');
+    Route::get('slides/search', [SlideController::class, 'search'])->name('slide.search');
 });

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -17,8 +19,10 @@ class RegisterController extends Controller
         $user_id = Auth::id();
         $carts = Cart::where('user_id', $user_id)->get();
         $categories = Category::all();
-        return view('user/pages/register',compact('categories','carts'));
+        return view('user/pages/register', compact('categories', 'carts'));
     }
+
+
 
     public function post_register(Request $request)
     {
@@ -50,12 +54,72 @@ class RegisterController extends Controller
                 ->withInput();
         }
 
-        $request->merge(['password' => Hash::make($request->password)]);
+        // $password = $request->merge(['password' => Hash::make($request->password)]);
+        $hashedPassword = Hash::make($request->password);
+        $token = strtoupper(Str::random(10));
         try {
-            User::create($request->all());
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $hashedPassword,
+                'token' => $token,
+            ]);
         } catch (\Throwable $th) {
             dd($th);
         }
-        return redirect()->route('login')->with('Success_Regis', 'Đăng ký thành vông! Gờ bạn có thể đăng nhập.');
+
+
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => "https://mail-sender-api1.p.rapidapi.com/",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode([
+                'sendto' => $request->email,
+                'name' => 'HavenBook',
+                // 'replyTo' => 'no-reply@yourdomain.com',
+                'ishtml' => 'false',
+                'title' => 'Chào mừng bạn đến với HavenBook',
+                'body' => 'Cảm ơn bạn đã đăng ký tài khoản tại HavenBook! Vui lòng nhấp vào đường link sau để hoàn tất quá trình đăng ký: ' . route('account_activation', ['token' => $token, 'name' => $request->name]),
+            ]),
+            CURLOPT_HTTPHEADER => [
+                "Content-Type: application/json",
+                "x-rapidapi-host: " . env('RAPIDAPI_HOST'),
+                "x-rapidapi-key: " . env('RAPIDAPI_KEY')
+            ],
+        ]);
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            Log::error("cURL Error #:" . $err);
+        } else {
+            Log::info("Email sent successfully: " . $response);
+        }
+        return redirect()->route('login')->with('Success_Regis', 'Đăng ký thành công! Hãy kiểm tra email để kích hoạt tài khoản.');
+    }
+
+    public function account_activication(Request $request)
+    {
+        $token = $request->token;
+        $name = $request->name;
+        $user_id = Auth::id();
+        $carts = Cart::where('user_id', $user_id)->get();
+        $categories = Category::all();
+        // Cập nhật status của user thành 1 (đã kích hoạt)
+        $user = User::where('token', $token)->first();
+        if ($user) {
+            $user->status = 1;
+            $user->save();
+        }
+
+        return view('user/pages/account_activation', compact('token', 'name','categories', 'carts'));
     }
 }

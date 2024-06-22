@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Cart;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -10,15 +11,17 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
-   
-    public function login(){
+
+    public function login()
+    {
         $user_id = Auth::id();
         $carts = Cart::where('user_id', $user_id)->get();
         $categories = Category::all();
-        return view('user/pages/login', compact('categories','carts'));
+        return view('user/pages/login', compact('categories', 'carts'));
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route('home')->with('logout_success', 'Bạn đã đăng xuất!.');
     }
@@ -49,9 +52,12 @@ class LoginController extends Controller
 
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            if (Auth::user()->status == 0) {
+                Auth::logout();
+                return redirect()->route('login')->with('error', 'Tài khoản của bạn chưa được kích hoạt!');
+            }
             return redirect()->route('home')->with('success', 'Đăng nhập thành công! Hy vọng bạn sẽ có những trải nhiệm tuyệt vời.');
         }
         return redirect()->back()->withInput()->with('error', 'Đăng nhập thất bại! Vui lòng kiểm tra lại email, mật khẩu.');
     }
-    
 }

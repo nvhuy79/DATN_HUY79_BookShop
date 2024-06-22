@@ -18,23 +18,17 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $provinces = Province::all();
         $categories = Category::all();
 
         if (Auth::check()) {
             $user_id = Auth::id();
             $carts = Cart::where('user_id', $user_id)->get();
-            return view('user/pages/checkout', compact('carts', 'categories', 'provinces'));
+            return view('user/pages/checkout', compact('carts', 'categories'));
         } else {
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để tiến hành thanh toán.');
         }
     }
 
-    public function getDistricts($provinceId)
-    {
-        $districts = District::where('province_id', $provinceId)->get();
-        return response()->json($districts);
-    }
     /**
      * Show the form for creating a new resource.
      */

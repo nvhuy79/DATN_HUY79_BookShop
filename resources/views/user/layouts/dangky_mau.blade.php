@@ -1,900 +1,1454 @@
+
 <!DOCTYPE html>
-<html lang="zxx">
+<html class="no-js" lang="zxx">
 
-<!-- Mirrored from demo.dashboardpack.com/cryptocurrency-html/buy_sell.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 Apr 2024 18:38:07 GMT -->
 
+<!-- Mirrored from htmldemo.net/lezada/lezada/element-testimonials.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 14:16:05 GMT -->
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Lezada - Multipurpose eCommerce Bootstrap 5 Template</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon -->
+	<link rel="icon" href="assets/images/favicon.ico">
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>BitCrypto</title>
-    <link rel="icon" href="img/mini_logo.png" type="image/png">
+	<!-- CSS
+	============================================ -->
+	<!-- Bootstrap CSS -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/bootstrap1.min.css" />
+	<!-- FontAwesome CSS -->
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="vendors/themefy_icon/themify-icons.css" />
+	<!-- Ionicons CSS -->
+	<link href="assets/css/ionicons.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="vendors/niceselect/css/nice-select.css" />
+	<!-- Themify CSS -->
+	<link href="assets/css/themify-icons.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="vendors/owl_carousel/css/owl.carousel.css" />
+	<!-- Plugins CSS -->
+	<link href="assets/css/plugins.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="vendors/gijgo/gijgo.min.css" />
+	<!-- Helper CSS -->
+	<link href="assets/css/helper.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="vendors/font_awesome/css/all.min.css" />
-    <link rel="stylesheet" href="vendors/tagsinput/tagsinput.css" />
+	<!-- Main CSS -->
+	<link href="assets/css/main.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="vendors/datepicker/date-picker.css" />
-    <link rel="stylesheet" href="vendors/vectormap-home/vectormap-2.0.2.css" />
+	<!-- Modernizer JS -->
+	<script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
-    <link rel="stylesheet" href="vendors/scroll/scrollable.css" />
-
-    <link rel="stylesheet" href="vendors/datatable/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="vendors/datatable/css/responsive.dataTables.min.css" />
-    <link rel="stylesheet" href="vendors/datatable/css/buttons.dataTables.min.css" />
-
-    <link rel="stylesheet" href="vendors/text_editor/summernote-bs4.css" />
-
-    <link rel="stylesheet" href="vendors/morris/morris.css">
-
-    <link rel="stylesheet" href="vendors/material_icon/material-icons.css" />
-
-    <link rel="stylesheet" href="css/metisMenu.css">
-
-    <link rel="stylesheet" href="css/style1.css" />
-    <link rel="stylesheet" href="css/colors/default.css" id="colorSkinCSS">
 </head>
 
-<body class="crm_body_bg">
+<body>
 
 
-    <nav class="sidebar dark_sidebar">
-        <div class="logo d-flex justify-content-between">
-            <a class="large_logo" href="index-2.html"><img src="img/logo_white.png" alt></a>
-            <a class="small_logo" href="index-2.html"><img src="img/mini_logo.png" alt></a>
-            <div class="sidebar_close_icon d-lg-none">
-                <i class="ti-close"></i>
-            </div>
-        </div>
-        <ul id="sidebar_menu">
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/1.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Dashboard </span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="index_2.html">Default</a></li>
-                    <li><a href="index_3.html">Light Sidebar</a></li>
-                    <li><a href="index-2.html">Dark Sidebar</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a href="crypto_wallet.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/2.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Crypto Wallet</span>
-                    </div>
-                </a>
-            </li>
-            <li class>
-                <a href="buy_sell.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/3.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Buy & Sell</span>
-                    </div>
-                </a>
-            </li>
-            <li class>
-                <a href="Trader_Profile.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/4.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Trader Profile</span>
-                    </div>
-                </a>
-            </li>
-            <li class>
-                <a href="crypto_stats.html" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/5.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Crypto Stats</span>
-                    </div>
-                </a>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/6.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Transactions</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="Request.html">Request</a></li>
-                    <li><a href="tan_cancel.html">Cancel</a></li>
-                    <li><a href="Refound.html">Refound</a></li>
-                    <li><a href="Payment_details.html">Payment details</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/7.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Tickers</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="ticker_dark.html">Ticker Dark</a></li>
-                    <li><a href="Ticker_Light.html">Ticker Light</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/8.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Apps </span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="editor.html">Editor</a></li>
-                    <li><a href="invoice.html">Invoice</a></li>
-                    <li><a href="Builder.html">Builder</a></li>
-                    <li><a href="calender.html">Calander</a></li>
-                    <li><a href="Board.html">Board</a></li>
-                    <li><a href="basic_card.html">Basic Card</a></li>
-                    <li><a href="theme_card.html">Theme Card</a></li>
-                    <li><a href="dargable_card.html">Draggable Card</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/Pages.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Pages</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="role_permissions.html">Role & Permissions</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="resister.html">Register</a></li>
-                    <li><a href="error_400.html">Error 404</a></li>
-                    <li><a href="error_500.html">Error 500</a></li>
-                    <li><a href="forgot_pass.html">Forgot Password</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="module_setting.html">Module Setting</a></li>
-                    <li><a href="Products.html">Products</a></li>
-                    <li><a href="Product_Details.html">Product Details</a></li>
-                    <li><a href="Cart.html">Cart</a></li>
-                    <li><a href="Checkout.html">Checkout</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/General.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>General</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="Minimized_Aside.html">Minimized Aside</a></li>
-                    <li><a href="empty_page.html">Empty page</a></li>
-                    <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/Mail_Box.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Mail Box </span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="mail_box.html">Mail Box</a></li>
-                    <li><a href="compose.html">Compose</a></li>
-                    <li><a href="important_mail.html">Important Mail</a></li>
-                    <li><a href="mail_trash.html">Mail Trash</a></li>
-                    <li><a href="chat.html">Chat</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/icon.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Icons</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="Fontawesome_Icon.html">Fontawesome Icon</a></li>
-                    <li><a href="themefy_icon.html">themefy icon</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/18.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>UI Elements </span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="colors.html">colors</a></li>
-                    <li><a href="Alerts.html">Alerts</a></li>
-                    <li><a href="buttons.html">Buttons</a></li>
-                    <li><a href="modal.html">modal</a></li>
-                    <li><a href="dropdown.html">Droopdowns</a></li>
-                    <li><a href="Badges.html">Badges</a></li>
-                    <li><a href="Loading_Indicators.html">Loading Indicators</a></li>
-                    <li><a href="color_plate.html">Color Plate</a></li>
-                    <li><a href="typography.html">Typography</a></li>
-                    <li><a href="datepicker.html">Date Picker</a></li>
-                    <li><a href="wow_animation.html">Animate</a></li>
-                    <li><a href="Scroll_Reveal.html">Scroll Reveal</a></li>
-                    <li><a href="tilt.html">Tilt Animation</a></li>
-                    <li><a href="navs.html">Navs</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/forms.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>forms</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="Basic_Elements.html">Basic Elements</a></li>
-                    <li><a href="Groups.html">Groups</a></li>
-                    <li><a href="Max_Length.html">Max Length</a></li>
-                    <li><a href="Layouts.html">Layouts</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/14.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Widgets</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="accordion.html">Accordions</a></li>
-                    <li><a href="Scrollable.html">Scrollable</a></li>
-                    <li><a href="notification.html">Notifications</a></li>
-                    <li><a href="carousel.html">Carousel</a></li>
-                    <li><a href="Pagination.html">Pagination</a></li>
-                    <li><a href="profilebox.html">Profile Box</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/17.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Table</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="data_table.html">Data Tables</a></li>
-                    <li><a href="bootstrap_table.html">Bootstrap</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/16.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Charts</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="chartjs.html">ChartJS</a></li>
-                    <li><a href="apex_chart.html">Apex Charts</a></li>
-                    <li><a href="chart_sparkline.html">Chart sparkline</a></li>
-                    <li><a href="am_chart.html">am-charts</a></li>
-                    <li><a href="nvd3_charts.html">nvd3 charts.</a></li>
-                </ul>
-            </li>
-            <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="img/menu-icon/map.svg" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Maps</span>
-                    </div>
-                </a>
-                <ul>
-                    <li><a href="mapjs.html">Maps JS</a></li>
-                    <li><a href="vector_map.html">Vector Maps</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+	<!--=============================================
+	=            Header offcanvas about         =
+	=============================================-->
 
-    <section class="main_content dashboard_part large_header_bg">
+	<header class="header header-offcanvas-about header-sticky">
 
-        <div class="container-fluid g-0">
-            <div class="row">
-                <div class="col-lg-12 p-0 ">
-                    <div class="header_iner d-flex justify-content-between align-items-center">
-                        <div class="sidebar_icon d-lg-none">
-                            <i class="ti-menu"></i>
-                        </div>
-                        <div class="line_icon open_miniSide d-none d-lg-block">
-                            <img src="img/line_img.png" alt>
-                        </div>
-                        <div class="header_right d-flex justify-content-between align-items-center">
-                            <div class="header_notification_warp d-flex align-items-center">
-                                <li>
-                                    <a class="CHATBOX_open nav-link-notify" href="#"> <img
-                                            src="img/icon/msg.svg" alt> </a>
-                                </li>
-                                <li>
-                                    <a class="bell_notification_clicker nav-link-notify" href="#"> <img
-                                            src="img/icon/bell.svg" alt>
+		<!--=======  header bottom  =======-->
 
-                                    </a>
+		<div class="header-bottom pt-md-40 pb-md-40 pt-sm-40 pb-sm-40">
+			<div class="container wide">
 
-                                    <div class="Menu_NOtification_Wrap">
-                                        <div class="notification_Header">
-                                            <h4>Notifications</h4>
-                                        </div>
-                                        <div class="Notification_body">
+				<!--=======  header bottom container  =======-->
 
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="img/staf/2.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>Cool Marketing </h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
+				<div class="header-bottom-container">
 
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="img/staf/4.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>Awesome packages</h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
+					<!--=======  logo with off canvas  =======-->
 
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="img/staf/3.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>what a packages</h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
+					<div class="logo-with-offcanvas d-flex">
 
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="img/staf/2.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>Cool Marketing </h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
+						<!--=======  offcanvas about icon  =======-->
 
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="img/staf/4.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>Awesome packages</h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
+						<div class="offcanvas-about-icon mr-20 d-none d-lg-block">
+							<a href="javascript:void(0)" id="offcanvas-about-icon">
+								<i class="ion-navicon"></i>
+							</a>
+						</div>
 
-                                            <div class="single_notify d-flex align-items-center">
-                                                <div class="notify_thumb">
-                                                    <a href="#"><img src="img/staf/3.png" alt></a>
-                                                </div>
-                                                <div class="notify_content">
-                                                    <a href="#">
-                                                        <h5>what a packages</h5>
-                                                    </a>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="nofity_footer">
-                                            <div class="submit_button text-center pt_20">
-                                                <a href="#" class="btn_1 green">See More</a>
-                                            </div>
-                                        </div>
-                                    </div>
+						<!--=======  End of offcanvas about icon  =======-->
 
-                                </li>
-                            </div>
-                            <div class="profile_info d-flex align-items-center">
-                                <div class="profile_thumb mr_20">
-                                    <img src="img/transfer/4.png" alt="#">
-                                </div>
-                                <div class="author_name">
-                                    <h4 class="f_s_15 f_w_500 mb-0">Jiue Anderson</h4>
-                                    <p class="f_s_12 f_w_400">Manager</p>
-                                </div>
-                                <div class="profile_info_iner">
-                                    <div class="profile_author_name">
-                                        <p>Manager</p>
-                                        <h5>Jiue Anderson</h5>
-                                    </div>
-                                    <div class="profile_info_details">
-                                        <a href="#">My Profile </a>
-                                        <a href="#">Settings</a>
-                                        <a href="#">Log Out </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+						<!--=======  logo   =======-->
 
-        <div class="main_content_iner overly_inner ">
-            <div class="container-fluid p-0 ">
+						<div class="logo">
+							<a href="index.html">
+								<img src="assets/images/logo.png" class="img-fluid" alt="">
+							</a>
+						</div>
 
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="white_card card_height_100 mb_30">
-                            <div class="white_card_header">
-                                <div class="white_box_tittle">
-                                    <h4>Payment Method</h4>
-                                </div>
-                            </div>
-                            <div class="white_card_body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label class="form-label">Cardholder Name</label>
-                                        <div class="common_input mb_20">
-                                            <input type="text" placeholder="Cardholder Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="common_input mb_20">
-                                            <label class="form-label">Card Number</label>
-                                            <input type="text" placeholder="Card Number">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label class="form-label">Expire Month</label>
-                                        <select class="nice_Select2 nice_Select_line wide mb_20"
-                                            style="display: none;">
-                                            <option value="1">Expire Month</option>
-                                            <option value="1">jan</option>
-                                            <option value="1">Feb</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label class="form-label">Expire Year</label>
-                                        <select class="nice_Select2 nice_Select_line wide mb_20"
-                                            style="display: none;">
-                                            <option value="1">Expire Year</option>
-                                            <option value="1">2020</option>
-                                            <option value="1">2022</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <label class="form-label">CVV</label>
-                                        <div class="common_input ">
-                                            <input type="text" placeholder="CVV">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="create_report_btn mt_30">
-                                            <a href="#" class="btn_1 w-100">SEND</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4">
-                        <div class="white_card card_height_100 mb_30">
-                            <div class="white_card_header">
-                                <div class="box_header m-0">
-                                    <div class="main-title">
-                                        <h3 class="m-0">Exchange</h3>
-                                    </div>
-                                    <div class="header_more_tool">
-                                        <div class="dropdown">
-                                            <span class="dropdown-toggle" id="dropdownMenuButton"
-                                                data-bs-toggle="dropdown">
-                                                <i class="ti-more-alt"></i>
-                                            </span>
-                                            <div class="dropdown-menu dropdown-menu-right"
-                                                aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#"> <i class="ti-eye"></i>
-                                                    Action</a>
-                                                <a class="dropdown-item" href="#"> <i class="ti-trash"></i>
-                                                    Delete</a>
-                                                <a class="dropdown-item" href="#"> <i class="fas fa-edit"></i>
-                                                    Edit</a>
-                                                <a class="dropdown-item" href="#"> <i class="ti-printer"></i>
-                                                    Print</a>
-                                                <a class="dropdown-item" href="#"> <i
-                                                        class="fa fa-download"></i> Download</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="white_card_body">
-                                <div class="exchange_widget">
-                                    <form name="myform" class="currency_validate">
-                                        <div class="form-group">
-                                            <label class="form-label">Currency</label>
-                                            <div class="input-group ">
-                                                <select name="currency" class="form-control nice_Select">
-                                                    <option data-display="Bitcoin" value="bitcoin">Bitcoin</option>
-                                                    <option value="litecoin">Litecoin</option>
-                                                </select>
-                                                <input type="text" name="usd_amount" class="form-control"
-                                                    value="125.00 USD">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label">Payment Method</label>
-                                            <div class="input-group ">
-                                                <select name="currency" class="form-control nice_Select">
-                                                    <option data-display="Bitcoin" value="bitcoin">Bitcoin</option>
-                                                    <option value="litecoin">Litecoin</option>
-                                                </select>
-                                                <input type="text" name="usd_amount" class="form-control"
-                                                    value="125.00 USD">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-label">Enter your amount</label>
-                                            <div class="input-group">
-                                                <input type="text" name="currency_amount" class="form-control"
-                                                    placeholder="0.0214 BTC">
-                                                <input type="text" name="usd_amount" class="form-control"
-                                                    placeholder="125.00 USD">
-                                            </div>
-                                            <div class="d-flex justify-content-between mt-3">
-                                                <p class="mb-0">Monthly Limit</p>
-                                                <h6 class="mb-0">$49750 remaining</h6>
-                                            </div>
-                                        </div>
-                                        <button type="submit" name="submit" class="btn_1 w-100">Exchange
-                                            Now</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="white_card card_height_100 mb_30">
-                            <div class="white_card_header pb-0">
-                                <div class="white_box_tittle">
-                                    <h4>Activities History</h4>
-                                </div>
-                            </div>
-                            <div class="white_card_body">
-                                <div class="QA_section">
-                                    <div class="QA_table mb-0">
+						<!--=======  End of logo   =======-->
+					</div>
 
-                                        <table class="table lms_table_active2 ">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Crypto orders</th>
-                                                    <th scope="col">Sender ID</th>
-                                                    <th scope="col">Transaction ID</th>
-                                                    <th scope="col">Time</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Amount</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        Buy Order
-                                                    </td>
-                                                    <td>
-                                                        gdh-34um3bbj</td>
-                                                    <td>HJD9R034JNN3N43</td>
-                                                    <td>10:23:45</td>
-                                                    <td><a href="#" class="status_btn">completed</a></td>
-                                                    <td>+0,041BTC</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Sell Order
-                                                    </td>
-                                                    <td>
-                                                        gdh-34um3bbj</td>
-                                                    <td>HJD9R034JNN3N43</td>
-                                                    <td>10:23:45</td>
-                                                    <td><a href="#" class="status_btn">completed</a></td>
-                                                    <td>+0,041BTC</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Exchange Order
-                                                    </td>
-                                                    <td>
-                                                        gdh-34um3bbj</td>
-                                                    <td>HJD9R034JNN3N43</td>
-                                                    <td>10:23:45</td>
-                                                    <td><a href="#" class="status_btn">completed</a></td>
-                                                    <td>+0,041BTC</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Buy Order
-                                                    </td>
-                                                    <td>
-                                                        gdh-34um3bbj</td>
-                                                    <td>HJD9R034JNN3N43</td>
-                                                    <td>10:23:45</td>
-                                                    <td><a href="#" class="status_btn">completed</a></td>
-                                                    <td>+0,041BTC</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Sell Order
-                                                    </td>
-                                                    <td>
-                                                        gdh-34um3bbj</td>
-                                                    <td>HJD9R034JNN3N43</td>
-                                                    <td>10:23:45</td>
-                                                    <td><a href="#" class="status_btn">completed</a></td>
-                                                    <td>+0,041BTC</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Exchange Order
-                                                    </td>
-                                                    <td>
-                                                        gdh-34um3bbj</td>
-                                                    <td>HJD9R034JNN3N43</td>
-                                                    <td>10:23:45</td>
-                                                    <td><a href="#" class="status_btn">completed</a></td>
-                                                    <td>+0,041BTC</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Buy Order
-                                                    </td>
-                                                    <td>
-                                                        gdh-34um3bbj</td>
-                                                    <td>HJD9R034JNN3N43</td>
-                                                    <td>10:23:45</td>
-                                                    <td><a href="#" class="status_btn">completed</a></td>
-                                                    <td>+0,041BTC</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+					<!--=======  End of logo with off canvas  =======-->
 
-        <div class="footer_part">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer_iner text-center">
-                            <p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a
-                                    href="#"> DashboardPack</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+					<!--=======  header bottom navigation  =======-->
+
+					<div class="header-bottom-navigation">
+						<div class="site-main-nav d-none d-lg-block">
+							<nav class="site-nav center-menu">
+								<ul>
+									<li class="menu-item-has-children"><a href="index.html">Home</a>
+										<ul class="sub-menu mega-menu mega-menu-column-5">
+											<li><a href="javascript:void(0)" class="mega-column-title">Home Group</a>
+												<ul class="mega-sub-menu">
+													<li><a href="index-trending.html">Trending</a><img src="assets/images/home-preview/01.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-collection.html">My collection</a><img
+															src="assets/images/home-preview/02.jpg" class="img-fluid" alt=""></li>
+													<li><a href="index-special.html">Special</a><img src="assets/images/home-preview/03.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-concept.html">concept</a><img src="assets/images/home-preview/04.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-smart.html">smart design</a><img src="assets/images/home-preview/05.jpg"
+															class="img-fluid" alt=""></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0)" class="mega-column-title">Home Group</a>
+												<ul class="mega-sub-menu">
+													<li><a href="index-furniture.html">Furniture </a><img src="assets/images/home-preview/06.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-essentials.html">Essentials</a><img src="assets/images/home-preview/07.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-lookbook.html">Lookbook</a><img src="assets/images/home-preview/08.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-wearables.html">Wearables</a><img src="assets/images/home-preview/09.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-accessories.html">Accessories</a><img
+															src="assets/images/home-preview/10.jpg" class="img-fluid" alt=""></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0)" class="mega-column-title">Home Group</a>
+												<ul class="mega-sub-menu">
+													<li><a href="index-shoppable.html">Shoppable</a><img src="assets/images/home-preview/11.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-fashion.html">Fashion</a><img src="assets/images/home-preview/13.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-perfumes.html">Perfumes</a><img src="assets/images/home-preview/14.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-cosmetics.html">Cosmetics</a><img src="assets/images/home-preview/15.jpg"
+															class="img-fluid" alt=""></li>
+													<li><a href="index-decor.html">Home Decor</a><img src="assets/images/home-preview/16.png"
+															class="img-fluid" alt=""></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0)" class="mega-column-title">Home Group</a>
+												<ul class="mega-sub-menu">
+													<li><a href="index-creative.html">Creative</a><img src="assets/images/home-preview/17.png"
+															class="img-fluid" alt=""></li>
+												</ul>
+											</li>
+											<li>
+												<div class="menu-image">
+													<img src="assets/images/menu-image/menu-element.png" class="img-fluid" alt="">
+												</div>
+											</li>
+										</ul>
+									</li>
+									<li class="menu-item-has-children"><a href="shop-left-sidebar.html">Shop</a>
+										<ul class="sub-menu mega-menu mega-menu-column-4">
+											<li><a href="javascript:void(0)" class="mega-column-title">Shop Pages</a>
+												<ul class="mega-sub-menu">
+													<li><a href="shop-no-sidebar.html">Shop No Sidebar</a></li>
+													<li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+													<li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+													<li><a href="shop-fullwidth-no-space.html">Shop Fullwidth No Space</a></li>
+													<li><a href="shop-fullwidth-no-sidebar.html">Shop Fullwidth No Sidebar</a></li>
+													<li><a href="shop-fullwidth-left-sidebar.html">Shop Fullwidth Left Sidebar</a></li>
+													<li><a href="shop-fullwidth-right-sidebar.html">Shop Fullwidth Right Sidebar</a></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0)" class="mega-column-title">Shop Pages</a>
+												<ul class="mega-sub-menu">
+													<li><a href="shop-product-basic.html">Basic </a></li>
+													<li><a href="shop-product-fullwidth.html">Fullwidth</a></li>
+													<li><a href="shop-product-sticky-details.html">Sticky details</a></li>
+													<li><a href="shop-product-with-sidebar.html">With Sidebar</a></li>
+													<li><a href="shop-product-extra-content.html">Extra Content</a></li>
+													<li><a href="shop-product-variation-image.html">Variation Image</a></li>
+													<li><a href="shop-product-bought-together.html">Bought Together</a></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0)" class="mega-column-title">Shop Pages</a>
+												<ul class="mega-sub-menu">
+													<li><a href="shop-product-with-background.html">Product with background</a></li>
+													<li><a href="shop-cart.html">Shopping Cart</a></li>
+													<li><a href="shop-checkout.html">Checkout</a></li>
+													<li><a href="shop-order-tracking.html">Order Tracking</a></li>
+													<li><a href="shop-wishlist.html">Wishlist</a></li>
+													<li><a href="shop-customer-login.html">Customer Login</a></li>
+													<li><a href="shop-by-brand.html">Shop by Brand</a></li>
+												</ul>
+											</li>
+											<li>
+												<div class="menu-image">
+													<img src="assets/images/menu-image/megamenu-shop.png" class="img-fluid" alt="">
+												</div>
+											</li>
+										</ul>
+									</li>
+									<li class="menu-item-has-children"><a href="javascript:void(0)">Elements</a>
+										<ul class="sub-menu mega-menu mega-menu-column-5">
+											<li><a href="javascript:void(0)" class="mega-column-title">Shop / Products</a>
+												<ul class="mega-sub-menu">
+													<li><a href="element-product-categories.html">Product Categories</a></li>
+													<li><a href="element-product-sliders.html">Product Sliders</a></li>
+													<li><a href="element-product-tabs.html">Product Tabs</a></li>
+													<li><a href="element-product-widget.html">Product Widget</a></li>
+													<li><a href="element-recent-products.html">Recent Products</a></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0)" class="mega-column-title">Shop / Products</a>
+												<ul class="mega-sub-menu">
+													<li><a href="element-sale-products.html">Sale Products </a></li>
+													<li><a href="element-featured-products.html">Featured products</a></li>
+													<li><a href="element-top-rated-products.html">Top Rated products</a></li>
+													<li><a href="element-bestselling-products.html">Best Selling products</a></li>
+													<li><a href="element-product-attributes.html">Product Attributes</a></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0)" class="mega-column-title">Theming</a>
+												<ul class="mega-sub-menu">
+													<li><a href="element-blog-posts.html">Blog Posts</a></li>
+													<li><a href="element-mailchimp-form.html">Mailchimp Form</a></li>
+													<li><a href="element-icon-box.html">Icon Box</a></li>
+													<li><a href="element-team-member.html">Team Member</a></li>
+													<li><a href="element-instagram.html">Instagram</a></li>
+												</ul>
+											</li>
+											<li><a href="javascript:void(0)" class="mega-column-title">Theming</a>
+												<ul class="mega-sub-menu">
+													<li><a href="element-faq.html">FAQs / Toggles</a></li>
+													<li><a href="element-countdown-timer.html">Countdown Timer</a></li>
+													<li><a href="element-button.html">Buttons</a></li>
+													<li><a href="element-testimonials.html">Testimonials</a></li>
+													<li><a href="element-google-maps.html">Google Maps</a></li>
+												</ul>
+											</li>
+											<li>
+												<div class="menu-image">
+													<img src="assets/images/menu-image/menu-element.png" class="img-fluid" alt="">
+												</div>
+											</li>
+										</ul>
+									</li>
+									<li class="menu-item-has-children"><a href="javascript:void(0)">Pages</a>
+										<ul class="sub-menu single-column-menu">
+											<li><a href="about-us.html">About Us</a></li>
+											<li><a href="about-us-2.html">About Us 2</a></li>
+											<li><a href="contact-us.html">Contact Us</a></li>
+											<li><a href="faq.html">F.A.Q</a></li>
+											<li><a href="coming-soon.html">Coming Soon</a></li>
+											<li><a href="404.html">404</a></li>
+											<li><a href="my-account.html">My account</a></li>
+											<li><a href="compare.html">Compare</a></li>
+										</ul>
+									</li>
+									<li class="menu-item-has-children "><a href="javascript:void(0)">Blog</a>
+										<ul class="sub-menu single-column-menu single-column-has-children">
+											<li><a href="blog-standard-right-sidebar.html">Standard Layout</a>
+												<ul class="multilevel-submenu">
+													<li><a href="blog-standard-right-sidebar.html">Right Sidebar</a></li>
+													<li><a href="blog-standard-left-sidebar.html">Left Sidebar</a></li>
+													<li><a href="blog-standard-full-width.html">Full Width</a></li>
+												</ul>
+											</li>
+											<li><a href="blog-grid-right-sidebar.html">Grid Layout</a>
+												<ul class="multilevel-submenu">
+													<li><a href="blog-grid-right-sidebar.html">Right Sidebar</a></li>
+													<li><a href="blog-grid-left-sidebar.html">Left Sidebar</a></li>
+													<li><a href="blog-grid-full-width.html">Full Width</a></li>
+												</ul>
+											</li>
+											<li><a href="blog-list-right-sidebar.html">List Layout</a>
+												<ul class="multilevel-submenu">
+													<li><a href="blog-list-right-sidebar.html">Right Sidebar</a></li>
+													<li><a href="blog-list-left-sidebar.html">Left Sidebar</a></li>
+													<li><a href="blog-list-full-width.html">Full Width</a></li>
+												</ul>
+											</li>
+											<li><a href="blog-masonry-right-sidebar.html">Masonry Layout</a>
+												<ul class="multilevel-submenu">
+													<li><a href="blog-masonry-right-sidebar.html">Right Sidebar</a></li>
+													<li><a href="blog-masonry-left-sidebar.html">Left Sidebar</a></li>
+													<li><a href="blog-masonry-full-width.html">Full Width</a></li>
+												</ul>
+											</li>
+											<li><a href="blog-full-then-grid-right-sidebar.html">1st Full Then Grid Layout</a>
+												<ul class="multilevel-submenu">
+													<li><a href="blog-full-then-grid-right-sidebar.html">Right Sidebar</a></li>
+													<li><a href="blog-full-then-grid-left-sidebar.html">Left Sidebar</a></li>
+													<li><a href="blog-full-then-grid-full-width.html">Full Width</a></li>
+												</ul>
+											</li>
+											<li><a href="blog-single-post-right-sidebar.html">Single Post Layout</a>
+												<ul class="multilevel-submenu">
+													<li><a href="blog-single-post-right-sidebar.html">Right Sidebar</a></li>
+													<li><a href="blog-single-post-left-sidebar.html">Left Sidebar</a></li>
+													<li><a href="blog-single-post-full-width.html">Full Width</a></li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+
+					<!--=======  End of header bottom navigation  =======-->
+
+					<!--=======  headeer right container  =======-->
+
+					<div class="header-right-container">
+
+						<!--=======  header right icons  =======-->
+
+						<div class="header-right-icons d-flex justify-content-end align-items-center h-100">
+							<!--=======  single-icon  =======-->
+
+							<div class="single-icon search">
+								<a href="javascript:void(0)" id="search-icon">
+									<i class="ion-ios-search-strong"></i>
+								</a>
+							</div>
+
+							<!--=======  End of single-icon  =======-->
+							<!--=======  single-icon  =======-->
+
+							<div class="single-icon user-login">
+								<a href="shop-customer-login.html">
+									<i class="ion-android-person"></i>
+								</a>
+							</div>
+
+							<!--=======  End of single-icon  =======-->
+							<!--=======  single-icon  =======-->
+
+							<div class="single-icon wishlist">
+								<a href="javascript:void(0)" id="offcanvas-wishlist-icon">
+									<i class="ion-android-favorite-outline"></i>
+									<span class="count">2</span>
+								</a>
+							</div>
+
+							<!--=======  End of single-icon  =======-->
+							<!--=======  single-icon  =======-->
+
+							<div class="single-icon cart">
+								<a href="javascript:void(0)" id="offcanvas-cart-icon">
+									<i class="ion-ios-cart"></i>
+									<span class="count">3</span>
+								</a>
+							</div>
+							<!--=======  End of single-icon  =======-->
+						</div>
+						<!--=======  End of header right icons  =======-->
+
+					</div>
+
+					<!--=======  End of headeer right container  =======-->
 
 
-    <div class="CHAT_MESSAGE_POPUPBOX">
-        <div class="CHAT_POPUP_HEADER">
-            <div class="MSEESAGE_CHATBOX_CLOSE">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.09939 5.98831L11.772 10.661C12.076 10.965 12.076 11.4564 11.772 11.7603C11.468 12.0643 10.9766 12.0643 10.6726 11.7603L5.99994 7.08762L1.32737 11.7603C1.02329 12.0643 0.532002 12.0643 0.228062 11.7603C-0.0760207 11.4564 -0.0760207 10.965 0.228062 10.661L4.90063 5.98831L0.228062 1.3156C-0.0760207 1.01166 -0.0760207 0.520226 0.228062 0.216286C0.379534 0.0646715 0.578697 -0.0114918 0.777717 -0.0114918C0.976738 -0.0114918 1.17576 0.0646715 1.32737 0.216286L5.99994 4.889L10.6726 0.216286C10.8243 0.0646715 11.0233 -0.0114918 11.2223 -0.0114918C11.4213 -0.0114918 11.6203 0.0646715 11.772 0.216286C12.076 0.520226 12.076 1.01166 11.772 1.3156L7.09939 5.98831Z"
-                        fill="white" />
-                </svg>
-            </div>
-            <h3>Chat with us</h3>
-            <div class="Chat_Listed_member">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <div class="member_thumb">
-                                <img src="img/staf/1.png" alt>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="member_thumb">
-                                <img src="img/staf/2.png" alt>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="member_thumb">
-                                <img src="img/staf/3.png" alt>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="member_thumb">
-                                <img src="img/staf/4.png" alt>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="member_thumb">
-                                <img src="img/staf/5.png" alt>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="member_thumb">
-                                <div class="more_member_count">
-                                    <span>90+</span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="CHAT_POPUP_BODY">
-            <p class="mesaged_send_date">
-                Sunday, 12 January
-            </p>
-            <div class="CHATING_SENDER">
-                <div class="SMS_thumb">
-                    <img src="img/staf/1.png" alt>
-                </div>
-                <div class="SEND_SMS_VIEW">
-                    <P>Hi! Welcome .
-                        How can I help you?</P>
-                </div>
-            </div>
-            <div class="CHATING_SENDER CHATING_RECEIVEr">
-                <div class="SEND_SMS_VIEW">
-                    <P>Hello</P>
-                </div>
-                <div class="SMS_thumb">
-                    <img src="img/staf/1.png" alt>
-                </div>
-            </div>
-        </div>
-        <div class="CHAT_POPUP_BOTTOM">
-            <div class="chat_input_box d-flex align-items-center">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Write your message"
-                        aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn " type="button">
+				</div>
 
-                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M18.7821 3.21895C14.4908 -1.07281 7.50882 -1.07281 3.2183 3.21792C-1.07304 7.50864 -1.07263 14.4908 3.21872 18.7824C7.50882 23.0729 14.4908 23.0729 18.7817 18.7815C23.0726 14.4908 23.0724 7.50906 18.7821 3.21895ZM17.5813 17.5815C13.9525 21.2103 8.04773 21.2108 4.41871 17.5819C0.78907 13.9525 0.789485 8.04714 4.41871 4.41832C8.04752 0.789719 13.9521 0.789304 17.5817 4.41874C21.2105 8.04755 21.2101 13.9529 17.5813 17.5815ZM6.89503 8.02162C6.89503 7.31138 7.47107 6.73534 8.18131 6.73534C8.89135 6.73534 9.46739 7.31117 9.46739 8.02162C9.46739 8.73228 8.89135 9.30811 8.18131 9.30811C7.47107 9.30811 6.89503 8.73228 6.89503 8.02162ZM12.7274 8.02162C12.7274 7.31138 13.3038 6.73534 14.0141 6.73534C14.7241 6.73534 15.3002 7.31117 15.3002 8.02162C15.3002 8.73228 14.7243 9.30811 14.0141 9.30811C13.3038 9.30811 12.7274 8.73228 12.7274 8.02162ZM15.7683 13.2898C14.9712 15.1332 13.1043 16.3243 11.0126 16.3243C8.8758 16.3243 6.99792 15.1272 6.22834 13.2744C6.09642 12.9573 6.24681 12.593 6.56438 12.4611C6.64238 12.4289 6.72328 12.4136 6.80293 12.4136C7.04687 12.4136 7.27836 12.5577 7.37772 12.7973C7.95376 14.1842 9.38048 15.0799 11.0126 15.0799C12.6077 15.0799 14.0261 14.1836 14.626 12.7959C14.7625 12.4804 15.1288 12.335 15.4441 12.4717C15.7594 12.6084 15.9048 12.9745 15.7683 13.2898Z"
-                                    fill="#707DB7" />
-                            </svg>
+				<!--=======  End of header bottom container  =======-->
 
-                        </button>
-                        <button class="btn" type="button">
+				<!-- Mobile Navigation Start Here -->
 
-                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M11 0.289062C4.92455 0.289062 0 5.08402 0 10.9996C0 16.9152 4.92455 21.7101 11 21.7101C17.0755 21.7101 22 16.9145 22 10.9996C22 5.08472 17.0755 0.289062 11 0.289062ZM11 20.3713C5.68423 20.3713 1.375 16.1755 1.375 10.9996C1.375 5.82371 5.68423 1.62788 11 1.62788C16.3158 1.62788 20.625 5.82371 20.625 10.9996C20.625 16.1755 16.3158 20.3713 11 20.3713ZM15.125 10.3302H11.6875V6.98314C11.6875 6.61363 11.3795 6.31373 11 6.31373C10.6205 6.31373 10.3125 6.61363 10.3125 6.98314V10.3302H6.875C6.4955 10.3302 6.1875 10.6301 6.1875 10.9996C6.1875 11.3691 6.4955 11.669 6.875 11.669H10.3125V15.016C10.3125 15.3855 10.6205 15.6854 11 15.6854C11.3795 15.6854 11.6875 15.3855 11.6875 15.016V11.669H15.125C15.5045 11.669 15.8125 11.3691 15.8125 10.9996C15.8125 10.6301 15.5045 10.3302 15.125 10.3302Z"
-                                    fill="#707DB7" />
-                            </svg>
+				<div class="site-mobile-navigation d-block d-lg-none">
+					<div id="dl-menu" class="dl-menuwrapper site-mobile-nav">
+						<!--Site Mobile Menu Toggle Start-->
+						<button class="dl-trigger hamburger hamburger--spin">
+							<span class="hamburger-box">
+								<span class="hamburger-inner"></span>
+							</span>
+						</button>
+						<!--Site Mobile Menu Toggle End-->
+						<ul class="dl-menu dl-menu-toggle">
+							<li class=""><a href="#">Home</a>
+								<ul class="dl-submenu">
+									<li class=""> <a href="#">Home Group One</a>
+										<ul class="dl-submenu">
+											<li><a href="index-trending.html">Trending</a></li>
+											<li><a href="index-collection.html">My collection</a></li>
+											<li><a href="index-special.html">Special</a></li>
+											<li><a href="index-concept.html">concept</a></li>
+											<li><a href="index-smart.html">smart design</a></li>
+										</ul>
+									</li>
+									<li> <a href="#">Home Group Two</a>
+										<ul class="dl-submenu">
+											<li><a href="index-furniture.html">Furniture </a></li>
+											<li><a href="index-essentials.html">Essentials</a></li>
+											<li><a href="index-lookbook.html">Lookbook</a></li>
+											<li><a href="index-wearables.html">Wearables</a></li>
+											<li><a href="index-accessories.html">Accessories</a></li>
+										</ul>
+									</li>
+									<li> <a href="#">Home Group three</a>
+										<ul class="dl-submenu">
+											<li><a href="index-shoppable.html">Shoppable</a></li>
 
-                            <input type="file">
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+											<li><a href="index-fashion.html">Fashion</a></li>
+											<li><a href="index-perfumes.html">Perfumes</a></li>
+											<li><a href="index-cosmetics.html">Cosmetics</a></li>
+										</ul>
+									</li>
+									<li> <a href="#">Home Group four</a>
+										<ul class="dl-submenu">
+											<li><a href="index-decor.html">Home Decor</a></li>
+											<li><a href="index-creative.html">Creative</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
 
-    <div id="back-top" style="display: none;">
-        <a title="Go to Top" href="#">
-            <i class="ti-angle-up"></i>
-        </a>
-    </div>
+							<li><a href="#">Shop</a>
+								<ul class="dl-submenu">
+									<li class=""> <a href="#">Shop Pages</a>
+										<ul class="dl-submenu">
+											<li><a href="shop-no-sidebar.html">Shop No Sidebar</a></li>
+											<li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+											<li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+											<li><a href="shop-fullwidth-no-space.html">Shop Fullwidth No Space</a></li>
+											<li><a href="shop-fullwidth-no-sidebar.html">Shop Fullwidth No Sidebar</a></li>
+											<li><a href="shop-fullwidth-left-sidebar.html">Shop Fullwidth Left Sidebar</a></li>
+											<li><a href="shop-fullwidth-right-sidebar.html">Shop Fullwidth Right Sidebar</a></li>
+										</ul>
+									</li>
+									<li class=""> <a href="#">Product Details Pages</a>
+										<ul class="dl-submenu">
+											<li><a href="shop-product-basic.html">Basic </a></li>
+											<li><a href="shop-product-fullwidth.html">Fullwidth</a></li>
+											<li><a href="shop-product-sticky-details.html">Sticky details</a></li>
+											<li><a href="shop-product-with-sidebar.html">With Sidebar</a></li>
+											<li><a href="shop-product-extra-content.html">Extra Content</a></li>
+											<li><a href="shop-product-variation-image.html">Variation Image</a></li>
+											<li><a href="shop-product-bought-together.html">Bought Together</a></li>
 
-    <script src="js/jquery1-3.4.1.min.js"></script>
 
-    <script src="js/popper1.min.js"></script>
+										</ul>
+									</li>
+									<li class=""> <a href="#">Other Shop Pages</a>
+										<ul class="dl-submenu">
+											<li><a href="shop-product-with-background.html">Product with background</a></li>
+											<li><a href="shop-cart.html">Shopping Cart</a></li>
+											<li><a href="shop-checkout.html">Checkout</a></li>
+											<li><a href="shop-order-tracking.html">Order Tracking</a></li>
+											<li><a href="shop-wishlist.html">Wishlist</a></li>
+											<li><a href="shop-customer-login.html">Customer Login</a></li>
+											<li><a href="shop-by-brand.html">Shop by Brand</a></li>
 
-    <script src="js/bootstrap1.min.js"></script>
+										</ul>
+									</li>
 
-    <script src="js/metisMenu.js"></script>
 
-    <script src="vendors/count_up/jquery.waypoints.min.js"></script>
+								</ul>
+							</li>
+							<li><a href="#">Elements</a>
+								<ul class="dl-submenu">
+									<li class=""> <a href="#">Shop / Products</a>
+										<ul class="dl-submenu">
+											<li><a href="element-product-categories.html">Product Categories</a></li>
+											<li><a href="element-product-sliders.html">Product Sliders</a></li>
+											<li><a href="element-product-tabs.html">Product Tabs</a></li>
+											<li><a href="element-product-widget.html">Product Widget</a></li>
+											<li><a href="element-recent-products.html">Recent Products</a></li>
+										</ul>
+									</li>
+									<li class=""> <a href="#">Shop / Products</a>
+										<ul class="dl-submenu">
+											<li><a href="element-sale-products.html">Sale Products </a></li>
+											<li><a href="element-featured-products.html">Featured products</a></li>
+											<li><a href="element-top-rated-products.html">Top Rated products</a></li>
+											<li><a href="element-bestselling-products.html">Best Selling products</a></li>
+											<li><a href="element-product-attributes.html">Product Attributes</a></li>
+										</ul>
+									</li>
+									<li class=""> <a href="#">Theming</a>
+										<ul class="dl-submenu">
+											<li><a href="element-blog-posts.html">Blog Posts</a></li>
+											<li><a href="element-mailchimp-form.html">Mailchimp Form</a></li>
+											<li><a href="element-icon-box.html">Icon Box</a></li>
+											<li><a href="element-team-member.html">Team Member</a></li>
+											<li><a href="element-instagram.html">Instagram</a></li>
 
-    <script src="vendors/chartlist/Chart.min.js"></script>
+										</ul>
+									</li>
 
-    <script src="vendors/count_up/jquery.counterup.min.js"></script>
 
-    <script src="vendors/niceselect/js/jquery.nice-select.min.js"></script>
+								</ul>
+							</li>
+							<li><a href="#">Pages</a>
+								<ul class="dl-submenu">
+									<li><a href="about-us.html">About Us</a></li>
+									<li><a href="about-us-2.html">About Us 2</a></li>
+									<li><a href="contact-us.html">Contact Us</a></li>
+									<li><a href="faq.html">F.A.Q</a></li>
+									<li><a href="coming-soon.html">Coming Soon</a></li>
+									<li><a href="404.html">404</a></li>
+									<li><a href="my-account.html">My account</a></li>
+									<li><a href="compare.html">Compare</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Blog</a>
+								<ul class="dl-submenu">
+									<li><a href="#">Standard Layout</a>
+										<ul class="dl-submenu">
+											<li><a href="blog-standard-right-sidebar.html">Right Sidebar</a></li>
+											<li><a href="blog-standard-left-sidebar.html">Left Sidebar</a></li>
+											<li><a href="blog-standard-full-width.html">Full Width</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Grid Layout</a>
+										<ul class="dl-submenu">
+											<li><a href="blog-grid-right-sidebar.html">Right Sidebar</a></li>
+											<li><a href="blog-grid-left-sidebar.html">Left Sidebar</a></li>
+											<li><a href="blog-grid-full-width.html">Full Width</a></li>
+										</ul>
+									</li>
+									<li><a href="#">List Layout</a>
+										<ul class="dl-submenu">
+											<li><a href="blog-list-right-sidebar.html">Right Sidebar</a></li>
+											<li><a href="blog-list-left-sidebar.html">Left Sidebar</a></li>
+											<li><a href="blog-list-full-width.html">Full Width</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Masonry Layout</a>
+										<ul class="dl-submenu">
+											<li><a href="blog-masonry-right-sidebar.html">Right Sidebar</a></li>
+											<li><a href="blog-masonry-left-sidebar.html">Left Sidebar</a></li>
+											<li><a href="blog-masonry-full-width.html">Full Width</a></li>
+										</ul>
+									</li>
+									<li><a href="#">1st Full Then Grid</a>
+										<ul class="dl-submenu">
+											<li><a href="blog-full-then-grid-right-sidebar.html">Right Sidebar</a></li>
+											<li><a href="blog-full-then-grid-left-sidebar.html">Left Sidebar</a></li>
+											<li><a href="blog-full-then-grid-full-width.html">Full Width</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Single Post Layout</a>
+										<ul class="dl-submenu">
+											<li><a href="blog-single-post-right-sidebar.html">Right Sidebar</a></li>
+											<li><a href="blog-single-post-left-sidebar.html">Left Sidebar</a></li>
+											<li><a href="blog-single-post-full-width.html">Full Width</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
 
-    <script src="vendors/owl_carousel/js/owl.carousel.min.js"></script>
+				<!-- Mobile Navigation End Here -->
 
-    <script src="vendors/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="vendors/datatable/js/dataTables.responsive.min.js"></script>
-    <script src="vendors/datatable/js/dataTables.buttons.min.js"></script>
-    <script src="vendors/datatable/js/buttons.flash.min.js"></script>
-    <script src="vendors/datatable/js/jszip.min.js"></script>
-    <script src="vendors/datatable/js/pdfmake.min.js"></script>
-    <script src="vendors/datatable/js/vfs_fonts.js"></script>
-    <script src="vendors/datatable/js/buttons.html5.min.js"></script>
-    <script src="vendors/datatable/js/buttons.print.min.js"></script>
 
-    <script src="vendors/datepicker/datepicker.js"></script>
-    <script src="vendors/datepicker/datepicker.en.js"></script>
-    <script src="vendors/datepicker/datepicker.custom.js"></script>
-    <script src="js/chart.min.js"></script>
-    <script src="vendors/chartjs/roundedBar.min.js"></script>
+			</div>
+		</div>
 
-    <script src="js/dashboard_init.js"></script>
-    <script src="js/custom.js"></script>
+		<!--=======  End of header bottom  =======-->
+	</header>
+
+	<!--===== End of Header offcanvas about ======-->
+
+	<!--=======  breadcrumb area =======-->
+
+	<div class="breadcrumb-area breadcrumb-bg-1 pt-50 pb-70 mb-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="breadcrumb-title">Testimonials</h1>
+
+					<!--=======  breadcrumb list  =======-->
+
+					<ul class="breadcrumb-list">
+						<li class="breadcrumb-list__item"><a href="index.html">HOME</a></li>
+						<li class="breadcrumb-list__item"><a href="#">ELEMENTS</a></li>
+						<li class="breadcrumb-list__item breadcrumb-list__item--active">TESTIMONIALS</li>
+					</ul>
+
+					<!--=======  End of breadcrumb list  =======-->
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--=======  End of breadcrumb area =======-->
+
+	<!--=============================================
+	=            section title  container      =
+	=============================================-->
+
+	<div class="section-title-container mb-80">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<!--=======  section title  =======-->
+
+					<div class="section-title section-title--one text-center">
+						<h1>Testimonial</h1>
+						<p>Lorem ipsum dolor sit amet, consecte tur cing elit. Suspe ndisse suscipit sagittis leo sit met condim
+							entum.</p>
+					</div>
+
+					<!--=======  End of section title  =======-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--=====  End of section title container ======-->
+
+
+	<!--=============================================
+    =            multi item testimonial area        =
+    =============================================-->
+
+	<div class="lezada-testimonial multi-item-testimonial-area mb-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<!--=======  testmonial slider container  =======-->
+
+					<div class="lezada-slick-slider multi-testimonial-slider-container" data-slick-setting='{
+						"slidesToShow": 3,
+						"arrows": true,
+						"autoplay": false,
+						"autoplaySpeed": 5000,
+						"speed": 1000,
+						"prevArrow": {"buttonClass": "slick-prev", "iconClass": "ti-angle-left" },
+						"nextArrow": {"buttonClass": "slick-next", "iconClass": "ti-angle-right" }
+					}' data-slick-responsive='[
+						{"breakpoint":1501, "settings": {"slidesToShow": 3} },
+						{"breakpoint":1199, "settings": {"slidesToShow": 3} },
+						{"breakpoint":991, "settings": {"slidesToShow": 2, "arrows": false} },
+						{"breakpoint":767, "settings": {"slidesToShow": 1, "arrows": false} },
+						{"breakpoint":575, "settings": {"slidesToShow": 1, "arrows": false} },
+						{"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
+					]'>
+
+						<!--=======  single testimonial  =======-->
+
+						<div class="col px-3">
+							<div class="testimonial-item multi-testimonial-single-item">
+								<div class="multi-testimonial-single-item__text">
+									I can say your dedication is second to none. I like the fact that you are strongly proud of your work
+									in every way.
+								</div>
+								<div class="multi-testimonial-single-item__author-info">
+									<div class="image">
+										<img src="assets/images/testimonial/testimonial-1-80x80.png" class="img-fluid" alt="">
+									</div>
+
+									<div class="content">
+										<p class="name">Sally Ramsey</p>
+										<span class="designation">/ Reporter</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!--=======  End of single testimonial  =======-->
+
+						<!--=======  single testimonial  =======-->
+
+						<div class="col px-3">
+							<div class="testimonial-item multi-testimonial-single-item">
+								<div class="multi-testimonial-single-item__text">
+									This has already been my fifth-time purchasing their theme. I have been highly satisfied with their
+									work.
+								</div>
+								<div class="multi-testimonial-single-item__author-info">
+									<div class="image">
+										<img src="assets/images/testimonial/testimonial-2-80x80.jpg" class="img-fluid" alt="">
+									</div>
+
+									<div class="content">
+										<p class="name">Lois Thompson</p>
+										<span class="designation">/ Actor</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!--=======  End of single testimonial  =======-->
+
+						<!--=======  single testimonial  =======-->
+
+						<div class="col px-3">
+							<div class="testimonial-item multi-testimonial-single-item">
+								<div class="multi-testimonial-single-item__text">
+									There's nothing would satisfy me much more than a worry-free clean and responsive theme for my
+									high-traffic site.
+								</div>
+								<div class="multi-testimonial-single-item__author-info">
+									<div class="image">
+										<img src="assets/images/testimonial/testimonial-3-80x80.jpg" class="img-fluid" alt="">
+									</div>
+
+									<div class="content">
+										<p class="name">Florence Pittman</p>
+										<span class="designation">/ Model</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!--=======  End of single testimonial  =======-->
+
+						<!--=======  single testimonial  =======-->
+
+						<div class="col px-3">
+							<div class="testimonial-item multi-testimonial-single-item">
+								<div class="multi-testimonial-single-item__text">
+									Five-star for good customer support. They have the ability to resolve any issue in less than the time
+									for a coffee cup.
+								</div>
+								<div class="multi-testimonial-single-item__author-info">
+									<div class="image">
+										<img src="assets/images/testimonial/testimonial-4-80x80.jpg" class="img-fluid" alt="">
+									</div>
+
+									<div class="content">
+										<p class="name">Anais Coulon</p>
+										<span class="designation">/ Model</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!--=======  End of single testimonial  =======-->
+
+					</div>
+
+					<!--=======  End of testmonial slider container  =======-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--=====  End of multi item testimonial area ======-->
+
+
+	<!--=============================================
+    =            single item testimonial area         =
+    =============================================-->
+
+	<div class="lezada-testimonial single-item-testimonial-area testimonial-bg testimonial-bg-1 mb-100 pt-135 pb-135">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<!--=======  testmonial slider container  =======-->
+
+					<div class="lezada-slick-slider multi-testimonial-slider-container" data-slick-setting='{
+                        "slidesToShow": 1,
+                        "arrows": true,
+                        "autoplay": true,
+                        "autoplaySpeed": 5000,
+                        "speed": 1000,
+                        "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ti-angle-left" },
+                        "nextArrow": {"buttonClass": "slick-next", "iconClass": "ti-angle-right" }
+                    }' data-slick-responsive='[
+                        {"breakpoint":1501, "settings": {"slidesToShow": 1} },
+                        {"breakpoint":1199, "settings": {"slidesToShow": 1} },
+                        {"breakpoint":991, "settings": {"slidesToShow": 1, "arrows": false} },
+                        {"breakpoint":767, "settings": {"slidesToShow": 1, "arrows": false} },
+                        {"breakpoint":575, "settings": {"slidesToShow": 1, "arrows": false} },
+                        {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
+                    ]'>
+
+						<!--=======  single testimonial  =======-->
+
+						<div class="col">
+							<div class="testimonial-item single-testimonial-single-item">
+
+								<div class="single-testimonial-single-item__image mb-sm-50">
+									<img src="assets/images/testimonial/testimonial-1.png" class="img-fluid" alt="">
+								</div>
+
+								<div class="single-testimonial-single-item__content text-center">
+
+									<div class="quote-icon d-inline-block mb-30">
+										<img src="assets/images/icons/quote.png" class="img-fluid" alt="">
+									</div>
+
+									<div class="text mb-40">
+										I can say your dedication is second to none. I like the fact that you are strongly proud of your
+										work in every way.
+									</div>
+
+									<div class="client-info">
+										<p class="name">Sally Ramsey</p>
+										<span class="designation">/ Reporter</span>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+						<!--=======  End of single testimonial  =======-->
+
+						<!--=======  single testimonial  =======-->
+
+						<div class="col">
+							<div class="testimonial-item single-testimonial-single-item">
+
+								<div class="single-testimonial-single-item__image mb-sm-50">
+									<img src="assets/images/testimonial/testimonial-2.jpg" class="img-fluid" alt="">
+								</div>
+
+								<div class="single-testimonial-single-item__content text-center">
+
+									<div class="quote-icon d-inline-block mb-30">
+										<img src="assets/images/icons/quote.png" class="img-fluid" alt="">
+									</div>
+
+									<div class="text mb-40">
+										This has already been my fifth-time purchasing their theme. I have been highly satisfied with their
+										work.
+									</div>
+
+									<div class="client-info">
+										<p class="name">Lois Thompson</p>
+										<span class="designation">/ Model</span>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+						<!--=======  End of single testimonial  =======-->
+
+						<!--=======  single testimonial  =======-->
+
+						<div class="col">
+							<div class="testimonial-item single-testimonial-single-item">
+
+								<div class="single-testimonial-single-item__image mb-sm-50">
+									<img src="assets/images/testimonial/testimonial-3.jpg" class="img-fluid" alt="">
+								</div>
+
+								<div class="single-testimonial-single-item__content text-center">
+
+									<div class="quote-icon d-inline-block mb-30">
+										<img src="assets/images/icons/quote.png" class="img-fluid" alt="">
+									</div>
+
+									<div class="text mb-40">
+										There's nothing would satisfy me much more than a worry-free clean and responsive theme for my
+										high-traffic site.
+									</div>
+
+									<div class="client-info">
+										<p class="name">Florence Pittman</p>
+										<span class="designation">/ Actor</span>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+						<!--=======  End of single testimonial  =======-->
+
+						<!--=======  single testimonial  =======-->
+
+						<div class="col">
+							<div class="testimonial-item single-testimonial-single-item">
+
+								<div class="single-testimonial-single-item__image mb-sm-50">
+									<img src="assets/images/testimonial/testimonial-4.jpg" class="img-fluid" alt="">
+								</div>
+
+								<div class="single-testimonial-single-item__content text-center">
+
+									<div class="quote-icon d-inline-block mb-30">
+										<img src="assets/images/icons/quote.png" class="img-fluid" alt="">
+									</div>
+
+									<div class="text mb-40">
+										Five-star for good customer support. They have the ability to resolve any issue in less than the
+										time for a coffee cup.
+									</div>
+
+									<div class="client-info">
+										<p class="name">Anais Coulon</p>
+										<span class="designation">/ Reporter</span>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+						<!--=======  End of single testimonial  =======-->
+
+
+					</div>
+
+					<!--=======  End of testmonial slider container  =======-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--=====  End of single item testimonial area  ======-->
+
+
+	<!--=============================================
+	=            footer area         =
+	=============================================-->
+
+	<div class="footer-container footer-one pt-100 pb-50">
+		<div class="container wide">
+			<div class="row">
+				<div class="col footer-single-widget">
+					<!--=======  copyright text  =======-->
+					<!--=======  logo  =======-->
+
+					<div class="logo">
+						<img src="assets/images/logo.png" class="img-fluid" alt="">
+					</div>
+
+					<!--=======  End of logo  =======-->
+
+					<!--=======  copyright text  =======-->
+
+					<div class="copyright-text">
+						<p> &copy; <script>document.write(new Date().getFullYear() + ' ');</script> lezada. <span>All Rights Reserved</span></p>
+					</div>
+
+					<!--=======  End of copyright text  =======-->
+
+					<!--=======  End of copyright text  =======-->
+				</div>
+				<div class="col footer-single-widget">
+					<!--=======  single widget  =======-->
+					<h5 class="widget-title">ABOUT</h5>
+
+					<!--=======  footer navigation container  =======-->
+
+					<div class="footer-nav-container">
+						<nav>
+							<ul>
+								<li><a href="#">About us</a></li>
+								<li><a href="#">Store location</a></li>
+								<li><a href="#">Contact</a></li>
+								<li><a href="#">Orders tracking</a></li>
+							</ul>
+						</nav>
+					</div>
+
+					<!--=======  End of footer navigation container  =======-->
+
+					<!--=======  single widget  =======-->
+				</div>
+				<div class="col footer-single-widget">
+					<!--=======  single widget  =======-->
+					<h5 class="widget-title">USEFUL LINKS</h5>
+
+					<!--=======  footer navigation container  =======-->
+
+					<div class="footer-nav-container">
+						<nav>
+							<ul>
+								<li><a href="#">Returns</a></li>
+								<li><a href="#">Support Policy</a></li>
+								<li><a href="#">Size guide</a></li>
+								<li><a href="#">FAQs</a></li>
+							</ul>
+						</nav>
+					</div>
+
+					<!--=======  End of footer navigation container  =======-->
+
+					<!--=======  single widget  =======-->
+				</div>
+
+				<div class="col footer-single-widget">
+					<!--=======  single widget  =======-->
+					<h5 class="widget-title">FOLLOW US ON</h5>
+
+					<!--=======  footer navigation container  =======-->
+
+					<div class="footer-nav-container footer-social-links">
+						<nav>
+							<ul>
+								<li><a href="http://twitter.com/"><i class="fa fa-twitter"></i> Twitter</a></li>
+								<li><a href="http://facebook.com/"> <i class="fa fa-facebook"></i> Facebook</a></li>
+								<li><a href="http://instagram.com/"><i class="fa fa-instagram"></i> Instagram</a></li>
+								<li><a href="http://youtube.com/"> <i class="fa fa-youtube"></i> Youtube</a></li>
+							</ul>
+						</nav>
+					</div>
+
+					<!--=======  End of footer navigation container  =======-->
+
+
+					<!--=======  single widget  =======-->
+				</div>
+				<div class="col footer-single-widget">
+					<!--=======  single widget  =======-->
+
+					<div class="footer-subscription-widget">
+						<h2 class="footer-subscription-title">Subscribe.</h2>
+						<p class="subscription-subtitle">Subscribe to our newsletter to receive news on update.</p>
+
+						<!--=======  subscription form  =======-->
+
+						<div class="subscription-form">
+							<form id="mc-form" class="mc-form">
+								<input type="email" placeholder="Your email address" required>
+								<button type="submit"><i class="ion-ios-arrow-thin-right"></i></button>
+							</form>
+						</div>
+
+						<!--=======  End of subscription form  =======-->
+
+						<!-- mailchimp-alerts Start -->
+
+						<div class="mailchimp-alerts">
+							<div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+							<div class="mailchimp-success"></div><!-- mailchimp-success end -->
+							<div class="mailchimp-error"></div><!-- mailchimp-error end -->
+						</div><!-- mailchimp-alerts end -->
+
+					</div>
+
+					<!--=======  End of single widget  =======-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--=====  End of footer area  ======-->
+
+	<!--=============================================
+	=            overlay items         =
+	=============================================-->
+
+	<!--=======  about overlay  =======-->
+
+	<div class="header-offcanvas about-overlay" id="about-overlay">
+		<div class="overlay-close inactive"></div>
+		<div class="overlay-content">
+
+			<!--=======  close icon  =======-->
+
+			<span class="close-icon" id="about-close-icon">
+				<a href="javascript:void(0)">
+					<i class="ti-close"></i>
+				</a>
+			</span>
+
+			<!--=======  End of close icon  =======-->
+
+			<!--=======  overlay content container  =======-->
+
+			<div class="overlay-content-container d-flex flex-column justify-content-between h-100">
+				<!--=======  widget wrapper  =======-->
+
+				<div class="widget-wrapper">
+					<!--=======  single widget  =======-->
+
+					<div class="single-widget">
+						<h2 class="widget-title">About Us</h2>
+						<p>At Lezada, we put a strong emphasis on simplicity, quality and usefulness of fashion products over other
+							factors. Our fashion items never get outdated. They are not short-lived as normal fashion clothes.</p>
+					</div>
+
+					<!--=======  End of single widget  =======-->
+				</div>
+
+				<!--=======  End of widget wrapper  =======-->
+
+				<!--=======  contact widget  =======-->
+
+				<div class="contact-widget">
+					<p class="email"><a href="mailto:contact@lezada.com">contact@lezada.com</a></p>
+					<p class="phone">(+00) 123 567990</p>
+
+					<div class="social-icons">
+						<ul>
+							<li><a href="http://www.twitter.com/" data-tippy="Twitter" data-tippy-inertia="true"
+									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+									data-tippy-theme="sharpborder" target="_blank"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="http://www.facebook.com/" data-tippy="Facebook" data-tippy-inertia="true"
+									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+									data-tippy-theme="sharpborder" target="_blank"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="http://www.instagram.com/" data-tippy="Instagram" data-tippy-inertia="true"
+									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+									data-tippy-theme="sharpborder" target="_blank"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="http://www.youtube.com/" data-tippy="Youtube" data-tippy-inertia="true"
+									data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+									data-tippy-theme="sharpborder" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+						</ul>
+					</div>
+				</div>
+
+				<!--=======  End of contact widget  =======-->
+			</div>
+
+			<!--=======  End of overlay content container  =======-->
+		</div>
+	</div>
+
+	<!--=======  End of about overlay  =======-->
+
+	<!--=======  wishlist overlay  =======-->
+
+	<div class="wishlist-overlay" id="wishlist-overlay">
+		<div class="wishlist-overlay-close inactive"></div>
+		<div class="wishlist-overlay-content">
+			<!--=======  close icon  =======-->
+
+			<span class="close-icon" id="wishlist-close-icon">
+				<a href="javascript:void(0)">
+					<i class="ion-android-close"></i>
+				</a>
+			</span>
+
+			<!--=======  End of close icon  =======-->
+
+			<!--=======  offcanvas wishlist content container  =======-->
+
+			<div class="offcanvas-cart-content-container">
+				<h3 class="cart-title">Wishlist</h3>
+
+				<div class="cart-product-wrapper">
+					<div class="cart-product-container  ps-scroll">
+						<!--=======  single cart product  =======-->
+
+						<div class="single-cart-product">
+							<span class="cart-close-icon">
+								<a href="#"><i class="ti-close"></i></a>
+							</span>
+							<div class="image">
+								<a href="shop-product-basic.html">
+									<img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
+								</a>
+							</div>
+							<div class="content">
+								<h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
+								<p><span class="main-price discounted">$200.00</span> <span class="discounted-price">$180.00</span></p>
+
+							</div>
+						</div>
+
+						<!--=======  End of single cart product  =======-->
+						<!--=======  single cart product  =======-->
+
+						<div class="single-cart-product">
+							<span class="cart-close-icon">
+								<a href="#"><i class="ti-close"></i></a>
+							</span>
+							<div class="image">
+								<a href="shop-product-basic.html">
+									<img src="assets/images/cart-product-image/02.jpg" class="img-fluid" alt="">
+								</a>
+							</div>
+							<div class="content">
+								<h5><a href="shop-product-basic.html">Dining Chair</a></h5>
+								<p><span class="main-price discounted">$300.00</span> <span class="discounted-price">$220.00</span></p>
+
+							</div>
+						</div>
+
+						<!--=======  End of single cart product  =======-->
+						<!--=======  single cart product  =======-->
+
+						<div class="single-cart-product">
+							<span class="cart-close-icon">
+								<a href="#"><i class="ti-close"></i></a>
+							</span>
+							<div class="image">
+								<a href="shop-product-basic.html">
+									<img src="assets/images/cart-product-image/03.jpg" class="img-fluid" alt="">
+								</a>
+							</div>
+							<div class="content">
+								<h5><a href="shop-product-basic.html">Creative Wooden Stand</a></h5>
+								<p><span class="main-price discounted">$100.00</span> <span class="discounted-price">$80.00</span></p>
+
+							</div>
+						</div>
+
+						<!--=======  End of single cart product  =======-->
+						<!--=======  single cart product  =======-->
+
+						<div class="single-cart-product">
+							<span class="cart-close-icon">
+								<a href="#"><i class="ti-close"></i></a>
+							</span>
+							<div class="image">
+								<a href="shop-product-basic.html">
+									<img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
+								</a>
+							</div>
+							<div class="content">
+								<h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
+								<p><span class="main-price discounted">$200.00</span> <span class="discounted-price">$180.00</span></p>
+
+							</div>
+						</div>
+
+						<!--=======  End of single cart product  =======-->
+						<!--=======  single cart product  =======-->
+
+						<div class="single-cart-product">
+							<span class="cart-close-icon">
+								<a href="#"><i class="ti-close"></i></a>
+							</span>
+							<div class="image">
+								<a href="shop-product-basic.html">
+									<img src="assets/images/cart-product-image/02.jpg" class="img-fluid" alt="">
+								</a>
+							</div>
+							<div class="content">
+								<h5><a href="shop-product-basic.html">Creative Wooden Stand</a></h5>
+								<p><span class="main-price discounted">$200.00</span> <span class="discounted-price">$180.00</span></p>
+
+							</div>
+						</div>
+
+						<!--=======  End of single cart product  =======-->
+					</div>
+
+					<!--=======  cart buttons  =======-->
+
+					<div class="cart-buttons">
+						<a href="shop-wishlist.html">view wishlist</a>
+					</div>
+
+					<!--=======  End of cart buttons  =======-->
+				</div>
+			</div>
+
+			<!--=======  End of offcanvas wishlist content container   =======-->
+		</div>
+	</div>
+
+	<!--=======  End of wishlist overlay  =======-->
+
+	<!--=======  cart overlay  =======-->
+
+	<div class="cart-overlay" id="cart-overlay">
+		<div class="cart-overlay-close inactive"></div>
+		<div class="cart-overlay-content">
+			<!--=======  close icon  =======-->
+
+			<span class="close-icon" id="cart-close-icon">
+				<a href="javascript:void(0)">
+					<i class="ion-android-close"></i>
+				</a>
+			</span>
+
+			<!--=======  End of close icon  =======-->
+
+			<!--=======  offcanvas cart content container  =======-->
+
+			<div class="offcanvas-cart-content-container">
+				<h3 class="cart-title">Cart</h3>
+
+				<div class="cart-product-wrapper">
+					<div class="cart-product-container  ps-scroll">
+						<!--=======  single cart product  =======-->
+
+						<div class="single-cart-product">
+							<span class="cart-close-icon">
+								<a href="#"><i class="ti-close"></i></a>
+							</span>
+							<div class="image">
+								<a href="shop-product-basic.html">
+									<img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
+								</a>
+							</div>
+							<div class="content">
+								<h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
+								<p><span class="cart-count">2 x </span> <span class="discounted-price">$180.00</span></p>
+
+							</div>
+						</div>
+
+						<!--=======  End of single cart product  =======-->
+						<!--=======  single cart product  =======-->
+
+						<div class="single-cart-product">
+							<span class="cart-close-icon">
+								<a href="#"><i class="ti-close"></i></a>
+							</span>
+							<div class="image">
+								<a href="shop-product-basic.html">
+									<img src="assets/images/cart-product-image/02.jpg" class="img-fluid" alt="">
+								</a>
+							</div>
+							<div class="content">
+								<h5><a href="shop-product-basic.html">Dining Chair</a></h5>
+								<p><span class="cart-count">2 x </span> <span class="discounted-price">$220.00</span></p>
+
+							</div>
+						</div>
+
+						<!--=======  End of single cart product  =======-->
+						<!--=======  single cart product  =======-->
+
+						<div class="single-cart-product">
+							<span class="cart-close-icon">
+								<a href="#"><i class="ti-close"></i></a>
+							</span>
+							<div class="image">
+								<a href="shop-product-basic.html">
+									<img src="assets/images/cart-product-image/03.jpg" class="img-fluid" alt="">
+								</a>
+							</div>
+							<div class="content">
+								<h5><a href="shop-product-basic.html">Creative Wooden Stand</a></h5>
+								<p><span class="cart-count">2 x </span> <span class="discounted-price">$80.00</span></p>
+
+							</div>
+						</div>
+
+						<!--=======  End of single cart product  =======-->
+						<!--=======  single cart product  =======-->
+
+						<div class="single-cart-product">
+							<span class="cart-close-icon">
+								<a href="#"><i class="ti-close"></i></a>
+							</span>
+							<div class="image">
+								<a href="shop-product-basic.html">
+									<img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
+								</a>
+							</div>
+							<div class="content">
+								<h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
+								<p><span class="cart-count">2 x </span> <span class="discounted-price">$180.00</span></p>
+
+							</div>
+						</div>
+
+						<!--=======  End of single cart product  =======-->
+						<!--=======  single cart product  =======-->
+
+						<div class="single-cart-product">
+							<span class="cart-close-icon">
+								<a href="#"><i class="ti-close"></i></a>
+							</span>
+							<div class="image">
+								<a href="shop-product-basic.html">
+									<img src="assets/images/cart-product-image/02.jpg" class="img-fluid" alt="">
+								</a>
+							</div>
+							<div class="content">
+								<h5><a href="shop-product-basic.html">Creative Wooden Stand</a></h5>
+								<p><span class="cart-count">2 x </span> <span class="discounted-price">$180.00</span></p>
+
+							</div>
+						</div>
+
+						<!--=======  End of single cart product  =======-->
+					</div>
+
+					<!--=======  subtotal calculation  =======-->
+
+					<p class="cart-subtotal">
+						<span class="subtotal-title">Subtotal:</span>
+						<span class="subtotal-amount">$200.00</span>
+					</p>
+
+					<!--=======  End of subtotal calculation  =======-->
+
+					<!--=======  cart buttons  =======-->
+
+					<div class="cart-buttons">
+						<a href="shop-cart.html">view cart</a>
+						<a href="shop-checkout.html">checkout</a>
+					</div>
+
+					<!--=======  End of cart buttons  =======-->
+
+					<!--=======  free shipping text  =======-->
+
+					<p class="free-shipping-text">
+						Free Shipping on All Orders Over $100!
+					</p>
+
+					<!--=======  End of free shipping text  =======-->
+				</div>
+			</div>
+
+			<!--=======  End of offcanvas cart content container   =======-->
+		</div>
+	</div>
+
+	<!--=======  End of cart overlay  =======-->
+
+
+	<!--=======  search overlay  =======-->
+
+	<div class="search-overlay" id="search-overlay">
+
+		<!--=======  close icon  =======-->
+
+		<span class="close-icon search-close-icon">
+			<a href="javascript:void(0)" id="search-close-icon">
+				<i class="ti-close"></i>
+			</a>
+		</span>
+
+		<!--=======  End of close icon  =======-->
+
+		<!--=======  search overlay content  =======-->
+
+		<div class="search-overlay-content">
+			<div class="input-box">
+				<form action="https://htmldemo.net/lezada/lezada/index.html">
+					<input type="search" placeholder="Search Products...">
+				</form>
+			</div>
+			<div class="search-hint">
+				<span># Hit enter to search or ESC to close</span>
+			</div>
+		</div>
+
+		<!--=======  End of search overlay content  =======-->
+	</div>
+
+	<!--=======  End of search overlay  =======-->
+
+	<!--=====  End of overlay items  ======-->
+
+	<!-- scroll to top  -->
+	<a href="#" class="scroll-top"></a>
+	<!-- end of scroll to top -->
+
+	<!-- JS
+	============================================ -->
+	<!-- jQuery JS -->
+	<script src="assets/js/vendor/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="assets/js/popper.min.js"></script>
+
+	<!-- Bootstrap JS -->
+	<script src="assets/js/bootstrap.min.js"></script>
+
+	<!-- Plugins JS -->
+	<script src="assets/js/plugins.js"></script>
+
+	<!-- Main JS -->
+	<script src="assets/js/main.js"></script>
+
 </body>
 
-<!-- Mirrored from demo.dashboardpack.com/cryptocurrency-html/buy_sell.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 Apr 2024 18:38:07 GMT -->
 
+<!-- Mirrored from htmldemo.net/lezada/lezada/element-testimonials.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 14:16:06 GMT -->
 </html>

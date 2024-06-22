@@ -10655,23 +10655,21 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 }
 .checkout-cart-total ul li {
   color: #777777;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 23px;
   font-weight: 500;
   display: block;
-  margin-bottom: 16px;
+  margin-top: 13px;
 }
 .checkout-cart-total ul li span {
   color: #333333;
   float: right;
 }
 .checkout-cart-total p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 30px;
   font-weight: 600;
   color: #505050;
-  padding: 10px 0;
-  border-bottom: 1px solid #999999;
   margin: 0;
 }
 .checkout-cart-total p span {
@@ -11604,7 +11602,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 }
 
 .mc-newsletter-content-container {
-  background-color: #D11830;
+  background-color: mediumseagreen;
 }
 
 .mc-newsletter-content {

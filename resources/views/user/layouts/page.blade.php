@@ -77,7 +77,7 @@
                                 <a href="#" id="offcanvas-cart-icon">
                                     <i class="ion-ios-cart"></i>
                                     @foreach ($carts as $cart)
-                                        <span class="count">{{ $cart->count() }}</span>
+                                        <span class="count">{{ $carts->count() }}</span>
                                     @endforeach
                                 </a>
                             </div>
@@ -167,7 +167,7 @@
         </div>
 
         <!--=======  wishlist overlay  =======-->
-        <div class="wishlist-overlay" id="wishlist-overlay">
+        {{-- <div class="wishlist-overlay" id="wishlist-overlay">
             <div class="wishlist-overlay-close inactive"></div>
             <div class="wishlist-overlay-content">
                 <span class="close-icon" id="wishlist-close-icon">
@@ -203,7 +203,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!--=======  cart overlay  =======-->
         <div class="cart-overlay" id="cart-overlay">
@@ -217,9 +217,9 @@
                 <div class="offcanvas-cart-content-container">
                     <h3 class="cart-title">Giỏ hàng</h3>
                     <div class="cart-product-wrapper">
-                        @foreach ($carts as $cart)
-                            <div class="cart-product-container  ps-scroll">
 
+                        <div class="cart-product-container  ps-scroll">
+                            @foreach ($carts as $cart)
                                 <div class="single-cart-product">
                                     <span class="cart-close-icon">
                                         <a href="{{ route('cart.delete', $cart->product_id) }}"
@@ -241,8 +241,9 @@
                                     </div>
 
                                 </div>
-                            </div>
-                        @endforeach
+                                @endforeach
+                        </div>
+                        
                         @php
                             $totalPrice = 0;
                             foreach ($carts as $cart) {

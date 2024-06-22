@@ -126,8 +126,23 @@
                     </div>
                 </a>
                 <ul>
-                    <li><a href="">Danh sách phí vận chuyển</a></li>
+                    <li><a href="{{ route('shippingfee.index') }}">Danh sách phí vận chuyển</a></li>
                     <li><a href="{{ route('shippingfee.create') }}">Thêm phí vận chuyển</a></li>
+                </ul>
+            </li>
+
+            <li class>
+                <a class="has-arrow" href="#" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{{ asset('admin/img/menu-icon/7.svg') }}" alt>
+                    </div>
+                    <div class="nav_title">
+                        <span>Slides</span>
+                    </div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('slide.index') }}">Danh sách Slide</a></li>
+                    <li><a href="{{ route('slide.create') }}">Thêm Slide</a></li>
                 </ul>
             </li>
             <li class>
@@ -396,31 +411,6 @@
     @yield('custom-js');
 
 
-
-    {{-- <script type="text/javascript">
-        $(document).ready(function() {
-            $('.choose').on('change', function() {
-                var action = $(this).attr('id');
-                var province_id = $(this).val();
-                var _token = $('input[name="_token"]').val();
-                var result = '';
-
-                if(action='district'){
-                    result= 'district';
-                }else{
-                    result = 'ward';
-                }
-                $.ajx({
-                    url: '{{url('/select-shippingfee')}}',
-                    medthod: 'POST',
-                    data:{action:action,province_id:province_id,_token:_token},
-                    success:function(data){
-                        $('#'+result).html(data);
-                    }
-                })
-            });
-        });
-    </script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
             $('.choose').on('change', function() {

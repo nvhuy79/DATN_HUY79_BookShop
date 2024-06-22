@@ -16,8 +16,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="lezada-form">
-                        <!-- Checkout Form s-->
-                        <form action="#" class="checkout-form">
+                        <form action="{{ route('calculate_shippingfee') }}" method="POST" class="checkout-form">
+                            @csrf
                             <div class="row row-40">
                                 <div class="col-lg-7 mb-20">
                                     <!-- Billing Address -->
@@ -26,84 +26,98 @@
                                         <div class="row">
                                             <div class="col-md-6 col-12 mb-20">
                                                 <label>Họ và Tên*</label>
-                                                <input type="text" placeholder="Họ và tên">
+                                                <input type="text" placeholder="Họ và tên" name="name" value="{{ old('name') }}">
                                             </div>
                                             <div class="col-md-6 col-12 mb-20">
                                                 <label>Email*</label>
-                                                <input type="email" placeholder="Địa chỉ email">
+                                                <input type="email" placeholder="Địa chỉ email" name="email" value="{{ old('email') }}">
                                             </div>
                                             <div class="col-md-6 col-12 mb-20">
                                                 <label>Số điện thoại*</label>
-                                                <input type="text" placeholder="Số điện thoại">
+                                                <input type="text" placeholder="Số điện thoại" name="phone" value="{{ old('phone') }}">
                                             </div>
                                             <div class="col-md-6 col-12 mb-20">
                                                 <label>Địa chỉ*</label>
-                                                <input type="text" placeholder="Tên đường, Tòa nhà, Số nhà...">
+                                                <input type="text" placeholder="Tên đường, Tòa nhà, Số nhà..." name="address" value="{{ old('address') }}">
                                             </div>
                                             <div class="col-md-6 col-12 mb-20">
-                                                <label for="province">Tỉnh/Thành phố*</label>
-                                                <select id="province" name="province" class="nice-select">
-                                                    <option value="" selected disabled>Chọn 1 Tỉnh/Thành phố</option>
-                                                    @foreach ($provinces as $province)
-                                                        <option value="{{ $province->id }}">{{ $province->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <!-- Các field khác -->
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label for="district">Quận/Huyện*</label>
-                                                <select  id="district" name="district"  class="nice-select">
-                                                    <option value="" selected disabled>Chọn 1 Quận/Huyện</option>
-                                                    <option>China</option>
+                                                <label>Tỉnh/Thành Phố*</label>
+                                                <select class="form-select form-select-sm mb-3" id="city" name="city_id" aria-label=".form-select-sm" style="height: 50px;">
+                                                    <option value="" selected>---Chọn Tỉnh/Thành phố---</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6 col-12 mb-20">
-                                                <label for="wards">Phường/Xã*</label>
-                                                <select id="wards" name="wards" class="nice-select">
-                                                    <option value="" selected disabled>Chọn 1 Phường/Xã</option>
-                                                    <option>China</option>
+                                                <label>Quận/Huyện*</label>
+                                                <select class="form-select form-select-sm mb-3" id="district" name="district_id" aria-label=".form-select-sm" style="height: 50px;">
+                                                    <option value="" selected>---Chọn Quận/Huyện---</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 col-12 mb-20">
+                                                <label>Phường/Xã*</label>
+                                                <select class="form-select form-select-sm" id="ward" name="ward_id" aria-label=".form-select-sm" style="height: 45px;">
+                                                    <option value="" selected>---Chọn Phường/Xã---</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6 col-12 mb-20">
                                                 <label>Ghi chú</label>
-                                                <input type="text" placeholder="Ghi chú">
+                                                <input type="text" placeholder="Ghi chú" name="note" value="{{ old('note') }}">
                                             </div>
                                             <div class="col-md-6 col-12 mb-20">
-                                                <label>Mã giảm giá</label>
-                                                <input type="text" placeholder="Mã giảm giá">
-                                            </div>
-                                            <div class="col-12 mb-20">
-                                                <div class="check-box">
-                                                    <input type="checkbox" id="create_account">
-                                                    <label for="create_account">Tạo tài khoản?</label>
-                                                </div>
-                                                <div class="check-box">
-                                                    <input type="checkbox" id="shiping_address" data-shipping>
-                                                    <label for="shiping_address">Gửi đến địa chỉ khác?</label>
-                                                </div>
+                                                <button type="submit" id="calculate-shipping-fee" class="lezada-button lezada-button--medium mt-30">Xác nhận</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="row">
-                                        <!-- Cart Total -->
-                                        
-                                            <div class="col-12 mb-60">
-                                                <h4 class="checkout-title">Giỏ hàng</h4>
-                                                <div class="checkout-cart-total">
-                                                    <h4>Sản phẩm <span>Tổng</span></h4>
-                                                    @foreach ($carts as $cart)
+                                        <div class="col-12 mb-60">
+                                            <h4 class="checkout-title">Giỏ hàng</h4>
+                                            <div class="checkout-cart-total">
+                                                <h4>Sản phẩm <span>Tổng</span></h4>
+                                                @foreach ($carts as $cart)
                                                     <ul>
-                                                        <li>{{ $cart->prod->title }} X {{ $cart->quantity }} <span>{{ number_format($cart->price, 0, ',', '.') }} ₫</span></li>
+                                                        <li>{{ $cart->prod->title }} X {{ $cart->quantity }}
+                                                            <span>{{ number_format($cart->price, 0, ',', '.') }} ₫</span>
+                                                        </li>
                                                     </ul>
-                                                    @endforeach
-                                                    <p>Tổng tiền <span>$104.00</span></p>
-                                                    <p>Phí vận chuyển <span>$00.00</span></p>
-                                                    <h4>Tổng thanh toán <span>$104.00</span></h4>
-                                                </div>
+                                                @endforeach
+                                                @php
+                                                    $totalPrice = 0;
+                                                    foreach ($carts as $cart) {
+                                                        $totalPrice += $cart->price * $cart->quantity;
+                                                    }
+
+                                                    $totalDiscount = 0;
+                                                    if (Session::has('discount')) {
+                                                        foreach (Session::get('discount') as $count) {
+                                                            if ($count['method'] == 1) {
+                                                                $totalDiscount += $count['discount_value'];
+                                                            } elseif ($count['method'] == 2) {
+                                                                $totalDiscount += ($totalPrice * $count['discount_value']) / 100;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    $shippingFee = session('shipping_fee', 0);
+                                                    $finalTotal = $totalPrice - $totalDiscount + $shippingFee;
+                                                @endphp
+                                                <p style="margin-top:5px">Tổng tiền hàng
+                                                    <span>{{ number_format($totalPrice, 0, ',', '.') }} ₫</span>
+                                                </p>
+                                                @if ($totalDiscount > 0)
+                                                    <p>Mã giảm giá:<span class="subtotal">-{{ number_format($totalDiscount, 0, ',', '.') }} ₫</span></p>
+                                                @endif
+
+                                                @if ($shippingFee > 0)
+                                                    <p>Phí vận chuyển <span>{{ number_format($shippingFee, 0, ',', '.') }} ₫</span></p>
+                                                @else
+                                                    <p>Phí vận chuyển <span>...</span></p>
+                                                @endif
+
+                                                <h4>Thành tiền <span>{{ number_format($finalTotal, 0, ',', '.') }} ₫</span></h4>
                                             </div>
-                                       
+                                        </div>
+
                                         <!-- Payment Method -->
                                         <div class="col-12">
                                             <h4 class="checkout-title">Phương thức thanh toán</h4>
@@ -135,35 +149,90 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#province').change(function() {
-                var provinceId = $(this).val();
-                if (provinceId) {
-                    $.ajax({
-                        type: "GET",
-                        url: "/get-districts/" + provinceId,
-                        success: function(res) {
-                            if (res) {
-                                $("#district").empty();
-                                $("#district").removeAttr('disabled');
-                                $("#district").append('<option value="" selected disabled>Chọn 1 Quận/Huyện</option>');
-                                $.each(res, function(key, value) {
-                                    $("#district").append('<option value="' + value.id + '">' + value.name + '</option>');
-                                });
-                            } else {
-                                $("#district").empty();
-                                $("#district").attr('disabled', true);
-                            }
-                        }
-                    });
-                } else {
-                    $("#district").empty();
-                    $("#district").attr('disabled', true);
-                }
+        var citySelect = document.getElementById("city");
+        var districtSelect = document.getElementById("district");
+        var wardSelect = document.getElementById("ward");
+
+        var url = "/DiaGioiHanhChinhVN.json"; // Điều chỉnh URL này theo cấu hình của bạn
+
+        axios.get(url)
+            .then(function(response) {
+                renderCity(response.data);
+                setSelectedOptions();
+            })
+            .catch(function(error) {
+                console.error('Lỗi khi lấy dữ liệu:', error);
             });
+
+        function renderCity(data) {
+            citySelect.innerHTML = '<option value="" selected>---Chọn Tỉnh/Thành phố---</option>';
+            data.forEach(function(city) {
+                var option = new Option(city.Name, city.Id);
+                citySelect.appendChild(option);
+            });
+        }
+
+        function setSelectedOptions() {
+            // Set selected city, district, and ward based on old input values
+            var oldCity = "{{ old('city_id') }}";
+            var oldDistrict = "{{ old('district_id') }}";
+            var oldWard = "{{ old('ward_id') }}";
+
+            if (oldCity) {
+                citySelect.value = oldCity;
+                citySelect.dispatchEvent(new Event('change'));
+
+                setTimeout(function() {
+                    districtSelect.value = oldDistrict;
+                    districtSelect.dispatchEvent(new Event('change'));
+                }, 500);
+
+                setTimeout(function() {
+                    wardSelect.value = oldWard;
+                }, 1000);
+            }
+        }
+
+        citySelect.addEventListener('change', function() {
+            var cityId = this.value;
+            districtSelect.innerHTML = '<option value="" selected>---Chọn Quận/Huyện---</option>';
+            wardSelect.innerHTML = '<option value="" selected>---Chọn Phường/Xã---</option>';
+
+            if (cityId) {
+                axios.get(url)
+                    .then(function(response) {
+                        var districts = response.data.find(city => city.Id == cityId).Districts;
+                        districts.forEach(function(district) {
+                            var option = new Option(district.Name, district.Id);
+                            districtSelect.appendChild(option);
+                        });
+                    })
+                    .catch(function(error) {
+                        console.error('Lỗi khi lấy dữ liệu quận/huyện:', error);
+                    });
+            }
+        });
+
+        districtSelect.addEventListener('change', function() {
+            var cityId = citySelect.value;
+            var districtId = this.value;
+            wardSelect.innerHTML = '<option value="" selected>---Chọn Phường/Xã---</option>';
+
+            if (cityId && districtId) {
+                axios.get(url)
+                    .then(function(response) {
+                        var wards = response.data.find(city => city.Id == cityId).Districts.find(district => district.Id == districtId).Wards;
+                        wards.forEach(function(ward) {
+                            var option = new Option(ward.Name, ward.Id);
+                            wardSelect.appendChild(option);
+                        });
+                    })
+                    .catch(function(error) {
+                        console.error('Lỗi khi lấy dữ liệu phường/xã:', error);
+                    });
+            }
         });
     </script>
-    
-    
 @endsection

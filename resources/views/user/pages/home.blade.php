@@ -1,6 +1,6 @@
 @extends('user/layouts/page')
 @section('content')
-    <div class="slider-area mb-30">
+    {{-- <div class="slider-area mb-30">
         <div class="container wide">
             <div class="row">
                 <div class="col-lg-12">
@@ -143,16 +143,76 @@
                 </div>
             </div>
         </div>
+    </div> --}}
+
+    <div class="lezada-testimonial single-item-testimonial-area testimonial-bg testimonial-bg-1 mb-100 pt-135 pb-135">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--=======  testmonial slider container  =======-->
+
+                    <div class="lezada-slick-slider multi-testimonial-slider-container"
+                        data-slick-setting='{
+                        "slidesToShow": 1,
+                        "arrows": true,
+                        "autoplay": true,
+                        "autoplaySpeed": 5000,
+                        "speed": 1000,
+                        "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ti-angle-left" },
+                        "nextArrow": {"buttonClass": "slick-next", "iconClass": "ti-angle-right" }
+                    }'
+                        data-slick-responsive='[
+                        {"breakpoint":1501, "settings": {"slidesToShow": 1} },
+                        {"breakpoint":1199, "settings": {"slidesToShow": 1} },
+                        {"breakpoint":991, "settings": {"slidesToShow": 1, "arrows": false} },
+                        {"breakpoint":767, "settings": {"slidesToShow": 1, "arrows": false} },
+                        {"breakpoint":575, "settings": {"slidesToShow": 1, "arrows": false} },
+                        {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
+                    ]'>
+
+                        <!--=======  single testimonial  =======-->
+                        @foreach ($slides as $slide)
+                            <div class="col">
+                                <div class="testimonial-item single-testimonial-single-item">
+
+                                    <div class="single-testimonial-single-item__image mb-sm-50">
+                                        <img src="{{ asset('admin/images/slides/' . $slide->slide_image) }}"
+                                            class="img-fluid" alt="{{ $slide->title }}">
+                                    </div>
+
+                                    <div class="single-testimonial-single-item__content text-center">
+
+                                        <div class="quote-icon d-inline-block mb-30">
+                                            <img src="assets/images/icons/quote.png" class="img-fluid" alt="">
+                                        </div>
+
+                                        <div class="text mb-40">
+                                            {{ $slide->description }}
+                                        </div>
+
+                                        <div class="client-info">
+                                            <p class="name">{{ $slide->title }}</p>
+                                            <span class="designation">/ Người đăng</span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="new_products" class="section-title-container mt-80 mb-30">
         <div class="container">
-                <div class="col-lg-12">
-                    <div class="section-title section-title--one text-center">
-                        <h1>Sản phẩm mới phát hành</h1>
-                        <p>Những sản phẩm mới nhất .</p>
-                    </div>
+            <div class="col-lg-12">
+                <div class="section-title section-title--one text-center">
+                    <h1>Sản phẩm mới phát hành</h1>
                 </div>
+            </div>
         </div>
     </div>
 
@@ -171,9 +231,9 @@
                                 <div class="single-product__floating-badges">
                                     @if ($item->stock <= 0)
                                         <span class="out-of-stock" data-tippy="Tạm hết hàng" data-tippy-inertia="true"
-                                            data-tippy-animation="shift-away" data-tippy-delay="50"
-                                            data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                            data-tippy-placement="right"><i class="ion-android-sad"></i></span>
+                                            data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                            data-tippy-theme="sharpborder" data-tippy-placement="right"><i
+                                                class="ion-android-sad"></i></span>
                                     @endif
                                     @if ($item->sale_price && $item->sale_price < $item->price)
                                         <span
@@ -183,20 +243,18 @@
                                         <span class="hot">hot</span>
                                     @endif
                                 </div>
-                                <form action="{{ route('cart.add', ['product' => $item->id])}}" method="POST">
+                                <form action="{{ route('cart.add', ['product' => $item->id]) }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                     <div class="single-product__floating-icons">
                                         <span class="wishlist"><a href="#" data-tippy="Thêm vào yêu thích"
                                                 data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                data-tippy-delay="50" data-tippy-arrow="true"
-                                                data-tippy-theme="sharpborder" data-tippy-placement="left"><i
+                                                data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
+                                                data-tippy-placement="left"><i
                                                     class="ion-android-favorite-outline"></i></a></span>
                                         @if (Auth::check())
                                             <span class="wishlist"><button href="#" data-tippy="Thêm vào giỏ hàng"
-                                                    {{-- data-tippy-inertia="true" data-tippy-animation="shift-away" --}}
-                                                    {{-- data-tippy-delay="50" data-tippy-arrow="true" --}}
-                                                    ><i
+                                                    {{-- data-tippy-inertia="true" data-tippy-animation="shift-away" --}} {{-- data-tippy-delay="50" data-tippy-arrow="true" --}}><i
                                                         class="ion-ios-cart"></i></button></span>
                                         @else
                                             <span class="wishlist"><a href="#" data-tippy="Thêm vào giỏ hàng"
@@ -240,15 +298,13 @@
                 </div>
             </div>
         </div>
-
-
         <div class="section-title-container mt-80 mb-30">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title section-title--one text-center">
                             <h1>Sản phẩm nổi bật</h1>
-                            <p>Browse our top rated products to catch up with the trend.</p>
+                            <p>Khám phá những sản phẩm được ưa chuộng nhất của chúng tôi!</p>
                         </div>
                     </div>
                 </div>
