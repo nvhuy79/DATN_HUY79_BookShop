@@ -25,58 +25,22 @@ class CartController extends Controller
         }
     }
 
-    // public function check_discount(Request $request)
-    // {
-    //     $data = $request->all();
-    //     $discount  = Discount::where('code', $data['discount_code'])->first();
-    //     if ($discount) {
-    //         $count_discount = $discount->count();
-    //         if ($count_discount > 0) {
-    //             $discount_session = Session::get('discount_code');
-    //             if ($discount_session == true) {
-    //                 $is_avaiable = 0;
-    //                 if ($is_avaiable == 0) {
-    //                     $count[]  = array(
-    //                         'code' => $discount->code,
-    //                         'discount_value' => $discount->discount_value,
-    //                         'method' => $discount->method,
-    //                     );
-    //                     Session::put('discount', $count);
-    //                 }
-    //             } else {
-    //                 $count[]  = array(
-    //                     'code' => $discount->code,
-    //                     'discount_value' => $discount->discount_value,
-    //                     'method' => $discount->method,
-    //                 );
-    //                 Session::put('discount', $count);
-    //             }
-    //             Session::save();
-    //             return redirect()->back()->with('success', 'Áp dụng mã giảm giá thành công');
-    //         }
-    //     }
-    //     else{
-    //         return redirect()->back()->with('error', 'Áp dụng mã giảm giá không thành công');
-    //     }
-    // }
-
-
     public function check_discount(Request $request)
     {
         $data = $request->all();
-    
+
         if (empty($data['discount_code'])) {
             Session::forget('discount');
             Session::forget('current_discount_code');
             return redirect()->back()->with('success', 'Đã hủy mã giảm giá');
         }
-    
+
         $discount = Discount::where('code', $data['discount_code'])->first();
-    
+
         if ($discount) {
             // Xóa mã giảm giá hiện tại trong session nếu có
             Session::forget('discount');
-    
+
             // Thêm mã giảm giá mới vào session
             $discount_data = [
                 [
@@ -95,10 +59,10 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Áp dụng mã giảm giá không thành công');
         }
     }
-    
 
 
-    
+
+
     public function CartOverlay(Product $product, Request $request)
     {
         if (Auth::check()) {
@@ -115,15 +79,30 @@ class CartController extends Controller
     public function add(Product $product, Request $request)
     {
         $product = Product::find($request->id);
+        if (!$product) {
+            return redirect()->back()->with('error', 'Sản phẩm không tồn tại!');
+        }
+
         $quantity = $request->quantity ? floor($request->quantity) : 1;
+
+        if ($product->stock < $quantity) {
+            return redirect()->back()->with('error', 'Xin lỗi! Chúng tôi chỉ còn ' . $product->stock . ' sản phẩm.');
+        }
+
         $cartExist = Cart::where(['user_id' => Auth::user()->id, 'product_id' => $product->id])->first();
+
         if ($cartExist) {
-            $cartExist->increment('quantity', $quantity);
+            $newQuantity = $cartExist->quantity + $quantity;
+
+            if ($product->stock < $newQuantity) {
+                return redirect()->back()->with('error', 'Số sản phẩm trong giỏ hàng đã vượt quá số lượng còn lại của sản phẩm!');
+            }
+            $cartExist->update(['quantity' => $newQuantity]);
             return redirect()->back()->with('success', 'Thêm giỏ hàng thành công!');
         } else {
             $data = [
                 'product_id' => $product->id,
-                'user_id' =>  Auth::user()->id,
+                'user_id' => Auth::user()->id,
                 'quantity' => $quantity,
                 'price' => $product->sale_price ? $product->sale_price : $product->price
             ];
@@ -132,8 +111,11 @@ class CartController extends Controller
                 return redirect()->route('cart.index')->with('success', 'Thêm giỏ hàng thành công!');
             }
         }
+
         return redirect()->back()->with('error', 'Thêm giỏ hàng không thành công!');
     }
+
+
 
     public function update(Request $request, $product_id)
     {
@@ -146,17 +128,34 @@ class CartController extends Controller
         // Kiểm tra xem sản phẩm có tồn tại trong giỏ hàng không
         if ($cartItem) {
             $quantity = $request->input('quantity');
+
+            // Lấy thông tin sản phẩm từ ID để kiểm tra số lượng tồn kho
+            $product = Product::find($product_id);
+
+            if (!$product) {
+                return redirect()->route('cart.index')->with('error', 'Sản phẩm không tồn tại.');
+            }
+
             // Kiểm tra số lượng mới có lớn hơn 0 không
             if ($quantity > 0) {
+                // Kiểm tra số lượng tồn kho của sản phẩm
+                if ($product->stock < $quantity) {
+                    return redirect()->route('cart.index')->with('error', 'Sản phẩm "' . $product->title . '" vượt quá số lượng tồn kho. Số lượng tồn kho hiện tại: ' . $product->stock);
+                }
+
                 $cartItem->update(['quantity' => $quantity]);
-                return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được cập nhật thành công.');
+                return redirect()->route('cart.index')->with('success', 'Sản phẩm ' . $product->name . ' đã được cập nhật thành công.');
             } else {
-                return redirect()->route('cart.index')->with('error', 'Số lượng sản phẩm phải lớn hơn 0.');
+                // Xóa sản phẩm khỏi giỏ hàng nếu số lượng mới là 0
+                $cartItem->delete();
+                return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được xóa khỏi giỏ hàng.');
             }
         } else {
             return redirect()->route('cart.index')->with('error', 'Không tìm thấy sản phẩm trong giỏ hàng.');
         }
     }
+
+
 
     public function clear(Product $product)
     {

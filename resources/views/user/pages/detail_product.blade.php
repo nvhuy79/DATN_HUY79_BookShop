@@ -118,20 +118,6 @@
                                     <div class="shop-product__short-desc mb-50">
                                         {!! $product->description !!}
                                     </div>
-
-
-                                    <div class="shop-product__block shop-product__block--size mb-20">
-                                        <div class="shop-product__block__title">Size: </div>
-                                        <div class="shop-product__block__value">
-                                            <div class="shop-product-size-list">
-                                                <span class="single-size">L</span>
-                                                <span class="single-size">M</span>
-                                                <span class="single-size">S</span>
-                                                <span class="single-size">XS</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <form action="{{ route('cart.add', ['product' => $product->id]) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $product->id }}">
@@ -176,6 +162,12 @@
                                                 <td class="quickview-title">Danh mục: </td>
                                                 <td class="quickview-value">
                                                     <a href="#">{{ $product->category->title }}</a>
+                                                </td>
+                                            </tr>
+                                            <tr class="single-info">
+                                                <td class="quickview-title">Số lượng hàng: </td>
+                                                <td class="quickview-value">
+                                                    <a href="#">{{ $product->stock }} sản phẩm</a>
                                                 </td>
                                             </tr>
                                             <tr class="single-info">

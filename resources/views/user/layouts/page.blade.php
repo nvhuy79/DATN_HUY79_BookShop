@@ -227,14 +227,15 @@
                                             <i class="ti-close"></i>
                                         </a>
                                     </span>
+
                                     <div class="image">
-                                        <a href="shop-product-basic.html">
+                                        <a href="{{ route('detail_product', $cart->prod->slug) }}">
                                             <img src="{{ asset('storage/admin/images') }}/{{ $cart->prod->image }}"
                                                 class="img-fluid" alt="">
                                         </a>
                                     </div>
                                     <div class="content">
-                                        <h5><a href="shop-product-basic.html">{{ $cart->prod->title }}</a></h5>
+                                        <h5><a href="{{ route('detail_product', $cart->prod->slug) }}">{{ $cart->prod->title }}</a></h5>
                                         <p><span class="cart-count">{{ $cart->quantity }}x </span> <span
                                                 class="discounted-price">{{ number_format($cart->price, 0, ',', '.') }}
                                                 ₫</span></p>
@@ -261,7 +262,7 @@
                         </div>
 
                         <p class="free-shipping-text">
-                            Miến phí ship với đơn hàng từ 499.000đ!
+                            Miễn phí ship với đơn hàng từ 999.000đ!
                         </p>
                     </div>
                 </div>

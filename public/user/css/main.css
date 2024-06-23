@@ -10625,7 +10625,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 /*-- Checkout Cart Total --*/
 .checkout-cart-total {
   background-color: #f2f2f2;
-  padding: 45px;
+  padding: 40px;
 }
 @media only screen and (max-width: 575px) {
   .checkout-cart-total {
@@ -10655,21 +10655,21 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 }
 .checkout-cart-total ul li {
   color: #777777;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 23px;
   font-weight: 500;
   display: block;
-  margin-top: 13px;
+  margin-top: 18px;
 }
 .checkout-cart-total ul li span {
   color: #333333;
   float: right;
 }
 .checkout-cart-total p {
-  font-size: 16px;
-  line-height: 30px;
-  font-weight: 600;
-  color: #505050;
+  font-size: 18px;
+  line-height: 35px;
+  font-weight: 550;
+  color: #777777;
   margin: 0;
 }
 .checkout-cart-total p span {

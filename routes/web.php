@@ -52,7 +52,9 @@ Route::prefix('/')->group(function () {
     Route::post('/reset-pass', [AccountController::class, 'post_reset_pass']);
 
     Route::get('/products/{slug}', [HomeController::class, 'detail_product'])->name('detail_product');
+    
     Route::resource('checkout', CheckoutController::class);
+    Route::post('/confirmOrder', [CheckoutController::class, 'confirmOrder'])->name('confirmOrder');
 });
 
 Route::prefix('/cart')->middleware('auth.custom')->group(function () {
@@ -85,7 +87,7 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('shippingfee', ShippingFeeController::class)->middleware('admin.auth');
     Route::get('shippingfee/search', [ShippingFeeController::class, 'search'])->name('shippingfee.search');
-    Route::post('/calculate-shippingfee', [ShippingFeeController::class, 'calculateShippingFee'])->name('calculate_shippingfee');
+    // Route::post('/calculate-shippingfee', [ShippingFeeController::class, 'calculateShippingFee'])->name('calculate_shippingfee');
 
     Route::resource('discount', DiscountController::class);
     Route::get('discounts/search', [DiscountController::class, 'search'])->name('discount.search');

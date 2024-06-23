@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\City;
-use App\Models\Ward;
-use App\Models\District;
 use App\Models\ShippingFee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class ShippingFeeController extends Controller
 {
@@ -16,8 +15,6 @@ class ShippingFeeController extends Controller
      */
     public function index()
     {
-
-        // $shipping_fee = ShippingFee::orderBy('city_id', 'ASC')->get();
         $shipping_fee = ShippingFee::orderBy('created_at', 'DESC')->paginate(8);
         return view('admin.pages.shippingfee.index', compact('shipping_fee'));
     }
@@ -124,22 +121,57 @@ class ShippingFeeController extends Controller
 
     public function calculateShippingFee(Request $request)
     {
-        $city_id = $request->input('city_id');
-        $district_id = $request->input('district_id');
-        $ward_id = $request->input('ward_id');
 
-        $shippingFee = DB::table('shipping_fees')
-            ->where('city_id', $city_id)
-            ->where('district_id', $district_id)
-            ->where('ward_id', $ward_id)
-            ->value('fee');
+        // dd($request->all());
+        // $rules = [
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|email|max:255',
+        //     'phone' => 'required|string|max:20',
+        //     'address' => 'required|string|max:255',
+        //     'city_id' => 'required',
+        //     'district_id' => 'required',
+        //     'ward_id' => 'required',
+        // ];
 
-        if (!$shippingFee) {
-            $shippingFee = 50000; // Phí mặc định nếu không tìm thấy dữ liệu
-        }
+        // $messages = [
+        //     'name.required' => 'Hãy nhập họ và tên của bạn.',
+        //     'name.max' => 'Họ và tên không được vượt quá 255 ký tự.',
+        //     'email.required' => 'Hãy nhập địa chỉ email của bạn.',
+        //     'email.email' => 'Địa chỉ email không hợp lệ.',
+        //     'email.max' => 'Email không được vượt quá 255 ký tự.',
+        //     'phone.required' => 'Hãy nhập số điện thoại của bạn.',
+        //     'phone.max' => 'Số điện thoại không được vượt quá 20 ký tự.',
+        //     'address.required' => 'Hãy nhập địa chỉ của bạn.',
+        //     'address.max' => 'Địa chỉ không được vượt quá 255 ký tự.',
+        //     'city_id.required' => 'Vui lòng chọn Tỉnh/Thành phố.',
+        //     'district_id.required' => 'Vui lòng chọn Quận/Huyện.',
+        //     'ward_id.required' => 'Vui lòng chọn Phường/Xã.',
+        // ];
 
-        // Lưu phí vận chuyển vào session và quay lại trang trước
-        return back()->with('shipping_fee', $shippingFee);
-        // return redirect()->route('checkout.index',compact('shippingFee'));
+        // $validator = Validator::make($request->all(), $rules, $messages);
+
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
+
+        // $city_id = $request->input('city_id');
+        // $district_id = $request->input('district_id');
+        // $ward_id = $request->input('ward_id');
+
+        // $shippingFee = DB::table('shipping_fees')
+        //     ->where('city_id', $city_id)
+        //     ->where('district_id', $district_id)
+        //     ->where('ward_id', $ward_id)
+        //     ->value('fee');
+
+        // if (!$shippingFee) {
+        //     $shippingFee = 50000;
+        // }
+
+        // Session::put('shipping_fee', $shippingFee);
+        // Session::put('email', $request->input('email'));
+        // return back()->with('shipping_fee', $shippingFee);
     }
 }

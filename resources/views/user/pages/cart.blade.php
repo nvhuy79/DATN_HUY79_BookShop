@@ -28,12 +28,11 @@
                                     <th class="product-remove">&nbsp;</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 @foreach ($carts as $cart)
                                     <tr>
                                         <td class="product-thumbnail">
-                                            <a href="shop-product-basic.html">
+                                            <a href="{{ route('detail_product', $cart->prod->slug) }}">
                                                 <img src="{{ asset('storage/admin/images') }}/{{ $cart->prod->image }}"
                                                     alt="" width="100px">
                                             </a>
