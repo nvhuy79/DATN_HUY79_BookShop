@@ -28,19 +28,26 @@ class CartController extends Controller
     public function check_discount(Request $request)
     {
         $data = $request->all();
-
+    
         if (empty($data['discount_code'])) {
             Session::forget('discount');
             Session::forget('current_discount_code');
             return redirect()->back()->with('success', 'Đã hủy mã giảm giá');
         }
-
+    
         $discount = Discount::where('code', $data['discount_code'])->first();
-
+    
         if ($discount) {
+            // Kiểm tra nếu mã giảm giá đã hết lượt sử dụng
+            if ($discount->usage_count <= 0) {
+                Session::forget('discount');
+                Session::forget('current_discount_code');
+                return redirect()->back()->with('error', 'Mã giảm giá đã hết lượt sử dụng.');
+            }
+    
             // Xóa mã giảm giá hiện tại trong session nếu có
             Session::forget('discount');
-
+    
             // Thêm mã giảm giá mới vào session
             $discount_data = [
                 [
@@ -56,9 +63,10 @@ class CartController extends Controller
         } else {
             Session::forget('discount');
             Session::forget('current_discount_code');
-            return redirect()->back()->with('error', 'Áp dụng mã giảm giá không thành công');
+            return redirect()->back()->with('error', 'Mã giảm giá không tồn tại.');
         }
     }
+    
 
 
 
@@ -98,7 +106,7 @@ class CartController extends Controller
                 return redirect()->back()->with('error', 'Số sản phẩm trong giỏ hàng đã vượt quá số lượng còn lại của sản phẩm!');
             }
             $cartExist->update(['quantity' => $newQuantity]);
-            return redirect()->back()->with('success', 'Thêm giỏ hàng thành công!');
+            return redirect()->route('cart.index')->with('success', 'Thêm giỏ hàng thành công!');
         } else {
             $data = [
                 'product_id' => $product->id,
@@ -108,11 +116,10 @@ class CartController extends Controller
             ];
 
             if (Cart::create($data)) {
-                return redirect()->route('cart.index')->with('success', 'Thêm giỏ hàng thành công!');
+
+                return redirect()->back()->with('success', 'Thêm giỏ hàng thành công!');
             }
         }
-
-        return redirect()->back()->with('error', 'Thêm giỏ hàng không thành công!');
     }
 
 

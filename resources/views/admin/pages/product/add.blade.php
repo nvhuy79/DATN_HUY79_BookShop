@@ -5,17 +5,15 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 mx-auto">
                 <div class="white_card card_height_100 mb_30">
-                    <div class="white_card_header text-center">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Thêm sản phẩm</h3>
-                                @if (session('error'))
-                                    <span style="color: red">{{ session('error') }}</span>
-                                @endif
-                            </div>
+                    <div class="modal-content cs_modal">
+                        <div class="modal-header justify-content-center theme_bg_1">
+                            <h5 class="modal-title text_white">Thêm sản phẩm</h5>
+                            @if (session('error'))
+                                <span style="color: red">{{ session('error') }}</span>
+                            @endif
                         </div>
                     </div>
-                    <div class="white_card_body">
+                    <div class="white_card_body mt-4">
                         <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
@@ -24,7 +22,8 @@
                                     <label class="form-floating" for="exampleInputTitle">Tên sản phẩm</label>
                                     <input type="text" name="title"
                                         class="form-control @error('title') is-invalid @enderror" id="title_product"
-                                        placeholder="Nhập tên tiêu đề..." onkeyup="ChangeToSlug()" value="{{ old('title') }}">
+                                        placeholder="Nhập tên tiêu đề..." onkeyup="ChangeToSlug()"
+                                        value="{{ old('title') }}">
                                     @error('title')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -40,13 +39,14 @@
                                 </div>
                             </div>
 
-                            
+
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label class="form-floating" for="exampleInputSlug">Đường dẫn</label>
                                     <input type="text" name="slug"
-                                        class="form-control @error('slug') is-invalid @enderror" id="slug" value="{{ old('slug') }}">
+                                        class="form-control @error('slug') is-invalid @enderror" id="slug"
+                                        value="{{ old('slug') }}">
                                     @error('slug')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -54,8 +54,8 @@
                                 <div class="col-md-6">
                                     <label class="form-floating" for="exampleInputStock">Số lượng</label>
                                     <input type="text" name="stock"
-                                        class="form-control @error('stock') is-invalid @enderror"
-                                        id="exampleInputStock" placeholder="Nhập số lượng..." value="{{ old('stock') }}">
+                                        class="form-control @error('stock') is-invalid @enderror" id="exampleInputStock"
+                                        placeholder="Nhập số lượng..." value="{{ old('stock') }}">
                                     @error('stock')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -77,7 +77,8 @@
                                     <label class="form-floating" for="exampleInputPublisher">Giá khuyến mãi</label>
                                     <input type="text" name="sale_price"
                                         class="form-control @error('sale_price') is-invalid @enderror"
-                                        id="exampleInputPublisher" placeholder="Nhập giá khuyến mãi..." value="{{ old('sale_price') }}">
+                                        id="exampleInputPublisher" placeholder="Nhập giá khuyến mãi..."
+                                        value="{{ old('sale_price') }}">
                                     @error('sale_price')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -86,7 +87,8 @@
                                     <label class="form-floating" for="exampleInputSalePrice">Nhà xuất bản</label>
                                     <input type="text" name="publisher"
                                         class="form-control @error('publisher') is-invalid @enderror"
-                                        id="exampleInputSalePrice" placeholder="Nhập nhà xuất bản..." value="{{ old('publisher') }}">
+                                        id="exampleInputSalePrice" placeholder="Nhập nhà xuất bản..."
+                                        value="{{ old('publisher') }}">
                                     @error('publisher')
                                         <span style="color: red">{{ $message }}</span>
                                     @enderror
@@ -95,10 +97,11 @@
 
                             <div class="mb-3">
                                 <label for="formFileProductImage" class="form-floating">Ảnh sản phẩm</label>
-                                <input class="form-control" type="file" id="formFileProductImage" name="product_image" value="{{ old('product_image') }}">
+                                <input class="form-control" type="file" id="formFileProductImage" name="product_image"
+                                    value="{{ old('product_image') }}">
                                 @error('product_image')
-                                        <span style="color: red">{{ $message }}</span>
-                                    @enderror
+                                    <span style="color: red">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-3">

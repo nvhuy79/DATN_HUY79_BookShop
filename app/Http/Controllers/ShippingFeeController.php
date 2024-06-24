@@ -35,22 +35,36 @@ class ShippingFeeController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $validatedData = $request->validate([
+        $rules = [
             'city_id' => 'required',
             'district_id' => 'required',
             'ward_id' => 'required',
             'shipping_fee' => 'required',
-        ]);
+        ];
+    
+        $messages = [
+            'city_id.required' => 'Vui lòng chọn thành phố.',
+            'district_id.required' => 'Vui lòng chọn quận/huyện.',
+            'ward_id.required' => 'Vui lòng chọn phường/xã.',
+            'shipping_fee.required' => 'Vui lòng nhập phí vận chuyển.',
+        ];
+    
+        $validatedData = $request->validate($rules, $messages);
+    
+        try {
+            ShippingFee::create([
+                'city_id' => $validatedData['city_id'],
+                'district_id' => $validatedData['district_id'],
+                'ward_id' => $validatedData['ward_id'],
+                'fee' => $validatedData['shipping_fee'],
+            ]);
+    
+            return redirect()->route('shippingfee.index')->with('success', 'Thêm phí vận chuyển thành công!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Đã xảy ra lỗi khi thêm phí vận chuyển. Vui lòng thử lại.');
+        }
 
-        ShippingFee::create([
-            'city_id' => $validatedData['city_id'],
-            'district_id' => $validatedData['district_id'],
-            'ward_id' => $validatedData['ward_id'],
-            'fee' => $validatedData['shipping_fee'],
-        ]);
-
-        return redirect()->route('shippingfee.index')->with('success', 'Thêm phí vận chuyển thành công!');
+        
     }
 
     /**

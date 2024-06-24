@@ -30,7 +30,15 @@ class LoginController extends Controller
     {
         $rules = [
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'regex:/[a-z]/', 
+                'regex:/[A-Z]/', 
+                'regex:/[0-9]/', 
+                'regex:/[@$!%*#?&_]/',
+            ],
         ];
 
         $message = [
@@ -40,6 +48,9 @@ class LoginController extends Controller
             'email.min' => 'Email phải lớn hơn 8 ký tự.',
             'password.required' => 'Hãy nhập mật khẩu của bạn.',
             'password.min' => 'Mật khẩu tối thiểu 8 ký tự.',
+            'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
+            'password.regex' => 'Mật khẩu phải bao gồm ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.',
+
 
         ];
         $validator = Validator::make($request->all(), $rules, $message);

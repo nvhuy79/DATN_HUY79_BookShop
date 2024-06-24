@@ -20,6 +20,9 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
     <script src="{{ asset('user/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -235,16 +238,18 @@
                                         </a>
                                     </div>
                                     <div class="content">
-                                        <h5><a href="{{ route('detail_product', $cart->prod->slug) }}">{{ $cart->prod->title }}</a></h5>
+                                        <h5><a
+                                                href="{{ route('detail_product', $cart->prod->slug) }}">{{ $cart->prod->title }}</a>
+                                        </h5>
                                         <p><span class="cart-count">{{ $cart->quantity }}x </span> <span
                                                 class="discounted-price">{{ number_format($cart->price, 0, ',', '.') }}
                                                 ₫</span></p>
                                     </div>
 
                                 </div>
-                                @endforeach
+                            @endforeach
                         </div>
-                        
+
                         @php
                             $totalPrice = 0;
                             foreach ($carts as $cart) {

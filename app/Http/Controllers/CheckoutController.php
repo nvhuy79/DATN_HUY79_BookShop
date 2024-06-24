@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Category;
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Discount;
 use App\Models\OrderDetail;
-use App\Models\ShippingInformation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\ShippingInformation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -33,11 +35,8 @@ class CheckoutController extends Controller
         }
     }
 
-
     public function confirmOrder(Request $request)
     {
-
-        // Xác thực dữ liệu
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -63,33 +62,50 @@ class CheckoutController extends Controller
             'payment-method.required' => 'Vui lòng chọn phương thức thanh toán.',
             'payment-method.in' => 'Phương thức thanh toán không hợp lệ.',
         ]);
-
+    
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-
+    
         // Lấy thông tin phí vận chuyển từ DB
         $city_id = $request->input('city_id');
         $district_id = $request->input('district_id');
         $ward_id = $request->input('ward_id');
-
+    
         $shippingFee = DB::table('shipping_fees')
             ->where('city_id', $city_id)
             ->where('district_id', $district_id)
             ->where('ward_id', $ward_id)
             ->value('fee');
-
-        // Nếu không tìm thấy phí vận chuyển, đặt mặc định là 50000 VND
+    
         if (!$shippingFee) {
-            $shippingFee = 50000;
+            $shippingFee = 50000;  // Default shipping fee if not found
         }
-
+    
+        // Lấy thông tin giỏ hàng từ bảng carts
+        $cartItems = Cart::where('user_id', auth()->id())->get();
+    
+        if ($cartItems->isEmpty()) {
+            return back()->with('error', 'Giỏ hàng trống.');
+        }
+    
+        // Tính tổng giá trị đơn hàng
+        $orderTotal = 0;
+        foreach ($cartItems as $item) {
+            $orderTotal += $item->price * $item->quantity;
+        }
+    
+        // Miễn phí vận chuyển nếu tổng giá trị đơn hàng lớn hơn 999000
+        if ($orderTotal > 999000) {
+            $shippingFee = 0;
+        }
+    
         // Lưu phí vận chuyển vào Session
         Session::put('shipping_fee', $shippingFee);
         Session::put('email', $request->input('email'));
-
+    
         // Lưu thông tin người nhận hàng vào bảng shipping_information
         $shippingInfo = ShippingInformation::create([
             'shipping_name' => $request->input('name'),
@@ -102,34 +118,68 @@ class CheckoutController extends Controller
             'shipping_method' => $request->input('payment-method'),
             'shipping_notes' => $request->input('notes'),
         ]);
-
+    
         if (!$shippingInfo) {
             return back()->with('error', 'Không thể lưu thông tin người nhận hàng.');
         }
-
-        // Lấy id của shipping_information vừa được lưu
+    
         $checkout_code = substr(md5(microtime()), rand(0, 26), 5);
         $shippingInformationId = $shippingInfo->id;
-
+    
         // Lưu thông tin đơn hàng vào bảng orders
         $order = Order::create([
-            'user_id' => auth()->id(), // Lấy id của người dùng hiện tại
+            'user_id' => auth()->id(),
             'shipping_information_id' => $shippingInformationId,
-            'order_status' => 1, // Thay đổi thành số tiền thực tế sau khi tính toán
-            'order_code' => $checkout_code, 
+            'order_status' => 1,
+            'order_code' => $checkout_code,
+            'shipping_fee' => $shippingFee,  // Lưu phí vận chuyển vào đơn hàng
         ]);
-
-        if (!$order) {
-            return back()->with('error', 'Không thể tạo đơn hàng.');
+    
+        // Lấy mã giảm giá từ session
+        $discountCode = Session::get('current_discount_code', '');
+    
+        // Lưu từng sản phẩm trong giỏ hàng vào bảng order_details
+        foreach ($cartItems as $item) {
+            $product = Product::find($item->product_id);
+    
+            // Giảm số lượng sản phẩm trong kho
+            if ($product->stock < $item->quantity) {
+                return back()->with('error', 'Sản phẩm ' . $product->title . ' không đủ số lượng.');
+            }
+    
+            $product->stock -= $item->quantity;
+            $product->save();
+    
+            OrderDetail::create([
+                'order_code' => $checkout_code,
+                'product_id' => $item->product_id,
+                'product_name' => $product->title,
+                'product_price' => $item->price,
+                'product_discount' => $discountCode,
+                'product_fee' => $shippingFee,
+                'product_sale_quantity' =>  $item->quantity,
+            ]);
         }
-
-        // Sau khi tạo đơn hàng thành công, có thể chuyển hướng tới trang xác nhận đơn hàng hoặc trang khác
-        return back()->with('success', 'Đơn hàng đã được tạo thành công.');
+    
+        // Giảm số lượng mã giảm giá (nếu có)
+        if ($discountCode) {
+            $discount = Discount::where('code', $discountCode)->first();
+            if ($discount && $discount->usage_count > 0) {
+                $discount->usage_count -= 1;
+                $discount->save();
+            }
+        }
+    
+        // Xóa giỏ hàng sau khi hoàn tất đơn hàng
+        Cart::where('user_id', auth()->id())->delete();
+        Session::forget('current_discount_code');
+    
+        return redirect()->back()->with('success', 'Đơn hàng đã được tạo thành công.');
     }
+    
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
+
     public function create()
     {
         //

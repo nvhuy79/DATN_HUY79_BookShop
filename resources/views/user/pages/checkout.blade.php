@@ -23,8 +23,7 @@
                                     <div id="billing-form" class="mb-40">
                                         <h4 class="checkout-title">Thông tin nhận hàng</h4>
                                         <div class="row">
-                                            <form action="{{ route('confirmOrder') }}" method="POST"
-                                                class="checkout-form">
+                                            <form action="{{ route('confirmOrder') }}" method="POST" class="checkout-form">
                                                 @csrf
                                                 <div class="row mb-3">
                                                     <div class="col-md-6 col-12 mb-20">
@@ -125,7 +124,8 @@
 
                                                 </div>
                                                 <div class="col-md-6 col-12 mb-20">
-                                                    <button type="submit" id="calculate-shipping-fee"
+                                                    <button type="submit" id="confirmOrderButton"
+                                                        name="confirmOrderButton"
                                                         class="lezada-button lezada-button--medium mt-30">Xác nhận</button>
                                                 </div>
                                             </form>
@@ -134,8 +134,8 @@
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="row">
-                                        <form action="{{ route('confirmOrder') }}" method="POST"
-                                            class="checkout-form">
+                                        {{-- <form id="checkoutForm" action="{{ route('confirmOrder') }}" method="POST" class="checkout-form"> --}}
+                                            <form id="checkoutForm" action="{{ route('confirmOrder') }}" method="POST">
                                             @csrf
                                             <div class="col-12 mb-60">
                                                 <h4 class="checkout-title">Giỏ hàng</h4>
@@ -169,11 +169,11 @@
                                                             }
                                                         }
 
-                                                        $shippingFee = 0; // Khởi tạo phí vận chuyển là 0
+                                                        $shippingFee = 0; 
                                                         if ($totalPrice > 999000) {
-                                                            $shippingFee = 0; // Nếu tổng tiền hàng lớn hơn 400,000 thì phí vận chuyển là 0
+                                                            $shippingFee = 0; 
                                                         } else {
-                                                            $shippingFee = session('shipping_fee', 0); // Ngược lại lấy từ session nếu có
+                                                            $shippingFee = session('shipping_fee', 0);
                                                         }
 
                                                         $finalTotal = $totalPrice - $totalDiscount + $shippingFee;
@@ -197,19 +197,18 @@
                                                         <p>Phí vận chuyển <span>0 ₫</span></p>
                                                     @endif
 
-                                                    <p>Email
-                                                        <span>{{ Session::get('email') }}</span>
-                                                    </p>
-
-                                                    <h4 style="border-top: 1px solid #777777;padding-top: 10px; margin-top: 10px;">Thành tiền <span>{{ number_format($finalTotal, 0, ',', '.') }}
+                                                    <h4
+                                                        style="border-top: 1px solid #777777;padding-top: 10px; margin-top: 10px;">
+                                                        Thành tiền <span>{{ number_format($finalTotal, 0, ',', '.') }}
                                                             ₫</span></h4>
 
                                                 </div>
                                                 <h19 class="free-shipping-text">
-                                                    * Miễn phí ship với đơn hàng từ 999.000đ *
+                                                    * Miễn phí ship với đơn hàng từ 999.000đ
                                                 </h19>
                                                 <div class="col-12 mb-60"style="display: flex;justify-content: center;">
-                                                    <button class="lezada-button lezada-button--medium mt-30">Đặt hàng</button>
+                                                    <button class="lezada-button lezada-button--medium mt-30">Đặt
+                                                        hàng</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -309,5 +308,42 @@
                     });
             }
         });
+
+
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     document.getElementById('confirmOrderButton').addEventListener('click', function(event) {
+    //         event.preventDefault(); 
+
+    //         Swal.fire({
+    //             title: 'Xác nhận đặt hàng?',
+    //             text: 'Thông tin về đơn hàng sẽ được tạo và đ!',
+    //             icon: 'warning',
+    //             showCancelButton: true,
+    //             confirmButtonText: 'Yes, delete it!',
+    //             cancelButtonText: 'Cancel',
+    //             dangerMode: true,
+    //         }).then((result) => {
+    //             if (result.isConfirmed) {
+                    
+    //                 document.getElementById('checkoutForm').submit();
+    //                 Swal.fire(
+    //                     'Deleted!',
+    //                     'Poof! Your imaginary file has been deleted!',
+    //                     'success'
+    //                 );
+    //             } else {
+           
+    //                 Swal.fire(
+    //                     'Your imaginary file is safe!',
+    //                     '',
+    //                     'info'
+    //                 );
+    //             }
+    //         });
+    //     });
+    // });
+
+
     </script>
+    
 @endsection

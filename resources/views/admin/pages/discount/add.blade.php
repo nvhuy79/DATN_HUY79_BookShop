@@ -5,12 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="white_card card_height_100 mb_30">
-                    <div class="white_card_header">
-                        <div class="white_box_tittle">
-                            <h4>Thêm mã giảm giá</h4>
+                    <div class="modal-content cs_modal">
+                        <div class="modal-header justify-content-center theme_bg_1">
+                            <h5 class="modal-title text_white">Thêm mã giảm giá</h5>
                         </div>
                     </div>
-                    <div class="white_card_body">
+                    <div class="white_card_body mt-4">
                         <form action="{{ route('discount.store') }}" method="POST">
                             @csrf
                             <div class="row">

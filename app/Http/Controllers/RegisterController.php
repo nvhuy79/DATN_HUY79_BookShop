@@ -29,7 +29,17 @@ class RegisterController extends Controller
         $rules = [
             'name' => 'required|string|min:3|max:15',
             'email' => 'required|string|email|min:9|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            // 'password' => 'required|string|min:8|confirmed',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+                'regex:/[a-z]/', 
+                'regex:/[A-Z]/', 
+                'regex:/[0-9]/', 
+                'regex:/[@$!%*#?&_]/',
+            ],
         ];
 
         $message = [
@@ -44,6 +54,7 @@ class RegisterController extends Controller
             'password.required' => 'Hãy nhập mật khẩu của bạn.',
             'password.min' => 'Mật khẩu tối thiểu 8 ký tự.',
             'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
+            'password.regex' => 'Mật khẩu phải bao gồm ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.',
 
         ];
         $validator = Validator::make($request->all(), $rules, $message);
@@ -120,6 +131,6 @@ class RegisterController extends Controller
             $user->save();
         }
 
-        return view('user/pages/account_activation', compact('token', 'name','categories', 'carts'));
+        return view('user/pages/account_activation', compact('token', 'name', 'categories', 'carts'));
     }
 }
