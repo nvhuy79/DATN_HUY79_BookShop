@@ -75,7 +75,7 @@ body {
   font-weight: 400;
   visibility: visible;
   font-family: "Work Sans", sans-serif;
-  color: #777777;
+  color: #000;
   position: relative;
 }
 body.newsletter-overlay-active {
@@ -1335,7 +1335,7 @@ nav.site-nav > ul > li.menu-item-has-children > a:before {
 }
 nav.site-nav > ul > li > a {
   font-weight: 500;
-  color: #7e7e7e;
+  color: #000;
 }
 nav.site-nav > ul > li > a:after {
   position: absolute;
@@ -3107,10 +3107,11 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   margin-bottom: -5px;
 }
 .section-title h1 {
-  font-size: 48px;
+  font-size: 44px;
   line-height: 64px;
   margin-top: -13px;
   margin-bottom: 15px;
+  font-family: 'Lora', serif;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .section-title h1 {
@@ -5875,11 +5876,11 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 .single-product__content .title h3 a {
   display: block;
   font-size: 24px;
-  line-height: 1.6;
-  /* margin-bottom: 10px; */
+  line-height: 1.4;
   font-weight: 450;
   opacity: 1;
   visibility: visible;
+  font-family: 'Times New Roman', Times, serif;
   -webkit-transform: translateY(0);
           transform: translateY(0);
   color: #333;
@@ -10197,6 +10198,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   text-transform: capitalize;
   display: block;
   margin: 0 0 5px;
+  color: #000;
 }
 .myaccount-content .account-details-form .single-input-item input {
   border: 1px solid #e8e8e8;

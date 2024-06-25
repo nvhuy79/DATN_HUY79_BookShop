@@ -1,6 +1,5 @@
 @extends('user/layouts/page')
 @section('content')
-
     <div id="new_products" class="section-title-container mt-80 mb-30">
         <div class="container">
             <div class="col-lg-12">
@@ -67,10 +66,11 @@
 
                             <div class="single-product__content">
                                 <div class="title">
-                                    <h3 style="font-weight: bold;"> <a
-                                            href="shop-product-basic.html">{{ $item->title }}</a></h3>
-                                    <h5> <a href="shop-product-basic.html">{{ $item->category->title }}</a></h5>
-                                    <a href="#">{{ $item->title }}</a>
+                                    <h3 style="font-weight: bold;">
+                                        <a href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
+                                    </h3>
+                                    <h5> <a href="#">{{ $item->category->title }}</a></h5>
+                                    <a href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
                                 </div>
                                 <div class="price">
                                     @if ($item->sale_price && $item->sale_price < $item->price)
@@ -232,20 +232,19 @@
 
                                 <!--=======  single product content  =======-->
                                 <div class="single-product__content">
-                                    <input type="hidden" name="id" value="{{ $item->id }}">
                                     <div class="title">
-                                        <h4 style="font-weight: bold;"> <a
-                                                href="shop-product-basic.html">{{ $item->title }}</a></h4>
-                                        <h5> <a href="shop-product-basic.html">{{ $item->category->title }}</a></h5>
-                                        {{-- <button href="#">Thêm vào giỏ hàng</button> --}}
+                                        <h3 style="font-weight: bold;"> <a
+                                                href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a></h3>
+                                        <h5> <a href="#">{{ $item->category->title }}</a></h5>
+                                        <a href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
                                     </div>
                                     <div class="price">
                                         @if ($item->sale_price && $item->sale_price < $item->price)
-                                            <span class="main-price discounted">{{ number_format($item->price) }}đ</span>
+                                            <span class="main-price discounted">{{ number_format($item->price) }}₫</span>
                                             <span class="discounted-price"
-                                                style="color: red">{{ number_format($item->sale_price) }}đ</span>
+                                                style="color: red">{{ number_format($item->sale_price) }}₫</span>
                                         @else
-                                            <span class="main-price">{{ number_format($item->price) }}đ</span>
+                                            <span class="main-price">{{ number_format($item->price) }}₫</span>
                                         @endif
                                     </div>
                                 </div>

@@ -1,18 +1,19 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SlideController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DiscountController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShippingFeeController;
-use App\Http\Controllers\SlideController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,9 +53,15 @@ Route::prefix('/')->group(function () {
     Route::post('/reset-pass', [AccountController::class, 'post_reset_pass']);
 
     Route::get('/products/{slug}', [HomeController::class, 'detail_product'])->name('detail_product');
-    
-    Route::resource('checkout', CheckoutController::class);
+
+    // Route::resource('checkout', CheckoutController::class);
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/confirmOrder', [CheckoutController::class, 'confirmOrder'])->name('confirmOrder');
+
+
+    // Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment'])->name('vnpay_payment');
+    Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment'])->name('vnpay_payment');
+    Route::get('/vnpay_return', [PaymentController::class, 'vnpay_return'])->name('vnpay_return');
 });
 
 Route::prefix('/cart')->middleware('auth.custom')->group(function () {

@@ -20,9 +20,13 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
     <script src="{{ asset('user/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-    {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <style>
+        .section-title.section-title--one.text-center h1 {
+            font-family: 'Lora', serif;
+        }
+    </style>
 </head>
 
 <body>

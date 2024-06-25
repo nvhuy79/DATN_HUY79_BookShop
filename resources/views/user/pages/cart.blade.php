@@ -202,7 +202,7 @@
 
 
                 <div class="cart-calculation-button text-center">
-                    <a href="{{ route('checkout.index') }}" class="lezada-button lezada-button--medium">Thanh
+                    <a href="{{ route('checkout') }}" class="lezada-button lezada-button--medium">Thanh
                         toán</a>
                 </div>
             </div>

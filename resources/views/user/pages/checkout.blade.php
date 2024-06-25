@@ -135,7 +135,7 @@
                                 <div class="col-lg-5">
                                     <div class="row">
                                         {{-- <form id="checkoutForm" action="{{ route('confirmOrder') }}" method="POST" class="checkout-form"> --}}
-                                            <form id="checkoutForm" action="{{ route('confirmOrder') }}" method="POST">
+                                            <form id="checkoutForm" action="{{ route('vnpay_payment') }}" method="POST">
                                             @csrf
                                             <div class="col-12 mb-60">
                                                 <h4 class="checkout-title">Giỏ hàng</h4>
@@ -206,8 +206,9 @@
                                                 <h19 class="free-shipping-text">
                                                     * Miễn phí ship với đơn hàng từ 999.000đ
                                                 </h19>
+                                                <input type="hidden" name="total_vnpay" value="{{ $finalTotal }}">
                                                 <div class="col-12 mb-60"style="display: flex;justify-content: center;">
-                                                    <button class="lezada-button lezada-button--medium mt-30">Đặt
+                                                    <button class="lezada-button lezada-button--medium mt-30" name="redirect">Đặt
                                                         hàng</button>
                                                 </div>
                                             </div>
