@@ -25,6 +25,18 @@ class CartController extends Controller
         }
     }
 
+    public function success(){
+        $categories = Category::all();
+        if (Auth::check()) {
+            $userId = Auth::id();
+            $carts = Cart::where('user_id', $userId)->get();
+            $totalQuantity = $carts->sum('quantity');
+            return view('user/pages/success', compact('carts', 'categories', 'totalQuantity'));
+        } else {
+            return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để xem giỏ hàng.');
+        }
+    }
+
     public function check_discount(Request $request)
     {
         $data = $request->all();

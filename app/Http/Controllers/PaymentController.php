@@ -164,7 +164,7 @@ class PaymentController extends Controller
                 // Xóa giỏ hàng sau khi hoàn tất đơn hàng
                 // Cart::where('user_id', auth()->id())->delete();
                 Session::forget('current_discount_code');
-                Session::forget('product_fee');
+                Session::forget('shipping_fee');
                 Session::forget('customer_name');
                 Session::forget('customer_email');
                 Session::forget('customer_phone');
@@ -176,9 +176,9 @@ class PaymentController extends Controller
                 Session::forget('current_discount_code');
 
                 // END Lưu thông tin người nhận hàng vào bảng shipping_information
+                Cart::where('user_id', auth()->id())->delete();
 
-
-                return redirect()->route('checkout')->with('success', 'Thanh toán thành công!');
+                return redirect()->route('cart.success')->with('success', 'Thanh toán thành công!');
             } else {
                 // Thanh toán không thành công
                 return redirect()->route('checkout')->with('error', 'Thanh toán không thành công! Mã lỗi: ' . $request->input('vnp_ResponseCode'));
@@ -187,5 +187,103 @@ class PaymentController extends Controller
             // Chữ ký không hợp lệ
             return redirect()->route('checkout')->with('error', 'Chữ ký không hợp lệ!');
         }
+    }
+
+    public function delivery_payment(Request $request)
+    {
+
+        $shippingName = Session::get('customer_name');
+        $shippingEmail = Session::get('customer_email');
+        $shippingPhone = Session::get('customer_phone');
+        $shippingAddress = Session::get('customer_address');
+        $cityId = Session::get('customer_city_id');
+        $districtId = Session::get('customer_district_id');
+        $wardId = Session::get('customer_ward_id');
+        $paymentMethod = Session::get('customer_payment_method');
+        $shippingFee = Session::get('shipping_fee');
+        $note = Session::get('customer_note');
+
+        $shippingInfo = ShippingInformation::create([
+            'shipping_name' => $shippingName,
+            'shipping_email' => $shippingEmail,
+            'shipping_phone' => $shippingPhone,
+            'shipping_address' => $shippingAddress,
+            'city_id' => $cityId,
+            'district_id' => $districtId,
+            'ward_id' => $wardId,
+            'shipping_method' => $paymentMethod,
+            'shipping_notes' => $note,
+        ]);
+
+        if (!$shippingInfo) {
+            return back()->with('error', 'Không thể lưu thông tin người nhận hàng.');
+        }
+
+        $checkout_code = substr(md5(microtime()), rand(0, 26), 5);
+        $shippingInformationId = $shippingInfo->id;
+
+        // Lưu thông tin đơn hàng vào bảng orders
+        $order = Order::create([
+            'user_id' => auth()->id(),
+            'shipping_information_id' => $shippingInformationId,
+            'order_status' => 1, // Trạng thái đơn hàng mới
+            'order_code' => $checkout_code,
+            'shipping_fee' => $shippingFee,  // Lưu phí vận chuyển vào đơn hàng
+        ]);
+
+        // Lấy mã giảm giá từ session
+        $discountCode = Session::get('current_discount_code', '');
+        // Lấy thông tin giỏ hàng từ bảng carts
+        $cartItems = Cart::where('user_id', auth()->id())->get();
+
+        // Lưu từng sản phẩm trong giỏ hàng vào bảng order_details
+        foreach ($cartItems as $item) {
+            $product = Product::find($item->product_id);
+
+            // Giảm số lượng sản phẩm trong kho
+            if ($product->stock < $item->quantity) {
+                return back()->with('error', 'Sản phẩm ' . $product->title . ' không đủ số lượng.');
+            }
+
+            $product->stock -= $item->quantity;
+            $product->save();
+
+            OrderDetail::create([
+                'order_code' => $checkout_code,
+                'product_id' => $item->product_id,
+                'product_name' => $product->title,
+                'product_price' => $item->price,
+                'product_discount' => $discountCode, // Mã giảm giá
+                'product_fee' => $shippingFee, // Phí vận chuyển
+                'product_sale_quantity' =>  $item->quantity, // Số lượng mua
+            ]);
+        }
+
+        // Giảm số lượng mã giảm giá (nếu có)
+        if ($discountCode) {
+            $discount = Discount::where('code', $discountCode)->first();
+            if ($discount && $discount->usage_count > 0) {
+                $discount->usage_count -= 1;
+                $discount->save();
+            }
+        }
+
+        // Xóa giỏ hàng sau khi hoàn tất đơn hàng
+        Cart::where('user_id', auth()->id())->delete();
+        Session::forget('current_discount_code');
+        Session::forget('shipping_fee');
+        Session::forget('customer_name');
+        Session::forget('customer_email');
+        Session::forget('customer_phone');
+        Session::forget('customer_address');
+        Session::forget('customer_city_id');
+        Session::forget('customer_district_id');
+        Session::forget('customer_ward_id');
+        Session::forget('customer_payment_method');
+        Session::forget('current_discount_code');
+
+        // END Lưu thông tin người nhận hàng vào bảng shipping_information
+
+        return redirect()->route('cart.success')->with('success', 'Đặt hàng thành công!');
     }
 }

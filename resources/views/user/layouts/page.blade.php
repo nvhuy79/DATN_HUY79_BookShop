@@ -267,7 +267,7 @@
 
                         <div class="cart-buttons">
                             <a href="{{ route('cart.index') }}">Xem danh sách</a>
-                            <a href="shop-checkout.html">Thanh toán</a>
+                            <a href="{{ route('checkout') }}">Thanh toán</a>
                         </div>
 
                         <p class="free-shipping-text">

@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/colors/default.css') }}" id="colorSkinCSS">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
+
 </head>
 
 <body class="crm_body_bg">
@@ -59,6 +60,20 @@
                 </ul>
             </li>
 
+            <li class>
+                <a class="has-arrow" href="#" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{{ asset('admin/img/menu-icon/3.svg') }}" alt>
+                    </div>
+
+                    <div class="nav_title">
+                        <span>Quản lý đơn hàng</span>
+                    </div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('manage_order') }}">Danh sách đơn hàng</a></li>
+                </ul>
+            </li>
 
             <li class>
                 <a class="has-arrow" aria-expanded="false">
@@ -75,16 +90,7 @@
                 </ul>
             </li>
 
-            <li class>
-                <a href="#" aria-expanded="false">
-                    <div class="nav_icon_small">
-                        <img src="{{ asset('admin/img/menu-icon/3.svg') }}" alt>
-                    </div>
-                    <div class="nav_title">
-                        <span>Buy & Sell</span>
-                    </div>
-                </a>
-            </li>
+
 
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
@@ -418,17 +424,21 @@
                 var ma_id = $(this).val();
                 var _token = $('input[name="_token"]').val();
                 var result = '';
-    
+
                 if (action == 'province') {
                     result = 'district';
                 } else if (action == 'district') {
                     result = 'ward';
                 }
-    
+
                 $.ajax({
                     url: '{{ url('/select-shippingfee') }}',
                     method: 'POST',
-                    data: { action: action, ma_id: ma_id, _token: _token },
+                    data: {
+                        action: action,
+                        ma_id: ma_id,
+                        _token: _token
+                    },
                     success: function(data) {
                         $('#' + result).html(data);
                     },
@@ -439,8 +449,8 @@
             });
         });
     </script>
-    
-    
+
+
 
 
     @if (Session::has('success'))

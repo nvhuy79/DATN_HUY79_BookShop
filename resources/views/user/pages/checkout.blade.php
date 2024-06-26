@@ -29,7 +29,7 @@
                                                     <div class="col-md-6 col-12 mb-20">
                                                         <label>Họ và Tên*</label>
                                                         <input type="text" placeholder="Họ và tên" name="name"
-                                                            value="{{ old('name') }}">
+                                                            value="{{ old('name', session('customer_name')) }}">
                                                         @error('name')
                                                             <span style="color: red">{{ $message }}</span>
                                                         @enderror
@@ -37,7 +37,7 @@
                                                     <div class="col-md-6 col-12 mb-20">
                                                         <label>Email*</label>
                                                         <input type="email" placeholder="Địa chỉ email" name="email"
-                                                            value="{{ old('email', Session::get('email')) }}">
+                                                            value="{{ old('email', Session::get('customer_email')) }}">
                                                         @error('email')
                                                             <span style="color: red">{{ $message }}</span>
                                                         @enderror
@@ -48,7 +48,7 @@
                                                     <div class="col-md-6 col-12 mb-20">
                                                         <label>Số điện thoại*</label>
                                                         <input type="text" placeholder="Số điện thoại" name="phone"
-                                                            value="{{ old('phone') }}">
+                                                            value="{{ old('phone', Session::get('customer_phone')) }}">
                                                         @error('phone')
                                                             <span style="color: red">{{ $message }}</span>
                                                         @enderror
@@ -56,7 +56,8 @@
                                                     <div class="col-md-6 col-12 mb-20">
                                                         <label>Địa chỉ*</label>
                                                         <input type="text" placeholder="Tên đường, Tòa nhà, Số nhà..."
-                                                            name="address" value="{{ old('address') }}">
+                                                            name="address"
+                                                            value="{{ old('address', Session::get('customer_address')) }}">
                                                         @error('address')
                                                             <span style="color: red">{{ $message }}</span>
                                                         @enderror
@@ -109,33 +110,28 @@
                                                     <h4 class="checkout-title">Phương thức thanh toán</h4>
                                                     <div class="checkout-payment-method">
                                                         <div class="single-method">
-                                                            <input type="radio" id="payment_check" name="payment-method"
-                                                                value="check">
+                                                            <input type="radio" id="payment_check" name="payment-method" value="check" {{ old('payment-method', session('customer_payment_method')) == 'check' ? 'checked' : '' }}>
                                                             <label for="payment_check">Thanh toán khi nhận hàng</label>
                                                             <p data-method="check">Vui lòng thanh toán khi nhận hàng.</p>
                                                         </div>
                                                         <div class="single-method">
-                                                            <input type="radio" id="payment_bank" name="payment-method"
-                                                                value="bank">
+                                                            <input type="radio" id="payment_bank" name="payment-method" value="bank" {{ old('payment-method', session('customer_payment_method')) == 'bank' ? 'checked' : '' }}>
                                                             <label for="payment_bank">Thanh toán trực tuyến</label>
                                                             <p data-method="bank">Vui lòng thanh toán trực tuyến.</p>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <div class="col-md-6 col-12 mb-20">
-                                                    <button type="submit" id="confirmOrderButton"
-                                                        name="confirmOrderButton"
+                                                    <button type="submit" id="confirmOrderButton" name="confirmOrderButton"
                                                         class="lezada-button lezada-button--medium mt-30">Xác nhận</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-5">
+                                {{-- <div class="col-lg-5">
                                     <div class="row">
-                                        {{-- <form id="checkoutForm" action="{{ route('confirmOrder') }}" method="POST" class="checkout-form"> --}}
-                                            <form id="checkoutForm" action="{{ route('vnpay_payment') }}" method="POST">
+                                        <form id="checkoutForm" action="{{ route('vnpay_payment') }}" method="POST">
                                             @csrf
                                             <div class="col-12 mb-60">
                                                 <h4 class="checkout-title">Giỏ hàng</h4>
@@ -169,9 +165,9 @@
                                                             }
                                                         }
 
-                                                        $shippingFee = 0; 
+                                                        $shippingFee = 0;
                                                         if ($totalPrice > 999000) {
-                                                            $shippingFee = 0; 
+                                                            $shippingFee = 0;
                                                         } else {
                                                             $shippingFee = session('shipping_fee', 0);
                                                         }
@@ -208,8 +204,83 @@
                                                 </h19>
                                                 <input type="hidden" name="total_vnpay" value="{{ $finalTotal }}">
                                                 <div class="col-12 mb-60"style="display: flex;justify-content: center;">
-                                                    <button class="lezada-button lezada-button--medium mt-30" name="redirect">Đặt
+                                                    <button class="lezada-button lezada-button--medium mt-30"
+                                                        name="redirect">Đặt
                                                         hàng</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div> --}}
+                                <div class="col-lg-5">
+                                    <div class="row">
+                                        <form id="checkoutForm" action="{{ session('customer_payment_method') == 'bank' ? route('vnpay_payment') : route('delivery_payment') }}" method="POST">
+                                            @csrf
+                                            <div class="col-12 mb-60">
+                                                <h4 class="checkout-title">Giỏ hàng</h4>
+                                                <div class="checkout-cart-total">
+                                
+                                                    <h4>Sản phẩm <span>Tổng</span></h4>
+                                                    @foreach ($carts as $cart)
+                                                        <ul>
+                                                            <li>{{ $cart->prod->title }} X {{ $cart->quantity }}
+                                                                <span>{{ number_format($cart->price, 0, ',', '.') }} ₫</span>
+                                                            </li>
+                                                        </ul>
+                                                    @endforeach
+                                
+                                                    @php
+                                                        $totalPrice = 0;
+                                                        foreach ($carts as $cart) {
+                                                            $totalPrice += $cart->price * $cart->quantity;
+                                                        }
+                                
+                                                        $totalDiscount = 0;
+                                                        if (Session::has('discount')) {
+                                                            foreach (Session::get('discount') as $count) {
+                                                                if ($count['method'] == 1) {
+                                                                    $totalDiscount += $count['discount_value'];
+                                                                } elseif ($count['method'] == 2) {
+                                                                    $totalDiscount += ($totalPrice * $count['discount_value']) / 100;
+                                                                }
+                                                            }
+                                                        }
+                                
+                                                        $shippingFee = 0;
+                                                        if ($totalPrice > 999000) {
+                                                            $shippingFee = 0;
+                                                        } else {
+                                                            $shippingFee = session('shipping_fee', 0);
+                                                        }
+                                
+                                                        $finalTotal = $totalPrice - $totalDiscount + $shippingFee;
+                                                    @endphp
+                                
+                                                    <p style="margin-top: 9%">Tổng tiền hàng
+                                                        <span>{{ number_format($totalPrice, 0, ',', '.') }} ₫</span>
+                                                    </p>
+                                
+                                                    @if ($totalDiscount > 0)
+                                                        <p>Mã giảm giá:<span class="subtotal">-{{ number_format($totalDiscount, 0, ',', '.') }} ₫</span></p>
+                                                    @endif
+                                
+                                                    @if ($shippingFee > 0)
+                                                        <p>Phí vận chuyển <span>{{ number_format($shippingFee, 0, ',', '.') }} ₫</span></p>
+                                                    @else
+                                                        <p>Phí vận chuyển <span>0 ₫</span></p>
+                                                    @endif
+                                
+                                                    <h4 style="border-top: 1px solid #777777;padding-top: 10px; margin-top: 10px;">
+                                                        Thành tiền <span>{{ number_format($finalTotal, 0, ',', '.') }} ₫</span>
+                                                    </h4>
+                                
+                                                </div>
+                                                <h19 class="free-shipping-text">
+                                                    * Miễn phí ship với đơn hàng từ 999.000đ
+                                                </h19>
+                                                <input type="hidden" name="total_vnpay" value="{{ $finalTotal }}">
+                                                <div class="col-12 mb-60" style="display: flex;justify-content: center;">
+                                                    <button class="lezada-button lezada-button--medium mt-30" name="redirect">Đặt hàng</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -311,40 +382,27 @@
         });
 
 
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     document.getElementById('confirmOrderButton').addEventListener('click', function(event) {
-    //         event.preventDefault(); 
+        document.addEventListener('DOMContentLoaded', function () {
+        const paymentMethodInputs = document.querySelectorAll('input[name="customer_payment_method"]');
+        const checkoutForm = document.getElementById('checkoutForm');
 
-    //         Swal.fire({
-    //             title: 'Xác nhận đặt hàng?',
-    //             text: 'Thông tin về đơn hàng sẽ được tạo và đ!',
-    //             icon: 'warning',
-    //             showCancelButton: true,
-    //             confirmButtonText: 'Yes, delete it!',
-    //             cancelButtonText: 'Cancel',
-    //             dangerMode: true,
-    //         }).then((result) => {
-    //             if (result.isConfirmed) {
-                    
-    //                 document.getElementById('checkoutForm').submit();
-    //                 Swal.fire(
-    //                     'Deleted!',
-    //                     'Poof! Your imaginary file has been deleted!',
-    //                     'success'
-    //                 );
-    //             } else {
-           
-    //                 Swal.fire(
-    //                     'Your imaginary file is safe!',
-    //                     '',
-    //                     'info'
-    //                 );
-    //             }
-    //         });
-    //     });
-    // });
+        paymentMethodInputs.forEach(input => {
+            input.addEventListener('change', function () {
+                if (this.value === 'bank') {
+                    checkoutForm.action = "{{ route('vnpay_payment') }}";
+                } else {
+                    checkoutForm.action = "{{ route('delivery_payment') }}";
+                }
+            });
+        });
 
-
+        // Thiết lập giá trị mặc định khi trang được tải
+        const selectedPaymentMethod = "{{ session('customer_payment_method') }}";
+        if (selectedPaymentMethod === 'bank') {
+            checkoutForm.action = "{{ route('vnpay_payment') }}";
+        } else {
+            checkoutForm.action = "{{ route('delivery_payment') }}";
+        }
+    });
     </script>
-    
 @endsection

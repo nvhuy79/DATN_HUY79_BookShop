@@ -106,13 +106,6 @@
                                         width="100px">
                                 @endif
                             </div>
-
-                            {{-- <div class="mb-3">
-                                <label for="formFileDescImage" class="form-floating">Ảnh mô tả</label>
-                                <input class="form-control" type="file" id="formFileDescImage" name="desc_image[]"
-                                    multiple>
-                            </div> --}}
-
                             <div class="mb-3">
                                 <label for="formFileDescImage" class="form-floating">Ảnh mô tả</label>
                                 <input class="form-control" type="file" id="formFileDescImage" name="desc_image[]" multiple>

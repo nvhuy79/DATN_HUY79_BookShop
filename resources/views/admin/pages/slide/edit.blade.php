@@ -51,8 +51,37 @@
                                 @endif
                             </div>
 
+                            {{-- <div class="mb-3">
+                                <label class="form-label">Trạng thái</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="status1"
+                                        value="1" {{ $category->status == 1 ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status1">Hiển thị</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="status0"
+                                        value="0" {{ $category->status == 0 ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status0">Ẩn</label>
+                                </div>
+                            </div> --}}
 
 
+                            <div class="col-lg-6">
+                                <label class="form-label">Trạng thái</label><br>
+                                <div class="form-group">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="status" id="status_fixed"
+                                            value="1" {{ $slide->status == '1' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="status_fixed">Hiển thị</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="status"
+                                            id="status_percentage" value="2"
+                                            {{ $slide->status == '2' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="status_percentage">Ẩn</label>
+                                    </div>
+                                </div>
+                            </div> 
                             <button type="submit" class="btn btn-primary" style="margin-top: 3%;">Lưu thay đổi</button>
                         </form>
                     </div>

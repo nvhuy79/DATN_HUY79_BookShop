@@ -184,7 +184,7 @@ class CheckoutController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
+            'phone' => 'required|regex:/^[0-9]{10}$/',
             'address' => 'required|string|max:255',
             'city_id' => 'required',
             'district_id' => 'required',
@@ -197,7 +197,7 @@ class CheckoutController extends Controller
             'email.email' => 'Địa chỉ email không hợp lệ.',
             'email.max' => 'Email không được vượt quá 255 ký tự.',
             'phone.required' => 'Hãy nhập số điện thoại của bạn.',
-            'phone.max' => 'Số điện thoại không được vượt quá 20 ký tự.',
+            'phone.regex' => 'Số điện thoại phải có đúng 10 chữ số.',
             'address.required' => 'Hãy nhập địa chỉ của bạn.',
             'address.max' => 'Địa chỉ không được vượt quá 255 ký tự.',
             'city_id.required' => 'Vui lòng chọn Tỉnh/Thành phố.',

@@ -13,7 +13,7 @@ class SlideController extends Controller
      */
     public function index()
     {
-        $slides = Slide::paginate(8);
+        $slides = Slide::where('status', 1)->paginate(8);
         return view('admin.pages.slide.index', compact('slides'));
     }
 
@@ -36,7 +36,7 @@ class SlideController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'title.required' => 'Vui lòng nhập tiêu đề.',
             'description.required' => 'Vui lòng nhập mô tả.',
@@ -49,6 +49,7 @@ class SlideController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'slide_image' => $imageName,
+            'status' => $request->status,
         ]);
 
         return redirect()->route('slide.index')->with('success', 'Slide đã được thêm thành công!');
@@ -78,7 +79,7 @@ class SlideController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'title.required' => 'Vui lòng nhập tiêu đề.',
             'description.required' => 'Vui lòng nhập mô tả.',
@@ -86,20 +87,21 @@ class SlideController extends Controller
             'image.mimes' => 'Hình ảnh phải có định dạng jpeg, png, jpg, gif.',
             'image.max' => 'Dung lượng hình ảnh không được vượt quá 2MB.',
         ]);
-    
+
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('admin/images/slides'), $imageName);
             $slide->slide_image = $imageName;
         }
-    
+
         $slide->title = $request->title;
         $slide->description = $request->description;
+        $slide->status = $request->status;
         $slide->save();
-    
+
         return redirect()->route('slide.index')->with('success', 'Slide đã được cập nhật thành công!');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */

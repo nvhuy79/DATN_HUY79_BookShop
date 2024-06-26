@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShippingFeeController;
 
@@ -62,10 +63,14 @@ Route::prefix('/')->group(function () {
     // Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment'])->name('vnpay_payment');
     Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment'])->name('vnpay_payment');
     Route::get('/vnpay_return', [PaymentController::class, 'vnpay_return'])->name('vnpay_return');
+
+    Route::post('/delivery_payment', [PaymentController::class, 'delivery_payment'])->name('delivery_payment');
+
 });
 
 Route::prefix('/cart')->middleware('auth.custom')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/success', [CartController::class, 'success'])->name('cart.success');
     Route::post('products/{product}', [CartController::class, 'add'])->name('cart.add');
     Route::get('/delete/{product}', [CartController::class, 'delete'])->name('cart.delete');
     Route::put('products/{product}', [CartController::class, 'update'])->name('cart.update');
@@ -101,4 +106,9 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('slide', SlideController::class)->middleware('admin.auth');
     Route::get('slides/search', [SlideController::class, 'search'])->name('slide.search');
+
+
+    Route::get('/manage_order', [OrderController::class, 'manage_order'])->name('manage_order');
+    Route::get('/detail_order/{order_code}', [OrderController::class, 'detail_order'])->name('detail_order');
+    Route::get('/delete/{detail_order}', [OrderController::class, 'delete_order'])->name('delete_order');
 });

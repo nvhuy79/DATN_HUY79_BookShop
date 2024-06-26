@@ -17,4 +17,8 @@ class OrderDetail extends Model
         'product_fee',
         'product_sale_quantity',
     ];
+
+    public function product(){
+        return $this->belongsTo(Product::class, 'id');
+    }
 }

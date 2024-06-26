@@ -14,4 +14,5 @@ class Order extends Model
         'order_status',
         'order_code',
     ];
+
 }
