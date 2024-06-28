@@ -5875,12 +5875,11 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
 }
 .single-product__content .title h3 a {
   display: block;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.4;
   font-weight: 450;
   opacity: 1;
   visibility: visible;
-  font-family: 'Times New Roman', Times, serif;
   -webkit-transform: translateY(0);
           transform: translateY(0);
   color: #333;

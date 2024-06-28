@@ -37,19 +37,11 @@
 
 
                                     <div class="shop-product-rightside-icons">
-                                        <span class="wishlist-icon">
-                                            <a href="#" data-tippy="Thêm vào yêu thích" data-tippy-placement="left"
+                                        <span class="enlarge-icon">
+                                            <a class="btn-zoom-popup" href="#" data-tippy-placement="left"
                                                 data-tippy-inertia="true" data-tippy-animation="shift-away"
                                                 data-tippy-delay="50" data-tippy-arrow="true"
-                                                data-tippy-theme="sharpborder"><i
-                                                    class="ion-android-favorite-outline"></i></a>
-                                        </span>
-                                        <span class="enlarge-icon">
-                                            <a class="btn-zoom-popup" href="#" 
-                                                data-tippy-placement="left" data-tippy-inertia="true"
-                                                data-tippy-animation="shift-away" data-tippy-delay="50"
-                                                data-tippy-arrow="true" data-tippy-theme="sharpborder"><i
-                                                    class="ion-android-expand"></i></a>
+                                                data-tippy-theme="sharpborder"><i class="ion-android-expand"></i></a>
                                         </span>
                                     </div>
 
@@ -170,12 +162,34 @@
                                                     <a href="#">{{ $product->stock }} sản phẩm</a>
                                                 </td>
                                             </tr>
+                                            @php
+                                                use Illuminate\Support\Str;
+                                            @endphp
+
                                             <tr class="single-info">
                                                 <td class="quickview-title">Tags: </td>
-                                                <td class="quickview-value">
-                                                    <a href="#">...</a>
+                                                <td class="quickview-value"><i class="fa-solid fa-tags"></i>
+
+                                                    @php
+                                                        $tags = $product->product_tags;
+                                                        $tags = $tags ? explode(',', $tags) : [];
+                                                    @endphp
+
+                                                    @if (!empty($tags))
+                                                        @foreach ($tags as $tag)
+                                                            @php
+                                                                $slug = Str::slug($tag);
+                                                            @endphp
+                                                            <a
+                                                                href="{{ route('tag', ['product_tags' => $slug]) }}">{{ $tag }}</a>{{ !$loop->last ? ',' : '' }}
+                                                        @endforeach
+                                                    @else
+                                                        <span>Không có tag nào.</span>
+                                                    @endif
+
                                                 </td>
                                             </tr>
+
                                         </table>
                                     </div>
                                 </div>
@@ -210,8 +224,8 @@
                                                                         @if ($item->sale_price && $item->sale_price < $item->price)
                                                                             <span
                                                                                 class="main-price discounted">{{ number_format($item->price) }}đ</span>
-                                                                            <span
-                                                                                class="discounted-price"  style="color: red">{{ number_format($item->sale_price) }}đ</span>
+                                                                            <span class="discounted-price"
+                                                                                style="color: red">{{ number_format($item->sale_price) }}đ</span>
                                                                         @else
                                                                             <span
                                                                                 class="main-price">{{ number_format($item->price) }}đ</span>
@@ -232,76 +246,57 @@
                                                 </div>
                                             @endforeach
                                         </div>
-
-                                        <div class="single-sidebar-widget">
-                                            <h2 class="single-sidebar-widget--title">Tags</h2>
-
-                                            <div class="tag-container">
-                                                <a href="#">bags</a>
-                                                <a href="#">chair</a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             @else
-                            <div class="col-lg-6">
-                                <div class="page-sidebar">
-                                    <div class="single-sidebar-widget mb-40">
-                                        <h2 class="single-sidebar-widget--title">HavenBook giới thiệu</h2>
-                                        @foreach ($featureProducts as $item)
-                                            <div class="widget-product-wrapper">
-                                                <div class="single-widget-product-wrapper">
-                                                    <div class="single-widget-product">
-                                                        <div class="single-widget-product__image">
-                                                            <a href="{{ route('detail_product', $item->slug) }}">
-                                                                <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
-                                                                    class="img-fluid" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="single-widget-product__content">
-
-                                                            <div class="single-widget-product__content__top">
-                                                                <h3 class="product-title"><a
-                                                                        href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
-                                                                </h3>
-                                                                <div class="price">
-                                                                    @if ($item->sale_price && $item->sale_price < $item->price)
-                                                                        <span
-                                                                            class="main-price discounted">{{ number_format($item->price) }}đ</span>
-                                                                        <span
-                                                                            class="discounted-price"  style="color: red">{{ number_format($item->sale_price) }}đ</span>
-                                                                    @else
-                                                                        <span
-                                                                            class="main-price">{{ number_format($item->price) }}đ</span>
-                                                                    @endif
-                                                                </div>
-                                                                <div class="rating">
-                                                                    <i class="ion-android-star"></i>
-                                                                    <i class="ion-android-star"></i>
-                                                                    <i class="ion-android-star-outline"></i>
-                                                                    <i class="ion-android-star-outline"></i>
-                                                                    <i class="ion-android-star-outline"></i>
-                                                                </div>
+                                <div class="col-lg-6">
+                                    <div class="page-sidebar">
+                                        <div class="single-sidebar-widget mb-40">
+                                            <h2 class="single-sidebar-widget--title">HavenBook giới thiệu</h2>
+                                            @foreach ($featureProducts as $item)
+                                                <div class="widget-product-wrapper">
+                                                    <div class="single-widget-product-wrapper">
+                                                        <div class="single-widget-product">
+                                                            <div class="single-widget-product__image">
+                                                                <a href="{{ route('detail_product', $item->slug) }}">
+                                                                    <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
+                                                                        class="img-fluid" alt="">
+                                                                </a>
                                                             </div>
+                                                            <div class="single-widget-product__content">
 
+                                                                <div class="single-widget-product__content__top">
+                                                                    <h3 class="product-title"><a
+                                                                            href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
+                                                                    </h3>
+                                                                    <div class="price">
+                                                                        @if ($item->sale_price && $item->sale_price < $item->price)
+                                                                            <span
+                                                                                class="main-price discounted">{{ number_format($item->price) }}đ</span>
+                                                                            <span class="discounted-price"
+                                                                                style="color: red">{{ number_format($item->sale_price) }}đ</span>
+                                                                        @else
+                                                                            <span
+                                                                                class="main-price">{{ number_format($item->price) }}đ</span>
+                                                                        @endif
+                                                                    </div>
+                                                                    <div class="rating">
+                                                                        <i class="ion-android-star"></i>
+                                                                        <i class="ion-android-star"></i>
+                                                                        <i class="ion-android-star-outline"></i>
+                                                                        <i class="ion-android-star-outline"></i>
+                                                                        <i class="ion-android-star-outline"></i>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-
-                                    <div class="single-sidebar-widget">
-                                        <h2 class="single-sidebar-widget--title">Tags</h2>
-
-                                        <div class="tag-container">
-                                            <a href="#">bags</a>
-                                            <a href="#">chair</a>
-                                            <a href="#">clock</a>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             @endif
                             <div class="col-lg-6">
                                 <!--=======  shop product description tab  =======-->

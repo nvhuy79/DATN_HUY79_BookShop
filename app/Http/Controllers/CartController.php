@@ -19,7 +19,7 @@ class CartController extends Controller
             $userId = Auth::id();
             $carts = Cart::where('user_id', $userId)->get();
             $totalQuantity = $carts->sum('quantity');
-            return view('user/pages/cart', compact('carts', 'categories', 'totalQuantity'));
+            return view('user/pages/product/cart', compact('carts', 'categories', 'totalQuantity'));
         } else {
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để xem giỏ hàng.');
         }
@@ -31,7 +31,7 @@ class CartController extends Controller
             $userId = Auth::id();
             $carts = Cart::where('user_id', $userId)->get();
             $totalQuantity = $carts->sum('quantity');
-            return view('user/pages/success', compact('carts', 'categories', 'totalQuantity'));
+            return view('user/pages/product/success', compact('carts', 'categories', 'totalQuantity'));
         } else {
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để xem giỏ hàng.');
         }

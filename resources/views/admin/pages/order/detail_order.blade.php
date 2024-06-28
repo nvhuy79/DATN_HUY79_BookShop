@@ -1,12 +1,17 @@
-@extends('admin/layouts/page')
+@extends('admin.layouts.page')
 @section('content')
     <div class="white_card_body">
-        <div class="QA_section">
-            <div class="title" style="text-align: center;">
-                <h4>Thông tin tài khoản</h4>
+        <div class="back">
+            <a href="{{ route('manage_order') }}">
+                <i class="ti-angle-double-left" style="font-size: 2em; color:darkblue"></i>
+            </a>
+        </div>
 
+        <div class="QA_section">
+            <div class="title" style="text-align: center; margin-top:2%">
+                <h4>Thông tin tài khoản</h4>
             </div>
-            <div class="QA_table mb_50">
+            <div class="QA_table mb_50" style="border: 1px solid gray;">
                 <table class="table">
                     <thead>
                         <tr>
@@ -22,7 +27,6 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->created_at }}</td>
-
                         </tr>
                     </tbody>
                 </table>
@@ -30,11 +34,10 @@
         </div>
 
         <div class="QA_section">
-            <div class="title" style="text-align: center;">
-                <h4 >Thông tin người nhận</h4>
-
+            <div class="title" style="text-align: center; margin-top:5%">
+                <h4>Thông tin người nhận</h4>
             </div>
-            <div class="QA_table mb_50">
+            <div class="QA_table mb_50" style="border: 1px solid gray;">
                 <table class="table">
                     <thead>
                         <tr>
@@ -63,25 +66,23 @@
                                     Thanh toán trực tuyến
                                 @endif
                             </td>
-
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-
         <div class="QA_section">
-            <div class="title" style="text-align: center;">
+            <div class="title" style="text-align: center; margin-top:5%">
                 <h4>Chi tiết đơn hàng</h4>
-
             </div>
-            <div class="QA_table mb_50">
+            <div class="QA_table mb_50" style="border: 1px solid gray;">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">STT</th>
                             <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Mã giảm giá</th>
                             <th scope="col">Số lượng</th>
                             <th scope="col">Giá</th>
                             <th scope="col">Tổng tiền</th>
@@ -89,27 +90,33 @@
                     </thead>
                     @php
                         $i = 0;
-                        $total_price=0;
                     @endphp
                     <tbody>
-                        @foreach ($order_details as $key => $details)
+                        @foreach ($order_details as $details)
                             @php
                                 $i++;
-                                $subtotal_price = $details->product_price*$details->product_sale_quantity;
-                                $total_price +=$subtotal_price;
+                                $subtotal_price = $details->product_price * $details->product_sale_quantity;
                             @endphp
                             <tr>
-
                                 <td>{{ $i }}</td>
                                 <td>{{ $details->product_name }}</td>
+                                <td>{{ $details->product_discount }}</td>
                                 <td>{{ $details->product_sale_quantity }}</td>
-                                <td>{{ $details->product_price }}</td>
-                                <td>{{ number_format( $details->product_price*$details->product_sale_quantity, 0, ',', '.') }} ₫</td>
+                                <td>{{ number_format($details->product_price, 0, ',', '.') }} ₫</td>
+                                <td>{{ number_format($subtotal_price, 0, ',', '.') }} ₫</td>
                             </tr>
-                            @endforeach
+                        @endforeach
                     </tbody>
                     <tr>
-                        <td colspan="5">Tổng đơn hàng: {{ number_format( $total_price, 0, ',', '.') }} ₫</td>
+                        <td colspan="6" style="color: #EE0000">
+                            <div>
+                                Tổng đơn hàng: {{ number_format($total_price, 0, ',', '.') }} ₫<br>
+                                @if ($discount > 0)
+                                Giảm giá: {{ number_format($discount, 0, ',', '.') }} ₫<br>
+                            @endif
+                                Thành tiền: {{ number_format($total_price_after_discount, 0, ',', '.') }} ₫
+                            </div>
+                        </td>
                     </tr>
                 </table>
             </div>

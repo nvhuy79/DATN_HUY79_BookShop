@@ -21,15 +21,47 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
     <script src="{{ asset('user/js/vendor/modernizr-2.8.3.min.js') }}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         .section-title.section-title--one.text-center h1 {
             font-family: 'Lora', serif;
+        }
+
+
+        .truncate {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 230px;
+            /* Adjust this value to fit your layout */
         }
     </style>
 </head>
 
 <body>
+    {{-- Modall  --}}
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLongTitle">Thông báo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn cần đăng nhập để sử dụng chức năng.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <a href="{{ route('login') }}" class="btn btn-secondary">Đăng
+                        nhập</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <header class="header header-box-topbar header-sticky">
         <div class="header-bottom pt-40   pb-md-40  pb-sm-40">
             <div class="container">
@@ -59,17 +91,19 @@
                     </div>
                     <div class="header-right-container">
                         <div class="header-right-icons d-flex justify-content-end align-items-center h-100">
-                            <div class="single-icon search">
+                            {{-- <div class="single-icon search">
                                 <a href="javascript:void(0)" id="search-icon">
                                     <i class="ion-ios-search-strong"></i>
                                 </a>
-                            </div>
-                            <div class="single-icon user-login">
+                            </div> --}}
+                            <div class="single-icon user-login" style="padding-right:10%">
                                 @if (Auth::check())
                                     <span
                                         style="font-weight: 450; font-size: 16px; color: #333; display: inline-block; max-width: 150px; ; white-space: nowrap; text-overflow: ellipsis;">
-                                        <i class="ion-android-person" style="margin-right: 5px;"></i><a
-                                            href="{{ route('profile') }}">{{ Auth()->user()->name }}</a>
+                                        <i class="ion-android-person"
+                                            style="margin-right: 5px; font-size: 1.5em;"></i><a
+                                            href="{{ route('profile') }}"
+                                            style="font-size: 18px;">{{ Auth()->user()->name }}</a>
                                     </span>
                                 @else
                                     <a href="{{ route('login') }}">
@@ -82,7 +116,7 @@
 
                             <div class="single-icon cart">
                                 <a href="#" id="offcanvas-cart-icon">
-                                    <i class="ion-ios-cart"></i>
+                                    <i class="ion-ios-cart" style="font-size: 1.5em; margin-left:15%"></i>
                                     @foreach ($carts as $cart)
                                         <span class="count">{{ $carts->count() }}</span>
                                     @endforeach
@@ -108,13 +142,20 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li class="menu-item"><a href="#new_products">Mới phát hành</a></li>
+                                    <li class="menu-item"><a href="{{ route('featured_product') }}">Sản phẩm nổi
+                                            bật</a></li>
                                     <li class="menu-item"><a href="#">Khuyến mãi</a></li>
                                     @if (Auth::check())
                                         <li class="menu-item"><a href="{{ route('cart.index') }}">Giỏ hàng</a></li>
                                     @else
-                                        <li class="menu-item"><a onclick="showLoginAlert()">Giỏ hàng</a></li>
+                                        <li class="menu-item">
+                                            <!-- Button trigger modal -->
+                                            <a href="#" data-toggle="modal" data-target="#loginModal">Giỏ
+                                                hàng</a>
+                                        </li>
                                     @endif
+
+
                                 </ul>
                             </nav>
                         </div>
@@ -345,11 +386,13 @@
                     <div class="footer-nav-container footer-social-links">
                         <nav>
                             <ul>
-                                <li><a href="http://facebook.com/"> <i class="fa fa-facebook"></i> Facebook</a>
+                                <li><a href="http://facebook.com/"> <i class="fa-brands fa-facebook"></i>Facebook</a>
                                 </li>
-                                <li><a href="http://instagram.com/"><i class="fa fa-instagram"></i> Instagram</a>
+                                <li><a href="http://instagram.com/"><i class="fa-brands fa-instagram"></i>
+                                        Instagram</a>
                                 </li>
-                                <li><a href="http://youtube.com/"> <i class="fa fa-youtube"></i> Youtube</a></li>
+                                <li><a href="http://youtube.com/"> <i class="fa-brands fa-youtube"></i> Youtube</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -389,14 +432,8 @@
     <script type="text/javascript" src="{{ asset('user/revolution/js/extensions/revolution.extension.parallax.min.js') }}">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
-        function showLoginAlert() {
-            var userConfirmed = confirm("Bạn cần đăng nhập trước khi bắt đầu. Bạn có muốn đăng nhập ?");
-            if (userConfirmed) {
-                window.location.href = "/login";
-            }
-        }
-
         @if (Session::has('success'))
             $.toast({
                 heading: 'Thành công!',

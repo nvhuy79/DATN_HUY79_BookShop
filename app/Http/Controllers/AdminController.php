@@ -37,7 +37,15 @@ class AdminController extends Controller
     {
         $rules = [
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
+                'regex:/[@$!%*#?&_]/',
+            ],
         ];
 
         $message = [
@@ -47,6 +55,7 @@ class AdminController extends Controller
             'email.min' => 'Email phải lớn hơn 8 ký tự.',
             'password.required' => 'Hãy nhập mật khẩu của bạn.',
             'password.min' => 'Mật khẩu tối thiểu 8 ký tự.',
+            'password.regex' => 'Mật khẩu phải bao gồm ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.',
 
         ];
         $validator = Validator::make($request->all(), $rules, $message);
@@ -75,7 +84,16 @@ class AdminController extends Controller
         $rules = [
             'name' => 'required|string|min:3|max:25',
             'email' => 'required|string|email|min:9|max:255|unique:admins',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
+                'regex:/[@$!%*#?&_]/',
+            ],
         ];
 
         $message = [
@@ -90,6 +108,8 @@ class AdminController extends Controller
             'password.required' => 'Hãy nhập mật khẩu của bạn.',
             'password.min' => 'Mật khẩu tối thiểu 8 ký tự.',
             'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
+            'password.regex' => 'Mật khẩu phải bao gồm ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.',
+
 
         ];
         $validator = Validator::make($request->all(), $rules, $message);
@@ -106,7 +126,7 @@ class AdminController extends Controller
         } catch (\Throwable $th) {
             dd($th);
         }
-        return redirect()->back()->with('success', 'Thêm quản trị viên thành công.');
+        return redirect()->route('list_acc')->with('success', 'Thêm quản trị viên thành công.');
     }
 
     /**

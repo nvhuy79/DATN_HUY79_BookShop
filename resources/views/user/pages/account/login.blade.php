@@ -57,7 +57,7 @@
                             <div class="col-lg-12">
                                 {{-- <input type="checkbox"> <span class="remember-text">Ghi nhớ đăng nhập</span> --}}
                                 <a href="{{ route('register') }}" class="reset-pass-link">Bạn chưa có tài khoản? Đăng kí</a>
-                                <a href="{{ route('register') }}" class="reset-pass-link">Quên mật khẩu?</a>
+                                <a href="{{ route('password_request') }}" class="reset-pass-link">Quên mật khẩu?</a>
                             </div>
                         </form>
                     </div>

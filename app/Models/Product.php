@@ -16,6 +16,7 @@ class Product extends Model
         'sale_price',
         'image',
         'category_id',
+        'product_tags',
         'slug',
         'description',
         'featured',
@@ -26,7 +27,7 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
+   
     public function images()
     {
         return $this->hasMany(ImageProduct::class);

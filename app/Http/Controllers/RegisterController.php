@@ -19,7 +19,7 @@ class RegisterController extends Controller
         $user_id = Auth::id();
         $carts = Cart::where('user_id', $user_id)->get();
         $categories = Category::all();
-        return view('user/pages/register', compact('categories', 'carts'));
+        return view('user/pages/account/register', compact('categories', 'carts'));
     }
 
 
@@ -29,15 +29,14 @@ class RegisterController extends Controller
         $rules = [
             'name' => 'required|string|min:3|max:15',
             'email' => 'required|string|email|min:9|max:255|unique:users',
-            // 'password' => 'required|string|min:8|confirmed',
             'password' => [
                 'required',
                 'string',
                 'min:8',
                 'confirmed',
-                'regex:/[a-z]/', 
-                'regex:/[A-Z]/', 
-                'regex:/[0-9]/', 
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
                 'regex:/[@$!%*#?&_]/',
             ],
         ];
@@ -131,6 +130,6 @@ class RegisterController extends Controller
             $user->save();
         }
 
-        return view('user/pages/account_activation', compact('token', 'name', 'categories', 'carts'));
+        return view('user/pages/account/account_activation', compact('token', 'name', 'categories', 'carts'));
     }
 }

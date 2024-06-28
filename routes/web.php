@@ -31,6 +31,8 @@ use App\Http\Controllers\ShippingFeeController;
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('/category', [CategoryController::class, 'category'])->name('category');
+    // Route::get('/category', [CategoryController::class, 'showCategory'])->name('category_show');
+
 
     Route::get('/login', [LoginController::class, 'login'])->name('login');
     Route::post('/login', [LoginController::class, 'post_login']);
@@ -47,24 +49,28 @@ Route::prefix('/')->group(function () {
     Route::get('/change-pass', [AccountController::class, 'change_pass'])->name('change_pass');
     Route::post('/change-pass', [AccountController::class, 'post_change_pass'])->name('post_change_pass');
 
-    Route::get('/forgot-pass', [AccountController::class, 'forgot_pass'])->name('forgot_pass');
-    Route::post('/forgot-pass', [AccountController::class, 'post_forgot_pass']);
-
-    Route::get('/reset-pass', [AccountController::class, 'reset_pass'])->name('reset_pass');
-    Route::post('/reset-pass', [AccountController::class, 'post_reset_pass']);
+    Route::get('forgot-password', [AccountController::class, 'showForgotPasswordForm'])->name('password_request');
+    Route::post('forgot-password', [AccountController::class, 'sendResetPasswordEmail'])->name('password_email');
+    Route::get('reset-password/{token}', [AccountController::class, 'showResetPasswordForm'])->name('password_reset');
+    Route::post('/reset-password', [AccountController::class, 'resetPassword'])->name('password_update');
 
     Route::get('/products/{slug}', [HomeController::class, 'detail_product'])->name('detail_product');
 
-    // Route::resource('checkout', CheckoutController::class);
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/confirmOrder', [CheckoutController::class, 'confirmOrder'])->name('confirmOrder');
 
 
-    // Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment'])->name('vnpay_payment');
     Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment'])->name('vnpay_payment');
     Route::get('/vnpay_return', [PaymentController::class, 'vnpay_return'])->name('vnpay_return');
 
     Route::post('/delivery_payment', [PaymentController::class, 'delivery_payment'])->name('delivery_payment');
+
+
+    Route::get('/featured_product', [HomeController::class, 'featured_product'])->name('featured_product');
+    // Route::get('category/{id}', [CategoryController::class, 'show'])->name('category.show');
+    
+    Route::get('/tag/{product_tags}', [ProductController::class, 'tag'])->name('tag');
+
 
 });
 
@@ -89,7 +95,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/logout', [AdminController::class, 'admin_logout'])->name('admin_logout');
 
     Route::get('/list_acc', [AdminController::class, 'list_acc'])->name('list_acc')->middleware('admin.auth');
-    Route::get('/list_acc/search', [AdminController::class, 'list_acc_search'])->name('list_acc.search');
+    Route::get('/list_acc/search', [AdminController::class, 'list_acc_search'])->name('list_acc_search');
 
     Route::resource('category', CategoryController::class)->middleware('admin.auth');
     Route::get('categories/search', [CategoryController::class, 'search'])->name('category.search');
@@ -109,6 +115,8 @@ Route::prefix('admin')->group(function () {
 
 
     Route::get('/manage_order', [OrderController::class, 'manage_order'])->name('manage_order');
+    Route::get('/manage-order/search', [OrderController::class, 'search'])->name('manage_order_search');
+
     Route::get('/detail_order/{order_code}', [OrderController::class, 'detail_order'])->name('detail_order');
     Route::get('/delete/{detail_order}', [OrderController::class, 'delete_order'])->name('delete_order');
 });

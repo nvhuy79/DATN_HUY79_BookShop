@@ -17,7 +17,7 @@ class LoginController extends Controller
         $user_id = Auth::id();
         $carts = Cart::where('user_id', $user_id)->get();
         $categories = Category::all();
-        return view('user/pages/login', compact('categories', 'carts'));
+        return view('user/pages/account/login', compact('categories', 'carts'));
     }
 
     public function logout()

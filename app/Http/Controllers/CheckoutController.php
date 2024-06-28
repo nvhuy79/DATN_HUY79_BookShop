@@ -29,7 +29,7 @@ class CheckoutController extends Controller
         if (Auth::check()) {
             $user_id = Auth::id();
             $carts = Cart::where('user_id', $user_id)->get();
-            return view('user/pages/checkout', compact('carts', 'categories'));
+            return view('user/pages/product/checkout', compact('carts', 'categories'));
         } else {
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để tiến hành thanh toán.');
         }

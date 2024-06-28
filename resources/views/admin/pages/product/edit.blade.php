@@ -133,6 +133,12 @@
                             </div>
 
                             <div class="mb-3">
+                                <label for="Tags" class="form-floating">Tag sản phẩm</label>
+                                {{-- <input type="text" class="form-control" value="" data-role="tagsinput" > --}}
+                                <input class="form-control" data-role="tagsinput" name="product_tags"
+                                    multiple>
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label">Sản phẩm nổi bật</label><br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="featured" id="featured1"

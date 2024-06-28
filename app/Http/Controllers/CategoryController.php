@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\Category\Store_CategoryRequest;
@@ -104,5 +105,16 @@ class CategoryController extends Controller
                               ->paginate(8);
 
         return view('admin.pages.category.index', compact('categories'));
+    }
+
+    public function showCategory($slug)
+    {
+        // Tìm danh mục theo slug
+        $category = Category::where('slug', $slug)->firstOrFail();
+        
+        // Lấy các sản phẩm thuộc danh mục đó
+        $products = Product::where('category_id', $category->id)->get();
+        
+        return view('user/pages/categories_show', compact('category', 'products'));
     }
 }

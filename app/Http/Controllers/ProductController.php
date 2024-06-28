@@ -150,4 +150,9 @@ class ProductController extends Controller
 
         return view('admin.pages.product.index', compact('products'));
     }
+
+    public function tag(Request $request, $product_tags)
+    {
+    echo('Bài viết thuộc tag:'.$request->product_tags);
+    }
 }

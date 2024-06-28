@@ -50,17 +50,7 @@
                                     class="form-control @error('password_confirmation') is-invalid @enderror"
                                     id="password_confirmation" placeholder="Nhập mật khẩu của bạn...">
                             </div>
-                            <div class=" cs_check_box">
-                                <input type="checkbox" id="check_box" class="common_checkbox">
-                                <label class="form-label" for="check_box">
-                                    Keep me up to date
-                                </label>
-                            </div>
                             <button class="btn_1 full_width text-center">Tạo tài khoản</button>
-                            <div class="text-center">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#forgot_password"
-                                    data-bs-dismiss="modal" class="pass_forget_btn">Forget Password?</a>
-                            </div>
                         </form>
                     </div>
                 </div>

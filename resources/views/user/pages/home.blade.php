@@ -41,11 +41,6 @@
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                     <div class="single-product__floating-icons">
-                                        <span class="wishlist"><a href="#" data-tippy="Thêm vào yêu thích"
-                                                data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                data-tippy-placement="left"><i
-                                                    class="ion-android-favorite-outline"></i></a></span>
                                         @if (Auth::check())
                                             <span class="wishlist"><a href=""><button
                                                         style="background-color: rgba(0, 0, 0, 0.0); border: none;"
@@ -56,7 +51,7 @@
                                                             class="ion-ios-cart"></i></button></a></span>
                                         @else
                                             <span class="wishlist"><a href="#" data-tippy="Thêm vào giỏ hàng"
-                                                    onclick="showLoginAlert()" class="ion-ios-cart"></i></a></span>
+                                                data-toggle="modal" data-target="#loginModal" class="ion-ios-cart"></i></a></span>
                                         @endif
                                     </div>
                                 </form>
@@ -67,21 +62,23 @@
                             <div class="single-product__content">
                                 <div class="title">
                                     <h3 style="font-weight: bold;">
-                                        <a href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
+                                        <a href="{{ route('detail_product', $item->slug) }}" class="truncate">{{ $item->title }}</a>
                                     </h3>
-                                    <h5> <a href="#">{{ $item->category->title }}</a></h5>
-                                    <a href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
+                                    <h5><a href="#">{{ $item->category->title }}</a></h5>
+                                    <a href="{{ route('detail_product', $item->slug) }}" class="truncatee">{{ $item->title }}</a>
                                 </div>
                                 <div class="price">
                                     @if ($item->sale_price && $item->sale_price < $item->price)
                                         <span class="main-price discounted">{{ number_format($item->price) }}₫</span>
-                                        <span class="discounted-price"
-                                            style="color: red">{{ number_format($item->sale_price) }}₫</span>
+                                        <span class="discounted-price" style="color: red">{{ number_format($item->sale_price) }}₫</span>
                                     @else
-                                        <span class="main-price">{{ number_format($item->price) }}₫</span>
+                                        <span class="main-price" style="color: red">{{ number_format($item->price) }}₫</span>
                                     @endif
                                 </div>
                             </div>
+                            
+                            
+                            
                             </form>
                         </div>
 
@@ -207,11 +204,6 @@
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $item->id }}">
                                         <div class="single-product__floating-icons">
-                                            <span class="wishlist"><a href="#" data-tippy="Thêm vào yêu thích"
-                                                    data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                    data-tippy-delay="50" data-tippy-arrow="true"
-                                                    data-tippy-theme="sharpborder" data-tippy-placement="left"><i
-                                                        class="ion-android-favorite-outline"></i></a></span>
                                             @if (Auth::check())
                                                 <span class="wishlist"><a href=""><button
                                                             style="background-color: rgba(0, 0, 0, 0.0); border: none;"
@@ -222,7 +214,7 @@
                                                                 class="ion-ios-cart"></i></button></a></span>
                                             @else
                                                 <span class="wishlist"><a href="#" data-tippy="Thêm vào giỏ hàng"
-                                                        onclick="showLoginAlert()" class="ion-ios-cart"></i></a></span>
+                                                    data-toggle="modal" data-target="#loginModal" class="ion-ios-cart"></i></a></span>
                                             @endif
                                         </div>
                                     </form>
@@ -234,7 +226,7 @@
                                 <div class="single-product__content">
                                     <div class="title">
                                         <h3 style="font-weight: bold;"> <a
-                                                href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a></h3>
+                                                href="{{ route('detail_product', $item->slug) }}" class="truncate">{{ $item->title }}</a></h3>
                                         <h5> <a href="#">{{ $item->category->title }}</a></h5>
                                         <a href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
                                     </div>

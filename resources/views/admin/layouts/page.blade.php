@@ -26,9 +26,11 @@
     <link rel="stylesheet" href="{{ asset('admin/css/metisMenu.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/style1.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/css/colors/default.css') }}" id="colorSkinCSS">
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap-tagsinput.css') }}" id="colorSkinCSS">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
-
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
+    </head>
 </head>
 
 <body class="crm_body_bg">
@@ -222,7 +224,7 @@
                             </div>
                             <div class="profile_info d-flex align-items-center">
                                 <div class="profile_thumb mr_20">
-                                    <img src="{{ asset('admin/img/transfer/4.png') }}" alt="#">
+                                    <i class="ti-user" style="font-size: 2em;"></i>
                                 </div>
                                 <div class="author_name">
                                     <h4 class="f_s_15 f_w_500 mb-0">{{ Auth::guard('admin')->user()->name }}</h4>
@@ -413,6 +415,7 @@
     <script src="{{ asset('admin/vendors/chart_am/chart-custom.js') }}"></script>
     <script src="{{ asset('admin/js/dashboard_init.js') }}"></script>
     <script src="{{ asset('admin/js/custom.js') }}"></script>
+    <script src="{{ asset('admin/js/bootstrap-tagsinput.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
     @yield('custom-js');
 
@@ -483,11 +486,4 @@
         </script>
     @endif
 </body>
-{{-- $.toast({
-    heading: 'Positioning',
-    text: 'Use the predefined ones, or specify a custom position object.',
-    position: 'top-center',
-    stack: false
-}) --}}
-
 </html>

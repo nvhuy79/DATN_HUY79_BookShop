@@ -118,11 +118,28 @@
                             <div class="mb-3">
                                 <label for="category_id" class="form-label">Chọn danh mục:</label>
                                 <select class="form-select" aria-label="Default select example" name="category_id">
-                                    <option value="" selected>--- Chọn danh mục ---</option>
-                                    @foreach ($categories as $item)
-                                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                    @foreach ($categories as $key => $category)
+                                        @if ($category->parent_id == NULL)
+                                            <option value="{{ $category->id }}" selected style="font-family: inherit;">
+                                                {{ $category->title }}
+                                            </option>
+                                            @foreach ($categories as $key => $category_sub)
+                                                @if ($category_sub->parent_id != 0 && $category_sub->parent_id == $category->id)
+                                                    <option value="{{ $category_sub->id }}" style="font-family: inherit; color:brown;">
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $category_sub->title }}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        @endif
                                     @endforeach
                                 </select>
+                            </div>
+                            
+                            <<div class="mb-3">
+                                <label for="Tags" class="form-floating">Tag sản phẩm</label>
+                                {{-- <input type="text" class="form-control" value="" data-role="tagsinput" > --}}
+                                <input class="form-control" data-role="tagsinput" name="product_tags"
+                                    multiple>
                             </div>
 
                             <div class="mb-3">
