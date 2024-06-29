@@ -116,6 +116,8 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/manage_order', [OrderController::class, 'manage_order'])->name('manage_order');
     Route::get('/manage-order/search', [OrderController::class, 'search'])->name('manage_order_search');
+    Route::get('/print_order/{order_code}', [OrderController::class, 'print_order'])->name('print_order');
+
 
     Route::get('/detail_order/{order_code}', [OrderController::class, 'detail_order'])->name('detail_order');
     Route::get('/delete/{detail_order}', [OrderController::class, 'delete_order'])->name('delete_order');

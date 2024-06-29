@@ -76,6 +76,9 @@
             <div class="title" style="text-align: center; margin-top:5%">
                 <h4>Chi tiết đơn hàng</h4>
             </div>
+            <div class="title"> 
+                <a target="_blank" href="{{ route('print_order', ['order_code' => $order->order_code]) }}" class="btn btn-primary mb-2"><i class="ti-printer" style="margin-right: 8px;"></i> In đơn</a>
+            </div>
             <div class="QA_table mb_50" style="border: 1px solid gray;">
                 <table class="table">
                     <thead>
@@ -100,7 +103,13 @@
                             <tr>
                                 <td>{{ $i }}</td>
                                 <td>{{ $details->product_name }}</td>
-                                <td>{{ $details->product_discount }}</td>
+                                <td>
+                                    @if ($details->product_discount)
+                                        {{ $details->product_discount }}
+                                    @else
+                                        Không áp dụng
+                                    @endif
+                                </td>
                                 <td>{{ $details->product_sale_quantity }}</td>
                                 <td>{{ number_format($details->product_price, 0, ',', '.') }} ₫</td>
                                 <td>{{ number_format($subtotal_price, 0, ',', '.') }} ₫</td>
@@ -108,12 +117,15 @@
                         @endforeach
                     </tbody>
                     <tr>
-                        <td colspan="6" style="color: #EE0000">
+                        <td colspan="7" style="color: #EE0000">
                             <div>
                                 Tổng đơn hàng: {{ number_format($total_price, 0, ',', '.') }} ₫<br>
+                                @if ($product_fee > 0)
+                                Phí giao hàng: {{ number_format($product_fee, 0, ',', '.') }} ₫<br>
+                                @endif
                                 @if ($discount > 0)
-                                Giảm giá: {{ number_format($discount, 0, ',', '.') }} ₫<br>
-                            @endif
+                                Giảm giá: -{{ number_format($discount, 0, ',', '.') }} ₫<br>
+                                @endif
                                 Thành tiền: {{ number_format($total_price_after_discount, 0, ',', '.') }} ₫
                             </div>
                         </td>
