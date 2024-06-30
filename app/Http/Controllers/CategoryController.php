@@ -52,17 +52,6 @@ class CategoryController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Category $category)
     {
         $categories = Category::all();
@@ -116,5 +105,13 @@ class CategoryController extends Controller
         $products = Product::where('category_id', $category->id)->get();
         
         return view('user/pages/categories_show', compact('category', 'products'));
+    }
+
+    public function show($id)
+    {
+        $category = Category::findOrFail($id);
+        $products = $category->products()->paginate(12); // Lấy danh sách sản phẩm của danh mục
+
+        return view('user/pages/category_show', compact('category', 'products'));
     }
 }

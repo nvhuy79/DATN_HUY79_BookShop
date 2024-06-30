@@ -130,7 +130,7 @@
                                         @else
                                             <div class="shop-product__buttons mb-40">
                                                 <a href="javascript:void(0)" class="lezada-button lezada-button--medium"
-                                                    onclick="alert('Vui lòng đăng nhập trước khi thêm giỏ hàng!')">
+                                                data-toggle="modal" data-target="#loginModal">
                                                     Thêm vào giỏ hàng
                                                 </a>
                                             </div>

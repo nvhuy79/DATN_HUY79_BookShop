@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\PaymentController;
@@ -12,7 +14,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DiscountController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShippingFeeController;
 
@@ -67,11 +68,13 @@ Route::prefix('/')->group(function () {
 
 
     Route::get('/featured_product', [HomeController::class, 'featured_product'])->name('featured_product');
-    // Route::get('category/{id}', [CategoryController::class, 'show'])->name('category.show');
-    
+    Route::get('/view_category/{id}', [HomeController::class, 'view_category'])->name('view_category');
+
     Route::get('/tag/{product_tags}', [ProductController::class, 'tag'])->name('tag');
+    Route::get('blogs_view', [BlogController::class, 'blogs_view'])->name('blogs_view');
 
-
+    // Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+    // Route::get('/blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
 });
 
 Route::prefix('/cart')->middleware('auth.custom')->group(function () {
@@ -121,4 +124,6 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/detail_order/{order_code}', [OrderController::class, 'detail_order'])->name('detail_order');
     Route::get('/delete/{detail_order}', [OrderController::class, 'delete_order'])->name('delete_order');
+
+    Route::resource('blogs', BlogController::class);
 });

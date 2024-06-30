@@ -9363,7 +9363,7 @@ nav.site-nav > ul > li ul.mega-menu-column-5 > li .mega-sub-menu li:last-child a
   padding-bottom: 0;
 }
 .single-sidebar-widget--list li a {
-  color: #999;
+  color: #000;
   position: relative;
 }
 .single-sidebar-widget--list li a:after {

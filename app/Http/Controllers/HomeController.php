@@ -46,12 +46,32 @@ class HomeController extends Controller
         $carts = Cart::where('user_id', $user_id)->get();
         // $categories = Category::all();
         $categories = Category::with('children')->where('parent_id', null)->get();
+        // $categories = Category::whereNull('parent_id')->with('children')->get();
         $featureProducts = Product::where('featured', 1)->with('images')->get();
-        $newProducts = Product::orderBy('created_at', 'DESC')->take(6)->get();
+        $newProducts = Product::orderBy('created_at', 'DESC')->get();
+        $sellingProducts = Product::orderBy('created_at', 'DESC')->take(3)->get();
         $discountedProducts = Product::whereNotNull('sale_price')
             ->whereColumn('sale_price', '<', 'price')
             ->get();
         $allProducts = Product::all();
-        return view('user/pages/product/featured_product', compact('categories', 'featureProducts', 'carts', 'newProducts', 'discountedProducts', 'allProducts'));
+        return view('user/pages/product/featured_product', compact('categories','sellingProducts', 'featureProducts', 'carts', 'newProducts', 'discountedProducts', 'allProducts'));
     }
+
+    public function view_category($id) {
+        // Lấy danh mục theo ID
+        $category = Category::findOrFail($id);
+    // dd($category);
+        $categoryTitle = $category->title;
+        // Lấy danh sách sản phẩm của danh mục
+        $products = $category->products()->paginate(12);
+    
+        // Lấy các thông tin khác
+        $user_id = Auth::id();
+        $carts = Cart::where('user_id', $user_id)->get();
+        $categories = Category::with('children')->where('parent_id', null)->get();
+
+        $sellingProducts = Product::orderBy('created_at', 'DESC')->take(3)->get();
+        return view('user/pages/categories_show', compact('category', 'sellingProducts', 'products', 'categories','categoryTitle', 'carts'));
+    }
+    
 }

@@ -143,7 +143,7 @@
         <div class="shop-page-content mt-50 mb-100">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 order-2 order-lg-1" style="margin-top:6%">
+                    <div class="col-lg-3 order-2 order-lg-1" style="margin-top:3%;  border: 1px solid #C0C0C0; padding: 10px; border-radius: 10px;">
                         <!--=======  page sidebar  =======-->
 
                         <div class="page-sidebar">
@@ -189,19 +189,19 @@
                                                             class="img-fluid" alt="">
                                                     </a>
                                                 </div>
-
-                                                <!--=======  End of image  =======-->
-
-                                                <!--=======  content  =======-->
-
                                                 <div class="single-widget-product__content">
 
                                                     <div class="single-widget-product__content__top">
-                                                        <h3 class="product-title"><a href="shop-product-basic.html">Wooden
-                                                                Table</a></h3>
+                                                        
+                                                        <h3 class="product-title"><a
+                                                            href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a></h3>
                                                         <div class="price">
-                                                            <span class="main-price discounted">$270.00</span>
-                                                            <span class="discounted-price">$220.00</span>
+                                                            @if ($item->sale_price && $item->sale_price < $item->price)
+                                                            <span class="main-price discounted">{{ number_format($item->price) }}đ</span>
+                                                            <span class="discounted-price">{{ number_format($item->sale_price) }}đ</span>
+                                                            @else
+                                                            <span class="discounted-price">{{ number_format($item->price) }}đ</span>
+                                                            @endif
                                                         </div>
                                                         <div class="rating">
                                                             <i class="ion-android-star"></i>
@@ -231,7 +231,7 @@
                             <div class="tab-pane fade show active" id="dashboard" role="tabpanel"
                                 aria-labelledby="dashboard-tab">
                                 <div class="myaccount-content">
-                                    <h3>{{ $categoryTitle }}</h3>
+                                    <h3>Sản phẩm theo tag: {{ $product_tags }}</h3>
                                     <div class="product-carousel-container">
                                         @if ($products->count() > 0)
                                             <div class="container">

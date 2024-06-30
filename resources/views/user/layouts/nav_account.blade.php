@@ -3,7 +3,7 @@
 <html class="no-js" lang="zxx">
 
 
-<!-- Mirrored from htmldemo.net/lezada/lezada/shop-right-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 14:15:47 GMT -->
+<!-- Mirrored from htmldemo.net/lezada/lezada/shop-left-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 14:15:46 GMT -->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -819,7 +819,7 @@
 		<div class="shop-page-content mt-100 mb-100">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-3 order-2">
+					<div class="col-lg-3 order-2 order-lg-1">
 						<!--=======  page sidebar  =======-->
 
 						<div class="page-sidebar">
@@ -1047,7 +1047,7 @@
 
 						<!--=======  End of page sidebar  =======-->
 					</div>
-					<div class="col-lg-9 order-1 mb-md-80 mb-sm-80">
+					<div class="col-lg-9 order-1 order-lg-2 mb-md-80 mb-sm-80">
 
 						<div class="row product-isotope shop-product-wrap four-column">
 
@@ -3496,5 +3496,5 @@
 </body>
 
 
-<!-- Mirrored from htmldemo.net/lezada/lezada/shop-right-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 14:15:47 GMT -->
+<!-- Mirrored from htmldemo.net/lezada/lezada/shop-left-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 14:15:47 GMT -->
 </html>

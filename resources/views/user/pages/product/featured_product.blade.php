@@ -1,450 +1,7 @@
-{{-- @extends('user/layouts/page')
-@section('content')
-    <div class="breadcrumb-area pt-20 pb-20">
-        <div class="container">
-            <div class="col-lg-12">
-                <ul class="breadcrumb-list">
-                    <li class="breadcrumb-list__item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-list__item breadcrumb-list__item--active">Sản phẩm</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-<div class="my-account-area mb-130 mt-10 mb-md-70 mb-sm-70 mb-xs-70 mb-xxs-70">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="myaccount-tab-menu nav" role="tablist">
-                            <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true">Sản phẩm nổi bật</a>
-                            <a class="nav-link" id="allProduct-tab" data-bs-toggle="tab" href="#allProduct" role="tab" aria-controls="allProduct" aria-selected="false">Tất cả sản phẩm</a>
-                            <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false">Sản phẩm mới phát hành</a>
-                            <a class="nav-link" id="download-tab" data-bs-toggle="tab" href="#download" role="tab" aria-controls="download" aria-selected="false">Khuyến mãi</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12">
-                        <div class="tab-content" id="myaccountContent">
-                            <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                                <div class="myaccount-content">
-                                    <h3>Sản phẩm nổi bật</h3>
-                                    <div class="product-carousel-container mb-70">
-                                        <div class="container">
-                                            <div class="row">
-                                                @foreach ($featureProducts as $item)
-                                                <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
-                        
-                                                    <div class="single-product">
-                                                        <div class="single-product__image">
-                                                            <a class="image-wrap" href="{{ route('detail_product', $item->slug) }}">
-                                                                <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
-                                                                    class="img-fluid product-image" alt="">
-                                                            </a>
-                        
-                                                            <div class="single-product__floating-badges">
-                                                                @if ($item->stock <= 0)
-                                                                    <span class="out-of-stock" data-tippy="Tạm hết hàng"
-                                                                        data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                                        data-tippy-delay="50" data-tippy-arrow="true"
-                                                                        data-tippy-theme="sharpborder" data-tippy-placement="right"><i
-                                                                            class="ion-android-sad"></i></span>
-                                                                @endif
-                                                                @if ($item->sale_price && $item->sale_price < $item->price)
-                                                                    <span
-                                                                        class="onsale">-{{ calculateDiscountPercentage($item->price, $item->sale_price) }}%</span>
-                                                                @endif
-                                                                @if ($item->featured == 1)
-                                                                    <span class="hot">hot</span>
-                                                                @endif
-                                                            </div>
-                        
-                                                            <form action="{{ route('cart.add', ['product' => $item->id]) }}" method="POST">
-                                                                @csrf
-                                                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                <div class="single-product__floating-icons">
-                                                                    <span class="wishlist"><a href="#" data-tippy="Thêm vào yêu thích"
-                                                                            data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                                            data-tippy-delay="50" data-tippy-arrow="true"
-                                                                            data-tippy-theme="sharpborder" data-tippy-placement="left"><i
-                                                                                class="ion-android-favorite-outline"></i></a></span>
-                                                                    @if (Auth::check())
-                                                                        <span class="wishlist"><a href=""><button
-                                                                                    style="background-color: rgba(0, 0, 0, 0.0); border: none;"
-                                                                                    data-tippy="Thêm vào giỏ hàng" data-tippy-inertia="true"
-                                                                                    data-tippy-animation="shift-away" data-tippy-delay="50"
-                                                                                    data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                                                    data-tippy-placement="left"><i
-                                                                                        class="ion-ios-cart"></i></button></a></span>
-                                                                    @else
-                                                                        <span class="wishlist"><a href="#" data-tippy="Thêm vào giỏ hàng"
-                                                                                onclick="showLoginAlert()" class="ion-ios-cart"></i></a></span>
-                                                                    @endif
-                                                                </div>
-                                                            </form>
-                        
-                        
-                                                        </div>
-                        
-                                                        <!--=======  single product content  =======-->
-                                                        <div class="single-product__content">
-                                                            <div class="title">
-                                                                <h3 style="font-weight: bold;"> 
-                                                                    <a href="{{ route('detail_product', $item->slug) }}" class="truncate">{{ $item->title }}</a></h3>
-                                                                <h5> <a href="#">{{ $item->category->title }}</a></h5>
-                                                                <a href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
-                                                            </div>
-                                                            <div class="price">
-                                                                @if ($item->sale_price && $item->sale_price < $item->price)
-                                                                    <span class="main-price discounted">{{ number_format($item->price) }}₫</span>
-                                                                    <span class="discounted-price"
-                                                                        style="color: red">{{ number_format($item->sale_price) }}₫</span>
-                                                                @else
-                                                                    <span class="main-price">{{ number_format($item->price) }}₫</span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                        
-                                                </div>
-                                            @endforeach
-                                            </div>
-                                
-                                            <div class="row">
-                                                <div class="col-lg-12 text-center mb-25 mt-30">
-                                                    <a class="lezada-loadmore-button" href="#"><i class="ion-ios-plus-empty"></i> LOAD MORE ...</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="allProduct" role="tabpanel" aria-labelledby="allProduct-tab">
-                                <div class="myaccount-content">
-                                    <h3>Tất cả sản phẩm</h3>
-                                    <div class="product-carousel-container mb-70">
-                                        <div class="container">
-                                            <div class="row">
-                                                @foreach ($allProducts as $item)
-                                                <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
-                                                    <div class="single-product">
-                                                        <div class="single-product__image">
-                                                            <a class="image-wrap" href="{{ route('detail_product', $item->slug) }}">
-                                                                <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
-                                                                    class="img-fluid product-image" alt="">
-                                                            </a>
-                                                            <div class="single-product__floating-badges">
-                                                                @if ($item->stock <= 0)
-                                                                    <span class="out-of-stock" data-tippy="Tạm hết hàng" data-tippy-inertia="true"
-                                                                        data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                                                        data-tippy-theme="sharpborder" data-tippy-placement="right"><i
-                                                                            class="ion-android-sad"></i></span>
-                                                                @endif
-                                                                @if ($item->sale_price && $item->sale_price < $item->price)
-                                                                    <span
-                                                                        class="onsale">-{{ calculateDiscountPercentage($item->price, $item->sale_price) }}%</span>
-                                                                @endif
-                                                                @if ($item->featured == 1)
-                                                                    <span class="hot">hot</span>
-                                                                @endif
-                                                            </div>
-                                                            <form action="{{ route('cart.add', ['product' => $item->id]) }}" method="POST">
-                                                                @csrf
-                                                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                <div class="single-product__floating-icons">
-                                                                    <span class="wishlist"><a href="#" data-tippy="Thêm vào yêu thích"
-                                                                            data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                                            data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                                            data-tippy-placement="left"><i
-                                                                                class="ion-android-favorite-outline"></i></a></span>
-                                                                    @if (Auth::check())
-                                                                        <span class="wishlist"><a href=""><button
-                                                                                    style="background-color: rgba(0, 0, 0, 0.0); border: none;"
-                                                                                    data-tippy="Thêm vào giỏ hàng" data-tippy-inertia="true"
-                                                                                    data-tippy-animation="shift-away" data-tippy-delay="50"
-                                                                                    data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                                                    data-tippy-placement="left"><i
-                                                                                        class="ion-ios-cart"></i></button></a></span>
-                                                                    @else
-                                                                        <span class="wishlist"><a href="#" data-tippy="Thêm vào giỏ hàng"
-                                                                                onclick="showLoginAlert()" class="ion-ios-cart"></i></a></span>
-                                                                    @endif
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                            
-                                                        <!--=======  single product content  =======-->
-                            
-                                                        <div class="single-product__content">
-                                                            <div class="title">
-                                                                <h3 style="font-weight: bold;">
-                                                                    <a href="{{ route('detail_product', $item->slug) }}" class="truncate">{{ $item->title }}</a></h3>
-                                                                </h3>
-                                                                <h5> <a href="#">{{ $item->category->title }}</a></h5>
-                                                                <a href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
-                                                            </div>
-                                                            <div class="price">
-                                                                @if ($item->sale_price && $item->sale_price < $item->price)
-                                                                    <span class="main-price discounted">{{ number_format($item->price) }}₫</span>
-                                                                    <span class="discounted-price"
-                                                                        style="color: red">{{ number_format($item->sale_price) }}₫</span>
-                                                                @else
-                                                                    <span class="main-price">{{ number_format($item->price) }}₫</span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        </form>
-                                                    </div>
-                            
-                                                </div>
-                                            @endforeach
-                                            </div>
-                                
-                                            <div class="row">
-                                                <div class="col-lg-12 text-center mb-25 mt-30">
-                                                    <a class="lezada-loadmore-button" href="#"><i class="ion-ios-plus-empty"></i> LOAD MORE ...</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                                <div class="myaccount-content">
-                                    <h3>Sản phẩm mới phát hành</h3>
-                                    <div class="product-carousel-container mb-70">
-                                        <div class="container">
-                                            <div class="row">
-                                                @foreach ($newProducts as $item)
-                                                <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
-                                                    <div class="single-product">
-                                                        <div class="single-product__image">
-                                                            <a class="image-wrap" href="{{ route('detail_product', $item->slug) }}">
-                                                                <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
-                                                                    class="img-fluid product-image" alt="">
-                                                            </a>
-                                                            <div class="single-product__floating-badges">
-                                                                @if ($item->stock <= 0)
-                                                                    <span class="out-of-stock" data-tippy="Tạm hết hàng" data-tippy-inertia="true"
-                                                                        data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                                                        data-tippy-theme="sharpborder" data-tippy-placement="right"><i
-                                                                            class="ion-android-sad"></i></span>
-                                                                @endif
-                                                                @if ($item->sale_price && $item->sale_price < $item->price)
-                                                                    <span
-                                                                        class="onsale">-{{ calculateDiscountPercentage($item->price, $item->sale_price) }}%</span>
-                                                                @endif
-                                                                @if ($item->featured == 1)
-                                                                    <span class="hot">hot</span>
-                                                                @endif
-                                                            </div>
-                                                            <form action="{{ route('cart.add', ['product' => $item->id]) }}" method="POST">
-                                                                @csrf
-                                                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                <div class="single-product__floating-icons">
-                                                                    <span class="wishlist"><a href="#" data-tippy="Thêm vào yêu thích"
-                                                                            data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                                            data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                                            data-tippy-placement="left"><i
-                                                                                class="ion-android-favorite-outline"></i></a></span>
-                                                                    @if (Auth::check())
-                                                                        <span class="wishlist"><a href=""><button
-                                                                                    style="background-color: rgba(0, 0, 0, 0.0); border: none;"
-                                                                                    data-tippy="Thêm vào giỏ hàng" data-tippy-inertia="true"
-                                                                                    data-tippy-animation="shift-away" data-tippy-delay="50"
-                                                                                    data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                                                    data-tippy-placement="left"><i
-                                                                                        class="ion-ios-cart"></i></button></a></span>
-                                                                    @else
-                                                                        <span class="wishlist"><a href="#" data-tippy="Thêm vào giỏ hàng"
-                                                                                onclick="showLoginAlert()" class="ion-ios-cart"></i></a></span>
-                                                                    @endif
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                            
-                                                        <!--=======  single product content  =======-->
-                            
-                                                        <div class="single-product__content">
-                                                            <div class="title">
-                                                                <h3 style="font-weight: bold;">
-                                                                    <a href="{{ route('detail_product', $item->slug) }}" class="truncate">{{ $item->title }}</a></h3>
-                                                                </h3>
-                                                                <h5> <a href="#">{{ $item->category->title }}</a></h5>
-                                                                <a href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
-                                                            </div>
-                                                            <div class="price">
-                                                                @if ($item->sale_price && $item->sale_price < $item->price)
-                                                                    <span class="main-price discounted">{{ number_format($item->price) }}₫</span>
-                                                                    <span class="discounted-price"
-                                                                        style="color: red">{{ number_format($item->sale_price) }}₫</span>
-                                                                @else
-                                                                    <span class="main-price">{{ number_format($item->price) }}₫</span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        </form>
-                                                    </div>
-                            
-                                                </div>
-                                            @endforeach
-                                            </div>
-                                
-                                            <div class="row">
-                                                <div class="col-lg-12 text-center mb-25 mt-30">
-                                                    <a class="lezada-loadmore-button" href="#"><i class="ion-ios-plus-empty"></i> LOAD MORE ...</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="download" role="tabpanel" aria-labelledby="download-tab">
-                                <div class="myaccount-content">
-                                    <h3>Sản phẩm khuyến mãi</h3>
-                                    <div class="product-carousel-container mb-70">
-                                        <div class="container">
-                                            <div class="row">
-                                                @foreach ($discountedProducts as $item)
-                                                <div class="col-12 col-lg-3 col-md-6 col-sm-6 mb-45">
-                                                    <div class="single-product">
-                                                        <div class="single-product__image">
-                                                            <a class="image-wrap" href="{{ route('detail_product', $item->slug) }}">
-                                                                <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
-                                                                    class="img-fluid product-image" alt="">
-                                                            </a>
-                                                            <div class="single-product__floating-badges">
-                                                                @if ($item->stock <= 0)
-                                                                    <span class="out-of-stock" data-tippy="Tạm hết hàng" data-tippy-inertia="true"
-                                                                        data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                                                        data-tippy-theme="sharpborder" data-tippy-placement="right"><i
-                                                                            class="ion-android-sad"></i></span>
-                                                                @endif
-                                                                @if ($item->sale_price && $item->sale_price < $item->price)
-                                                                    <span
-                                                                        class="onsale">-{{ calculateDiscountPercentage($item->price, $item->sale_price) }}%</span>
-                                                                @endif
-                                                                @if ($item->featured == 1)
-                                                                    <span class="hot">hot</span>
-                                                                @endif
-                                                            </div>
-                                                            <form action="{{ route('cart.add', ['product' => $item->id]) }}" method="POST">
-                                                                @csrf
-                                                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                                                <div class="single-product__floating-icons">
-                                                                    <span class="wishlist"><a href="#" data-tippy="Thêm vào yêu thích"
-                                                                            data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                                            data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                                            data-tippy-placement="left"><i
-                                                                                class="ion-android-favorite-outline"></i></a></span>
-                                                                    @if (Auth::check())
-                                                                        <span class="wishlist"><a href=""><button
-                                                                                    style="background-color: rgba(0, 0, 0, 0.0); border: none;"
-                                                                                    data-tippy="Thêm vào giỏ hàng" data-tippy-inertia="true"
-                                                                                    data-tippy-animation="shift-away" data-tippy-delay="50"
-                                                                                    data-tippy-arrow="true" data-tippy-theme="sharpborder"
-                                                                                    data-tippy-placement="left"><i
-                                                                                        class="ion-ios-cart"></i></button></a></span>
-                                                                    @else
-                                                                        <span class="wishlist"><a href="#" data-tippy="Thêm vào giỏ hàng"
-                                                                                onclick="showLoginAlert()" class="ion-ios-cart"></i></a></span>
-                                                                    @endif
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                            
-                                                        <!--=======  single product content  =======-->
-                            
-                                                        <div class="single-product__content">
-                                                            <div class="title">
-                                                                <h3 style="font-weight: bold;">
-                                                                    <a href="{{ route('detail_product', $item->slug) }}" class="truncate">{{ $item->title }}</a></h3>
-                                                                </h3>
-                                                                <h5> <a href="#">{{ $item->category->title }}</a></h5>
-                                                                <a href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a>
-                                                            </div>
-                                                            <div class="price">
-                                                                @if ($item->sale_price && $item->sale_price < $item->price)
-                                                                    <span class="main-price discounted">{{ number_format($item->price) }}₫</span>
-                                                                    <span class="discounted-price"
-                                                                        style="color: red">{{ number_format($item->sale_price) }}₫</span>
-                                                                @else
-                                                                    <span class="main-price">{{ number_format($item->price) }}₫</span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        </form>
-                                                    </div>
-                            
-                                                </div>
-                                            @endforeach
-                                            </div>
-                                
-                                            <div class="row">
-                                                <div class="col-lg-12 text-center mb-25 mt-30">
-                                                    <a class="lezada-loadmore-button" href="#"><i class="ion-ios-plus-empty"></i> LOAD MORE ...</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="payment-method" role="tabpanel" aria-labelledby="payment-method-tab">
-                                <div class="myaccount-content">
-                                    <!-- Payment method content -->
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="address-edit" role="tabpanel" aria-labelledby="address-edit-tab">
-                                <div class="myaccount-content">
-                                    <!-- Address content -->
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="account-info" role="tabpanel" aria-labelledby="account-info-tab">
-                                <div class="myaccount-content">
-                                    <!-- Account info content -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
+
 @extends('user/layouts/page')
 @section('content')
     <div class="shop-page-wrapper">
-
-        <!--=======  shop page header  =======-->
-
-        {{-- <div class="shop-page-header">
-            <div class="container">
-                <div class="row align-items-center">
-
-                    <div class="col-12 col-lg-7 col-md-10 d-none d-md-block">
-                        <!--=======  fitler titles  =======-->
-                        <div class="myaccount-tab-menu nav" role="tablist">
-                            <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab"
-                                aria-controls="dashboard" aria-selected="true">Sản phẩm nổi bật</a>
-                            <a class="nav-link" id="allProduct-tab" data-bs-toggle="tab" href="#allProduct" role="tab"
-                                aria-controls="allProduct" aria-selected="false">Tất cả sản phẩm</a>
-                            <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab"
-                                aria-controls="orders" aria-selected="false">Sản phẩm mới phát hành</a>
-                            <a class="nav-link" id="download-tab" data-bs-toggle="tab" href="#download" role="tab"
-                                aria-controls="download" aria-selected="false">Khuyến mãi</a>
-                        </div>
-                        <!--=======  End of fitler titles  =======-->
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
-        <!--=======  End of shop page header  =======-->
-
-        <!--=============================================
-                =            shop advance filter area         =
-                =============================================-->
-
         <div class="shop-advance-filter-area" id="shop-advance-filter-area">
             <div class="shop-advance-filter-wrapper pt-50">
                 <div class="container">
@@ -529,21 +86,18 @@
                                             data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
                                             data-tippy-theme="sharpborder"><span class="color-picker blue"></span></a></li>
                                     <li><a href="#" data-tippy="Brown" data-tippy-inertia="true"
-                                            data-tippy-animation="shift-away" data-tippy-delay="50"
-                                            data-tippy-arrow="true" data-tippy-theme="sharpborder"><span
-                                                class="color-picker brown"></span></a></li>
+                                            data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                            data-tippy-theme="sharpborder"><span class="color-picker brown"></span></a></li>
                                     <li><a href="#" data-tippy="Gold" data-tippy-inertia="true"
-                                            data-tippy-animation="shift-away" data-tippy-delay="50"
-                                            data-tippy-arrow="true" data-tippy-theme="sharpborder"><span
-                                                class="color-picker gold"></span></a></li>
+                                            data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                            data-tippy-theme="sharpborder"><span class="color-picker gold"></span></a></li>
                                     <li><a href="#" data-tippy="Green Coral" data-tippy-inertia="true"
-                                            data-tippy-animation="shift-away" data-tippy-delay="50"
-                                            data-tippy-arrow="true" data-tippy-theme="sharpborder"><span
+                                            data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                            data-tippy-theme="sharpborder"><span
                                                 class="color-picker green-coral"></span></a></li>
                                     <li><a href="#" data-tippy="Grey" data-tippy-inertia="true"
-                                            data-tippy-animation="shift-away" data-tippy-delay="50"
-                                            data-tippy-arrow="true" data-tippy-theme="sharpborder"><span
-                                                class="color-picker grey"></span></a></li>
+                                            data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
+                                            data-tippy-theme="sharpborder"><span class="color-picker grey"></span></a></li>
                                     <li><a href="#" data-tippy="Oak" data-tippy-inertia="true"
                                             data-tippy-animation="shift-away" data-tippy-delay="50"
                                             data-tippy-arrow="true" data-tippy-theme="sharpborder"><span
@@ -606,71 +160,76 @@
         <div class="shop-page-content mt-50 mb-100">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 order-2 order-lg-1">
+                    <div class="col-lg-3 order-2 order-lg-1" style="margin-top:3%;  border: 1px solid #C0C0C0; padding: 10px; border-radius: 10px;">
                         <!--=======  page sidebar  =======-->
 
                         <div class="page-sidebar">
                             <div class="single-sidebar-widget mb-40">
                                 <h2 class="single-sidebar-widget--title">Danh mục</h2>
-                                <ul class="single-sidebar-widget--list single-sidebar-widget--list--category">
-                                    @foreach ($categories as $category)
-                                        <li class="has-children">
-                                            <a href="{{ route('category.show', ['id' => $category->id]) }}">{{ $category->title }}</a>
+                                <ul id="category-list" class="single-sidebar-widget--list single-sidebar-widget--list--category">
+                                    @foreach ($categories as $index => $category)
+                                        <li class="has-children category-item {{ $index >= 5 ? 'hidden' : '' }}">
+                                            <a href="{{ route('view_category', ['id' => $category->id]) }}">{{ $category->title }}</a>
                                             @if ($category->children->count())
                                                 <ul>
                                                     @foreach ($category->children as $child)
-                                                        <li><a href="{{ route('category.show', ['id' => $child->id]) }}">{{ $child->title }}</a></li>
+                                                        <li><a href="{{ route('view_category', ['id' => $child->id]) }}">{{ $child->title }}</a></li>
                                                     @endforeach
                                                 </ul>
                                             @endif
                                         </li>
                                     @endforeach
                                 </ul>
+                                @if (count($categories) > 5)
+                                    <a class="lezada-loadmore-button" id="show-more" href="#"> Tải thêm ...</a>
+                                @endif
                             </div>
                             
                             <div class="single-sidebar-widget mb-40">
-                                <h2 class="single-sidebar-widget--title">Sản phẩm gợi ý</h2>
+                                <h2 class="single-sidebar-widget--title">Bán chạy</h2>
 
                                 <!--=======  widget product wrapper  =======-->
 
                                 <div class="widget-product-wrapper">
                                     <div class="single-widget-product-wrapper">
-                                        <div class="single-widget-product">
-                                            <!--=======  image  =======-->
+                                        @foreach ($sellingProducts as $item)
+                                            <div class="single-widget-product">
+                                                <!--=======  image  =======-->
 
-                                            <div class="single-widget-product__image">
-                                                <a href="shop-product-basic.html">
-                                                    <img src="assets/images/products/product-furniture-2-100x100.jpg"
-                                                        class="img-fluid" alt="">
-                                                </a>
-                                            </div>
+                                                <div class="single-widget-product__image">
+                                                    <a href="{{ route('detail_product', $item->slug) }}">
+                                                        <img src="{{ asset('storage/admin/images') }}/{{ $item->image }}"
+                                                            class="img-fluid" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="single-widget-product__content">
 
-                                            <!--=======  End of image  =======-->
-
-                                            <!--=======  content  =======-->
-
-                                            <div class="single-widget-product__content">
-
-                                                <div class="single-widget-product__content__top">
-                                                    <h3 class="product-title"><a href="shop-product-basic.html">Wooden
-                                                            Table</a></h3>
-                                                    <div class="price">
-                                                        <span class="main-price discounted">$270.00</span>
-                                                        <span class="discounted-price">$220.00</span>
+                                                    <div class="single-widget-product__content__top">
+                                                        
+                                                        <h3 class="product-title"><a
+                                                            href="{{ route('detail_product', $item->slug) }}">{{ $item->title }}</a></h3>
+                                                        <div class="price">
+                                                            @if ($item->sale_price && $item->sale_price < $item->price)
+                                                            <span class="main-price discounted">{{ number_format($item->price) }}đ</span>
+                                                            <span class="discounted-price">{{ number_format($item->sale_price) }}đ</span>
+                                                            @else
+                                                            <span class="discounted-price">{{ number_format($item->price) }}đ</span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="rating">
+                                                            <i class="ion-android-star"></i>
+                                                            <i class="ion-android-star"></i>
+                                                            <i class="ion-android-star-outline"></i>
+                                                            <i class="ion-android-star-outline"></i>
+                                                            <i class="ion-android-star-outline"></i>
+                                                        </div>
                                                     </div>
-                                                    <div class="rating">
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star-outline"></i>
-                                                        <i class="ion-android-star-outline"></i>
-                                                        <i class="ion-android-star-outline"></i>
-                                                    </div>
+
                                                 </div>
 
+                                                <!--=======  End of content  =======-->
                                             </div>
-
-                                            <!--=======  End of content  =======-->
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -678,19 +237,19 @@
 
                         <!--=======  End of page sidebar  =======-->
                     </div>
-                    
+
                     <div class="col-lg-9 order-1 mb-md-80 mb-sm-80">
                         <div class="col-12">
                             <!--=======  fitler titles  =======-->
                             <div class="myaccount-tab-menu nav" role="tablist">
-                                <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab"
-                                    aria-controls="dashboard" aria-selected="true">Sản phẩm nổi bật</a>
-                                <a class="nav-link" id="allProduct-tab" data-bs-toggle="tab" href="#allProduct" role="tab"
-                                    aria-controls="allProduct" aria-selected="false">Tất cả sản phẩm</a>
+                                <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard"
+                                    role="tab" aria-controls="dashboard" aria-selected="true">Sản phẩm nổi bật</a>
+                                <a class="nav-link" id="allProduct-tab" data-bs-toggle="tab" href="#allProduct"
+                                    role="tab" aria-controls="allProduct" aria-selected="false">Tất cả sản phẩm</a>
                                 <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab"
                                     aria-controls="orders" aria-selected="false">Sản phẩm mới phát hành</a>
-                                <a class="nav-link" id="download-tab" data-bs-toggle="tab" href="#download" role="tab"
-                                    aria-controls="download" aria-selected="false">Khuyến mãi</a>
+                                <a class="nav-link" id="download-tab" data-bs-toggle="tab" href="#download"
+                                    role="tab" aria-controls="download" aria-selected="false">Khuyến mãi</a>
                             </div>
                             <!--=======  End of fitler titles  =======-->
                         </div>
@@ -741,8 +300,7 @@
                                                                         value="{{ $item->id }}">
                                                                     <div class="single-product__floating-icons">
                                                                         @if (Auth::check())
-                                                                            <span class="cart"><a
-                                                                                    href=""><button
+                                                                            <span class="cart"><a href=""><button
                                                                                         style="background-color: rgba(0, 0, 0, 0.0); border: none;"
                                                                                         data-tippy="Thêm vào giỏ hàng"
                                                                                         data-tippy-inertia="true"
@@ -755,7 +313,7 @@
                                                                         @else
                                                                             <span class="cart"><a href="#"
                                                                                     data-tippy="Thêm vào giỏ hàng"
-                                                                                    onclick="showLoginAlert()"
+                                                                                    data-toggle="modal" data-target="#loginModal"
                                                                                     class="ion-ios-cart"></i></a></span>
                                                                         @endif
                                                                     </div>
@@ -797,7 +355,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12 text-center mb-25 mt-30">
                                                     <a class="lezada-loadmore-button" href="#"><i
-                                                            class="ion-ios-plus-empty"></i> LOAD MORE ...</a>
+                                                            class="ion-ios-plus-empty"></i> Tải thêm ...</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -860,7 +418,7 @@
                                                                         @else
                                                                             <span class="wishlist"><a href="#"
                                                                                     data-tippy="Thêm vào giỏ hàng"
-                                                                                    onclick="showLoginAlert()"
+                                                                                    data-toggle="modal" data-target="#loginModal"
                                                                                     class="ion-ios-cart"></i></a></span>
                                                                         @endif
                                                                     </div>
@@ -967,7 +525,7 @@
                                                                         @else
                                                                             <span class="wishlist"><a href="#"
                                                                                     data-tippy="Thêm vào giỏ hàng"
-                                                                                    onclick="showLoginAlert()"
+                                                                                    data-toggle="modal" data-target="#loginModal"
                                                                                     class="ion-ios-cart"></i></a></span>
                                                                         @endif
                                                                     </div>
@@ -1074,7 +632,7 @@
                                                                         @else
                                                                             <span class="wishlist"><a href="#"
                                                                                     data-tippy="Thêm vào giỏ hàng"
-                                                                                    onclick="showLoginAlert()"
+                                                                                   data-toggle="modal" data-target="#loginModal"
                                                                                     class="ion-ios-cart"></i></a></span>
                                                                         @endif
                                                                     </div>
@@ -1126,14 +684,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-lg-12 text-center mt-30">
-                                <a class="lezada-button lezada-button--medium lezada-button--icon--left" href="#"><i
-                                        class="ion-android-add"></i> MORE</a>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>

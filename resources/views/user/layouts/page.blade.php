@@ -19,7 +19,7 @@
     <link href="{{ asset('user/revolution/custom-setting.css') }}" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
-    <script src="{{ asset('user/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -27,6 +27,13 @@
             font-family: 'Lora', serif;
         }
 
+        .category-item.hidden {
+            display: none;
+        }
+
+        .product-item.hidden {
+            display: none;
+        }
 
         .truncate {
             display: block;
@@ -134,17 +141,42 @@
                             <nav class="site-nav center-menu">
                                 <ul>
                                     <li class="menu-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-                                    <li class="menu-item-has-children"><a href="#">Danh
-                                            mục</a>
-                                        <ul class="sub-menu single-column-menu">
-                                            @foreach ($categories as $item)
-                                                <li><a href="#">{{ $item->title }}</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="javascript:void(0)">Danh mục</a>
+                                        <ul class="sub-menu single-column-menu single-column-has-children">
+                                            @foreach ($categories as $category)
+                                                @if ($category->parent_id == null)
+                                                    <!-- Chỉ hiển thị danh mục cấp cao nhất -->
+                                                    <li class="menu-item-has-children">
+                                                        <a
+                                                            href="{{ route('view_category', ['id' => $category->id]) }}">{{ $category->title }}</a>
+                                                        @if ($category->children->count())
+                                                            <ul class="multilevel-submenu">
+                                                                @foreach ($category->children as $child)
+                                                                    <li><a
+                                                                            href="{{ route('view_category', ['id' => $child->id]) }}">{{ $child->title }}</a>
+                                                                    </li>
+                                                                    @if ($child->children->count())
+                                                                        <ul class="multilevel-submenu">
+                                                                            @foreach ($child->children as $subChild)
+                                                                                <li><a
+                                                                                        href="{{ route('view_category', ['id' => $child->id]) }}">{{ $subChild->title }}</a>
+                                                                                </li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    @endif
+                                                                @endforeach
+                                                            </ul>
+                                                        @endif
+                                                    </li>
+                                                @endif
                                             @endforeach
                                         </ul>
                                     </li>
+
                                     <li class="menu-item"><a href="{{ route('featured_product') }}">Sản phẩm nổi
                                             bật</a></li>
-                                    <li class="menu-item"><a href="#">Khuyến mãi</a></li>
+                                    {{-- <li class="menu-item"><a href="#">Điều khoản</a></li> --}}
                                     @if (Auth::check())
                                         <li class="menu-item"><a href="{{ route('cart.index') }}">Giỏ hàng</a></li>
                                     @else
@@ -177,17 +209,28 @@
                             <li class=""><a href="{{ route('home') }}">Trang chủ</a></li>
                             <li><a href="#">Danh mục</a>
                                 <ul class="dl-submenu">
-                                    <li class=""> <a href="{{ route('category') }}">Thể loại</a>
-                                        <ul class="dl-submenu">
-                                            <li><a href="#">Shop No Sidebar</a></li>
-                                            <li><a href="#">Shop Left Sidebar</a></li>
-                                        </ul>
-                                    </li>
+                                    @foreach ($categories as $category)
+                                        @if ($category->parent_id == null)
+                                            <li class=""> <a
+                                                    href="{{ route('view_category', ['id' => $category->id]) }}">{{ $category->title }}</a>
+                                                @if ($category->children->count())
+                                                    <ul class="dl-submenu">
+                                                        @foreach ($category->children as $child)
+                                                            <li><a
+                                                                href="{{ route('view_category', ['id' => $child->id]) }}">{{ $child->title }}</a></li>
+                                                            {{-- <li><a href="#">Shop Left Sidebar</a></li> --}}
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endif
+                                    @endforeach
                                 </ul>
                             </li>
                             <li><a href="#">Mới phát hành</a></li>
                             <li><a href="#">Khuyến mãi</a></li>
                             <li><a href="#">Giỏ hàng</a></li>
+
                             @if (Auth::check())
                                 <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                             @else
@@ -213,45 +256,6 @@
                 </span>
             </div>
         </div>
-
-        <!--=======  wishlist overlay  =======-->
-        {{-- <div class="wishlist-overlay" id="wishlist-overlay">
-            <div class="wishlist-overlay-close inactive"></div>
-            <div class="wishlist-overlay-content">
-                <span class="close-icon" id="wishlist-close-icon">
-                    <a href="javascript:void(0)">
-                        <i class="ion-android-close"></i>
-                    </a>
-                </span>
-                <div class="offcanvas-cart-content-container">
-                    <h3 class="cart-title">Yêu thích</h3>
-                    <div class="cart-product-wrapper">
-                        <div class="cart-product-container  ps-scroll">
-
-                            <div class="single-cart-product">
-                                <span class="cart-close-icon">
-                                    <a href="#"><i class="ti-close"></i></a>
-                                </span>
-                                <div class="image">
-                                    <a href="shop-product-basic.html">
-                                        <img src="{{ asset('user/images/cart-product-image/01.jpg') }}"
-                                            class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
-                                    <p><span class="main-price discounted">$200.00</span> <span
-                                            class="discounted-price">$180.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cart-buttons">
-                            <a href="shop-wishlist.html">Xem danh sách</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
 
         <!--=======  cart overlay  =======-->
         <div class="cart-overlay" id="cart-overlay">
@@ -312,7 +316,7 @@
                         </div>
 
                         <p class="free-shipping-text">
-                            Miễn phí ship với đơn hàng từ 999.000đ!
+                            *Miễn phí vận chuyển với đơn hàng từ 999.000đ!
                         </p>
                     </div>
                 </div>
@@ -330,7 +334,7 @@
             <div class="search-overlay-content">
                 <div class="input-box">
                     <form action="#">
-                        <input type="search" placeholder="Tìm kiếm sản phẩm...">
+                        <input type="search" style="font-size: 17px" placeholder="Tìm kiếm sản phẩm...">
                     </form>
                 </div>
                 <div class="search-hint">
@@ -338,8 +342,12 @@
                 </div>
             </div>
         </div>
+        
     </header>
-
+    {{-- <div class="container" style="text-align: right">
+        <input type="text" id="search" class="autocomplete-input" placeholder="Tìm kiếm sản phẩm...">
+        <a href=""><i class="ion-ios-search-strong" id="search-icon"></i></a>
+    </div> --}}
     <main class="py-4">
         @yield('content')
     </main>
@@ -375,7 +383,7 @@
                     <div class="footer-nav-container">
                         <nav>
                             <ul>
-                                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                                <li><a href="{{ route('blogs_view') }}">Hướng dẫn mua hàng</a></li>
                                 <li><a href="#">Điều khoản dịch vụ</a></li>
                             </ul>
                         </nav>
@@ -409,8 +417,8 @@
             </div>
         </div>
     </div>
-
     <a href="#" class="scroll-top"></a>
+    <script src="{{ asset('user/js/vendor/modernizr-2.8.3.min.js') }}"></script>
     <script src="{{ asset('user/js/vendor/jquery.min.js') }}"></script>
     <script src="{{ asset('user/js/popper.min.js') }}"></script>
     <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
@@ -463,6 +471,19 @@
                 icon: 'success',
             });
         @endif
+    </script>
+
+    {{-- Ẩn danh mục khi quá 5 --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const showMoreButton = document.getElementById('show-more');
+            const hiddenItems = document.querySelectorAll('.category-item.hidden');
+
+            showMoreButton.addEventListener('click', function() {
+                hiddenItems.forEach(item => item.classList.remove('hidden'));
+                showMoreButton.style.display = 'none';
+            });
+        });
     </script>
 
 </body>

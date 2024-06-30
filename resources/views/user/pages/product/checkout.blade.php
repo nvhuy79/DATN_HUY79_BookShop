@@ -276,7 +276,7 @@
                                 
                                                 </div>
                                                 <h19 class="free-shipping-text">
-                                                    * Miễn phí ship với đơn hàng từ 999.000đ
+                                                    * Miễn phí vận chuyển với đơn hàng từ 999.000đ
                                                 </h19>
                                                 <input type="hidden" name="total_vnpay" value="{{ $finalTotal }}">
                                                 <div class="col-12 mb-60" style="display: flex;justify-content: center;">

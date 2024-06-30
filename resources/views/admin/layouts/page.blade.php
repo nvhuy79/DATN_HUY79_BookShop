@@ -32,10 +32,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
     </head>
 </head>
-
-<body class="crm_body_bg">
-
-
     <nav class="sidebar dark_sidebar">
         <div class="logo d-flex justify-content-between">
             <a class="large_logo" href="{{ route('category.index') }}"><img src="{{ asset('admin/img/logo1.png') }}"
@@ -151,6 +147,20 @@
                 <ul>
                     <li><a href="{{ route('slide.index') }}">Danh sách Slide</a></li>
                     <li><a href="{{ route('slide.create') }}">Thêm Slide</a></li>
+                </ul>
+            </li>
+            <li class>
+                <a class="has-arrow" href="#" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{{ asset('admin/img/menu-icon/7.svg') }}" alt>
+                    </div>
+                    <div class="nav_title">
+                        <span>Bài viết</span>
+                    </div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('blogs.index') }}">Danh sách bài viết</a></li>
+                    <li><a href="{{ route('blogs.create') }}">Thêm bài viết</a></li>
                 </ul>
             </li>
             <li class>

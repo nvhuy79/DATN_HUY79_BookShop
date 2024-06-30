@@ -196,7 +196,7 @@ class AccountController extends Controller
             Log::info("Email sent successfully: " . $response);
         }
 
-        return redirect()->route('login')->with('Success', 'Chúng tôi đã gửi liên kết đặt lại mật khẩu đến email của bạn!');
+        return redirect()->route('login')->with('Success_Regis', 'Chúng tôi đã gửi liên kết đặt lại mật khẩu đến email của bạn!');
     }
     public function showResetPasswordForm($token)
     {

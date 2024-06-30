@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\ImageProduct;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Product\Store_ProductRequest;
 use App\Http\Requests\Product\Update_ProductRequest;
@@ -124,7 +126,7 @@ class ProductController extends Controller
             // Xóa tất cả các ảnh liên quan của sản phẩm từ storage
             foreach ($product->images as $image) {
                 Storage::delete('public/admin/images/' . $image->image);
-                $image->delete(); 
+                $image->delete();
             }
 
             // Xóa ảnh chính của sản phẩm từ storage
@@ -151,8 +153,38 @@ class ProductController extends Controller
         return view('admin.pages.product.index', compact('products'));
     }
 
+    // public function tag(Request $request, $product_tags)
+    // {
+    // // echo('Bài viết thuộc tag:'.$request->product_tags);
+    // $categories = Category::with('children')->where('parent_id', null)->get();
+    // $sellingProducts = Product::orderBy('created_at', 'DESC')->take(3)->get();
+    // $products = $categories->products()->paginate(12);
+
+
+    // return view('user/pages/product/tag', compact('product_tags','categories','sellingProducts','products'));
+    // }
+
     public function tag(Request $request, $product_tags)
     {
-    echo('Bài viết thuộc tag:'.$request->product_tags);
+        $user_id = Auth::id();
+        $carts = Cart::where('user_id', $user_id)->get();
+        $categories = Category::with('children')->where('parent_id', null)->get();
+        $sellingProducts = Product::orderBy('created_at', 'DESC')->take(3)->get();
+    
+        // Chuẩn hóa tag để tìm kiếm
+        $tags = str_replace("-", " ", $product_tags);
+        $tagsArray = explode(",", $tags); // Nếu tags được lưu dưới dạng chuỗi phân cách bằng dấu phẩy
+    
+        // Tìm sản phẩm theo tags
+        $products = Product::where(function ($query) use ($tagsArray) {
+            foreach ($tagsArray as $tag) {
+                $query->orWhere('title', 'LIKE', '%' . $tag . '%')
+                      ->orWhere('product_tags', 'LIKE', '%' . $tag . '%')
+                      ->orWhere('slug', 'LIKE', '%' . $tag . '%');
+            }
+        })->paginate(12);
+    
+        return view('user/pages/product/tag', compact('product_tags', 'carts', 'products', 'categories', 'sellingProducts'));
     }
+    
 }

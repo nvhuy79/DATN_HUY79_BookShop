@@ -135,7 +135,7 @@
                                 </select>
                             </div>
                             
-                            <<div class="mb-3">
+                            <div class="mb-3">
                                 <label for="Tags" class="form-floating">Tag sản phẩm</label>
                                 {{-- <input type="text" class="form-control" value="" data-role="tagsinput" > --}}
                                 <input class="form-control" data-role="tagsinput" name="product_tags"
