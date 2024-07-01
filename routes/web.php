@@ -16,6 +16,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShippingFeeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,14 +98,26 @@ Route::prefix('admin')->group(function () {
     Route::post('/add', [AdminController::class, 'post_admin_add']);
     Route::get('/logout', [AdminController::class, 'admin_logout'])->name('admin_logout');
 
-    Route::get('/list_acc', [AdminController::class, 'list_acc'])->name('list_acc')->middleware('admin.auth');
-    Route::get('/list_acc/search', [AdminController::class, 'list_acc_search'])->name('list_acc_search');
+    Route::get('/list_acc_admin', [AdminController::class, 'list_acc_admin'])->name('list_acc_admin')->middleware('admin.auth');
+    Route::get('/edit_acc_admin/{id}', [AdminController::class, 'edit_acc_admin'])->name('edit_acc_admin')->middleware('admin.auth');
+    Route::put('/update_acc_admin/{id}', [AdminController::class, 'update_acc_admin'])->name('update_acc_admin')->middleware('admin.auth');
+    Route::delete('/delete_acc_admin/{id}', [AdminController::class, 'delete_acc_admin'])->name('delete_acc_admin');
+    Route::get('/list_acc_admin_search', [AdminController::class, 'list_acc_admin_search'])->name('list_acc_admin_search');
+
+    Route::resource('user_acc', UserController::class)->middleware('admin.auth');
+    Route::get('/user_search', [UserController::class, 'user_search'])->name('user_search');
 
     Route::resource('category', CategoryController::class)->middleware('admin.auth');
     Route::get('categories/search', [CategoryController::class, 'search'])->name('category.search');
 
     Route::resource('product', ProductController::class)->middleware('admin.auth');
     Route::get('products/search', [ProductController::class, 'search'])->name('product.search');
+    // Thống kê
+    Route::get('/inventory', [ProductController::class, 'inventory'])->name('inventory');
+    Route::get('/admin/revenue', [ProductController::class, 'revenue'])->name('revenue');
+    Route::post('/admin/revenue', [ProductController::class, 'post_revenue'])->name('post_revenue');
+
+
 
     Route::resource('shippingfee', ShippingFeeController::class)->middleware('admin.auth');
     Route::get('shippingfee/search', [ShippingFeeController::class, 'search'])->name('shippingfee.search');

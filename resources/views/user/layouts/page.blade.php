@@ -176,7 +176,6 @@
 
                                     <li class="menu-item"><a href="{{ route('featured_product') }}">Sản phẩm nổi
                                             bật</a></li>
-                                    {{-- <li class="menu-item"><a href="#">Điều khoản</a></li> --}}
                                     @if (Auth::check())
                                         <li class="menu-item"><a href="{{ route('cart.index') }}">Giỏ hàng</a></li>
                                     @else

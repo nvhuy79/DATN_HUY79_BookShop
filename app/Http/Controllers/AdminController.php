@@ -76,7 +76,7 @@ class AdminController extends Controller
 
     public function admin_add()
     {
-        return view('admin/pages/admin_add');
+        return view('admin/pages/acc_admin/admin_add');
     }
 
     public function post_admin_add(Request $request)
@@ -126,22 +126,22 @@ class AdminController extends Controller
         } catch (\Throwable $th) {
             dd($th);
         }
-        return redirect()->route('list_acc')->with('success', 'Thêm quản trị viên thành công.');
+        return redirect()->route('list_acc_admin')->with('success', 'Thêm quản trị viên thành công.');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function list_acc()
+    public function list_acc_admin()
     {
         $admins = Admin::paginate(8);
-        return view('admin/pages/list_acc', compact('admins'));
+        return view('admin/pages/acc_admin/list_acc', compact('admins'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function list_acc_search(Request $request)
+    public function list_acc_admin_search(Request $request)
     {
         $query = $request->input('query');
 
@@ -150,30 +150,63 @@ class AdminController extends Controller
             ->orWhere('email', 'LIKE', "%{$query}%")
             ->paginate(8);
 
-        return view('admin.pages.list_acc', compact('admins'));
+        return view('admin.pages.acc_admin.list_acc', compact('admins'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit_acc_admin(string $id)
     {
-        //
+        $admin = Admin::findOrFail($id);
+        return view('admin.pages.acc_admin.edit', compact('admin'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update_acc_admin(Request $request, string $id)
     {
-        //
+        $rules = [
+            'name' => 'required|string|min:3|max:25',
+            'email' => 'required|string|email|min:9|max:255|unique:admins,email,' . $id,
+        ];
+    
+        $message = [
+            'name.required' => 'Hãy nhập họ và tên của bạn.',
+            'name.min' => 'Họ và tên phải lớn hơn 3 ký tự.',
+            'name.max' => 'Họ và tên phải nhỏ hơn 25 ký tự.',
+            'email.required' => 'Hãy nhập email của bạn.',
+            'email.email' => 'Nhập đúng định dạng email bao gồm @ và phần tử phía sau.',
+            'email.max' => 'Email phải nhỏ hơn 55 ký tự.',
+            'email.min' => 'Email phải lớn hơn 8 ký tự.',
+            'email.unique' => 'Email đã tồn tại.',
+        ];
+    
+        $validator = Validator::make($request->all(), $rules, $message);
+    
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+    
+        $admin = Admin::findOrFail($id);
+        $admin->name = $request->input('name');
+        $admin->email = $request->input('email');
+        $admin->save();
+    
+        return redirect()->route('list_acc_admin')->with('success', 'Cập nhật thông tin quản trị viên thành công.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete_acc_admin(string $id)
     {
-        //
+        $admin = Admin::findOrFail($id);
+        $admin->delete();
+    
+        return redirect()->route('list_acc_admin')->with('success', 'Xóa quản trị viên thành công.');
     }
 }

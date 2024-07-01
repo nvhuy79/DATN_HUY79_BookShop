@@ -15,6 +15,10 @@ class PaymentController extends Controller
 {
     public function vnpay_payment(Request $request)
     {
+
+        $totalVnpay = $request->input('total_vnpay');
+        Session::put('total_vnpay', $totalVnpay);
+
         $vnp_TmnCode = 'V940MKOG'; // Mã website tại VNPAY
         $vnp_HashSecret = '9F5969ONBD4BBXKNNRLN7R1QNWRVQ9TL'; // Chuỗi bí mật
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
@@ -95,6 +99,7 @@ class PaymentController extends Controller
                 $paymentMethod = Session::get('customer_payment_method');
                 $shippingFee = Session::get('shipping_fee');
                 $note = Session::get('customer_note');
+                $total_vnpay = Session::get('total_vnpay');
 
                 $shippingInfo = ShippingInformation::create([
                     'shipping_name' => $shippingName,
@@ -114,7 +119,6 @@ class PaymentController extends Controller
 
                 $checkout_code = substr(md5(microtime()), rand(0, 26), 5);
                 $shippingInformationId = $shippingInfo->id;
-
                 // Lưu thông tin đơn hàng vào bảng orders
                 $order = Order::create([
                     'user_id' => auth()->id(),
@@ -122,6 +126,8 @@ class PaymentController extends Controller
                     'order_status' => 1, // Trạng thái đơn hàng mới
                     'order_code' => $checkout_code,
                     'shipping_fee' => $shippingFee,  // Lưu phí vận chuyển vào đơn hàng
+                    'finalTotal' => $total_vnpay,
+
                 ]);
 
                 // Lấy mã giảm giá từ session
@@ -192,6 +198,7 @@ class PaymentController extends Controller
     public function delivery_payment(Request $request)
     {
 
+        $totalVnpay = $request->input('total_vnpay');
         $shippingName = Session::get('customer_name');
         $shippingEmail = Session::get('customer_email');
         $shippingPhone = Session::get('customer_phone');
@@ -229,6 +236,7 @@ class PaymentController extends Controller
             'order_status' => 1, // Trạng thái đơn hàng mới
             'order_code' => $checkout_code,
             'shipping_fee' => $shippingFee,  // Lưu phí vận chuyển vào đơn hàng
+            'finalTotal' => $totalVnpay
         ]);
 
         // Lấy mã giảm giá từ session

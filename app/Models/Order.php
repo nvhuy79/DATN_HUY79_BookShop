@@ -13,6 +13,8 @@ class Order extends Model
         'shipping_information_id',
         'order_status',
         'order_code',
+        'shipping_fee',
+        'finalTotal'
     ];
 
 }

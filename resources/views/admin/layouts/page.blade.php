@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>HavenBook Admin</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="{{ asset('admin/css/bootstrap1.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/vendors/themefy_icon/themify-icons.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/vendors/niceselect/css/nice-select.css') }}" />
@@ -48,16 +48,30 @@
                         <img src="{{ asset('admin/img/menu-icon/1.svg') }}" alt>
                     </div>
                     <div class="nav_title">
-                        <span>Tài khoản</span>
+                        <span>Quản trị viên</span>
                     </div>
                 </a>
                 <ul>
                     <li><a href="{{ route('admin_add') }}">Thêm tài khoản</a></li>
-                    <li><a href="{{ route('list_acc') }}">Danh sách tài khoản</a></li>
+                    <li><a href="{{ route('list_acc_admin') }}">Danh sách tài khoản</a></li>
                     <li><a href="{{ route('admin_logout') }}">Đăng xuất</a></li>
                 </ul>
             </li>
 
+            <li class>
+                <a class="has-arrow" href="#" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="{{ asset('admin/img/menu-icon/4.svg') }}" alt>
+                    </div>
+
+                    <div class="nav_title">
+                        <span>Khách hàng</span>
+                    </div>
+                </a>
+                <ul>
+                    <li><a href="{{ route('user_acc.index') }}">Danh sách tài khoản</a></li>
+                </ul>
+            </li>
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
@@ -138,7 +152,7 @@
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="{{ asset('admin/img/menu-icon/7.svg') }}" alt>
+                        <img src="{{ asset('admin/img/menu-icon/16.svg') }}" alt>
                     </div>
                     <div class="nav_title">
                         <span>Slides</span>
@@ -152,7 +166,7 @@
             <li class>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="{{ asset('admin/img/menu-icon/7.svg') }}" alt>
+                        <img src="{{ asset('admin/img/menu-icon/Pages.svg') }}" alt>
                     </div>
                     <div class="nav_title">
                         <span>Bài viết</span>
@@ -169,12 +183,12 @@
                         <img src="{{ asset('admin/img/menu-icon/map.svg') }}" alt>
                     </div>
                     <div class="nav_title">
-                        <span>Maps</span>
+                        <span>Thống kê</span>
                     </div>
                 </a>
                 <ul>
-                    <li><a href="mapjs.html">Maps JS</a></li>
-                    <li><a href="vector_map.html">Vector Maps</a></li>
+                    <li><a href="{{ route('inventory') }}">Hàng tồn</a></li>
+                    <li><a href="{{ route('revenue') }}">Doanh thu</a></li>
                 </ul>
             </li>
         </ul>
@@ -384,7 +398,6 @@
             <i class="ti-angle-up"></i>
         </a>
     </div>
-
     <script src="{{ asset('admin/js/jquery1-3.4.1.min.js') }}"></script>
     <script src="{{ asset('admin/js/popper1.min.js') }}"></script>
     <script src="{{ asset('admin/js/bootstrap1.min.js') }}"></script>

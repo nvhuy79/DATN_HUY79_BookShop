@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Discount;
+use App\Models\OrderDetail;
 use App\Models\ImageProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -153,38 +158,114 @@ class ProductController extends Controller
         return view('admin.pages.product.index', compact('products'));
     }
 
-    // public function tag(Request $request, $product_tags)
-    // {
-    // // echo('Bài viết thuộc tag:'.$request->product_tags);
-    // $categories = Category::with('children')->where('parent_id', null)->get();
-    // $sellingProducts = Product::orderBy('created_at', 'DESC')->take(3)->get();
-    // $products = $categories->products()->paginate(12);
-
-
-    // return view('user/pages/product/tag', compact('product_tags','categories','sellingProducts','products'));
-    // }
-
     public function tag(Request $request, $product_tags)
     {
         $user_id = Auth::id();
         $carts = Cart::where('user_id', $user_id)->get();
         $categories = Category::with('children')->where('parent_id', null)->get();
         $sellingProducts = Product::orderBy('created_at', 'DESC')->take(3)->get();
-    
+
         // Chuẩn hóa tag để tìm kiếm
         $tags = str_replace("-", " ", $product_tags);
         $tagsArray = explode(",", $tags); // Nếu tags được lưu dưới dạng chuỗi phân cách bằng dấu phẩy
-    
+
         // Tìm sản phẩm theo tags
         $products = Product::where(function ($query) use ($tagsArray) {
             foreach ($tagsArray as $tag) {
                 $query->orWhere('title', 'LIKE', '%' . $tag . '%')
-                      ->orWhere('product_tags', 'LIKE', '%' . $tag . '%')
-                      ->orWhere('slug', 'LIKE', '%' . $tag . '%');
+                    ->orWhere('product_tags', 'LIKE', '%' . $tag . '%')
+                    ->orWhere('slug', 'LIKE', '%' . $tag . '%');
             }
         })->paginate(12);
-    
+
         return view('user/pages/product/tag', compact('product_tags', 'carts', 'products', 'categories', 'sellingProducts'));
     }
+    public function inventory()
+    {
+        // Lấy tất cả các sản phẩm còn tồn kho
+        $products = Product::where('stock', '>', 0)->paginate(8);
+
+        // Đếm số lượng sản phẩm
+        $productCount = $products->count();
+
+        // Tính tổng số lượng hàng tồn kho
+        $totalQuantity = $products->sum('stock');
+
+        // Lấy 6 sản phẩm có số lượng tồn lớn nhất
+        $topProducts = $products->sortByDesc('stock')->take(4);
+
+        // Tính tổng số lượng hàng tồn của các sản phẩm còn lại
+        $otherProductsTotalStock = $products->sum('stock') - $topProducts->sum('stock');
+
+        // Tạo dữ liệu cho biểu đồ từ 6 sản phẩm này
+        $productNames = $topProducts->pluck('title')->toArray();
+        $productStocks = $topProducts->pluck('stock')->toArray();
+
+        // Thêm dữ liệu của các sản phẩm còn lại
+        $productNames[] = 'Sản phẩm khác';
+        $productStocks[] = $otherProductsTotalStock;
+
+        return view('admin.pages.statistical.inventory', compact('products', 'productCount', 'totalQuantity', 'productNames', 'productStocks'));
+    }
+
+    public function revenue(Request $request)
+    {
+
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+
+        if ($startDate && $endDate) {
+            $orderDetails = OrderDetail::whereBetween('created_at', [$startDate, $endDate])->get();
+        } else {
+            $orderDetails = OrderDetail::all();
+        }
+
+        return view('admin.pages.statistical.revenue', compact('orderDetails'));
+    }
+
+    public function post_revenue(Request $request)
+    {
+        $dateRange = $request->input('date_range');
+
+        // Kiểm tra xem có ngày bắt đầu và kết thúc hay không
+        if ($dateRange) {
+            // Tách ngày bắt đầu và kết thúc từ chuỗi date_range
+            $dates = explode(' - ', $dateRange);
+            $startDate = Carbon::createFromFormat('d.m.Y', $dates[0])->startOfDay();
+            $endDate = Carbon::createFromFormat('d.m.Y', $dates[1])->endOfDay();
+        } else {
+            // Nếu không có ngày thì mặc định là ngày hôm nay
+            $startDate = Carbon::now()->startOfDay();
+            $endDate = Carbon::now()->endOfDay();
+        }
     
+        // Truy vấn các đơn hàng trong khoảng thời gian đã chọn hoặc toàn bộ nếu không có khoảng thời gian
+        if ($startDate && $endDate) {
+            $orders = Order::whereBetween('created_at', [$startDate, $endDate])->get();
+            $orderCount = $orders->count();
+            $orderDetails = OrderDetail::whereBetween('created_at', [$startDate, $endDate])->get();
+        } else {
+            $orders = Order::all();
+            $orderCount = $orders->count();
+            $orderDetails = OrderDetail::all();
+        }
+    
+        // Tính tổng doanh thu từ các đơn hàng
+        $total = 0;
+        foreach ($orders as $order) {
+            $total += $order->finalTotal;
+        }
+    
+        // Chuyển đổi ngày tháng trở lại định dạng 'd.m.Y' trước khi truyền vào view
+        $startDate = $startDate->format('d.m.Y');
+        $endDate = $endDate->format('d.m.Y');
+        // Truyền các biến vào view
+        return view('admin.pages.statistical.revenue', [
+            'orders' => $orders,
+            'startDate' => $startDate,
+            'endDate' => $endDate,
+            'total' => $total,
+            'orderCount'=>$orderCount ,
+        ]);
+    }
 }
