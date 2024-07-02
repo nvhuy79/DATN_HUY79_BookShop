@@ -93,38 +93,50 @@
 
                                     <div class="row">
                                         @if (!$carts->isEmpty())
-                                        <div class="row">
-                                            <form action="{{ route('check_discount') }}" method="post"
-                                                class="d-flex align-items-center w-100">
-                                                @csrf
-                                                <div class="col-md-7 mb-3 mb-sm-0">
-                                                    <input type="text" name="discount_code"
-                                                        placeholder="Nhập mã giảm giá..."
-                                                        value="{{ Session::get('current_discount_code') }}"
-                                                        class="form-control">
-                                                </div>
-                                                <div class="col-md-5" style="margin-left:4%">
-                                                    <button type="submit" id="button" class="lezada-button">Áp
-                                                        mã</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                            <div class="row">
+                                                <form action="{{ route('check_discount') }}" method="post"
+                                                    class="d-flex align-items-center w-100">
+                                                    @csrf
+                                                    <div class="col-md-7 mb-3 mb-sm-0">
+                                                        <input type="text" name="discount_code"
+                                                            placeholder="Nhập mã giảm giá..."
+                                                            value="{{ Session::get('current_discount_code') }}"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="col-md-5" style="margin-left:4%;">
+                                                        <button type="submit" id="button" class="lezada-button lezada-button--medium">Áp
+                                                            mã</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         @endif
-
-                                        <div class="col-md-5">
+                                        
+                                        
+                                        {{-- <div class="col-md-5">
                                             @if (!$carts->isEmpty())
                                                 <button id="refresh-button"
                                                     class="lezada-button lezada-button--medium mt-5">Cập
                                                     nhật</button>
                                             @endif
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 text-start text-lg-end">
-                                <a href="{{ route('home') }}" class="lezada-button lezada-button--medium">Tiếp tục mua
+                            {{-- <div class="col-lg-6 text-start text-lg-end">
+                                <a href="{{ route('home') }}" class="lezada-button lezada-button--medium"><i class="ion-ios-arrow-thin-left"></i>Tiếp tục mua
                                     sắm</a>
+                            </div> --}}
+                            <div class="col-md-5" style="text-align: right">
+                                @if (!$carts->isEmpty())
+                                    <button id="refresh-button" class="lezada-button lezada-button--medium">Cập
+                                        nhật</button>
+                                @endif
                             </div>
+                        </div>
+                        <div class="col-lg-6" style="margin-top:4%">
+                            <a href="{{ route('home') }}" class="lezada-button lezada-button--medium" style="display: inline-flex">
+                                <i class="ion-ios-arrow-thin-left" style="margin-right:12px; font-size:24px;display: inline-block;"></i>Mua sắm
+                            </a>
                         </div>
                     </div>
                 </div>

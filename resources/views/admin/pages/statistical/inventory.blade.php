@@ -19,8 +19,8 @@
                         <div class="QA_table mb_30">
                             <table class="table" style="margin-top:3%">
                                 <thead>
-                                    <tr style="text-align:center">
-                                        <th scope="col" style="width: 10%;">Mã sản phẩm</th>
+                                    <tr>
+                                        <th scope="col" style="width: 10%;">ID</th>
                                         <th scope="col" style="width: 40%;">Tên Sản Phẩm</th>
                                         <th scope="col" style="width: 20%;">Số lượng tồn</th>
                                         <th scope="col" style="width: 30%;">Giá Bán</th>
@@ -28,8 +28,8 @@
                                 </thead>
                                 <tbody class="table-group-divider">
                                     @forelse ($products as $item)
-                                        <tr style="text-align:center">
-                                            <td>{{ $item->order_code }}</td>
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->stock }}</td>
                                             <td>{{ number_format($item->price, 0, ',', '.') }} ₫</td>

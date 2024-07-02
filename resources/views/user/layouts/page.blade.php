@@ -19,7 +19,7 @@
     <link href="{{ asset('user/revolution/custom-setting.css') }}" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -216,7 +216,8 @@
                                                     <ul class="dl-submenu">
                                                         @foreach ($category->children as $child)
                                                             <li><a
-                                                                href="{{ route('view_category', ['id' => $child->id]) }}">{{ $child->title }}</a></li>
+                                                                    href="{{ route('view_category', ['id' => $child->id]) }}">{{ $child->title }}</a>
+                                                            </li>
                                                             {{-- <li><a href="#">Shop Left Sidebar</a></li> --}}
                                                         @endforeach
                                                     </ul>
@@ -341,7 +342,7 @@
                 </div>
             </div>
         </div>
-        
+
     </header>
     {{-- <div class="container" style="text-align: right">
         <input type="text" id="search" class="autocomplete-input" placeholder="Tìm kiếm sản phẩm...">
@@ -416,7 +417,7 @@
             </div>
         </div>
     </div>
-    <a href="#" class="scroll-top"></a>
+    {{-- <a href="#" class="scroll-top"></a> --}}
     <script src="{{ asset('user/js/vendor/modernizr-2.8.3.min.js') }}"></script>
     <script src="{{ asset('user/js/vendor/jquery.min.js') }}"></script>
     <script src="{{ asset('user/js/popper.min.js') }}"></script>
@@ -440,6 +441,9 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="HavenBookStore" agent-id="46690aea-c5e0-49a4-9b68-057c2c899ee9"
+        language-code="vi"></df-messenger>
     <script>
         @if (Session::has('success'))
             $.toast({

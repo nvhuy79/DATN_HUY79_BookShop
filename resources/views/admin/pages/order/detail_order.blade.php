@@ -12,7 +12,7 @@
                 <h4>Thông tin tài khoản</h4>
             </div>
             <div class="QA_table mb_50" style="border: 1px solid gray;">
-                <table class="table">
+                <table class="table" style="text-align:center" >
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -38,7 +38,7 @@
                 <h4>Thông tin người nhận</h4>
             </div>
             <div class="QA_table mb_50" style="border: 1px solid gray;">
-                <table class="table">
+                <table class="table" style="text-align:center">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -81,7 +81,7 @@
             </div>
             <div class="QA_table mb_50" style="border: 1px solid gray;">
                 <table class="table">
-                    <thead>
+                    <thead  style="text-align:center">
                         <tr>
                             <th scope="col">STT</th>
                             <th scope="col">Tên sản phẩm</th>
@@ -94,7 +94,7 @@
                     @php
                         $i = 0;
                     @endphp
-                    <tbody>
+                    <tbody  style="text-align:center">
                         @foreach ($order_details as $details)
                             @php
                                 $i++;

@@ -17,4 +17,14 @@ class Order extends Model
         'finalTotal'
     ];
 
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderDetail::class, 'order_code', 'order_code');
+    }
+
+    // OrderDetail.php
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }

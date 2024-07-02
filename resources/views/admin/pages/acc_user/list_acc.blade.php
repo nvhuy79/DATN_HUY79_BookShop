@@ -29,7 +29,7 @@
                             </form>
                         </div>
                         <div class="QA_table mb_30">
-                            <table class="table">
+                            <table class="table" style="text-align:center">
                                 <thead>
                                     <tr>
                                         <th scope="col" style="width: 10%;">ID</th>

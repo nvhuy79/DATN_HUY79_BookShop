@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Product\Store_ProductRequest;
 use App\Http\Requests\Product\Update_ProductRequest;
+use App\Models\ShippingInformation;
 
 class ProductController extends Controller
 {
@@ -210,62 +211,70 @@ class ProductController extends Controller
 
     public function revenue(Request $request)
     {
-
-        $startDate = $request->input('start_date');
-        $endDate = $request->input('end_date');
-
-        if ($startDate && $endDate) {
-            $orderDetails = OrderDetail::whereBetween('created_at', [$startDate, $endDate])->get();
-        } else {
-            $orderDetails = OrderDetail::all();
-        }
-
-        return view('admin.pages.statistical.revenue', compact('orderDetails'));
-    }
-
-    public function post_revenue(Request $request)
-    {
+        // Xử lý lấy ngày bắt đầu và ngày kết thúc từ request
         $dateRange = $request->input('date_range');
 
-        // Kiểm tra xem có ngày bắt đầu và kết thúc hay không
         if ($dateRange) {
-            // Tách ngày bắt đầu và kết thúc từ chuỗi date_range
             $dates = explode(' - ', $dateRange);
             $startDate = Carbon::createFromFormat('d.m.Y', $dates[0])->startOfDay();
             $endDate = Carbon::createFromFormat('d.m.Y', $dates[1])->endOfDay();
         } else {
-            // Nếu không có ngày thì mặc định là ngày hôm nay
-            $startDate = Carbon::now()->startOfDay();
-            $endDate = Carbon::now()->endOfDay();
+            $endDate = Carbon::now()->endOfDay(); // Ngày kết thúc là ngày hiện tại (hết ngày)
+            $startDate = Carbon::now()->subDays(6)->startOfDay(); // Ngày bắt đầu là ngày hiện tại trừ đi 6 ngày
         }
-    
-        // Truy vấn các đơn hàng trong khoảng thời gian đã chọn hoặc toàn bộ nếu không có khoảng thời gian
-        if ($startDate && $endDate) {
-            $orders = Order::whereBetween('created_at', [$startDate, $endDate])->get();
-            $orderCount = $orders->count();
-            $orderDetails = OrderDetail::whereBetween('created_at', [$startDate, $endDate])->get();
-        } else {
-            $orders = Order::all();
-            $orderCount = $orders->count();
-            $orderDetails = OrderDetail::all();
+
+        // Lấy các đơn hàng trong khoảng thời gian đã chọn
+        $orders = Order::whereBetween('created_at', [$startDate, $endDate])->paginate(8);
+
+        // Tính toán doanh thu theo ngày
+        $revenueData = [];
+        $currentDate = clone $startDate;
+
+        while ($currentDate <= $endDate) {
+            $dailyRevenue = $orders->filter(function ($order) use ($currentDate) {
+                return $order->created_at->toDateString() === $currentDate->toDateString();
+            })->sum('finalTotal');
+
+            $revenueData[$currentDate->format('d-m-Y')] = $dailyRevenue;
+            $currentDate->addDay();
         }
-    
-        // Tính tổng doanh thu từ các đơn hàng
-        $total = 0;
+
+        if ($orders->isEmpty()) {
+            // Nếu không có đơn hàng nào trong khoảng thời gian được chọn
+            $total = 0;
+            $orderCount = 0;
+            $productSales = [];
+
+            $startDateFormatted = $startDate->format('d.m.Y');
+            $endDateFormatted = $endDate->format('d.m.Y');
+
+            return view('admin.pages.statistical.revenue', compact('orders', 'total', 'orderCount', 'startDateFormatted', 'endDateFormatted', 'productSales'))
+                ->with('error', 'Không có đơn hàng nào trong khoảng thời gian này.');
+        }
+
+        // Nếu có đơn hàng, tính toán thông tin thống kê
+        $productSales = [];
         foreach ($orders as $order) {
-            $total += $order->finalTotal;
+            $orderDetails = OrderDetail::where('order_code', $order->order_code)->get();
+
+            foreach ($orderDetails as $orderDetail) {
+                $productTitle = $orderDetail->product_name;
+                $quantity = $orderDetail->product_sale_quantity;
+
+                if (isset($productSales[$productTitle])) {
+                    $productSales[$productTitle] += $quantity;
+                } else {
+                    $productSales[$productTitle] = $quantity;
+                }
+            }
         }
-    
+
+        $total = $orders->sum('finalTotal');
+        $orderCount = $orders->count();
         // Chuyển đổi ngày tháng trở lại định dạng 'd.m.Y' trước khi truyền vào view
-        $startDate = $startDate->format('d.m.Y');
-        $endDate = $endDate->format('d.m.Y');
-        // Truyền các biến vào view
-        return view('admin.pages.statistical.revenue', [
-            'orders' => $orders,
-            'startDate' => $startDate,
-            'endDate' => $endDate,
-            'total' => $total,
-            'orderCount'=>$orderCount ,
-        ]);
+        $startDateFormatted = $startDate->format('d.m.Y');
+        $endDateFormatted = $endDate->format('d.m.Y');
+
+        return view('admin.pages.statistical.revenue', compact('orders', 'revenueData', 'total', 'orderCount', 'startDateFormatted', 'endDateFormatted', 'productSales'));
     }
 }

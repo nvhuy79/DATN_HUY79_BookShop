@@ -114,8 +114,10 @@ Route::prefix('admin')->group(function () {
     Route::get('products/search', [ProductController::class, 'search'])->name('product.search');
     // Thống kê
     Route::get('/inventory', [ProductController::class, 'inventory'])->name('inventory');
-    Route::get('/admin/revenue', [ProductController::class, 'revenue'])->name('revenue');
-    Route::post('/admin/revenue', [ProductController::class, 'post_revenue'])->name('post_revenue');
+    // Route::get('/revenue', [ProductController::class, 'revenue'])->name('revenue');
+    // Route::post('/post_revenue', [ProductController::class, 'post_revenue'])->name('post_revenue');
+    Route::match(['get', 'post'], '/admin/revenue', [ProductController::class, 'revenue'])->name('revenue');
+
 
 
 
