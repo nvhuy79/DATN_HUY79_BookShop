@@ -19,7 +19,8 @@
     <link href="{{ asset('/user/revolution/css/navigation.css') }}" rel="stylesheet">
     <link href="{{ asset('/user/revolution/custom-setting.css') }}" rel="stylesheet">
     <script src="{{ asset('/user/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
 </head>
 
 <style>
@@ -89,5 +90,43 @@
         </div>
     </div>
 </body>
-
+@if (Session::has('success'))
+    <script>
+        $.toast({
+            heading: 'Thành công!',
+            text: '{{ session('success') }}',
+            position: 'top-center',
+            stack: false,
+            icon: 'success'
+        });
+    </script>
+@elseif(Session::has('error'))
+    <script>
+        $.toast({
+            heading: 'Lỗi!',
+            text: '{{ session('error') }}',
+            position: 'top-center',
+            stack: false,
+            icon: 'error'
+        });
+    </script>
+@elseif(Session::has('logout_success'))
+    <script>
+        $.toast({
+            heading: 'Thành công!',
+            text: '{{ session('logout_success') }}',
+            showHideTransition: 'slide',
+            icon: 'success',
+        });
+    </script>
+@elseif(Session::has('login_success'))
+    <script>
+        $.toast({
+            heading: 'Thành công!',
+            text: '{{ session('login_success') }}',
+            showHideTransition: 'slide',
+            icon: 'success',
+        });
+    </script>
+@endif
 </html>

@@ -9,7 +9,7 @@
                         <h5 class="modal-title text_white">Cập nhật tài khoản Admin</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('update_acc_admin', ['id' => $admin->id]) }}" method="POST">
+                        <form action="{{ route('post_change_pass_admin', ['id' => $admin->id]) }})}}" method="POST">
                             @method('PUT')
                             @csrf
                             
@@ -36,17 +36,34 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="form-floating" for="password">Mật khẩu</label>
-                                <input type="password" name="password"
-                                    class="form-control @error('password') is-invalid @enderror" id="password"
+                                <label class="form-floating" for="current_pwd">Mật khẩu cũ</label>
+                                <input type="password" name="current_pwd"
+                                    class="form-control @error('current_pwd') is-invalid @enderror" id="current_pwd"
                                     placeholder="Nhập mật khẩu của bạn...">
-                                @error('password')
+                                @error('current_pwd')
                                     <span style="color: red">
                                         {{ $message }}
                                     </span>
                                 @enderror
                             </div>
-                            <button class="btn_1 full_width text-center">Cập nhật tài khoản</button>
+                            <div class="form-group">
+                                <label class="form-floating" for="new_pwd">Mật khẩu</label>
+                                <input type="password" name="new_pwd"
+                                    class="form-control @error('new_pwd') is-invalid @enderror" id="new_pwd"
+                                    placeholder="Nhập mật khẩu của bạn...">
+                                @error('new_pwd')
+                                    <span style="color: red">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-floating" for="new_pwd_confirmation">Xác nhận mật khẩu</label>
+                                <input type="password" name="new_pwd_confirmation"
+                                    class="form-control @error('new_pwd_confirmation') is-invalid @enderror"
+                                    id="new_pwd_confirmation" placeholder="Nhập mật khẩu của bạn...">
+                            </div>
+                            <button class="btn_1 full_width text-center">Cập nhật mật khẩu</button>
                         </form>
                     </div>
                 </div>

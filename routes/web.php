@@ -33,6 +33,7 @@ use App\Http\Controllers\UserController;
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('/category', [CategoryController::class, 'category'])->name('category');
+    Route::get('/search', [HomeController::class, 'search'])->name('home_search');
     // Route::get('/category', [CategoryController::class, 'showCategory'])->name('category_show');
 
 
@@ -47,6 +48,10 @@ Route::prefix('/')->group(function () {
 
     Route::get('/profile', [AccountController::class, 'profile'])->name('profile')->middleware('auth.custom');
     Route::post('/profile', [AccountController::class, 'post_profile'])->name('post_profile');
+    // Route::get('/view_order', [OrderController::class, 'view_order'])->name('view_order');
+    Route::match(['get', 'post'], '/view_order', [OrderController::class, 'view_order'])->name('view_order');
+    Route::get('/view_order_detail/{order_code}', [OrderController::class, 'view_order_detail'])->name('view_order_detail');
+
 
     Route::get('/change-pass', [AccountController::class, 'change_pass'])->name('change_pass');
     Route::post('/change-pass', [AccountController::class, 'post_change_pass'])->name('post_change_pass');
@@ -100,6 +105,9 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/list_acc_admin', [AdminController::class, 'list_acc_admin'])->name('list_acc_admin')->middleware('admin.auth');
     Route::get('/edit_acc_admin/{id}', [AdminController::class, 'edit_acc_admin'])->name('edit_acc_admin')->middleware('admin.auth');
+    Route::get('/change_pass_admin/{id}', [AdminController::class, 'change_pass_admin'])->name('change_pass_admin')->middleware('admin.auth');
+    Route::put('/change_pass_admin/{id}', [AdminController::class, 'post_change_pass_admin'])->name('post_change_pass_admin')->middleware('admin.auth');
+
     Route::put('/update_acc_admin/{id}', [AdminController::class, 'update_acc_admin'])->name('update_acc_admin')->middleware('admin.auth');
     Route::delete('/delete_acc_admin/{id}', [AdminController::class, 'delete_acc_admin'])->name('delete_acc_admin');
     Route::get('/list_acc_admin_search', [AdminController::class, 'list_acc_admin_search'])->name('list_acc_admin_search');
@@ -113,7 +121,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('product', ProductController::class)->middleware('admin.auth');
     Route::get('products/search', [ProductController::class, 'search'])->name('product.search');
     // Thống kê
-    Route::get('/inventory', [ProductController::class, 'inventory'])->name('inventory');
+    Route::get('/inventory', [ProductController::class, 'inventory'])->name('inventory')->middleware('admin.auth');
     // Route::get('/revenue', [ProductController::class, 'revenue'])->name('revenue');
     // Route::post('/post_revenue', [ProductController::class, 'post_revenue'])->name('post_revenue');
     Route::match(['get', 'post'], '/admin/revenue', [ProductController::class, 'revenue'])->name('revenue');

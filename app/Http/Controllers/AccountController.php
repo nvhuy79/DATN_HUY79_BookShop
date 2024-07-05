@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Category;
+use App\Models\Discount;
+use App\Models\OrderDetail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\ShippingInformation;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,10 +20,16 @@ class AccountController extends Controller
 {
     public function profile()
     {
-        $user_id = Auth::id();
-        $carts = Cart::where('user_id', $user_id)->get();
+        $user = Auth::user();
         $categories = Category::all();
-        return view('user/pages/account/profile', compact('categories', 'carts'));
+        $carts = Cart::where('user_id', $user->id)->get();
+
+        // Lấy tất cả đơn hàng của người dùng đã đăng nhập
+        $orders = Order::where('user_id', $user->id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        return view('user/pages/account/profile', compact('orders', 'categories', 'carts'));
     }
 
     public function post_profile(Request $request)

@@ -43,6 +43,26 @@
             max-width: 230px;
             /* Adjust this value to fit your layout */
         }
+
+
+        .search-form {
+            max-width: 300px;
+            margin: auto;
+            overflow: hidden;
+            /* Đảm bảo nội dung không bị tràn */
+            max-height: 0;
+            transition: max-height 1.5s ease-out;
+            /* Thêm hiệu ứng chuyển động */
+        }
+
+        .search-form.show {
+            max-height: 100px;
+            /* Điều chỉnh chiều cao để hiển thị form */
+        }
+
+        .search-container {
+            position: relative;
+        }
     </style>
 </head>
 
@@ -185,9 +205,25 @@
                                                 hàng</a>
                                         </li>
                                     @endif
-
+                                    <li class="menu-item search-icon">
+                                        <a href="#"><i class="fa fa-search"></i></a>
+                                    </li>
+                                    <div class="search-container">
+                                        <form class="search-form" action="{{ route('home_search') }}" method="GET">
+                                            {{-- <input type="text" placeholder="Tìm kiếm.." style="border-radius: 10px" name="search2"> --}}
+                                            <input type="text" name="query" style="border-radius: 10px;border: 1px solid #ccc; padding: 5px" placeholder="Tìm kiếm..."
+                                                    value="{{ request()->input('query') }}">
+                                            <button type="submit" style="  border: none;"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
 
                                 </ul>
+                                {{-- <li class="menu-item search-icon">
+                                    <a href="#"><i class="fa fa-search"></i></a>
+                                </li> --}}
+
+                                <!-- Form tìm kiếm ẩn -->
+
                             </nav>
                         </div>
                     </div>
@@ -348,6 +384,7 @@
         <input type="text" id="search" class="autocomplete-input" placeholder="Tìm kiếm sản phẩm...">
         <a href=""><i class="ion-ios-search-strong" id="search-icon"></i></a>
     </div> --}}
+
     <main class="py-4">
         @yield('content')
     </main>
@@ -489,6 +526,27 @@
         });
     </script>
 
+    <script>
+        // Lấy phần tử nút tìm kiếm và form tìm kiếm
+        const searchIcon = document.querySelector('.search-icon a');
+        const searchForm = document.querySelector('.search-form');
+
+        // Xử lý sự kiện click vào nút tìm kiếm
+        searchIcon.addEventListener('click', function(event) {
+            event.preventDefault();
+            // Hiển thị hoặc ẩn form tìm kiếm
+            searchForm.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function(event) {
+        const isClickInsideSearchIcon = searchIcon.contains(event.target);
+        const isClickInsideSearchForm = searchForm.contains(event.target);
+        
+        if (!isClickInsideSearchIcon && !isClickInsideSearchForm) {
+            searchForm.classList.remove('show');
+        }
+    });
+    </script>
 </body>
 
 </html>

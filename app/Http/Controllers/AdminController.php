@@ -170,8 +170,17 @@ class AdminController extends Controller
         $rules = [
             'name' => 'required|string|min:3|max:25',
             'email' => 'required|string|email|min:9|max:255|unique:admins,email,' . $id,
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
+                'regex:/[@$!%*#?&_]/',
+            ],
         ];
-    
+
         $message = [
             'name.required' => 'Hãy nhập họ và tên của bạn.',
             'name.min' => 'Họ và tên phải lớn hơn 3 ký tự.',
@@ -181,22 +190,34 @@ class AdminController extends Controller
             'email.max' => 'Email phải nhỏ hơn 55 ký tự.',
             'email.min' => 'Email phải lớn hơn 8 ký tự.',
             'email.unique' => 'Email đã tồn tại.',
+            'password.required' => 'Hãy nhập mật khẩu của bạn.',
+            'password.min' => 'Mật khẩu tối thiểu 8 ký tự.',
+            'password.regex' => 'Mật khẩu phải bao gồm ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.',
         ];
-    
+
         $validator = Validator::make($request->all(), $rules, $message);
-    
+
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-    
-        $admin = Admin::findOrFail($id);
-        $admin->name = $request->input('name');
-        $admin->email = $request->input('email');
-        $admin->save();
-    
-        return redirect()->route('list_acc_admin')->with('success', 'Cập nhật thông tin quản trị viên thành công.');
+
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+
+            $admin = Admin::findOrFail($id);
+            $admin->name = $request->input('name');
+            // $admin->email = $request->input('email');
+            $admin->save();
+
+            return redirect()->route('list_acc_admin')->with('success', 'Đổi tên thành công!');
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Mật khẩu hiện tại không chính xác. Vui lòng thử lại.');
+        }
+
+
+
+        // return redirect()->route('list_acc_admin')->with('success', 'Cập nhật thông tin quản trị viên thành công.');
     }
 
     /**
@@ -206,7 +227,66 @@ class AdminController extends Controller
     {
         $admin = Admin::findOrFail($id);
         $admin->delete();
-    
+
         return redirect()->route('list_acc_admin')->with('success', 'Xóa quản trị viên thành công.');
+    }
+
+
+    public function change_pass_admin(string $id)
+    {
+        $admin = Admin::findOrFail($id);
+        return view('admin.pages.acc_admin.change_pass', compact('admin'));
+    }
+
+    public function post_change_pass_admin(Request $request, $id)
+    {
+        $rules = [
+            'email' => 'required|string|email|max:255',
+            'current_pwd' => 'required|string|min:8',
+            'new_pwd' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
+                'regex:/[@$!%*#?&_]/',
+            ],
+        ];
+
+        $messages = [
+            'email.required' => 'Hãy nhập email của bạn.',
+            'email.email' => 'Nhập đúng định dạng email bao gồm @ và phần tử phía sau.',
+            'email.max' => 'Email phải nhỏ hơn 255 ký tự.',
+            'email.min' => 'Email phải lớn hơn 8 ký tự.',
+            'current_pwd.required' => 'Hãy nhập mật khẩu hiện tại của bạn.',
+            'current_pwd.min' => 'Mật khẩu hiện tại tối thiểu 8 ký tự.',
+            'new_pwd.required' => 'Hãy nhập mật khẩu của bạn.',
+            'new_pwd.min' => 'Mật khẩu tối thiểu 8 ký tự.',
+            'new_pwd.confirmed' => 'Xác nhận mật khẩu không khớp.',
+            'new_pwd.regex' => 'Mật khẩu phải bao gồm ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt.',
+
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->current_pwd])) {
+
+            $admin = Admin::findOrFail($id);
+            $admin->password = Hash::make($request->new_pwd);
+            $admin->save();
+            Auth::guard('admin')->logout();
+
+            return redirect()->route('admin_login')->with('success', 'Lưu thông tin thành công!');
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Mật khẩu hiện tại không chính xác. Vui lòng thử lại.');
+        }
     }
 }
